@@ -1,141 +1,39 @@
 <!doctype html>
-<html lang="uk">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Atelier Sveta | Art School in Ganges</title>
+    <title>Atelier Sveta | Site en cours de développement</title>
     <meta
       name="description"
-      content="Atelier Sveta is an art school in Ganges, France, offering drawing courses, workshops, plein airs, and icon painting."
+      content="Le site Atelier Sveta est en cours de développement. En attendant, vous pouvez visiter notre Instagram."
     />
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Atelier Sveta home">
-        <span class="brand-mark">AS</span>
-        <span>Atelier Sveta</span>
-      </a>
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#courses">Курси</a>
-        <a href="#events">Події</a>
-        <a href="#about">Про школу</a>
-        <a href="#contact">Контакти</a>
-      </nav>
-      <a class="nav-cta" href="#contact">Записатися</a>
-    </header>
+  <body class="coming-soon-page">
+    <main class="coming-soon" aria-labelledby="coming-soon-title">
+      <img
+        class="coming-soon-logo"
+        src="./assets/atelier-sveta-logo.svg"
+        alt="Atelier Sveta"
+        width="267"
+        height="99"
+      />
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Ганж, Франція</p>
-          <h1>Atelier Sveta</h1>
-          <p class="lead">
-            Школа художніх мистецтв для дітей і дорослих: курси малювання,
-            індивідуальні заняття, майстер-класи, пленери та іконопис.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#courses">Обрати курс</a>
-            <a class="button secondary" href="#events">Найближчі події</a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="canvas-card">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="courses">
-        <div class="section-heading">
-          <p class="eyebrow">Напрями</p>
-          <h2>Навчання без страху помилитися</h2>
-        </div>
-        <div class="card-grid">
-          <article class="feature-card">
-            <h3>Групові курси</h3>
-            <p>Заняття для різного віку та рівня з живою практикою і підтримкою викладача.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Індивідуальні уроки</h3>
-            <p>Персональний темп для першого знайомства з мистецтвом або розвитку техніки.</p>
-          </article>
-          <article class="feature-card">
-            <h3>Школа іконопису</h3>
-            <p>Окремий напрям для традиційного, уважного й змістовного навчання.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section band" id="events">
-        <div class="section-heading">
-          <p class="eyebrow">Події</p>
-          <h2>Майстер-класи, пленери та благодійні заняття</h2>
-        </div>
-        <div class="event-list">
-          <article>
-            <strong>Майстер-класи</strong>
-            <span>Короткі формати для знайомства з технікою або темою.</span>
-          </article>
-          <article>
-            <strong>Пленери</strong>
-            <span>Виїзні заняття на природі з фокусом на спостереження і композицію.</span>
-          </article>
-          <article>
-            <strong>Соціальна місія</strong>
-            <span>Щомісячні благодійні заняття для дітей і дорослих.</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="section split" id="about">
-        <div>
-          <p class="eyebrow">Підхід</p>
-          <h2>Професійно, тепло і конкретно</h2>
-        </div>
-        <p>
-          Atelier Sveta допомагає учням бачити форму, колір і композицію через
-          практику. Тут важлива не демонстрація таланту, а уважний процес,
-          персональна підтримка і відчуття творчої спільноти.
-        </p>
-      </section>
-
-      <section class="section contact" id="contact">
-        <div>
-          <p class="eyebrow">Контакти</p>
-          <h2>Залишити заявку</h2>
-          <p>Форма буде підключена на етапі розробки. Для MVP заявка проходить перевірку адміністратором.</p>
-        </div>
-        <form class="signup-form">
-          <label>
-            Ім'я
-            <input type="text" name="name" autocomplete="name" />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" autocomplete="email" />
-          </label>
-          <label>
-            Інтерес
-            <select name="interest">
-              <option>Груповий курс</option>
-              <option>Індивідуальний урок</option>
-              <option>Майстер-клас або пленер</option>
-              <option>Іконопис</option>
-            </select>
-          </label>
-          <button type="submit">Надіслати</button>
-        </form>
+      <section class="coming-soon-copy">
+        <h1 id="coming-soon-title">Le site est en cours de développement.</h1>
+        <p>En attendant, vous pouvez visiter notre Instagram.</p>
+        <a
+          class="instagram-link"
+          href="https://www.instagram.com/atelier_sveta/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Visiter notre Instagram</span>
+          <img src="./assets/instagram-logo.png" alt="" width="36" height="36" />
+        </a>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <span>Atelier Sveta</span>
-      <span>Website design by Anastasia Petrenko</span>
-    </footer>
-    <script src="./assets/main.js"></script>
   </body>
 </html>
 
