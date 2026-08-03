@@ -2,14 +2,18 @@
 
 ## 1. GitHub Repository
 
-Create a new GitHub repository, then connect this local folder to it:
+GitHub repository:
 
 ```bash
-git remote add origin git@github.com:USERNAME/REPOSITORY.git
-git push -u origin main
+https://github.com/ptrnko/atelier-sveta
 ```
 
-Replace `USERNAME/REPOSITORY` with the real GitHub repository path.
+Local remote:
+
+```bash
+git remote add origin https://github.com/ptrnko/atelier-sveta.git
+git push -u origin main
+```
 
 ## 2. GitHub Pages
 
@@ -24,14 +28,36 @@ After pushing to GitHub:
 
 ## 3. Custom Domain
 
-When the real domain is known:
+Custom domain:
 
-1. Copy `site/CNAME.example` to `site/CNAME`.
-2. Replace the value with the actual domain, for example `atelier-sveta.fr`.
-3. In the domain DNS settings, add the records required by GitHub Pages.
+```text
+ateliersveta.com
+```
 
-For an apex domain like `atelier-sveta.fr`, use GitHub Pages `A` records.
-For a subdomain like `www.atelier-sveta.fr`, use a `CNAME` record pointing to `USERNAME.github.io`.
+In the domain DNS settings, add the records required by GitHub Pages.
+
+For the apex domain `ateliersveta.com`, add these `A` records:
+
+```text
+@  A  185.199.108.153
+@  A  185.199.109.153
+@  A  185.199.110.153
+@  A  185.199.111.153
+```
+
+Optional IPv6 records:
+
+```text
+@  AAAA  2606:50c0:8000::153
+@  AAAA  2606:50c0:8001::153
+@  AAAA  2606:50c0:8002::153
+@  AAAA  2606:50c0:8003::153
+```
+
+Recommended `www` redirect:
+
+```text
+www  CNAME  ptrnko.github.io
+```
 
 After DNS is active, open GitHub repository `Settings` → `Pages`, enter the custom domain, and enable HTTPS.
-
