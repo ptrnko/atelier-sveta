@@ -1,0 +1,1 @@
+UX copy, source content and Ukrainian → French localization workflow.
