@@ -52,8 +52,12 @@
   .nlink:hover { color:#c0392b; }
   .flink { color:#edebe3; transition:color .2s ease; }
   .flink:hover { color:#FAAB06; }
+  .flink[data-arrow="true"]::after, .clink[data-arrow="true"]::after { content:""; display:inline-block; width:1.1em; height:1.1em; margin-left:.34em; vertical-align:-.14em; background:currentColor; -webkit-mask:url("./assets/arrow-up-right.svg") center/contain no-repeat; mask:url("./assets/arrow-up-right.svg") center/contain no-repeat; }
   body .menu-toggle,
   .mobile-nav-lang { display:none; }
+  .site-footer { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:10px clamp(20px,4vw,64px); background:#141310; color:#edebe3; border-top:1px solid #6b6459; }
+  .site-footer-copy, .site-footer-credit { flex:none; color:#6b6459; white-space:nowrap; }
+  .site-footer-line { display:none; }
   @media (max-width:920px) {
     .site-header {
       position:relative;
@@ -271,6 +275,11 @@
       padding:15px 24px !important;
     }
   }
+  @media (max-width:920px) {
+    .site-footer { flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px 16px; }
+    .site-footer-copy, .site-footer-credit { white-space:normal; }
+    .site-footer-line { width:100%; flex:none; }
+  }
 </style>
 </helmet>
 <div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100svh; display:flex; flex-direction:column;">
@@ -324,9 +333,9 @@
         </div>
       </sc-for>
       <div style="border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px); display:flex; gap:22px; flex-wrap:wrap;" class="contact-socials micro">
-        <a href="https://www.instagram.com/atelier.sveta.causse/" class="clink">Instagram ↗</a>
-        <a href="#" class="clink">Facebook ↗</a>
-        <a href="https://wa.me/33768614190" class="clink">WhatsApp ↗</a>
+        <a href="https://www.instagram.com/atelier.sveta.causse/" class="clink" data-arrow="true">Instagram</a>
+        <a href="#" class="clink" data-arrow="true">Facebook</a>
+        <a href="https://wa.me/33768614190" class="clink" data-arrow="true">WhatsApp</a>
       </div>
     </div>
 
@@ -345,16 +354,17 @@
       <div class="micro" style="line-height:2; color:#FAAB06;">
         <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
         <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
-        <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" style="display:block;">Instagram ↗</a>
+        <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
       </div>
       <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px clamp(20px,4vw,64px);" class="micro">
-    <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
-    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="nlink" style="width:100%; max-width:720px; padding-top:10px; border-top:1px solid #d9d5c9; color:#6b6459;">Website by Petrenko Design</a>
+  <footer class="site-footer micro">
+    <span class="site-footer-copy">© 2026 Atelier Sveta</span>
+    <span class="site-footer-line" aria-hidden="true"></span>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="site-footer-credit nlink">Website by Petrenko Design</a>
   </footer>
 </div>
 </x-dc>

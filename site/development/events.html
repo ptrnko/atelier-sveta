@@ -26,6 +26,7 @@
   .nlink:hover, .nlink.is-active { color:#c0392b; }
   .flink { color:#edebe3; transition:color .2s ease; }
   .flink:hover { color:#FAAB06; }
+  .flink[data-arrow="true"]::after, .clink[data-arrow="true"]::after { content:""; display:inline-block; width:1.1em; height:1.1em; margin-left:.34em; vertical-align:-.14em; background:currentColor; -webkit-mask:url("./assets/arrow-up-right.svg") center/contain no-repeat; mask:url("./assets/arrow-up-right.svg") center/contain no-repeat; }
   .langtoggle { position:relative; display:inline-flex; align-items:center; border:1px solid #cfcabd; border-radius:40px; padding:3px; }
   .langpill { position:absolute; top:3px; bottom:3px; left:3px; width:calc(50% - 3px); background:#141310; border-radius:40px; transition:transform .35s cubic-bezier(.4,0,.2,1); }
   .langtoggle.is-uk .langpill { transform:translateX(100%); }
@@ -51,6 +52,9 @@
   .btn:hover .btn-icon { transform:translate(4px,-4px); }
   body .menu-toggle,
   .mobile-nav-lang { display:none; }
+  .site-footer { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:10px clamp(20px,4vw,64px); background:#141310; color:#edebe3; border-top:1px solid #6b6459; }
+  .site-footer-copy, .site-footer-credit { flex:none; color:#6b6459; white-space:nowrap; }
+  .site-footer-line { display:none; }
 
   .events-page { background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
   .events-section { padding:clamp(32px,4vw,54px) clamp(20px,4vw,54px) clamp(70px,7vw,112px); }
@@ -96,6 +100,10 @@
   .event-frame {
     display:block;
     width:100%;
+    padding:0;
+    border:0;
+    appearance:none;
+    -webkit-appearance:none;
     background:#ded9cc;
     overflow:hidden;
     cursor:zoom-in;
@@ -268,8 +276,16 @@
     .events-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     .event-card:nth-child(3n) { border-right:1px solid #c8c3b6; }
     .event-card:nth-child(2n) { border-right:none; }
+    .events-top-flower:nth-child(2) { left:50%; }
+    .events-top-flower:nth-child(3) { display:none; }
+    .events-top-flower:nth-child(4) { left:100%; }
   }
   @media (prefers-reduced-motion:reduce){ .btn,.btn-icon,.reveal { transition:none; } .btn:hover,.event-frame:hover { transform:none; } .reveal { opacity:1; transform:none; } }
+  @media (max-width:920px) {
+    .site-footer { flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px 16px; }
+    .site-footer-copy, .site-footer-credit { white-space:normal; }
+    .site-footer-line { width:100%; flex:none; }
+  }
 </style>
 </helmet>
 <div class="events-page">
@@ -348,16 +364,17 @@
         <div class="micro" style="line-height:2; color:#FAAB06;">
           <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
           <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
-          <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" style="display:block;">Instagram ↗</a>
+          <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
         </div>
         <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
       </div>
     </section>
   </main>
 
-  <footer style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px clamp(20px,4vw,64px);" class="micro">
-    <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
-    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="nlink" style="width:100%; max-width:720px; padding-top:10px; border-top:1px solid #d9d5c9; color:#6b6459;">Website by Petrenko Design</a>
+  <footer class="site-footer micro">
+    <span class="site-footer-copy">© 2026 Atelier Sveta</span>
+    <span class="site-footer-line" aria-hidden="true"></span>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="site-footer-credit nlink">Website by Petrenko Design</a>
   </footer>
 
   <div class="lightbox" id="event-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
