@@ -316,7 +316,7 @@
     .hero-wordmark {
       min-height:calc(82svh - 116px);
       justify-content:flex-start;
-      padding-top:clamp(410px,86vw,500px);
+      padding-top:clamp(430px,88vw,510px);
     }
     .hero-title-line { font-size:clamp(48px,20.5vw,82px); }
     .hero-eye { width:clamp(42px,15vw,62px); }
@@ -368,17 +368,29 @@
     .studio-grid {
       display:flex !important;
       flex-direction:column !important;
-      gap:34px !important;
+      gap:0 !important;
+      row-gap:0 !important;
     }
     .studio-grid > div:first-child { display:contents !important; }
     .studio-kicker {
       order:-2;
-      margin-bottom:-12px !important;
+      margin-bottom:24px !important;
     }
-    .teacher-photo { order:-1; }
+    .teacher-photo {
+      order:-1;
+      margin-bottom:68px !important;
+    }
     .studio-grid h2 {
       font-size:clamp(34px,10vw,48px) !important;
       line-height:1.03 !important;
+      margin-bottom:34px !important;
+    }
+    .studio-grid p {
+      margin-top:0 !important;
+      line-height:1.46 !important;
+    }
+    .studio-grid p + p {
+      margin-top:34px !important;
     }
     .studio-actions {
       flex-direction:column;
@@ -400,34 +412,93 @@
       height:100% !important;
       margin-left:0 !important;
     }
-    .services-section { padding-top:72px !important; }
-    .service-row { padding:24px 16px !important; }
+    .services-section {
+      padding:72px 16px 0 !important;
+      background:#141310;
+      border-bottom:none !important;
+    }
+    .services-section > div:first-child {
+      padding:0 !important;
+      color:#FAAB06;
+      font-family:'Caveat',cursive !important;
+      font-size:clamp(26px,8vw,40px) !important;
+      font-weight:600 !important;
+      letter-spacing:0 !important;
+      text-transform:none !important;
+    }
+    .service-row {
+      padding:56px 0 !important;
+      border-top:1px solid rgba(237,235,227,.18) !important;
+      background:#141310;
+      color:#edebe3;
+    }
+    .service-row:last-of-type {
+      border-bottom:1px solid rgba(237,235,227,.18) !important;
+    }
+    .service-row:hover {
+      background:#141310;
+      color:#edebe3;
+    }
+    .service-row:hover .snum,
+    .service-row:hover .sdesc {
+      color:rgba(237,235,227,.72) !important;
+      opacity:1;
+    }
+    .service-row:hover .scourse-img {
+      opacity:1;
+      transform:none;
+    }
+    .service-row:hover .sbtn-icon {
+      transform:translateY(-1px);
+    }
     .service-grid {
-      grid-template-columns:auto 1fr auto !important;
-      gap:12px 16px !important;
+      grid-template-columns:1fr auto !important;
+      gap:24px 16px !important;
+      align-items:start !important;
+    }
+    .snum {
+      display:none !important;
+    }
+    .service-grid > div:not(.scourse-img) {
+      grid-column:1;
+      grid-row:1;
     }
     .service-title {
       font-size:clamp(34px,11vw,52px) !important;
       margin-bottom:10px !important;
+      color:#edebe3;
+    }
+    .sdesc {
+      grid-column:1 / -1;
+      grid-row:3;
+      color:rgba(237,235,227,.72) !important;
+      font-size:clamp(11px,3vw,13px) !important;
+      gap:8px 16px !important;
     }
     .scourse-img {
-      grid-column:2 / 4 !important;
+      grid-column:1 / -1 !important;
       grid-row:2 !important;
       width:100% !important;
-      max-width:280px;
-      justify-self:start;
+      max-width:none;
+      justify-self:stretch;
       opacity:1;
       transform:none;
+      aspect-ratio:3.2/1 !important;
+      border-radius:999px !important;
+      display:block !important;
     }
     .sbtn {
-      grid-column:3 !important;
+      grid-column:2 !important;
+      grid-row:1 !important;
       opacity:1;
       transform:none;
-      align-self:start;
+      align-self:center;
+      justify-self:end !important;
+      color:#FAAB06;
     }
     .sbtn-icon {
-      width:2.8em;
-      height:2.8em;
+      width:1.15em;
+      height:1.15em;
     }
     .works-section {
       padding-left:0 !important;
@@ -453,8 +524,21 @@
       min-height:380px !important;
     }
     .contact-title {
-      font-size:clamp(48px,17vw,76px) !important;
-      line-height:0.88 !important;
+      font-size:clamp(42px,13vw,62px) !important;
+      line-height:.9 !important;
+      letter-spacing:0 !important;
+      overflow-wrap:anywhere;
+      word-break:normal;
+      max-width:100%;
+    }
+    .contact-section > .micro:first-child {
+      font-family:'Caveat',cursive !important;
+      color:#FAAB06 !important;
+      font-size:clamp(26px,8vw,40px) !important;
+      font-weight:600 !important;
+      letter-spacing:0 !important;
+      line-height:1 !important;
+      text-transform:none !important;
     }
     .contact-layout {
       flex-direction:column;
@@ -467,8 +551,16 @@
     }
     .site-footer {
       flex-direction:column;
-      gap:12px !important;
+      align-items:center;
+      text-align:center;
+      gap:14px !important;
       padding:24px 16px !important;
+    }
+    .site-footer-location { display:none; }
+    .site-footer-credit {
+      width:100%;
+      padding-top:14px;
+      border-top:1px solid #d9d5c9;
     }
   }
   .drag-scroll {
@@ -508,6 +600,106 @@
   }
   .srow:hover .sbtn-icon {
     transform:translate(5px,-5px);
+  }
+  .service-row:focus-visible,
+  .service-row:active {
+    background:#edebe3 !important;
+    color:#141310 !important;
+  }
+  .service-row:focus-visible .service-title,
+  .service-row:active .service-title {
+    color:#141310 !important;
+  }
+  .service-row:focus-visible .snum,
+  .service-row:focus-visible .sdesc,
+  .service-row:active .snum,
+  .service-row:active .sdesc {
+    color:#6b6459 !important;
+    opacity:1 !important;
+  }
+  .service-row:focus-visible .sbtn,
+  .service-row:active .sbtn {
+    color:#141310 !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+  .service-row:focus-visible .scourse-img,
+  .service-row:active .scourse-img {
+    opacity:1 !important;
+    transform:none !important;
+  }
+  @media (max-width:920px) {
+    .services-section > div:first-child {
+      font-family:'Caveat',cursive !important;
+      color:#FAAB06 !important;
+      font-size:clamp(26px,8vw,40px) !important;
+      font-weight:600 !important;
+      letter-spacing:0 !important;
+      line-height:1 !important;
+      text-transform:none !important;
+    }
+    .services-section .service-row,
+    .services-section .service-row:hover {
+      background:#141310 !important;
+      color:#edebe3 !important;
+    }
+    .services-section .scourse-img,
+    .services-section .service-row:hover .scourse-img {
+      opacity:1 !important;
+      transform:none !important;
+      transition:none !important;
+    }
+    .services-section .sbtn,
+    .services-section .service-row:hover .sbtn {
+      opacity:1 !important;
+      transform:none !important;
+      transition:none !important;
+    }
+    .services-section .sbtn-icon,
+    .services-section .service-row:hover .sbtn-icon {
+      transform:translateY(-1px) !important;
+    }
+    .services-section .sdesc,
+    .services-section .service-row:hover .sdesc {
+      color:rgba(237,235,227,.72) !important;
+      opacity:1 !important;
+    }
+    .services-section .service-row:focus-visible,
+    .services-section .service-row:active {
+      background:#edebe3 !important;
+      color:#141310 !important;
+    }
+    .services-section .service-row:focus-visible .service-title,
+    .services-section .service-row:active .service-title {
+      color:#141310 !important;
+    }
+    .services-section .service-row:focus-visible .sdesc,
+    .services-section .service-row:active .sdesc {
+      color:#6b6459 !important;
+    }
+    .services-section .service-row:focus-visible .sbtn,
+    .services-section .service-row:active .sbtn {
+      color:#141310 !important;
+    }
+  }
+  @media (max-width:1100px) {
+    body .contact-section > .micro:first-child {
+      font-family:'Caveat',cursive !important;
+      color:#FAAB06 !important;
+      font-size:clamp(28px,8vw,42px) !important;
+      font-weight:600 !important;
+      letter-spacing:0 !important;
+      line-height:1 !important;
+      text-transform:none !important;
+    }
+    body .contact-section .contact-title.wm {
+      max-width:100% !important;
+      font-size:clamp(34px,11vw,54px) !important;
+      line-height:.94 !important;
+      letter-spacing:0 !important;
+      overflow-wrap:normal !important;
+      word-break:normal !important;
+    }
   }
   @keyframes teacher-reveal { from { opacity:0; transform:translateY(40px) scale(1.06); } to { opacity:1; transform:translateY(0) scale(1); } }
   .teacher-photo { animation:teacher-reveal 1.2s cubic-bezier(.22,.61,.36,1) both; }
@@ -573,7 +765,7 @@
     position:relative;
     width:min(720px,100%);
     max-height:min(760px,calc(100vh - 36px));
-    overflow:visible;
+    overflow:hidden;
     border:2px solid #141310;
     border-radius:34px;
     background:#edebe3;
@@ -676,7 +868,7 @@
     display:grid;
     gap:18px;
     max-height:min(760px,calc(100vh - 36px));
-    overflow:visible;
+    overflow:auto;
     padding:clamp(54px,6vw,78px) clamp(24px,6vw,72px) clamp(42px,5vw,64px);
     font-family:'Archivo',sans-serif;
   }
@@ -733,7 +925,7 @@
   }
   .trial-actions {
     position:sticky;
-    bottom:clamp(-64px,-5vw,-42px);
+    bottom:0;
     z-index:2;
     display:flex;
     flex-direction:row-reverse;
@@ -741,7 +933,7 @@
     justify-content:flex-start;
     flex-wrap:wrap;
     gap:12px;
-    margin:6px clamp(-72px,-6vw,-24px) clamp(-64px,-5vw,-42px);
+    margin:6px clamp(-72px,-6vw,-24px) clamp(-42px,-5vw,-24px);
     padding:18px clamp(24px,6vw,72px) clamp(24px,3vw,34px);
     background:#edebe3;
     border-top:1px solid #d9d5c9;
@@ -793,9 +985,9 @@
     .success-hand { width:min(210px,58vw); }
     .success-actions { width:100%; }
     .success-return { width:100%; }
-    .trial-form { padding:64px 24px 30px; }
+    .trial-form { padding:64px 24px 0; }
     .trial-actions, .trial-submit, .trial-cancel { width:100%; }
-    .trial-actions { bottom:-30px; margin:6px -24px -30px; padding:16px 24px 24px; border-radius:0 0 26px 26px; }
+    .trial-actions { bottom:0; margin:6px -24px 0; padding:16px 24px 24px; border-radius:0 0 26px 26px; }
     .trial-submit, .trial-cancel { justify-content:center; }
   }
 </style>
@@ -894,7 +1086,7 @@
   <section id="services" class="services-section" style="padding:clamp(90px,11vw,150px) 0 0; border-bottom:1px solid #d9d5c9;">
     <div style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(26px,2.4vw,40px); line-height:1; padding:0 clamp(20px,4vw,64px); margin-bottom:clamp(24px,3vw,44px);">(Курси)</div>
     <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
-      <a href="#contact" class="service-row srow reveal" style="display:block; border-top:1px solid #d9d5c9; padding:clamp(22px,2.6vw,38px) clamp(20px,4vw,64px);">
+      <a href="./home.html#services" class="service-row srow reveal" style="display:block; border-top:1px solid #d9d5c9; padding:clamp(22px,2.6vw,38px) clamp(20px,4vw,64px);">
         <div class="service-grid" style="display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center;">
           <span class="snum" style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); color:#141310;">{{ s.no }}</span>
           <div>
@@ -951,8 +1143,8 @@
   <!-- ===== FOOTER ===== -->
   <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:clamp(24px,2.6vw,36px) clamp(20px,4vw,64px);" class="site-footer micro">
     <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
-    <span style="color:#6b6459;">Ганж · Оксітанія · Франція</span>
-    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="nlink" style="color:#6b6459;">Website by Petrenko Design</a>
+    <span class="site-footer-location" style="color:#6b6459;">Ганж · Оксітанія · Франція</span>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="site-footer-credit nlink" style="color:#6b6459;">Website by Petrenko Design</a>
   </footer>
 </div>
 </x-dc>
