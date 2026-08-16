@@ -36,7 +36,7 @@
     min-height:100svh;
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
+    justify-content:center;
   }
   .hero-prop { position:absolute; z-index:1; }
   .hero-pen { left:6%; top:8%; width:clamp(78px,7.4vw,140px); z-index:6; }
@@ -67,7 +67,7 @@
     line-height:0.86;
     color:#141310;
   }
-  .hero-title-top { padding-top:40px; }
+  .hero-title-top { padding-top:0; }
   .hero-title-bottom {
     margin-top:-0.04em;
     display:flex;
@@ -312,6 +312,7 @@
     .hero-collage {
       min-height:calc(82svh - 83px);
       padding:18px 16px 26px;
+      justify-content:flex-start;
     }
     .hero-wordmark {
       min-height:calc(82svh - 116px);
@@ -1143,7 +1144,7 @@
 
   <!-- ===== CLOSING STATEMENT ===== -->
   <section id="contact" class="contact-section" style="background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);">
-    <div class="micro" style="color:#FAAB06; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
+    <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(44px,4.2vw,72px); line-height:1; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
     <p class="contact-title wm" style="margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3;">Мистецтво<br>починається<br>тут.</p>
     <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
       <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
