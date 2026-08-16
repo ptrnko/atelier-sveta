@@ -29,6 +29,441 @@
   @media (prefers-reduced-motion:reduce){ .load-rise,.load-prop { animation:none; opacity:1; } .reveal { transition:none; opacity:1; transform:none; } }
   .micro { font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; }
   .wm { font-family:'Archivo',sans-serif; font-weight:900; letter-spacing:-0.03em; line-height:0.82; text-transform:uppercase; }
+  .hero-collage {
+    position:relative;
+    overflow:hidden;
+    padding:clamp(16px,2vw,30px) clamp(20px,4vw,64px) clamp(20px,2.4vw,36px);
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+  }
+  .hero-prop { position:absolute; z-index:1; }
+  .hero-pen { left:6%; top:8%; width:clamp(78px,7.4vw,140px); z-index:6; }
+  .hero-address {
+    left:5%;
+    top:20%;
+    font-family:'Caveat',cursive;
+    font-size:clamp(20px,1.7vw,28px);
+    line-height:1.15;
+    color:#c0392b;
+    transform:rotate(-11deg);
+    z-index:6;
+  }
+  .hero-castle { right:2%; top:8%; width:clamp(142px,16vw,300px); transform:rotate(3deg); }
+  .hero-painting { left:2%; bottom:clamp(17%,10vw,30%); width:clamp(190px,23vw,420px); transform:rotate(-4deg); }
+  .hero-badge { right:2%; bottom:clamp(9%,7vw,24%); width:clamp(221px,24.7vw,416px); }
+  .hero-wordmark {
+    position:relative;
+    z-index:5;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .hero-title-line {
+    font-size:clamp(58px,16.8vw,272px);
+    line-height:0.86;
+    color:#141310;
+  }
+  .hero-title-top { padding-top:40px; }
+  .hero-title-bottom {
+    margin-top:-0.04em;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.06em;
+    padding-bottom:20px;
+  }
+  .hero-eye {
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    width:clamp(56px,12.4vw,210px);
+    margin:0 0.02em;
+    transform:translateY(6%);
+  }
+  .hero-copy {
+    margin:clamp(18px,2.2vw,32px) 0 0;
+    max-width:40ch;
+    font-family:'Archivo',sans-serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(16px,1.5vw,24px);
+    line-height:1.35;
+    color:#141310;
+  }
+  .hero-scroll {
+    margin-top:clamp(14px,1.6vw,22px);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Caveat',cursive;
+    font-size:clamp(24px,2.4vw,38px);
+    color:#c0392b;
+    text-decoration:none;
+    padding-top:20px;
+  }
+  @media (max-width:1600px) {
+    .hero-collage { min-height:clamp(760px,66vw,940px); }
+    .hero-painting { bottom:clamp(28%,18vw,36%); left:4%; width:clamp(230px,24vw,380px); }
+    .hero-badge { bottom:clamp(26%,17vw,34%); right:5%; width:clamp(260px,27vw,430px); }
+  }
+  @media (max-width:1200px) {
+    .hero-collage { min-height:clamp(680px,78vw,900px); }
+    .hero-title-line { font-size:clamp(56px,14.7vw,178px); }
+    .hero-eye { width:clamp(54px,10.9vw,132px); }
+    .hero-pen { top:4%; left:8%; width:clamp(70px,7vw,96px); }
+    .hero-address { top:15%; left:7%; font-size:clamp(19px,2.2vw,26px); }
+    .hero-castle { top:4%; right:4%; width:clamp(136px,16vw,210px); }
+    .hero-painting { bottom:clamp(30%,21vw,38%); left:6%; width:clamp(190px,25vw,300px); }
+    .hero-badge { bottom:clamp(28%,19vw,36%); right:6%; width:clamp(210px,28vw,330px); }
+  }
+  @media (max-width:820px) {
+    .hero-collage {
+      min-height:clamp(620px,112vw,760px);
+      padding-top:clamp(18px,5vw,34px);
+    }
+    .hero-title-line { font-size:clamp(50px,17vw,126px); }
+    .hero-eye { width:clamp(48px,12.6vw,94px); }
+    .hero-title-top { padding-top:clamp(130px,23vw,180px); }
+    .hero-copy { max-width:31ch; font-size:clamp(15px,3.4vw,19px); }
+    .hero-scroll { padding-top:10px; }
+    .hero-pen { top:3%; left:10%; width:clamp(54px,12vw,82px); }
+    .hero-address { top:13%; left:7%; font-size:clamp(17px,4vw,24px); }
+    .hero-castle { top:4%; right:4%; width:clamp(112px,27vw,178px); }
+    .hero-painting { bottom:clamp(20%,22vw,28%); left:5%; width:clamp(126px,30vw,204px); }
+    .hero-badge { bottom:clamp(18%,20vw,26%); right:4%; width:clamp(138px,34vw,220px); }
+  }
+  @media (max-width:560px) {
+    .hero-collage { min-height:clamp(560px,138vw,700px); }
+    .hero-title-line { font-size:clamp(42px,17.4vw,86px); }
+    .hero-eye { width:clamp(40px,13vw,68px); }
+    .hero-title-top { padding-top:clamp(118px,30vw,160px); }
+    .hero-title-bottom { padding-bottom:12px; }
+    .hero-pen { left:8%; top:3%; }
+    .hero-address { left:6%; top:14%; }
+    .hero-castle { right:-4%; top:4%; }
+    .hero-painting { left:-2%; bottom:20%; }
+    .hero-badge { right:-7%; bottom:18%; }
+  }
+  @media (max-width:920px) {
+    .site-header {
+      position:relative;
+      flex-wrap:wrap;
+      align-items:center !important;
+      gap:10px !important;
+      padding:14px !important;
+      overflow:visible;
+      z-index:50;
+    }
+    .site-header .menu-toggle {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:52px;
+      height:44px;
+      flex:0 0 52px;
+      border:1px solid #cfcabd;
+      border-radius:999px;
+      background:transparent;
+      color:#141310;
+      cursor:pointer;
+      transition:background-color .25s ease, color .25s ease, transform .2s ease;
+    }
+    .menu-toggle:active { transform:scale(.96); }
+    .menu-toggle-line,
+    .menu-toggle-line::before,
+    .menu-toggle-line::after {
+      content:"";
+      display:block;
+      width:19px;
+      height:2px;
+      border-radius:2px;
+      background:currentColor;
+      transition:transform .25s ease, opacity .2s ease;
+    }
+    .menu-toggle-line { position:relative; }
+    .menu-toggle-line::before,
+    .menu-toggle-line::after {
+      position:absolute;
+      left:0;
+    }
+    .menu-toggle-line::before { top:-6px; }
+    .menu-toggle-line::after { top:6px; }
+    .site-header.is-menu-open .menu-toggle {
+      background:#141310;
+      color:#edebe3;
+    }
+    .site-header.is-menu-open .menu-toggle-line { background:transparent; }
+    .site-header.is-menu-open .menu-toggle-line::before { transform:translateY(6px) rotate(45deg); }
+    .site-header.is-menu-open .menu-toggle-line::after { transform:translateY(-6px) rotate(-45deg); }
+    .desktop-lang { display:none !important; }
+    .main-nav {
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:1200;
+      display:flex !important;
+      flex-direction:column;
+      justify-content:flex-end;
+      width:100%;
+      min-height:100svh;
+      gap:0 !important;
+      overflow:hidden;
+      padding:clamp(86px,18vw,118px) 24px clamp(34px,9vw,52px);
+      border:none;
+      background:rgba(8,8,7,.96);
+      box-shadow:none;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      pointer-events:none;
+      transition:opacity .24s ease, visibility .24s ease, transform .24s ease;
+      scrollbar-width:none;
+      white-space:normal;
+    }
+    .site-header.is-menu-open .main-nav {
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+      pointer-events:auto;
+    }
+    .main-nav .nlink {
+      display:flex;
+      align-items:center;
+      min-height:auto;
+      border-bottom:none;
+      color:#edebe3;
+      font:800 clamp(52px,15vw,86px)/0.98 'Archivo',sans-serif;
+      letter-spacing:0;
+      text-transform:none;
+      opacity:.36;
+      transition:opacity .22s ease, transform .22s ease;
+    }
+    .main-nav .nlink:hover,
+    .main-nav .nlink.is-active {
+      opacity:1;
+      color:#edebe3;
+      transform:translateX(4px);
+    }
+    .main-nav .mobile-nav-lang {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      margin-top:clamp(34px,9vw,52px);
+      padding-top:22px;
+      border-top:1px solid rgba(237,235,227,.16);
+    }
+    .mobile-nav-lang-label {
+      color:rgba(237,235,227,.42);
+      font-size:11px;
+      letter-spacing:0.16em;
+    }
+    .main-nav .langtoggle {
+      border-color:rgba(237,235,227,.28);
+    }
+    .main-nav .langpill {
+      background:#edebe3;
+    }
+    .main-nav .langtoggle.is-fr .langbtn:first-of-type,
+    .main-nav .langtoggle.is-uk .langbtn:last-of-type {
+      color:#141310;
+    }
+    .main-nav .langbtn {
+      color:rgba(237,235,227,.52);
+    }
+    .site-header.is-menu-open .menu-toggle {
+      position:fixed;
+      top:28px;
+      right:28px;
+      z-index:1300;
+      width:54px;
+      height:54px;
+      border-color:transparent;
+      background:transparent;
+      color:#edebe3;
+    }
+    .header-actions {
+      width:100%;
+      justify-content:space-between !important;
+      gap:8px !important;
+    }
+    .langbtn {
+      min-width:38px;
+      padding:8px 10px;
+      font-size:10px;
+    }
+    .header-cta {
+      flex:1;
+      justify-content:center;
+      min-width:0;
+      padding:11px 14px !important;
+      font-size:10px;
+      letter-spacing:0.14em;
+      white-space:nowrap;
+    }
+    .header-cta .btn-icon { width:1.35em; height:1.35em; }
+    .hero-collage {
+      min-height:calc(100svh - 83px);
+      padding:18px 16px 26px;
+    }
+    .hero-wordmark {
+      min-height:calc(100svh - 116px);
+      justify-content:flex-start;
+      padding-top:clamp(410px,86vw,500px);
+    }
+    .hero-title-line { font-size:clamp(48px,20.5vw,82px); }
+    .hero-eye { width:clamp(42px,15vw,62px); }
+    .hero-title-top { padding-top:0; }
+    .hero-title-bottom { padding-bottom:8px; }
+    .hero-copy {
+      max-width:26ch;
+      font-size:clamp(15px,4.2vw,17px);
+      line-height:1.35;
+      margin-top:clamp(20px,6vw,30px);
+      transform:translateY(-40px);
+    }
+    .hero-scroll {
+      font-size:clamp(24px,7.6vw,32px);
+      padding-top:8px;
+      transform:translateY(-40px);
+    }
+    .swing-wrap:hover .swing { animation:none; }
+    .hero-pen,
+    .hero-address,
+    .hero-castle { display:none; }
+    .hero-castle { top:5%; right:-8%; width:clamp(116px,39vw,164px); }
+    .hero-castle span { right:10px !important; bottom:-12px !important; font-size:clamp(18px,5vw,24px) !important; }
+    .hero-painting {
+      left:50%;
+      top:clamp(42px,10vw,72px);
+      bottom:auto;
+      width:min(82vw,360px);
+      transform:translateX(-50%);
+      z-index:6;
+    }
+    .hero-painting .swing { display:none !important; }
+    .hero-painting .hero-mobile-combo {
+      display:block;
+      width:100%;
+      height:auto;
+      transform-origin:50% 0;
+      animation:mobile-frame-swing 3.8s ease-in-out infinite;
+      will-change:transform;
+    }
+    .hero-badge { display:none; }
+    .marquee-section { padding:18px 0 !important; }
+    .marquee-section .wm { font-size:clamp(34px,10vw,48px) !important; }
+    .studio-section,
+    .works-section,
+    .contact-section {
+      padding:72px 16px !important;
+    }
+    .studio-grid {
+      display:flex !important;
+      flex-direction:column !important;
+      gap:34px !important;
+    }
+    .studio-grid h2 {
+      font-size:clamp(34px,10vw,48px) !important;
+      line-height:1.03 !important;
+    }
+    .studio-actions {
+      flex-direction:column;
+      align-items:stretch;
+      gap:10px !important;
+    }
+    .studio-actions .btn {
+      width:100%;
+      justify-content:center;
+      padding:14px 22px !important;
+    }
+    .teacher-photo {
+      width:calc(100vw - 32px);
+      aspect-ratio:4/5;
+      align-self:center !important;
+    }
+    .teacher-photo img {
+      width:100% !important;
+      height:100% !important;
+      margin-left:0 !important;
+    }
+    .services-section { padding-top:72px !important; }
+    .service-row { padding:24px 16px !important; }
+    .service-grid {
+      grid-template-columns:auto 1fr auto !important;
+      gap:12px 16px !important;
+    }
+    .service-title {
+      font-size:clamp(34px,11vw,52px) !important;
+      margin-bottom:10px !important;
+    }
+    .scourse-img {
+      grid-column:2 / 4 !important;
+      grid-row:2 !important;
+      width:100% !important;
+      max-width:280px;
+      justify-self:start;
+      opacity:1;
+      transform:none;
+    }
+    .sbtn {
+      grid-column:3 !important;
+      opacity:1;
+      transform:none;
+      align-self:start;
+    }
+    .sbtn-icon {
+      width:2.8em;
+      height:2.8em;
+    }
+    .works-section {
+      padding-left:0 !important;
+      padding-right:0 !important;
+    }
+    .works-head {
+      align-items:flex-start !important;
+      padding:0 16px 22px !important;
+    }
+    .works-drag-label {
+      font-size:clamp(24px,7vw,30px) !important;
+      margin-left:auto;
+    }
+    .works-scroll {
+      padding:0 16px !important;
+      gap:16px !important;
+    }
+    .work-card {
+      width:min(78vw,310px) !important;
+    }
+    .gallery-link-card {
+      width:min(78vw,310px) !important;
+      min-height:380px !important;
+    }
+    .contact-title {
+      font-size:clamp(48px,17vw,76px) !important;
+      line-height:0.88 !important;
+    }
+    .contact-layout {
+      flex-direction:column;
+      gap:28px !important;
+    }
+    .contact-layout .btn {
+      align-self:stretch !important;
+      justify-content:center;
+      padding:15px 24px !important;
+    }
+    .site-footer {
+      flex-direction:column;
+      gap:12px !important;
+      padding:24px 16px !important;
+    }
+  }
   .drag-scroll {
     overflow-y:hidden !important;
     overscroll-behavior-x:contain;
@@ -73,7 +508,14 @@
   @keyframes nail-swing { 0%{transform:rotate(0deg);} 15%{transform:rotate(5deg);} 32%{transform:rotate(-4deg);} 50%{transform:rotate(3deg);} 68%{transform:rotate(-2deg);} 85%{transform:rotate(1deg);} 100%{transform:rotate(0deg);} }
   .swing { transform-origin:50% 0; will-change:transform; }
   .swing-wrap:hover .swing { animation:nail-swing 1.6s cubic-bezier(.36,.07,.19,.97); }
-  @media (prefers-reduced-motion:reduce){ .swing:hover { animation:none; } }
+  body .hero-mobile-combo { display:none; }
+  @keyframes mobile-frame-swing {
+    0%, 100% { transform:rotate(-2.6deg) translateX(0); }
+    25% { transform:rotate(2.2deg) translateX(4px); }
+    50% { transform:rotate(-1.4deg) translateX(-3px); }
+    75% { transform:rotate(1.6deg) translateX(2px); }
+  }
+  @media (prefers-reduced-motion:reduce){ .swing:hover, .hero-mobile-combo { animation:none !important; } }
   .btn { transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease; }
   .btn:hover { transform:scale(1.04); }
   .btn:active { transform:scale(.98); transition-duration:.08s; }
@@ -94,6 +536,8 @@
   .langbtn { position:relative; z-index:1; flex:1; text-align:center; min-width:48px; font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border:none; background:transparent; cursor:pointer; border-radius:40px; padding:9px 16px; color:#8a8479; transition:color .3s ease; }
   .langtoggle.is-fr .langbtn:first-of-type, .langtoggle.is-uk .langbtn:last-of-type { color:#edebe3; }
   .langtoggle.is-uk .langbtn:first-of-type:hover, .langtoggle.is-fr .langbtn:last-of-type:hover { color:#141310; }
+  body .menu-toggle,
+  .mobile-nav-lang { display:none; }
   .flink { color:#edebe3; transition:color .2s ease; }
   .flink:hover { color:#FAAB06; }
   .modal-lock { overflow:hidden; }
@@ -352,57 +796,69 @@
 <div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
 
   <!-- ===== TOP BAR ===== -->
-  <header style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
-    <nav style="display:flex; gap:clamp(16px,2vw,34px);" class="micro">
+  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+    <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
       <a href="#top" class="nlink is-active">Головна</a>
       <a href="#services" class="nlink">Курси</a>
       <a href="#studio" class="nlink">Події</a>
       <a href="./gallery.html" class="nlink">Галерея</a>
       <a href="./contacts.html" class="nlink">Контакти</a>
+      <div class="mobile-nav-lang">
+        <span class="mobile-nav-lang-label">Мова</span>
+        <div class="langtoggle {{ langCls }}">
+          <span class="langpill" aria-hidden="true"></span>
+          <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
+          <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+        </div>
+      </div>
     </nav>
-    <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="micro">
-      <div class="langtoggle {{ langCls }}">
+    <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="header-actions micro">
+      <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle-line" aria-hidden="true"></span>
+      </button>
+      <div class="desktop-lang langtoggle {{ langCls }}">
         <span class="langpill" aria-hidden="true"></span>
         <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
         <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
       </div>
-      <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="#trial-form" class="header-cta btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
   <!-- ===== HERO COLLAGE ===== -->
-  <section style="position:relative; overflow:hidden; padding:clamp(16px,2vw,30px) clamp(20px,4vw,64px) clamp(20px,2.4vw,36px); min-height:100svh; display:flex; flex-direction:column; justify-content:flex-start;">
+  <section class="hero-collage">
 
     <!-- top-left pen doodle + address text -->
-    <div data-parallax="0.05" class="load-prop" style="animation-delay:.5s; position:absolute; left:6%; top:8%; width:clamp(80px,8vw,140px); z-index:6;"><img src="./assets/doodle-hand.png" alt="Рука з пером" style="width:100%; height:auto; display:block;"></div>
-    <div data-parallax="0.045" class="load-prop" style="animation-delay:.6s; position:absolute; left:5%; top:20%; font-family:'Caveat',cursive; font-size:clamp(20px,1.7vw,28px); line-height:1.15; color:#c0392b; transform:rotate(-11deg); z-index:6;">24 Rue Jeu de Ballon<br>EST. 2022 · GANGES</div>
+    <div data-parallax="0.05" class="hero-prop hero-pen load-prop" style="animation-delay:.5s;"><img src="./assets/doodle-hand.png" alt="Рука з пером" style="width:100%; height:auto; display:block;"></div>
+    <div data-parallax="0.045" class="hero-prop hero-address load-prop" style="animation-delay:.6s;">24 Rue Jeu de Ballon<br>EST. 2022 · GANGES</div>
 
     <!-- kid castle drawing, taped, top-right -->
-    <div data-parallax="0.08" class="load-prop" style="animation-delay:.7s; position:absolute; right:2%; top:8%; width:clamp(150px,17vw,300px); transform:rotate(3deg); z-index:1;">
+    <div data-parallax="0.08" class="hero-prop hero-castle load-prop" style="animation-delay:.7s;">
       <span style="position:absolute; right:6px; bottom:-6px; font-family:'Caveat',cursive; font-size:clamp(20px,1.9vw,30px); color:#c0392b; transform:rotate(-4deg);">Anna, 4р.</span>
     <img src="./assets/kid-castle.png" alt="Малюнок учениці — замок" style="width:100%; height:auto; display:block;"></div>
 
     <!-- framed painting, bottom-left -->
-    <div data-parallax="0.11" class="swing-wrap load-prop" style="animation-delay:.85s; position:absolute; left:2%; bottom:clamp(17%,10vw,30%); width:clamp(190px,23vw,420px); transform:rotate(-4deg); z-index:1;">
+    <div data-parallax="0.11" class="hero-prop hero-painting swing-wrap load-prop" style="animation-delay:.85s;">
       <img class="swing" src="./assets/painting-girl.png" alt="Картина — дівчинка з тортом" style="width:100%; height:auto; display:block;">
+      <img class="hero-mobile-combo" src="./assets/mobile-hero-painting.png" alt="Картина зі стікером">
     </div>
 
     <!-- age badge, bottom-right -->
-    <div data-parallax="0.06" class="load-prop" style="animation-delay:1s; position:absolute; right:2%; bottom:clamp(9%,7vw,24%); width:clamp(221px,24.7vw,416px); z-index:1;">
+    <div data-parallax="0.06" class="hero-prop hero-badge load-prop" style="animation-delay:1s;">
       <img src="./assets/badge-age.png?v=4" alt="Від 4 до 90+ років учням" style="width:100%; height:auto; display:block;">
     </div>
 
     <!-- giant wordmark -->
-    <div style="position:relative; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
-      <div class="wm load-rise" style="font-size: clamp(66px,17.5vw,272px); line-height: 0.86; color: #141310; padding-top: 40px">Atelier</div>
-      <div class="wm load-rise" style="animation-delay:.12s; font-size: clamp(66px,17.5vw,272px); line-height: 0.86; color: #141310; margin-top: -0.04em; display: flex; align-items: center; justify-content: center; gap: 0.06em; padding-bottom: 20px">Sve<span style="position:relative; display:inline-flex; align-items:center; width:clamp(64px,13vw,210px); margin:0 0.02em; transform:translateY(6%);"><svg viewBox="0 0 226 181" style="width:100%;height:auto;display:block;overflow:visible" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="om-scl"><path d="M112.098 73L16.0259 85.8601L13 91.1554L16.0259 108.554L35.6943 136.544L64.4403 159.238L88.6475 170.585L121.176 175.124L165.052 156.969L205.901 122.927L215.735 91.1554L205.901 85.8601L112.098 73Z"></path></clipPath></defs><path d="M112.098 73L16.0259 85.8601L13 91.1554L16.0259 108.554L35.6943 136.544L64.4403 159.238L88.6475 170.585L121.176 175.124L165.052 156.969L205.901 122.927L215.735 91.1554L205.901 85.8601L112.098 73Z" fill="#FCFDFD"></path><g data-eye-ball="" clip-path="url(#om-scl)"><circle cx="113" cy="124" r="42" fill="#628833"></circle><circle cx="114" cy="124" r="20" fill="black"></circle><circle cx="129" cy="114" r="8" fill="white"></circle></g><rect x="10" y="45" width="206" height="33" fill="#EDEBE2"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M109.309 1.14114C108.427 2.02298 108.113 11.0388 108.113 35.5183V68.6998H100.143H92.1721L92.1562 60.9774C92.1143 41.202 90.1416 3.59138 89.0785 2.31096C87.4934 0.399784 83.8199 0.604052 81.9159 2.70853C80.4852 4.28889 80.4135 7.09885 81.2285 29.3633C81.7296 43.0514 82.155 57.726 82.174 61.9738C82.2078 69.5557 82.164 69.6962 79.718 69.6962C77.5749 69.6962 77.2252 69.2448 77.2152 66.4578C77.1525 50.0185 75.0193 3.31736 74.298 2.59594C73.7909 2.08875 72.6272 1.9612 71.7115 2.31295C70.1812 2.89985 70.1055 5.67793 70.777 36.6722L71.5073 70.3927L69.3253 70.9637C68.068 71.2925 66.986 71.0384 66.7737 70.3658C66.5715 69.7241 65.9169 58.2122 65.3191 44.7852C63.9182 13.3236 63.3294 7.1138 61.5779 5.36206C59.636 3.419 56.9469 3.56248 55.0021 5.7118C53.5216 7.34696 53.5136 9.84205 54.8995 36.2148C55.7294 52.0124 56.2724 66.7936 56.107 69.0605C55.84 72.7144 55.5222 73.1837 53.3153 73.1837C51.3735 73.1837 50.7827 72.6347 50.6352 70.6926C50.5316 69.3225 49.7106 55.198 48.8109 39.3048C47.2756 12.1897 46.4855 5.90212 44.6184 5.93899C41.1332 6.00874 41.0984 6.95237 43.3261 40.639C44.5257 58.7722 45.2202 74.0736 44.8695 74.6415C44.5178 75.2095 43.6121 75.6748 42.8559 75.6748C41.197 75.6748 40.9021 73.5763 38.8736 47.2763C38.0287 36.3155 37.0602 23.843 36.7225 19.5603C36.1924 12.8334 35.7879 11.5619 33.7524 10.2287C31.6153 8.82767 31.165 8.83564 28.9053 10.3164C27.5354 11.2141 26.4145 12.7796 26.4145 13.7959C26.4145 16.2103 30.1746 64.4151 30.9767 72.2899L31.5974 78.3712L25.0645 80.0123C15.7568 82.351 15.4638 82.2872 15.4041 77.9168C15.2825 68.906 8.79243 19.9559 7.51613 18.4174C5.83633 16.3936 1.585 16.7832 0.139324 19.093C-1.0204 20.9444 5.36008 84.1775 8.15976 98.593C13.4752 125.96 37.0463 153.316 68.7584 168.922C94.9977 181.834 122.446 183.697 148.16 174.311C177.655 163.545 203.862 140.238 214.298 115.493C219 104.343 220.51 95.6963 222.208 70.1944C223.048 57.5895 224.197 41.3505 224.761 34.1084C225.926 19.1707 225.398 16.8849 220.785 16.8849C219.228 16.8849 217.453 17.4877 216.842 18.2251C216.19 19.0103 214.826 32.6266 213.547 51.1076C211.675 78.156 211.142 82.6479 209.805 82.635C205.958 82.5971 205.925 81.9325 208.326 52.7567C209.611 37.1375 210.679 21.7804 210.699 18.6287C210.731 13.6096 210.495 12.8991 208.801 12.8991C207.737 12.8991 206.623 13.2937 206.325 13.777C206.026 14.2593 204.878 26.0302 203.773 39.9335C200.404 82.2822 200.745 79.6606 198.611 79.6606C197.573 79.6606 196.44 78.9202 196.093 78.0155C195.745 77.1107 196.226 62.1721 197.159 44.8181C198.094 27.4641 198.574 12.5275 198.228 11.6257C196.824 7.96675 190.189 8.40817 189.322 12.2186C188.781 14.5981 185.831 64.6044 185.828 71.44C185.827 75.2653 185.592 75.6748 183.395 75.6748C182.057 75.6748 180.779 75.338 180.552 74.9275C180.326 74.517 181.127 59.383 182.333 41.2977C183.538 23.2123 184.322 7.85515 184.072 7.1696C183.487 5.55337 179.915 5.55337 179.355 7.1696C178.935 8.38027 174.867 66.5066 174.867 71.2915C174.867 73.1987 174.346 73.682 172.29 73.682H169.712L170.546 50.0165C171.823 13.8079 171.69 5.84433 169.791 4.64362C167.79 3.37814 163.311 4.44134 162.577 6.3555C162.272 7.14967 161.501 22.0634 160.863 39.4951C160.224 56.9278 159.581 71.3244 159.432 71.4888C159.283 71.6522 158.097 71.5187 156.797 71.1929C154.072 70.5083 154.101 73.3332 156.365 29.3404C157.07 15.6393 157.439 3.86939 157.184 3.18384C156.928 2.49928 155.857 1.93829 154.803 1.93829C153.748 1.93829 152.703 2.49928 152.479 3.18384C152.13 4.25202 148.93 63.0559 148.954 67.9524C148.96 69.1651 148.18 69.6962 146.388 69.6962H143.814L144.539 36.8396C145.11 10.9381 144.996 3.66014 144.002 2.46241C142.251 0.350959 137.305 0.517364 136.122 2.72647C135.596 3.70896 134.841 18.9724 134.442 36.6453L133.719 68.7785L126.147 68.4895L118.575 68.2015L118.077 35.0321C117.656 7.00817 117.346 1.71708 116.084 0.919926C114.007 -0.392386 110.735 -0.28477 109.309 1.14114ZM154.941 81.5249C179.247 84.7793 209.008 92.1251 209.572 95.0088C210.143 97.9204 204.839 112.739 200.801 119.518C185.434 145.31 154.674 165.557 124.816 169.533C82.2367 175.202 30.2085 140.985 18.8404 99.8365C17.8939 96.4098 17.3858 93.3407 17.7106 93.0159C18.7617 91.9646 39.5222 86.6905 52.319 84.2243C59.1688 82.904 70.3774 81.3306 77.2272 80.7288C84.077 80.1259 91.2505 79.4543 93.1684 79.2361C101.913 78.2407 141.313 79.7005 154.941 81.5249Z" fill="black"></path></svg></span>ta</div>
-      <p style="margin:clamp(18px,2.2vw,32px) 0 0; max-width:40ch; font-family:'Archivo',sans-serif; font-style:italic; font-weight:500; font-size:clamp(16px,1.5vw,24px); line-height:1.35; color:#141310;">Авторська художня школа для дорослих і дітей — де кожен створює свою першу роботу.</p>
-      <a href="#reel" data-parallax="0.04" style="margin-top: clamp(14px,1.6vw,22px); display: inline-flex; align-items: center; gap: 8px; font-family: 'Caveat',cursive; font-size: clamp(24px,2.4vw,38px); color: #c0392b; text-decoration: none; padding-top: 20px">(Прокрутіть) ↓</a>
+    <div class="hero-wordmark">
+      <div class="wm hero-title-line hero-title-top load-rise">Atelier</div>
+      <div class="wm hero-title-line hero-title-bottom load-rise" style="animation-delay:.12s;">Sve<span class="hero-eye"><svg viewBox="0 0 226 181" style="width:100%;height:auto;display:block;overflow:visible" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="om-scl"><path d="M112.098 73L16.0259 85.8601L13 91.1554L16.0259 108.554L35.6943 136.544L64.4403 159.238L88.6475 170.585L121.176 175.124L165.052 156.969L205.901 122.927L215.735 91.1554L205.901 85.8601L112.098 73Z"></path></clipPath></defs><path d="M112.098 73L16.0259 85.8601L13 91.1554L16.0259 108.554L35.6943 136.544L64.4403 159.238L88.6475 170.585L121.176 175.124L165.052 156.969L205.901 122.927L215.735 91.1554L205.901 85.8601L112.098 73Z" fill="#FCFDFD"></path><g data-eye-ball="" clip-path="url(#om-scl)"><circle cx="113" cy="124" r="42" fill="#628833"></circle><circle cx="114" cy="124" r="20" fill="black"></circle><circle cx="129" cy="114" r="8" fill="white"></circle></g><rect x="10" y="45" width="206" height="33" fill="#EDEBE2"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M109.309 1.14114C108.427 2.02298 108.113 11.0388 108.113 35.5183V68.6998H100.143H92.1721L92.1562 60.9774C92.1143 41.202 90.1416 3.59138 89.0785 2.31096C87.4934 0.399784 83.8199 0.604052 81.9159 2.70853C80.4852 4.28889 80.4135 7.09885 81.2285 29.3633C81.7296 43.0514 82.155 57.726 82.174 61.9738C82.2078 69.5557 82.164 69.6962 79.718 69.6962C77.5749 69.6962 77.2252 69.2448 77.2152 66.4578C77.1525 50.0185 75.0193 3.31736 74.298 2.59594C73.7909 2.08875 72.6272 1.9612 71.7115 2.31295C70.1812 2.89985 70.1055 5.67793 70.777 36.6722L71.5073 70.3927L69.3253 70.9637C68.068 71.2925 66.986 71.0384 66.7737 70.3658C66.5715 69.7241 65.9169 58.2122 65.3191 44.7852C63.9182 13.3236 63.3294 7.1138 61.5779 5.36206C59.636 3.419 56.9469 3.56248 55.0021 5.7118C53.5216 7.34696 53.5136 9.84205 54.8995 36.2148C55.7294 52.0124 56.2724 66.7936 56.107 69.0605C55.84 72.7144 55.5222 73.1837 53.3153 73.1837C51.3735 73.1837 50.7827 72.6347 50.6352 70.6926C50.5316 69.3225 49.7106 55.198 48.8109 39.3048C47.2756 12.1897 46.4855 5.90212 44.6184 5.93899C41.1332 6.00874 41.0984 6.95237 43.3261 40.639C44.5257 58.7722 45.2202 74.0736 44.8695 74.6415C44.5178 75.2095 43.6121 75.6748 42.8559 75.6748C41.197 75.6748 40.9021 73.5763 38.8736 47.2763C38.0287 36.3155 37.0602 23.843 36.7225 19.5603C36.1924 12.8334 35.7879 11.5619 33.7524 10.2287C31.6153 8.82767 31.165 8.83564 28.9053 10.3164C27.5354 11.2141 26.4145 12.7796 26.4145 13.7959C26.4145 16.2103 30.1746 64.4151 30.9767 72.2899L31.5974 78.3712L25.0645 80.0123C15.7568 82.351 15.4638 82.2872 15.4041 77.9168C15.2825 68.906 8.79243 19.9559 7.51613 18.4174C5.83633 16.3936 1.585 16.7832 0.139324 19.093C-1.0204 20.9444 5.36008 84.1775 8.15976 98.593C13.4752 125.96 37.0463 153.316 68.7584 168.922C94.9977 181.834 122.446 183.697 148.16 174.311C177.655 163.545 203.862 140.238 214.298 115.493C219 104.343 220.51 95.6963 222.208 70.1944C223.048 57.5895 224.197 41.3505 224.761 34.1084C225.926 19.1707 225.398 16.8849 220.785 16.8849C219.228 16.8849 217.453 17.4877 216.842 18.2251C216.19 19.0103 214.826 32.6266 213.547 51.1076C211.675 78.156 211.142 82.6479 209.805 82.635C205.958 82.5971 205.925 81.9325 208.326 52.7567C209.611 37.1375 210.679 21.7804 210.699 18.6287C210.731 13.6096 210.495 12.8991 208.801 12.8991C207.737 12.8991 206.623 13.2937 206.325 13.777C206.026 14.2593 204.878 26.0302 203.773 39.9335C200.404 82.2822 200.745 79.6606 198.611 79.6606C197.573 79.6606 196.44 78.9202 196.093 78.0155C195.745 77.1107 196.226 62.1721 197.159 44.8181C198.094 27.4641 198.574 12.5275 198.228 11.6257C196.824 7.96675 190.189 8.40817 189.322 12.2186C188.781 14.5981 185.831 64.6044 185.828 71.44C185.827 75.2653 185.592 75.6748 183.395 75.6748C182.057 75.6748 180.779 75.338 180.552 74.9275C180.326 74.517 181.127 59.383 182.333 41.2977C183.538 23.2123 184.322 7.85515 184.072 7.1696C183.487 5.55337 179.915 5.55337 179.355 7.1696C178.935 8.38027 174.867 66.5066 174.867 71.2915C174.867 73.1987 174.346 73.682 172.29 73.682H169.712L170.546 50.0165C171.823 13.8079 171.69 5.84433 169.791 4.64362C167.79 3.37814 163.311 4.44134 162.577 6.3555C162.272 7.14967 161.501 22.0634 160.863 39.4951C160.224 56.9278 159.581 71.3244 159.432 71.4888C159.283 71.6522 158.097 71.5187 156.797 71.1929C154.072 70.5083 154.101 73.3332 156.365 29.3404C157.07 15.6393 157.439 3.86939 157.184 3.18384C156.928 2.49928 155.857 1.93829 154.803 1.93829C153.748 1.93829 152.703 2.49928 152.479 3.18384C152.13 4.25202 148.93 63.0559 148.954 67.9524C148.96 69.1651 148.18 69.6962 146.388 69.6962H143.814L144.539 36.8396C145.11 10.9381 144.996 3.66014 144.002 2.46241C142.251 0.350959 137.305 0.517364 136.122 2.72647C135.596 3.70896 134.841 18.9724 134.442 36.6453L133.719 68.7785L126.147 68.4895L118.575 68.2015L118.077 35.0321C117.656 7.00817 117.346 1.71708 116.084 0.919926C114.007 -0.392386 110.735 -0.28477 109.309 1.14114ZM154.941 81.5249C179.247 84.7793 209.008 92.1251 209.572 95.0088C210.143 97.9204 204.839 112.739 200.801 119.518C185.434 145.31 154.674 165.557 124.816 169.533C82.2367 175.202 30.2085 140.985 18.8404 99.8365C17.8939 96.4098 17.3858 93.3407 17.7106 93.0159C18.7617 91.9646 39.5222 86.6905 52.319 84.2243C59.1688 82.904 70.3774 81.3306 77.2272 80.7288C84.077 80.1259 91.2505 79.4543 93.1684 79.2361C101.913 78.2407 141.313 79.7005 154.941 81.5249Z" fill="black"></path></svg></span>ta</div>
+      <p class="hero-copy">Авторська художня школа для дорослих і дітей — де кожен створює свою першу роботу.</p>
+      <a href="#reel" data-parallax="0.04" class="hero-scroll">(Прокрутіть) ↓</a>
     </div>
   </section>
 
   <!-- ===== WORDMARK MARQUEE ===== -->
-  <section style="border-top:1px solid #d9d5c9; border-bottom:1px solid #d9d5c9; overflow:hidden; padding:clamp(18px,2.4vw,36px) 0; background:#141310;">
+  <section class="marquee-section" style="border-top:1px solid #d9d5c9; border-bottom:1px solid #d9d5c9; overflow:hidden; padding:clamp(18px,2.4vw,36px) 0; background:#141310;">
     <div style="display:inline-flex; white-space:nowrap; animation:wm-scroll 30s linear infinite;">
       <span class="wm" style="font-size:clamp(30px,4vw,64px); color:#edebe3; padding:0 0.3em;">Малювання ✳ Живопис ✳ Акварель ✳ Іконопис ✳ Пленери ✳ Майстер-класи ✳&nbsp;</span>
       <span class="wm" style="font-size:clamp(30px,4vw,64px); color:#edebe3; padding:0 0.3em;">Малювання ✳ Живопис ✳ Акварель ✳ Іконопис ✳ Пленери ✳ Майстер-класи ✳&nbsp;</span>
@@ -410,14 +866,14 @@
   </section>
 
   <!-- ===== INTRO STATEMENT ===== -->
-  <section id="studio" style="background:#ffffff; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);">
-    <div class="reveal" style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(45px,9vw,150px); align-items:stretch;">
+  <section id="studio" class="studio-section" style="background:#ffffff; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);">
+    <div class="studio-grid reveal" style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(45px,9vw,150px); align-items:stretch;">
       <div style="display:flex; flex-direction:column;">
         <div style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(26px,2.4vw,40px); line-height:1; margin-bottom:clamp(40px,6vw,96px);">(Про школу)</div>
         <h2 style="margin:0 0 clamp(28px,3.2vw,48px); font-family:'Archivo',sans-serif; font-weight:700; font-size:clamp(30px,4.2vw,62px); line-height:1.08; letter-spacing:-0.02em; font-style:italic;">Світлана Сьянова — художниця та викладачка, яка заснувала школу у 2022 році.</h2>
         <p style="margin:0; max-width:100%; font-family:'Archivo',sans-serif; font-weight:400; font-size:clamp(15px,1.3vw,21px); line-height:1.55; color:#6b6459;">Сьогодні тут навчаються учні від 4 до 90 років — опановують основи образотворчого мистецтва, розкривають індивідуальність і знаходять власний художній стиль.</p>
         <p style="margin:1.1em 0 0; max-width:100%; font-family:'Archivo',sans-serif; font-weight:400; font-size:clamp(15px,1.3vw,21px); line-height:1.55; color:#6b6459;">Навчання побудоване на авторському підході, де важливо не просто повторювати техніку, а поступово знаходити власну мову у мистецтві. Школа створює простір, у якому можна експериментувати, розвивати впевненість і вчитися у своєму темпі.</p>
-        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:clamp(28px,3vw,44px);">
+        <div class="studio-actions" style="display:flex; flex-wrap:wrap; gap:14px; margin-top:clamp(28px,3vw,44px);">
           <a href="#trial-form" class="btn btn--red js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#c0392b; color:#edebe3; border-radius:40px; padding:15px 30px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);">Пробний урок <span class="btn-icon" aria-hidden="true"></span></a>
           <a href="#services" class="btn btn--out" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:#141310; border:1px solid #141310; border-radius:40px; padding:14px 30px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);">Усі курси <span class="btn-icon" aria-hidden="true"></span></a>
         </div>
@@ -428,14 +884,14 @@
   
 
   <!-- ===== SERVICES / NUMBERED LIST ===== -->
-  <section id="services" style="padding:clamp(90px,11vw,150px) 0 0; border-bottom:1px solid #d9d5c9;">
+  <section id="services" class="services-section" style="padding:clamp(90px,11vw,150px) 0 0; border-bottom:1px solid #d9d5c9;">
     <div style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(26px,2.4vw,40px); line-height:1; padding:0 clamp(20px,4vw,64px); margin-bottom:clamp(24px,3vw,44px);">(Курси)</div>
     <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
-      <a href="#contact" class="srow reveal" style="display:block; border-top:1px solid #d9d5c9; padding:clamp(22px,2.6vw,38px) clamp(20px,4vw,64px);">
-        <div style="display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center;">
+      <a href="#contact" class="service-row srow reveal" style="display:block; border-top:1px solid #d9d5c9; padding:clamp(22px,2.6vw,38px) clamp(20px,4vw,64px);">
+        <div class="service-grid" style="display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center;">
           <span class="snum" style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); color:#141310;">{{ s.no }}</span>
           <div>
-            <h3 style="margin:0 0 12px; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,72px); line-height:0.98; letter-spacing:-0.01em;">{{ s.title }}</h3>
+            <h3 class="service-title" style="margin:0 0 12px; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,72px); line-height:0.98; letter-spacing:-0.01em;">{{ s.title }}</h3>
             <div class="sdesc" style="display:flex; flex-wrap:wrap; gap:10px 22px; font-size:clamp(13px,1vw,15px); color:#6b6459; font-weight:500;">
               <sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="4"><span>{{ t }}</span></sc-for>
             </div>
@@ -449,32 +905,32 @@
   </section>
 
   <!-- ===== WORKS DRAG GALLERY ===== -->
-  <section id="works" style="padding:clamp(90px,11vw,150px) 0; border-bottom:1px solid #d9d5c9;">
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:0 clamp(20px,4vw,64px) clamp(28px,3vw,44px);">
+  <section id="works" class="works-section" style="padding:clamp(90px,11vw,150px) 0; border-bottom:1px solid #d9d5c9;">
+    <div class="works-head" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:0 clamp(20px,4vw,64px) clamp(28px,3vw,44px);">
       <div>
         <div style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(26px,2.4vw,40px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Галерея)</div>
         
       </div>
-      <span style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(24px,2.2vw,34px); line-height:1;">← Тягніть →</span>
+      <span class="works-drag-label" style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(24px,2.2vw,34px); line-height:1;">← Тягніть →</span>
     </div>
-    <div class="drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 clamp(20px,4vw,64px); scroll-snap-type:x mandatory;">
+    <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 clamp(20px,4vw,64px); scroll-snap-type:x mandatory;">
       <sc-for list="{{ works }}" as="w" hint-placeholder-count="5">
-        <figure class="reveal" style="margin:0; flex:none; width:clamp(240px,28vw,400px); scroll-snap-align:start;">
+        <figure class="work-card reveal" style="margin:0; flex:none; width:clamp(240px,28vw,400px); scroll-snap-align:start;">
           <div style="border:1px solid #c8c3b6; padding:8px; background:#141310;"><div style="overflow:hidden; aspect-ratio:4/5; background:#e2ded2;"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Робота учня"></image-slot></div></div>
           <figcaption style="margin-top: 14px; font-family: 'Archivo',sans-serif; font-weight: 600; font-size: clamp(13px,1vw,16px); color: #6b6459">{{ w.title }} · {{ w.meta }}</figcaption>
         </figure>
       </sc-for>
-      <div class="reveal" style="flex:none; width:clamp(240px,28vw,400px); min-height:clamp(300px,35vw,500px); display:flex; align-items:center; justify-content:center; scroll-snap-align:start;">
+      <div class="gallery-link-card reveal" style="flex:none; width:clamp(240px,28vw,400px); min-height:clamp(300px,35vw,500px); display:flex; align-items:center; justify-content:center; scroll-snap-align:start;">
         <a href="./gallery.html" class="btn btn--out" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:#141310; border:1px solid #141310; border-radius:40px; padding:14px 28px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);">Дивитися всі <span class="btn-icon" aria-hidden="true"></span></a>
       </div>
     </div>
   </section>
 
   <!-- ===== CLOSING STATEMENT ===== -->
-  <section id="contact" style="background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);">
+  <section id="contact" class="contact-section" style="background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);">
     <div class="micro" style="color:#FAAB06; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
-    <p class="wm" style="margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3;">Мистецтво<br>починається<br>тут.</p>
-    <div style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
+    <p class="contact-title wm" style="margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3;">Мистецтво<br>починається<br>тут.</p>
+    <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
       <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
       <div class="micro" style="line-height:2; color:#FAAB06;">
         <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
@@ -486,10 +942,10 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:clamp(24px,2.6vw,36px) clamp(20px,4vw,64px);" class="micro">
+  <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:clamp(24px,2.6vw,36px) clamp(20px,4vw,64px);" class="site-footer micro">
     <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
     <span style="color:#6b6459;">Ганж · Оксітанія · Франція</span>
-    <span style="color:#6b6459;">Website by Petrenko Design</span>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="nlink" style="color:#6b6459;">Website by Petrenko Design</a>
   </footer>
 </div>
 </x-dc>
@@ -541,65 +997,98 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
-    this._onMove = (e) => {
-      const balls = document.querySelectorAll('[data-eye-ball]');
-      balls.forEach((g) => {
-        const svg = g.ownerSVGElement;
-        if (!svg) return;
-        const r = svg.getBoundingClientRect();
-        const cx = r.left + r.width / 2;
-        const cy = r.top + r.height / 2;
-        const ang = Math.atan2(e.clientY - cy, e.clientX - cx);
-        const dist = Math.min(Math.hypot(e.clientX - cx, e.clientY - cy) / 26, 1);
-        const max = 16; // SVG user units
-        const dx = Math.cos(ang) * max * dist;
-        const dy = Math.sin(ang) * max * dist;
-        g.setAttribute('transform', `translate(${dx.toFixed(2)} ${dy.toFixed(2)})`);
-      });
-    };
-    window.addEventListener('mousemove', this._onMove);
+    const isMobileHero = window.matchMedia && window.matchMedia('(max-width: 920px)').matches;
+    const hasMouse = !isMobileHero && (!window.matchMedia || window.matchMedia('(hover: hover) and (pointer: fine)').matches);
 
-    // benorth-style parallax drift for collage props
-    this._px = { tx: 0, ty: 0, cx: 0, cy: 0, raf: 0 };
-    this._items = Array.from(document.querySelectorAll('[data-parallax]')).map((elp) => {
-      const base = elp.style.transform || '';
-      return { el: elp, depth: parseFloat(elp.getAttribute('data-parallax')) || 0.06, base };
-    });
-    this._onPar = (e) => {
-      this._px.tx = (e.clientX / window.innerWidth - 0.5) * 2;
-      this._px.ty = (e.clientY / window.innerHeight - 0.5) * 2;
-      if (!this._px.raf) this._px.raf = requestAnimationFrame(this._tick);
-    };
-    this._tick = () => {
-      this._px.raf = 0;
-      this._px.cx += (this._px.tx - this._px.cx) * 0.08;
-      this._px.cy += (this._px.ty - this._px.cy) * 0.08;
-      this._items.forEach((it) => {
-        const dx = -this._px.cx * it.depth * 80;
-        const dy = -this._px.cy * it.depth * 80;
-        it.el.style.transform = `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px) ${it.base}`;
-      });
-      if (Math.abs(this._px.tx - this._px.cx) > 0.001 || Math.abs(this._px.ty - this._px.cy) > 0.001) {
-        this._px.raf = requestAnimationFrame(this._tick);
-      }
-    };
-    window.addEventListener('mousemove', this._onPar);
+    if (hasMouse) {
+      this._onMove = (e) => {
+        const balls = document.querySelectorAll('[data-eye-ball]');
+        balls.forEach((g) => {
+          const svg = g.ownerSVGElement;
+          if (!svg) return;
+          const r = svg.getBoundingClientRect();
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const ang = Math.atan2(e.clientY - cy, e.clientX - cx);
+          const dist = Math.min(Math.hypot(e.clientX - cx, e.clientY - cy) / 26, 1);
+          const max = 16; // SVG user units
+          const dx = Math.cos(ang) * max * dist;
+          const dy = Math.sin(ang) * max * dist;
+          g.setAttribute('transform', `translate(${dx.toFixed(2)} ${dy.toFixed(2)})`);
+        });
+      };
+      window.addEventListener('mousemove', this._onMove);
+    }
 
-    // swing painting when cursor is over it (works even under the wordmark)
-    this._swing = document.querySelector('.swing');
-    this._swingWrap = document.querySelector('.swing-wrap');
-    this._swingBusy = false;
-    this._onSwing = (e) => {
-      if (!this._swing || !this._swingWrap || this._swingBusy) return;
-      const r = this._swingWrap.getBoundingClientRect();
-      if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) {
-        this._swingBusy = true;
-        this._swing.style.animation = 'nail-swing 1.6s cubic-bezier(.36,.07,.19,.97)';
-        const done = () => { this._swing.style.animation = ''; this._swingBusy = false; this._swing.removeEventListener('animationend', done); };
-        this._swing.addEventListener('animationend', done);
-      }
+    this._siteHeader = document.querySelector('.site-header');
+    this._menuToggle = document.querySelector('.menu-toggle');
+    this._mainNav = document.querySelector('.main-nav');
+    this._setMenu = (open) => {
+      if (!this._siteHeader || !this._menuToggle) return;
+      this._siteHeader.classList.toggle('is-menu-open', open);
+      this._menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      this._menuToggle.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
     };
-    window.addEventListener('mousemove', this._onSwing);
+    this._onMenuToggle = () => {
+      const open = !this._siteHeader?.classList.contains('is-menu-open');
+      this._setMenu(open);
+    };
+    this._onNavClick = (e) => {
+      if (e.target.closest('.nlink')) this._setMenu(false);
+    };
+    this._onMenuKey = (e) => {
+      if (e.key === 'Escape') this._setMenu(false);
+    };
+    this._menuToggle?.addEventListener('click', this._onMenuToggle);
+    this._mainNav?.addEventListener('click', this._onNavClick);
+    window.addEventListener('keydown', this._onMenuKey);
+
+    if (hasMouse) {
+      // benorth-style parallax drift for collage props
+      this._px = { tx: 0, ty: 0, cx: 0, cy: 0, raf: 0 };
+      this._items = Array.from(document.querySelectorAll('[data-parallax]')).map((elp) => {
+        const cssTransform = window.getComputedStyle(elp).transform;
+        const base = elp.style.transform || (cssTransform !== 'none' ? cssTransform : '');
+        return { el: elp, depth: parseFloat(elp.getAttribute('data-parallax')) || 0.06, base };
+      });
+      this._onPar = (e) => {
+        this._px.tx = (e.clientX / window.innerWidth - 0.5) * 2;
+        this._px.ty = (e.clientY / window.innerHeight - 0.5) * 2;
+        if (!this._px.raf) this._px.raf = requestAnimationFrame(this._tick);
+      };
+      this._tick = () => {
+        this._px.raf = 0;
+        this._px.cx += (this._px.tx - this._px.cx) * 0.08;
+        this._px.cy += (this._px.ty - this._px.cy) * 0.08;
+        this._items.forEach((it) => {
+          const dx = -this._px.cx * it.depth * 80;
+          const dy = -this._px.cy * it.depth * 80;
+          it.el.style.transform = `translate(${dx.toFixed(1)}px, ${dy.toFixed(1)}px) ${it.base}`;
+        });
+        if (Math.abs(this._px.tx - this._px.cx) > 0.001 || Math.abs(this._px.ty - this._px.cy) > 0.001) {
+          this._px.raf = requestAnimationFrame(this._tick);
+        }
+      };
+      window.addEventListener('mousemove', this._onPar);
+
+      // swing painting when cursor is over it (works even under the wordmark)
+      this._swing = document.querySelector('.swing');
+      this._swingWrap = document.querySelector('.swing-wrap');
+      this._swingBusy = false;
+      this._onSwing = (e) => {
+        if (!this._swing || !this._swingWrap || this._swingBusy) return;
+        const r = this._swingWrap.getBoundingClientRect();
+        if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) {
+          this._swingBusy = true;
+          this._swing.style.animation = 'nail-swing 1.6s cubic-bezier(.36,.07,.19,.97)';
+          const done = () => { this._swing.style.animation = ''; this._swingBusy = false; this._swing.removeEventListener('animationend', done); };
+          this._swing.addEventListener('animationend', done);
+        }
+      };
+      window.addEventListener('mousemove', this._onSwing);
+    } else {
+      document.querySelectorAll('[data-eye-ball]').forEach((g) => g.removeAttribute('transform'));
+    }
 
     // scroll reveal
     if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -613,6 +1102,9 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     if (this._onMove) window.removeEventListener('mousemove', this._onMove);
+    if (this._menuToggle && this._onMenuToggle) this._menuToggle.removeEventListener('click', this._onMenuToggle);
+    if (this._mainNav && this._onNavClick) this._mainNav.removeEventListener('click', this._onNavClick);
+    if (this._onMenuKey) window.removeEventListener('keydown', this._onMenuKey);
     if (this._onPar) window.removeEventListener('mousemove', this._onPar);
     if (this._onSwing) window.removeEventListener('mousemove', this._onSwing);
     if (this._px && this._px.raf) cancelAnimationFrame(this._px.raf);
