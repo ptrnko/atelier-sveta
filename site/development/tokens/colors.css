@@ -1,0 +1,33 @@
+:root {
+  /* Base palette (sampled from reference) */
+  --as-orange: #FB9A00;
+  --as-orange-hover: #E88C00;
+  --as-peach: #FCE4CC;
+  --as-cream: #FBE0A6;
+  --as-mint: #C6E6B4;
+  --as-ink: #242424;
+  --as-body: #6C6C6C;
+  --as-line: #E4E4E4;
+  --as-hairline: #ECE7DC;
+  --as-surface: #F6F6F6;
+  --as-paper: #FBF8F1;
+  --as-white: #FFFFFF;
+
+  /* Semantic aliases */
+  --accent: var(--as-orange);
+  --accent-hover: var(--as-orange-hover);
+  --text-heading: var(--as-ink);
+  --text-body: var(--as-body);
+  --surface-page: var(--as-paper);
+  --surface-card: var(--as-white);
+  --surface-soft: var(--as-surface);
+  --surface-accent: var(--as-peach);
+  --surface-accent-2: var(--as-mint);
+  --border: var(--as-line);
+  --border-soft: var(--as-hairline);
+  --on-accent: var(--as-white);
+
+  /* Elevation */
+  --shadow-float: 0 20px 40px rgba(180, 140, 60, 0.14);
+  --shadow-float-mint: 0 20px 40px rgba(120, 160, 90, 0.16);
+}

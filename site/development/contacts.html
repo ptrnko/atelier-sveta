@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./assets/trial-modal.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=Caveat:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  ::selection { background:#141310; color:#edebe3; }
+  a { color:inherit; text-decoration:none; }
+  :focus-visible { outline:3px solid rgba(20,19,16,.35); outline-offset:2px; border-radius:4px; }
+  .micro { font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; }
+  .wm { font-family:'Archivo',sans-serif; font-weight:900; letter-spacing:-0.03em; line-height:0.86; text-transform:uppercase; }
+  .clink { transition:color .2s; }
+  .clink { transition:color .2s ease; }
+  .clink:hover { color:#c0392b; }
+  .langtoggle { position:relative; display:inline-flex; align-items:center; border:1px solid #cfcabd; border-radius:40px; padding:3px; }
+  .langpill { position:absolute; top:3px; bottom:3px; left:3px; width:calc(50% - 3px); background:#141310; border-radius:40px; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+  .langtoggle.is-uk .langpill { transform:translateX(100%); }
+  .langbtn { position:relative; z-index:1; flex:1; text-align:center; min-width:48px; font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border:none; background:transparent; cursor:pointer; border-radius:40px; padding:9px 16px; color:#8a8479; transition:color .3s ease; }
+  .langtoggle.is-fr .langbtn:first-of-type, .langtoggle.is-uk .langbtn:last-of-type { color:#edebe3; }
+  .langtoggle.is-uk .langbtn:first-of-type:hover, .langtoggle.is-fr .langbtn:last-of-type:hover { color:#141310; }
+  .btn { transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease; }
+  .btn:hover { transform:scale(1.04); }
+  .btn:active { transform:scale(.98); transition-duration:.08s; }
+  .btn-icon {
+    display:inline-block;
+    width:1.55em;
+    height:1.55em;
+    flex:none;
+    background:currentColor;
+    -webkit-mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    transform:translateY(-1px);
+    transition:transform .25s ease;
+  }
+  .btn--ink:hover { background:#2a2620 !important; }
+  .btn--light:hover { background:#fff; }
+  .btn:hover .btn-icon { transform:translate(4px,-4px); }
+  @media (prefers-reduced-motion:reduce){ .btn,.btn-icon { transition:none; } .btn:hover { transform:none; } }
+  .nlink { transition:color .2s ease; }
+  .nlink:hover { color:#c0392b; }
+</style>
+</helmet>
+<div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100svh; display:flex; flex-direction:column;">
+
+  <!-- ===== TOP BAR ===== -->
+  <header style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+    <nav style="display:flex; gap:clamp(16px,2vw,34px);" class="micro">
+      <a href="./home.html" class="nlink">Головна</a>
+      <a href="./home.html#services" class="nlink">Курси</a>
+      <a href="./home.html#studio" class="nlink">Події</a>
+      <a href="./gallery.html" class="nlink">Галерея</a>
+      <a href="#contact" class="nlink is-active" style="color:#c0392b;">Контакти</a>
+    </nav>
+    <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="micro">
+      <div class="langtoggle {{ langCls }}">
+        <span class="langpill" aria-hidden="true"></span>
+        <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
+        <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+      </div>
+      <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="contact" style="text-align:center; padding: clamp(50px,6vw,90px) clamp(20px,4vw,64px) 75px;">
+    <div style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(28px,2.6vw,44px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Контакти)</div>
+    <h1 class="wm" style="margin: 0; line-height: 1.02; font-size: clamp(44px,9vw,100px)">Завітайте <br>до майстерні</h1>
+    <p style="margin: clamp(20px,2.2vw,32px) auto 0; max-width: 60ch; font-family: 'Archivo',sans-serif; font-size: clamp(16px,1.3vw,20px); line-height: 1.55; color: #6b6459;">Ганж, історичний центр Окситанії. Заходьте на пробний урок, каву та розмову про мистецтво — або напишіть нам зручним способом.</p>
+  </section>
+
+  <!-- ===== DETAILS + MAP ===== -->
+  <section style="padding:75px clamp(20px,4vw,64px) clamp(60px,7vw,120px); display:grid; grid-template-columns:0.85fr 1.15fr; gap:clamp(30px,4vw,72px); align-items:stretch;">
+    <div style="display:flex; flex-direction:column; gap:clamp(24px,2.6vw,38px);">
+      <sc-for list="{{ items }}" as="c" hint-placeholder-count="4">
+        <div style="border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px);">
+          <div style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(20px,1.8vw,28px); line-height:1; margin-bottom:10px;">{{ c.label }}</div>
+          <sc-for list="{{ c.lines }}" as="ln" hint-placeholder-count="2">
+            <a href="{{ ln.href }}" class="clink" style="display:block; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(18px,1.7vw,26px); line-height:1.3;">{{ ln.text }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+      <div style="border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px); display:flex; gap:22px; flex-wrap:wrap;" class="micro">
+        <a href="https://www.instagram.com/atelier.sveta.causse/" class="clink">Instagram ↗</a>
+        <a href="#" class="clink">Facebook ↗</a>
+        <a href="https://wa.me/33768614190" class="clink">WhatsApp ↗</a>
+      </div>
+    </div>
+
+    <!-- map -->
+    <div style="position:relative; min-height:clamp(360px,42vw,620px); overflow:hidden; background:#dfe6dd;">
+      <iframe title="Atelier Sveta на карті" src="https://www.google.com/maps?q=24%20Rue%20Jeu%20de%20Ballon,%2034190%20Ganges,%20France&amp;z=16&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- ===== CTA BAND ===== -->
+  <section id="form" style="background:#141310; color:#edebe3; padding:clamp(50px,6vw,100px) clamp(20px,4vw,64px); margin-top:auto;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap;">
+      <div>
+        <div style="font-family: 'Caveat',cursive; color: #FAAB06; font-size: clamp(24px,2.2vw,36px); line-height: 1; margin-bottom: clamp(14px,1.4vw,60px)">(Пробний урок)</div>
+        <p class="wm" style="margin: 0; font-size: clamp(30px,5vw,72px); padding-top: 20px">Мистецтво<br>починається тут.</p>
+      </div>
+      <a href="#trial-form" class="btn btn--light js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px; white-space:nowrap;">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:clamp(24px,2.6vw,36px) clamp(20px,4vw,64px);" class="micro">
+    <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
+    <span style="color:#6b6459;">Ганж · Оксітанія · Франція</span>
+  </footer>
+</div>
+</x-dc>
+<div class="trial-modal" id="trial-modal" aria-hidden="true">
+  <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
+    <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
+    <form class="trial-form" id="trial-form" action="https://formsubmit.co/Petrenkoag95@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/Petrenkoag95@gmail.com">
+      <h2 id="trial-title">Пробний урок</h2>
+      <p>Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.</p>
+      <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label class="trial-field">Ім'я<input type="text" name="name" autocomplete="name" required></label>
+      <label class="trial-field">Телефон або email<input type="text" name="contact" autocomplete="email" required></label>
+      <label class="trial-field">Напрям<select name="course"><option>Діти</option><option>Підлітки</option><option>Дорослі</option><option>Індивідуальні уроки</option><option>Підготовка до іспитів</option><option>Онлайн курси</option></select></label>
+      <label class="trial-field">Коментар<textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea></label>
+      <div class="trial-note" data-trial-note></div>
+      <div class="trial-actions">
+        <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'UK' };
+  renderVals() {
+    const el = React.createElement;
+    const lang = this.state.lang;
+    const on = { background:'#141310', color:'#edebe3' };
+    const off = { background:'transparent', color:'#6b6459' };
+    const toStyle = (o) => Object.entries(o).map(([k,v])=>k.replace(/[A-Z]/g,m=>'-'+m.toLowerCase())+':'+v).join(';');
+    const st = (paths, extra={}) => el('svg', Object.assign({viewBox:'0 0 24 24', fill:'none', stroke:'currentColor', strokeWidth:1.9, strokeLinecap:'round', strokeLinejoin:'round', width:'100%', height:'100%'}, extra), paths);
+    return {
+      setUk: () => this.setState({ lang:'UK' }),
+      setFr: () => this.setState({ lang:'FR' }),
+      langCls: lang==='UK'?'is-uk':'is-fr',
+      items: [
+        { label:'Адреса', icon: st([el('path',{key:1,d:'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z'}), el('circle',{key:2,cx:12,cy:10,r:3})]),
+          lines:[{text:'24 Rue Jeu de Ballon', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}, {text:'34190 Ganges, Франція', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}] },
+        { label:'Телефон', icon: st([el('path',{key:1,d:'M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z'})]),
+          lines:[{text:'+33 7 68 61 41 90', href:'tel:+33768614190'}] },
+        { label:'Пошта', icon: st([el('rect',{key:1,x:2,y:4,width:20,height:16,rx:2}), el('path',{key:2,d:'m2 6 10 7 10-7'})]),
+          lines:[{text:'sveta.s83ss@gmail.com', href:'mailto:sveta.s83ss@gmail.com'}] },
+        { label:'Години', icon: st([el('circle',{key:1,cx:12,cy:12,r:9}), el('path',{key:2,d:'M12 7v5l3 2'})]),
+          lines:[{text:'Пн–Пт · 10:00–19:00', href:'#'}, {text:'Сб–Нд · 12:00–16:00', href:'#'}] },
+      ],
+    };
+  }
+}
+</script>
+<script src="./assets/trial-modal.js"></script>
+</body>
+</html>

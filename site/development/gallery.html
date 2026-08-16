@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./assets/trial-modal.css">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=Caveat:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  ::selection { background:#141310; color:#edebe3; }
+  a { color:inherit; text-decoration:none; }
+  :focus-visible { outline:3px solid rgba(20,19,16,.35); outline-offset:2px; border-radius:4px; }
+  .micro { font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; }
+  .wm { font-family:'Archivo',sans-serif; font-weight:900; letter-spacing:-0.03em; line-height:0.86; text-transform:uppercase; }
+  .hand { font-family:'Caveat',cursive; line-height:1; }
+  .nlink { transition:color .2s ease; }
+  .nlink:hover { color:#c0392b; }
+  .nlink.is-active { color:#c0392b; }
+  .langtoggle { position:relative; display:inline-flex; align-items:center; border:1px solid #cfcabd; border-radius:40px; padding:3px; }
+  .langpill { position:absolute; top:3px; bottom:3px; left:3px; width:calc(50% - 3px); background:#141310; border-radius:40px; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+  .langtoggle.is-uk .langpill { transform:translateX(100%); }
+  .langbtn { position:relative; z-index:1; flex:1; text-align:center; min-width:48px; font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; border:none; background:transparent; cursor:pointer; border-radius:40px; padding:9px 16px; color:#8a8479; transition:color .3s ease; }
+  .langtoggle.is-fr .langbtn:first-of-type, .langtoggle.is-uk .langbtn:last-of-type { color:#edebe3; }
+  .langtoggle.is-uk .langbtn:first-of-type:hover, .langtoggle.is-fr .langbtn:last-of-type:hover { color:#141310; }
+  .btn { transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease; }
+  .btn:hover { transform:scale(1.04); }
+  .btn:active { transform:scale(.98); transition-duration:.08s; }
+  .btn-icon {
+    display:inline-block;
+    width:1.55em;
+    height:1.55em;
+    flex:none;
+    background:currentColor;
+    -webkit-mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    transform:translateY(-1px);
+    transition:transform .25s ease;
+  }
+  .btn--ink:hover { background:#2a2620 !important; }
+  .btn--light:hover { background:#fff; }
+  .btn:hover .btn-icon { transform:translate(4px,-4px); }
+  .frame { position:relative; cursor:zoom-in; transition:transform .3s cubic-bezier(.34,1.3,.5,1); }
+  .frame:hover { transform:translateY(-4px) rotate(0deg) !important; }
+  .exrow { transition:background-color .25s ease, color .25s ease; }
+  .exrow:hover { background:#141310; color:#edebe3; }
+  .exrow:hover h2, .exrow:hover span { color:#edebe3; }
+  .exbtn { display:inline-flex; align-items:center; gap:10px; border:1px solid #141310; color:#141310; border-radius:40px; padding:12px 24px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(13px,1vw,16px); white-space:nowrap; transition:background-color .25s ease, color .25s ease, border-color .25s ease; }
+  .exrow:hover .exbtn { background:transparent; color:#edebe3; border-color:#edebe3; }
+  .exrow:hover .exbtn svg { stroke:#edebe3; }
+  .exrow.is-open { background:#141310; color:#edebe3; }
+  .exrow.is-open h2, .exrow.is-open span { color:#edebe3; }
+  .exrow.is-open .exbtn { background:transparent; color:#edebe3; border-color:#edebe3; }
+  .exrow.is-open .exbtn svg { stroke:#edebe3; }
+  .exrow.is-open .exbtn:hover { background:#141310; color:#edebe3; border-color:#141310; }
+  .exrow.is-open .exbtn:hover svg { stroke:#edebe3; }
+  .exrow.is-open:hover { background:#edebe3; color:#141310; box-shadow:inset 0 0 0 1px #141310; }
+  .exrow.is-open:hover h2, .exrow.is-open:hover span { color:#141310; }
+  .exrow.is-open:hover .exbtn { color:#141310; border-color:#141310; }
+  .exrow.is-open:hover .exbtn svg { stroke:#141310; }
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); }
+  .reveal.is-in { opacity:1; transform:none; }
+  .lightbox { position:fixed; inset:0; z-index:99; display:none; align-items:center; justify-content:center; padding:clamp(20px,5vw,80px); background:rgba(20,19,16,.92); opacity:0; transition:opacity .3s ease; }
+  .lightbox.is-open { display:flex; opacity:1; }
+  .lightbox img { max-width:100%; max-height:82vh; box-shadow:0 30px 80px rgba(0,0,0,.5); background:#141310; }
+  .lightbox figcaption { margin-top:18px; font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(22px,2vw,32px); text-align:center; }
+  .lb-close { position:absolute; top:24px; right:28px; width:48px; height:48px; border-radius:50%; border:1px solid #6b6459; background:transparent; color:#edebe3; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .lb-close:hover { background:#edebe3; color:#141310; }
+  @media (prefers-reduced-motion:reduce){ .reveal { transition:none; opacity:1; transform:none; } .frame:hover { transform:none !important; } }
+</style>
+</helmet>
+<div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
+
+  <!-- ===== HEADER ===== -->
+  <header style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+    <nav style="display:flex; gap:clamp(16px,2vw,34px);" class="micro">
+      <a href="./home.html" class="nlink">Головна</a>
+      <a href="./home.html#services" class="nlink">Курси</a>
+      <a href="./home.html#studio" class="nlink">Події</a>
+      <a href="#gallery" class="nlink is-active">Галерея</a>
+      <a href="./contacts.html" class="nlink">Контакти</a>
+    </nav>
+    <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="micro">
+      <div class="langtoggle {{ langCls }}">
+        <span class="langpill" aria-hidden="true"></span>
+        <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
+        <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+      </div>
+      <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <!-- ===== WALL ===== -->
+  <section id="gallery" style="background:#edebe3; padding:clamp(48px,6vw,90px) clamp(20px,5vw,80px) clamp(60px,7vw,120px);">
+    <div style="max-width:1280px; margin:0 auto clamp(40px,5vw,72px); padding:0 clamp(20px,4vw,64px); text-align:center;">
+      <div class="hand" style="color:#FAAB06; font-size:clamp(30px,3.4vw,52px);">(Галерея)</div>
+    </div>
+    <sc-for list="{{ exhibitions }}" as="ex" hint-placeholder-count="3">
+      <div style="border-top:1px solid #d9d5c9;">
+        <div class="exrow {{ ex.rowCls }}" role="button" tabindex="0" onClick="{{ ex.onToggle }}" style="cursor:pointer; padding:clamp(34px,4vw,58px) clamp(20px,4vw,64px);">
+          <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center;">
+            
+            <div>
+              <h2 style="margin:0; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,72px); line-height:0.98; letter-spacing:-0.01em; text-transform:uppercase;">{{ ex.name }}</h2>
+              <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px 22px; font-size:clamp(13px,1vw,15px); color:#6b6459; font-weight:500;"><span>{{ ex.year }}</span><span>{{ ex.ages }}</span><span>{{ ex.count }}</span></div>
+            </div>
+            
+            <div style="grid-column:6; justify-self:end;"><span class="exbtn">{{ ex.label }} <span style="display:inline-flex; width:18px; height:18px; transition:transform .3s ease; transform:{{ ex.chevron }};">{{ chevronIcon }}</span></span></div>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-rows:{{ ex.rows }}; transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1);">
+          <div style="overflow:hidden;">
+            <div style="max-width:1280px; margin:0 auto; padding:clamp(8px,1vw,20px) clamp(20px,4vw,64px) clamp(40px,4vw,64px);">
+              <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:clamp(24px,3vw,48px) clamp(20px,2.4vw,36px); align-items:start;">
+                <sc-for list="{{ ex.works }}" as="w" hint-placeholder-count="4">
+                  <figure class="frame" style="margin:0;">
+                    <div style="overflow:hidden; aspect-ratio:{{ w.ratio }}; background:#e2ded2; border:1px solid #d9d5c9;"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Робота учня"></image-slot></div>
+                    <figcaption style="margin-top:12px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(13px,1vw,15px); color:#6b6459;">{{ w.title }} · {{ w.meta }}</figcaption>
+                  </figure>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+    <div style="border-top:1px solid #d9d5c9;"></div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section style="background:#141310; color:#edebe3; padding:clamp(60px,8vw,120px) clamp(20px,4vw,64px); text-align:center;">
+    <div class="hand" style="color:#FAAB06; font-size:clamp(24px,2.2vw,36px); margin-bottom:clamp(16px,1.6vw,24px);">(Ваша перша робота)</div>
+    <h2 class="wm" style="margin:0 auto; max-width:16ch; font-size:clamp(32px,5vw,80px);">Створіть її разом з нами</h2>
+    <a href="#trial-form" class="btn btn--light js-open-trial" style="display:inline-flex; align-items:center; gap:8px; margin-top:clamp(28px,3vw,44px); background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:clamp(24px,2.6vw,36px) clamp(20px,4vw,64px);" class="micro">
+    <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
+    <span style="color:#6b6459;">Ганж · Оксітанія · Франція</span>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lb" role="dialog" aria-modal="true">
+    <button type="button" class="lb-close" aria-label="Закрити">✕</button>
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img id="lb-img" alt="">
+      <figcaption id="lb-cap"></figcaption>
+    </div>
+  </div>
+</div>
+</x-dc>
+<div class="trial-modal" id="trial-modal" aria-hidden="true">
+  <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
+    <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
+    <form class="trial-form" id="trial-form" action="https://formsubmit.co/Petrenkoag95@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/Petrenkoag95@gmail.com">
+      <h2 id="trial-title">Пробний урок</h2>
+      <p>Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.</p>
+      <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label class="trial-field">Ім'я<input type="text" name="name" autocomplete="name" required></label>
+      <label class="trial-field">Телефон або email<input type="text" name="contact" autocomplete="email" required></label>
+      <label class="trial-field">Напрям<select name="course"><option>Діти</option><option>Підлітки</option><option>Дорослі</option><option>Індивідуальні уроки</option><option>Підготовка до іспитів</option><option>Онлайн курси</option></select></label>
+      <label class="trial-field">Коментар<textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea></label>
+      <div class="trial-note" data-trial-note></div>
+      <div class="trial-actions">
+        <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lb-img');
+    const lbCap = document.getElementById('lb-cap');
+    const closeLb = () => lb && lb.classList.remove('is-open');
+    if (lb) {
+      lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-close')) closeLb(); });
+      document.addEventListener('keydown', this._esc = (e) => { if (e.key === 'Escape') closeLb(); });
+      document.querySelectorAll('.frame').forEach((fig) => {
+        fig.addEventListener('click', () => {
+          const slot = fig.querySelector('image-slot');
+          let url = '';
+          if (slot) {
+            const im = slot.shadowRoot && slot.shadowRoot.querySelector('.frame img');
+            url = (im && (im.currentSrc || im.src)) || slot.getAttribute('src') || '';
+          }
+          if (!url) return;
+          lbImg.src = url;
+          const cap = fig.querySelector('figcaption');
+          lbCap.textContent = cap ? cap.textContent : '';
+          lb.classList.add('is-open');
+        });
+      });
+    }
+    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); this._io.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach((n) => this._io.observe(n));
+    } else {
+      document.querySelectorAll('.reveal').forEach((n) => n.classList.add('is-in'));
+    }
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); if (this._esc) document.removeEventListener('keydown', this._esc); }
+  state = { open: 0, lang: 'UK' };
+  renderVals() {
+    const el = React.createElement;
+    const lang = this.state.lang;
+    const on = 'background:#141310; color:#edebe3;';
+    const off = 'background:transparent; color:#8a8479;';
+    const chevronIcon = el('svg',{viewBox:'0 0 24 24', width:'100%', height:'100%', fill:'none', stroke:'#141310', strokeWidth:1.9, strokeLinecap:'round', strokeLinejoin:'round'},[el('path',{key:'p', d:'m6 9 6 6 6-6'})]);
+    const data = [
+      { no:'01', name:'Назва виставки', year:'2026', ages:'Учні 7 – 45 років', coverSlot:'gx-cover-1', works: [
+        { slot:'gw-1', title:'Ботанічний етюд', meta:'Марі · акварель', ratio:'4/5' },
+        { slot:'gw-2', title:'Натюрморт', meta:'Лео · олія', ratio:'1/1' },
+        { slot:'gw-3', title:'Портрет', meta:'Аня · вугілля', ratio:'4/5' },
+        { slot:'gw-4', title:'Пейзаж', meta:'Клер · акрил', ratio:'5/4' },
+      ]},
+      { no:'02', name:'Назва виставки', year:'2025', ages:'Учні 4 – 16 років', coverSlot:'gx-cover-2', works: [
+        { slot:'gw-5', title:'Ікона', meta:'студія · темпера', ratio:'4/5' },
+        { slot:'gw-6', title:'Композиція', meta:'учень · гуаш', ratio:'1/1' },
+        { slot:'gw-7', title:'Абстракція', meta:'учениця · акрил', ratio:'4/5' },
+        { slot:'gw-8', title:'Графіка', meta:'учень · туш', ratio:'5/4' },
+      ]},
+      { no:'03', name:'Назва виставки', year:'2024', ages:'Дорослі', coverSlot:'gx-cover-3', works: [
+        { slot:'gw-9', title:'Пастель', meta:'учениця · пастель', ratio:'4/5' },
+        { slot:'gw-10', title:'Пейзаж', meta:'учень · олія', ratio:'1/1' },
+        { slot:'gw-11', title:'Начерк', meta:'учениця · олівець', ratio:'5/4' },
+        { slot:'gw-12', title:'Етюд', meta:'учень · акварель', ratio:'4/5' },
+      ]},
+    ];
+    const open = this.state.open;
+    const exhibitions = data.map((ex, i) => Object.assign({}, ex, {
+      rows: open === i ? '1fr' : '0fr',
+      chevron: open === i ? 'rotate(180deg)' : 'rotate(0deg)',
+      label: open === i ? 'Сховати' : 'Дивитись роботи',
+      rowCls: open === i ? 'is-open' : '',
+      count: (ex.works ? ex.works.length : 0) + ' робіт',
+      onToggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
+    }));
+    return { chevronIcon, exhibitions,
+      setUk: () => this.setState({ lang:'UK' }),
+      setFr: () => this.setState({ lang:'FR' }),
+      langCls: lang==='UK'?'is-uk':'is-fr',
+    };
+  }
+}
+</script>
+<script src="./assets/trial-modal.js"></script>
+</body>
+</html>

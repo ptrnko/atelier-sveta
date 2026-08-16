@@ -1,0 +1,5 @@
+/* Montserrat — geometric grotesque with full Cyrillic + Latin.
+   Substitute for the reference's Poppins (which lacks Cyrillic).
+   NOTE: loaded via a <link> in each page's <head> so the publish
+   bundler can inline it; no remote @import here (a nested remote
+   @import is not resolvable by the strict-host bundler). */
