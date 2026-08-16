@@ -50,31 +50,54 @@
   .btn--light:hover { background:#fff; }
   .btn:hover .btn-icon { transform:translate(4px,-4px); }
   .frame { position:relative; cursor:zoom-in; transition:transform .3s cubic-bezier(.34,1.3,.5,1); }
-  .frame:hover { transform:translateY(-4px) rotate(0deg) !important; }
-  .exrow { transition:background-color .25s ease, color .25s ease; }
-  .exrow:hover { background:#141310; color:#edebe3; }
-  .exrow:hover h2, .exrow:hover span { color:#edebe3; }
-  .exbtn { display:inline-flex; align-items:center; gap:10px; border:1px solid #141310; color:#141310; border-radius:40px; padding:12px 24px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(13px,1vw,16px); white-space:nowrap; transition:background-color .25s ease, color .25s ease, border-color .25s ease; }
-  .exrow:hover .exbtn { background:transparent; color:#edebe3; border-color:#edebe3; }
-  .exrow:hover .exbtn svg { stroke:#edebe3; }
-  .exrow.is-open { background:#141310; color:#edebe3; }
-  .exrow.is-open h2, .exrow.is-open span { color:#edebe3; }
-  .exrow.is-open .exbtn { background:transparent; color:#edebe3; border-color:#edebe3; }
-  .exrow.is-open .exbtn svg { stroke:#edebe3; }
-  .exrow.is-open .exbtn:hover { background:#141310; color:#edebe3; border-color:#141310; }
-  .exrow.is-open .exbtn:hover svg { stroke:#edebe3; }
-  .exrow.is-open:hover { background:#edebe3; color:#141310; box-shadow:inset 0 0 0 1px #141310; }
-  .exrow.is-open:hover h2, .exrow.is-open:hover span { color:#141310; }
-  .exrow.is-open:hover .exbtn { color:#141310; border-color:#141310; }
-  .exrow.is-open:hover .exbtn svg { stroke:#141310; }
+  .frame:hover { transform:translateY(-4px); }
+  .exhibit { padding:clamp(32px,4vw,54px) clamp(20px,4vw,54px) clamp(70px,7vw,112px); }
+  .exhibit-shell { max-width:1440px; margin:0 auto; border:1px solid #c8c3b6; border-bottom:none; background:#edebe3; }
+  .accordion-item { border-bottom:1px solid #c8c3b6; }
+  .exhibit-head { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:center; background:#edebe3; color:#141310; padding:clamp(34px,4vw,54px) clamp(28px,4.4vw,64px); cursor:pointer; transition:background-color .25s ease, color .25s ease; }
+  .exhibit-head:hover { background:#141310; color:#edebe3; }
+  .exhibit-head:hover .exhibit-meta { color:#d6d1c5; }
+  .exhibit-head.is-open { background:#141310; color:#edebe3; padding-top:clamp(46px,5.2vw,72px); padding-bottom:clamp(46px,5.2vw,72px); }
+  .exhibit-head.is-open:hover { background:#edebe3; color:#141310; box-shadow:inset 0 0 0 1px #141310; }
+  .exhibit-head.is-open:hover .exhibit-meta { color:#6b6459; }
+  .exhibit-title { margin:0; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(40px,5.8vw,76px); line-height:0.98; letter-spacing:-0.02em; text-transform:uppercase; }
+  .exhibit-meta { margin-top:20px; display:flex; flex-wrap:wrap; gap:18px 30px; color:#6b6459; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.1vw,17px); }
+  .exhibit-head.is-open .exhibit-meta { color:#d6d1c5; }
+  .exhibit-toggle { display:inline-flex; align-items:center; gap:12px; border:1px solid currentColor; border-radius:40px; color:inherit; padding:14px 28px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(13px,1vw,16px); white-space:nowrap; }
+  .exhibit-toggle svg { width:18px; height:18px; stroke:currentColor; }
+  .exhibit-panel { display:grid; transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1); }
+  .exhibit-panel-inner { overflow:hidden; }
+  .exhibit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .exhibit-card { position:relative; min-width:0; padding:clamp(28px,3vw,44px) clamp(28px,3.4vw,50px) clamp(38px,4vw,58px); border-right:1px solid #c8c3b6; border-bottom:1px solid #c8c3b6; }
+  .exhibit-card:nth-child(3n) { border-right:none; }
+  .exhibit-card::before { content:""; position:absolute; left:0; bottom:0; width:30px; height:30px; background:url('./assets/gallery-cross.svg') center/contain no-repeat; transform:translate(-50%,50%); z-index:2; pointer-events:none; }
+  .exhibit-card::after { content:""; position:absolute; right:0; bottom:0; width:30px; height:30px; background:url('./assets/gallery-cross.svg') center/contain no-repeat; transform:translate(50%,50%); z-index:2; pointer-events:none; }
+  .exhibit-card:nth-child(3n)::after { right:0; }
+  .work-image { aspect-ratio:1/1.16; background:#e2ded2; overflow:hidden; }
+  .work-caption { margin:18px auto 0; width:max-content; max-width:100%; color:#c0392b; font-family:'Caveat',cursive; font-weight:600; font-size:clamp(18px,1.5vw,24px); line-height:1.05; text-align:center; transform:rotate(-2deg); }
   .reveal { opacity:0; transform:translateY(40px); transition:opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); }
   .reveal.is-in { opacity:1; transform:none; }
-  .lightbox { position:fixed; inset:0; z-index:99; display:none; align-items:center; justify-content:center; padding:clamp(20px,5vw,80px); background:rgba(20,19,16,.92); opacity:0; transition:opacity .3s ease; }
+  .lightbox { position:fixed; inset:0; z-index:99; display:none; align-items:center; justify-content:center; padding:clamp(16px,3vw,44px); background:rgba(20,19,16,.92); opacity:0; transition:opacity .3s ease; }
   .lightbox.is-open { display:flex; opacity:1; }
-  .lightbox img { max-width:100%; max-height:82vh; box-shadow:0 30px 80px rgba(0,0,0,.5); background:#141310; }
-  .lightbox figcaption { margin-top:18px; font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(22px,2vw,32px); text-align:center; }
+  .lightbox figure { width:min(94vw,1180px); max-height:calc(100vh - clamp(32px,6vw,88px)); margin:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .lightbox img { display:block; width:auto; max-width:100%; max-height:calc(100vh - clamp(118px,12vw,174px)); box-shadow:0 30px 80px rgba(0,0,0,.5); background:#141310; object-fit:contain; }
+  .lightbox figcaption { margin-top:clamp(18px,2vw,28px); font-family:'Caveat',cursive; color:#FAAB06; font-weight:600; font-size:clamp(28px,4.2vw,56px); line-height:1.02; text-align:center; }
   .lb-close { position:absolute; top:24px; right:28px; width:48px; height:48px; border-radius:50%; border:1px solid #6b6459; background:transparent; color:#edebe3; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .lb-close:hover { background:#edebe3; color:#141310; }
+  @media (max-width:900px) {
+    .exhibit-head { grid-template-columns:1fr; }
+    .exhibit-toggle { justify-self:start; }
+    .exhibit-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .exhibit-card:nth-child(3n) { border-right:1px solid #c8c3b6; }
+    .exhibit-card:nth-child(2n) { border-right:none; }
+  }
+  @media (max-width:620px) {
+    .exhibit { padding-left:0; padding-right:0; }
+    .exhibit-shell { border-left:none; border-right:none; }
+    .exhibit-grid { grid-template-columns:1fr; }
+    .exhibit-card, .exhibit-card:nth-child(3n) { border-right:none; }
+    .exhibit-card::after { left:50%; right:auto; transform:translate(-50%,50%); }
+  }
   @media (prefers-reduced-motion:reduce){ .reveal { transition:none; opacity:1; transform:none; } .frame:hover { transform:none !important; } }
 </style>
 </helmet>
@@ -99,41 +122,34 @@
     </div>
   </header>
 
-  <!-- ===== WALL ===== -->
-  <section id="gallery" style="background:#edebe3; padding:clamp(48px,6vw,90px) clamp(20px,5vw,80px) clamp(60px,7vw,120px);">
-    <div style="max-width:1280px; margin:0 auto clamp(40px,5vw,72px); padding:0 clamp(20px,4vw,64px); text-align:center;">
-      <div class="hand" style="color:#FAAB06; font-size:clamp(30px,3.4vw,52px);">(Галерея)</div>
-    </div>
-    <sc-for list="{{ exhibitions }}" as="ex" hint-placeholder-count="3">
-      <div style="border-top:1px solid #d9d5c9;">
-        <div class="exrow {{ ex.rowCls }}" role="button" tabindex="0" onClick="{{ ex.onToggle }}" style="cursor:pointer; padding:clamp(34px,4vw,58px) clamp(20px,4vw,64px);">
-          <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center;">
-            
+  <!-- ===== EXHIBITION ACCORDION ===== -->
+  <section id="gallery" class="exhibit">
+    <div class="hand" style="color:#FAAB06; font-size:clamp(30px,3.4vw,52px); text-align:center; margin:0 0 clamp(30px,4vw,54px);">(Галерея)</div>
+    <div class="exhibit-shell">
+      <sc-for list="{{ exhibitions }}" as="ex" hint-placeholder-count="3">
+        <div class="accordion-item">
+          <div class="exhibit-head {{ ex.rowCls }}" role="button" tabindex="0" onClick="{{ ex.onToggle }}">
             <div>
-              <h2 style="margin:0; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,72px); line-height:0.98; letter-spacing:-0.01em; text-transform:uppercase;">{{ ex.name }}</h2>
-              <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px 22px; font-size:clamp(13px,1vw,15px); color:#6b6459; font-weight:500;"><span>{{ ex.year }}</span><span>{{ ex.ages }}</span><span>{{ ex.count }}</span></div>
+              <h1 class="exhibit-title">{{ ex.name }}</h1>
+              <div class="exhibit-meta"><span>{{ ex.year }}</span><span>·</span><span>{{ ex.ages }}</span><span>·</span><span>{{ ex.count }}</span></div>
             </div>
-            
-            <div style="grid-column:6; justify-self:end;"><span class="exbtn">{{ ex.label }} <span style="display:inline-flex; width:18px; height:18px; transition:transform .3s ease; transform:{{ ex.chevron }};">{{ chevronIcon }}</span></span></div>
+            <span class="exhibit-toggle">{{ ex.label }} <span style="display:inline-flex; width:18px; height:18px; transition:transform .3s ease; transform:{{ ex.chevron }};">{{ chevronIcon }}</span></span>
           </div>
-        </div>
-        <div style="display:grid; grid-template-rows:{{ ex.rows }}; transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1);">
-          <div style="overflow:hidden;">
-            <div style="max-width:1280px; margin:0 auto; padding:clamp(8px,1vw,20px) clamp(20px,4vw,64px) clamp(40px,4vw,64px);">
-              <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:clamp(24px,3vw,48px) clamp(20px,2.4vw,36px); align-items:start;">
-                <sc-for list="{{ ex.works }}" as="w" hint-placeholder-count="4">
-                  <figure class="frame" style="margin:0;">
-                    <div style="overflow:hidden; aspect-ratio:{{ w.ratio }}; background:#e2ded2; border:1px solid #d9d5c9;"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Робота учня"></image-slot></div>
-                    <figcaption style="margin-top:12px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(13px,1vw,15px); color:#6b6459;">{{ w.title }} · {{ w.meta }}</figcaption>
+          <div class="exhibit-panel" style="grid-template-rows:{{ ex.rows }};">
+            <div class="exhibit-panel-inner">
+              <div class="exhibit-grid">
+                <sc-for list="{{ ex.works }}" as="w" hint-placeholder-count="9">
+                  <figure class="exhibit-card frame reveal" style="margin:0;">
+                    <div class="work-image"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Робота учня"></image-slot></div>
+                    <figcaption class="work-caption"><span>{{ w.title }}</span><br><span>{{ w.meta }}</span></figcaption>
                   </figure>
                 </sc-for>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </sc-for>
-    <div style="border-top:1px solid #d9d5c9;"></div>
+      </sc-for>
+    </div>
   </section>
 
   <!-- ===== CTA ===== -->
@@ -152,10 +168,10 @@
   <!-- ===== LIGHTBOX ===== -->
   <div class="lightbox" id="lb" role="dialog" aria-modal="true">
     <button type="button" class="lb-close" aria-label="Закрити">✕</button>
-    <div style="display:flex; flex-direction:column; align-items:center;">
+    <figure>
       <img id="lb-img" alt="">
       <figcaption id="lb-cap"></figcaption>
-    </div>
+    </figure>
   </div>
 </div>
 </x-dc>
@@ -222,25 +238,27 @@ class Component extends DCLogic {
     const lang = this.state.lang;
     const on = 'background:#141310; color:#edebe3;';
     const off = 'background:transparent; color:#8a8479;';
-    const chevronIcon = el('svg',{viewBox:'0 0 24 24', width:'100%', height:'100%', fill:'none', stroke:'#141310', strokeWidth:1.9, strokeLinecap:'round', strokeLinejoin:'round'},[el('path',{key:'p', d:'m6 9 6 6 6-6'})]);
+    const chevronIcon = el('svg',{viewBox:'0 0 24 24', width:'100%', height:'100%', fill:'none', stroke:'currentColor', strokeWidth:1.9, strokeLinecap:'round', strokeLinejoin:'round'},[el('path',{key:'p', d:'m6 9 6 6 6-6'})]);
     const data = [
       { no:'01', name:'Назва виставки', year:'2026', ages:'Учні 7 – 45 років', coverSlot:'gx-cover-1', works: [
-        { slot:'gw-1', title:'Ботанічний етюд', meta:'Марі · акварель', ratio:'4/5' },
-        { slot:'gw-2', title:'Натюрморт', meta:'Лео · олія', ratio:'1/1' },
-        { slot:'gw-3', title:'Портрет', meta:'Аня · вугілля', ratio:'4/5' },
-        { slot:'gw-4', title:'Пейзаж', meta:'Клер · акрил', ratio:'5/4' },
+        { slot:'gw-1', title:'Ботанічний етюд', meta:'Марі · акварель' },
+        { slot:'gw-2', title:'Натюрморт', meta:'Лео · олія' },
+        { slot:'gw-3', title:'Портрет', meta:'Аня · вугілля' },
+        { slot:'gw-4', title:'Пейзаж', meta:'Клер · акрил' },
+        { slot:'gw-5', title:'Ікона', meta:'студія · темпера' },
+        { slot:'gw-6', title:'Композиція', meta:'учень · гуаш' },
       ]},
       { no:'02', name:'Назва виставки', year:'2025', ages:'Учні 4 – 16 років', coverSlot:'gx-cover-2', works: [
-        { slot:'gw-5', title:'Ікона', meta:'студія · темпера', ratio:'4/5' },
-        { slot:'gw-6', title:'Композиція', meta:'учень · гуаш', ratio:'1/1' },
-        { slot:'gw-7', title:'Абстракція', meta:'учениця · акрил', ratio:'4/5' },
-        { slot:'gw-8', title:'Графіка', meta:'учень · туш', ratio:'5/4' },
+        { slot:'gw-7', title:'Абстракція', meta:'учениця · акрил' },
+        { slot:'gw-8', title:'Графіка', meta:'учень · туш' },
+        { slot:'gw-9', title:'Пастель', meta:'учениця · пастель' },
+        { slot:'gw-10', title:'Пейзаж', meta:'учень · олія' },
       ]},
       { no:'03', name:'Назва виставки', year:'2024', ages:'Дорослі', coverSlot:'gx-cover-3', works: [
-        { slot:'gw-9', title:'Пастель', meta:'учениця · пастель', ratio:'4/5' },
-        { slot:'gw-10', title:'Пейзаж', meta:'учень · олія', ratio:'1/1' },
-        { slot:'gw-11', title:'Начерк', meta:'учениця · олівець', ratio:'5/4' },
-        { slot:'gw-12', title:'Етюд', meta:'учень · акварель', ratio:'4/5' },
+        { slot:'gw-11', title:'Начерк', meta:'учениця · олівець' },
+        { slot:'gw-12', title:'Етюд', meta:'учень · акварель' },
+        { slot:'gw-1', title:'Ботанічний етюд', meta:'Марі · акварель' },
+        { slot:'gw-2', title:'Натюрморт', meta:'Лео · олія' },
       ]},
     ];
     const open = this.state.open;

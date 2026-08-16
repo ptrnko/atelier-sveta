@@ -43,27 +43,9 @@
   .srow:hover .scourse-img { opacity:1; transform:scale(1); }
   .sbtn { opacity:0; transform:translateX(8px); transition:opacity .3s ease, transform .3s ease; }
   .srow:hover .sbtn { opacity:1; transform:translateX(0); }
-  .sbtn-pill {
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    border:2px solid #FAAB06;
-    color:#FAAB06;
-    background:transparent;
-    border-radius:999px;
-    padding:18px 46px;
-    font-family:'Archivo',sans-serif;
-    font-weight:700;
-    font-size:clamp(18px,1.45vw,26px);
-    line-height:1;
-    white-space:nowrap;
-    transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease, box-shadow .25s ease;
-  }
   .btn-icon,
   .sbtn-icon {
     display:inline-block;
-    width:1.55em;
-    height:1.55em;
     flex:none;
     background:currentColor;
     -webkit-mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
@@ -71,23 +53,19 @@
     transform:translateY(-1px);
     transition:transform .25s ease;
   }
-  .srow:hover .sbtn-pill {
-    border-color:#FAAB06;
+  .btn-icon {
+    width:1.55em;
+    height:1.55em;
+  }
+  .sbtn-icon {
+    width:4.65em;
+    height:4.65em;
+  }
+  .sbtn {
     color:#FAAB06;
-    background:transparent;
   }
-  .sbtn:hover .sbtn-pill {
-    color:#ffffff;
-    background:#FAAB06;
-    transform:scale(1.04);
-    box-shadow:0 12px 28px rgba(250,171,6,.18);
-  }
-  .sbtn:hover .sbtn-icon {
+  .srow:hover .sbtn-icon {
     transform:translate(5px,-5px);
-  }
-  .sbtn:active .sbtn-pill {
-    transform:scale(.98);
-    transition-duration:.08s;
   }
   @keyframes teacher-reveal { from { opacity:0; transform:translateY(40px) scale(1.06); } to { opacity:1; transform:translateY(0) scale(1); } }
   .teacher-photo { animation:teacher-reveal 1.2s cubic-bezier(.22,.61,.36,1) both; }
@@ -106,7 +84,7 @@
   .btn--out:hover { background:#141310 !important; color:#edebe3 !important; }
   .btn--out:hover .btn-icon { transform:translate(4px,-4px); }
   .btn--light:hover .btn-icon { transform:translate(4px,-4px); }
-  @media (prefers-reduced-motion:reduce){ .btn,.btn-icon,.sbtn,.sbtn-pill,.sbtn-icon { transition:none; } .btn:hover,.sbtn:hover .sbtn-pill { transform:none; } }
+  @media (prefers-reduced-motion:reduce){ .btn,.btn-icon,.sbtn,.sbtn-icon { transition:none; } .btn:hover { transform:none; } }
   .nlink { transition:color .2s ease; }
   .nlink:hover { color:#c0392b; }
   .nlink.is-active { color:#c0392b; }
@@ -463,7 +441,7 @@
             </div>
           </div>
           <div class="scourse-img" style="grid-column:4; width:clamp(200px,20vw,320px); aspect-ratio:695/258; border-radius:999px; overflow:hidden; background:#cfd6dc;"><img src="{{ s.img }}" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
-          <span class="sbtn" style="grid-column:6; display:inline-flex; justify-self:end;"><span class="sbtn-pill">Деталі <span class="sbtn-icon" aria-hidden="true"></span></span></span>
+          <span class="sbtn" style="grid-column:6; display:inline-flex; justify-self:end;" aria-hidden="true"><span class="sbtn-icon"></span></span>
         </div>
       </a>
     </sc-for>
