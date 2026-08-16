@@ -14,16 +14,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=Caveat:wght@500;600;700&amp;display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; }
+  * { box-sizing:border-box; }
+  body { margin:0; }
   ::selection { background:#141310; color:#edebe3; }
   a { color:inherit; text-decoration:none; }
   :focus-visible { outline:3px solid rgba(20,19,16,.35); outline-offset:2px; border-radius:4px; }
   .micro { font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; }
   .wm { font-family:'Archivo',sans-serif; font-weight:900; letter-spacing:-0.03em; line-height:0.86; text-transform:uppercase; }
-  .clink { transition:color .2s; }
-  .clink { transition:color .2s ease; }
-  .clink:hover { color:#c0392b; }
+  .hand { font-family:'Caveat',cursive; line-height:1; }
+  .nlink { transition:color .2s ease; }
+  .nlink:hover, .nlink.is-active { color:#c0392b; }
+  .flink { color:#edebe3; transition:color .2s ease; }
+  .flink:hover { color:#FAAB06; }
   .langtoggle { position:relative; display:inline-flex; align-items:center; border:1px solid #cfcabd; border-radius:40px; padding:3px; }
   .langpill { position:absolute; top:3px; bottom:3px; left:3px; width:calc(50% - 3px); background:#141310; border-radius:40px; transition:transform .35s cubic-bezier(.4,0,.2,1); }
   .langtoggle.is-uk .langpill { transform:translateX(100%); }
@@ -47,13 +49,59 @@
   .btn--ink:hover { background:#2a2620 !important; }
   .btn--light:hover { background:#fff; }
   .btn:hover .btn-icon { transform:translate(4px,-4px); }
-  @media (prefers-reduced-motion:reduce){ .btn,.btn-icon { transition:none; } .btn:hover { transform:none; } }
-  .nlink { transition:color .2s ease; }
-  .nlink:hover { color:#c0392b; }
-  .flink { color:#edebe3; transition:color .2s ease; }
-  .flink:hover { color:#FAAB06; }
   body .menu-toggle,
   .mobile-nav-lang { display:none; }
+
+  .events-page { background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .events-section { padding:clamp(58px,7vw,104px) clamp(20px,4vw,54px) clamp(72px,8vw,120px); }
+  .events-title { color:#FAAB06; font-size:clamp(34px,3.7vw,58px); text-align:center; margin:0 0 clamp(34px,4.4vw,62px); }
+  .events-shell { max-width:1440px; margin:0 auto; border:1px solid #c8c3b6; border-bottom:none; background:#edebe3; }
+  .events-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .event-card {
+    position:relative;
+    margin:0;
+    min-width:0;
+    padding:clamp(22px,2.2vw,36px);
+    border-right:1px solid #c8c3b6;
+    border-bottom:1px solid #c8c3b6;
+  }
+  .event-card:nth-child(3n) { border-right:none; }
+  .event-card::before,
+  .event-card::after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    width:30px;
+    height:30px;
+    background:url('./assets/gallery-cross.svg') center/contain no-repeat;
+    z-index:2;
+    pointer-events:none;
+  }
+  .event-card::before { left:0; transform:translate(-50%,50%); }
+  .event-card::after { right:0; transform:translate(50%,50%); }
+  .event-frame {
+    display:block;
+    width:100%;
+    background:#ded9cc;
+    overflow:hidden;
+    cursor:zoom-in;
+    transition:transform .28s cubic-bezier(.34,1.3,.5,1), filter .28s ease;
+  }
+  .event-frame:hover { transform:translateY(-4px); filter:saturate(1.04); }
+  .event-frame img { display:block; width:100%; height:100%; object-fit:cover; }
+  .event-frame.is-poster { aspect-ratio:4/5.7; }
+  .event-frame.is-square { aspect-ratio:1/1; }
+  .event-frame.is-wide { aspect-ratio:4/5.3; }
+  .reveal { opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); }
+  .reveal.is-in { opacity:1; transform:none; }
+  .lightbox { position:fixed; inset:0; z-index:99; display:none; align-items:center; justify-content:center; padding:clamp(16px,3vw,44px); background:rgba(20,19,16,.92); opacity:0; transition:opacity .3s ease; }
+  .lightbox.is-open { display:flex; opacity:1; }
+  .lightbox img { display:block; width:auto; max-width:94vw; max-height:calc(100vh - clamp(32px,6vw,88px)); box-shadow:0 30px 80px rgba(0,0,0,.5); background:#141310; object-fit:contain; }
+  .lb-close { position:absolute; top:24px; right:28px; width:48px; height:48px; border-radius:50%; border:1px solid #6b6459; background:transparent; color:#edebe3; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .lb-close:hover { background:#edebe3; color:#141310; }
+  .contact-section { background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px); }
+  .contact-title { margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3; }
+
   @media (max-width:920px) {
     .site-header {
       position:relative;
@@ -95,10 +143,7 @@
     .menu-toggle-line::after { position:absolute; left:0; }
     .menu-toggle-line::before { top:-6px; }
     .menu-toggle-line::after { top:6px; }
-    .site-header.is-menu-open .menu-toggle {
-      background:#141310;
-      color:#edebe3;
-    }
+    .site-header.is-menu-open .menu-toggle { background:#141310; color:#edebe3; }
     .site-header.is-menu-open .menu-toggle-line { background:transparent; }
     .site-header.is-menu-open .menu-toggle-line::before { transform:translateY(6px) rotate(45deg); }
     .site-header.is-menu-open .menu-toggle-line::after { transform:translateY(-6px) rotate(-45deg); }
@@ -125,12 +170,7 @@
       transition:opacity .24s ease, visibility .24s ease, transform .24s ease;
       white-space:normal;
     }
-    .site-header.is-menu-open .main-nav {
-      opacity:1;
-      visibility:visible;
-      transform:translateY(0);
-      pointer-events:auto;
-    }
+    .site-header.is-menu-open .main-nav { opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
     .main-nav .nlink {
       display:flex;
       align-items:center;
@@ -142,11 +182,7 @@
       transition:opacity .22s ease, transform .22s ease;
     }
     .main-nav .nlink:hover,
-    .main-nav .nlink.is-active {
-      opacity:1;
-      color:#edebe3;
-      transform:translateX(4px);
-    }
+    .main-nav .nlink.is-active { opacity:1; color:#edebe3; transform:translateX(4px); }
     .main-nav .mobile-nav-lang {
       display:flex;
       justify-content:space-between;
@@ -156,11 +192,7 @@
       padding-top:22px;
       border-top:1px solid rgba(237,235,227,.16);
     }
-    .mobile-nav-lang-label {
-      color:rgba(237,235,227,.42);
-      font-size:11px;
-      letter-spacing:0.16em;
-    }
+    .mobile-nav-lang-label { color:rgba(237,235,227,.42); font-size:11px; letter-spacing:0.16em; }
     .main-nav .langtoggle { border-color:rgba(237,235,227,.28); }
     .main-nav .langpill { background:#edebe3; }
     .main-nav .langtoggle.is-fr .langbtn:first-of-type,
@@ -177,16 +209,8 @@
       background:transparent;
       color:#edebe3;
     }
-    .header-actions {
-      width:100%;
-      justify-content:space-between !important;
-      gap:8px !important;
-    }
-    .langbtn {
-      min-width:38px;
-      padding:8px 10px;
-      font-size:10px;
-    }
+    .header-actions { width:100%; justify-content:space-between !important; gap:8px !important; }
+    .langbtn { min-width:38px; padding:8px 10px; font-size:10px; }
     .header-cta {
       flex:1;
       justify-content:center;
@@ -198,53 +222,13 @@
       white-space:nowrap;
     }
     .header-cta .btn-icon { width:1.35em; height:1.35em; }
-  }
-  .contact-details {
-    padding:75px clamp(20px,4vw,64px) clamp(60px,7vw,120px);
-    display:grid;
-    grid-template-columns:0.85fr 1.15fr;
-    gap:clamp(30px,4vw,72px);
-    align-items:stretch;
-  }
-  .contact-map {
-    position:relative;
-    min-height:clamp(360px,42vw,620px);
-    overflow:hidden;
-    background:#dfe6dd;
-  }
-  .contact-section {
-    background:#141310;
-    color:#edebe3;
-    padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);
-  }
-  .contact-title {
-    margin:0;
-    font-size:clamp(40px,8vw,140px);
-    color:#edebe3;
-  }
-  @media (max-width:760px) {
-    .contact-details {
-      grid-template-columns:1fr;
-      padding-top:0;
-    }
-    .contact-map {
-      order:-1;
-      min-height:clamp(300px,82vw,420px);
-    }
-    .contact-socials {
-      flex-direction:column;
-      align-items:flex-start;
-      gap:0 !important;
-    }
-    .contact-socials .clink {
-      display:block;
-      width:100%;
-      padding:10px 0;
-      font-size:32px;
-      line-height:1.1;
-      letter-spacing:0;
-      text-transform:none;
-    }
+    .events-section { padding:58px 0 84px; }
+    .events-title { font-size:42px; margin-bottom:34px; }
+    .events-shell { border-left:none; border-right:none; }
+    .events-grid { grid-template-columns:1fr; }
+    .event-card, .event-card:nth-child(3n) { border-right:none; padding:24px 18px 34px; }
+    .event-card::after { left:50%; right:auto; transform:translate(-50%,50%); }
+    .event-frame:hover { transform:none; filter:none; }
     .contact-section { padding:72px 16px !important; }
     .contact-section > .micro:first-child {
       font-family:'Caveat',cursive !important;
@@ -261,28 +245,25 @@
       line-height:.94 !important;
       letter-spacing:0 !important;
     }
-    .contact-layout {
-      flex-direction:column;
-      gap:28px !important;
-    }
-    .contact-layout .btn {
-      align-self:stretch !important;
-      justify-content:center;
-      padding:15px 24px !important;
-    }
+    .contact-layout { flex-direction:column; gap:28px !important; }
+    .contact-layout .btn { align-self:stretch !important; justify-content:center; padding:15px 24px !important; }
   }
+  @media (max-width:900px) and (min-width:621px) {
+    .events-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .event-card:nth-child(3n) { border-right:1px solid #c8c3b6; }
+    .event-card:nth-child(2n) { border-right:none; }
+  }
+  @media (prefers-reduced-motion:reduce){ .btn,.btn-icon,.reveal { transition:none; } .btn:hover,.event-frame:hover { transform:none; } .reveal { opacity:1; transform:none; } }
 </style>
 </helmet>
-<div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100svh; display:flex; flex-direction:column;">
-
-  <!-- ===== TOP BAR ===== -->
+<div class="events-page">
   <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
       <a href="./home.html" class="nlink">Головна</a>
       <a href="./home.html#services" class="nlink">Курси</a>
-      <a href="./events.html" class="nlink">Події</a>
+      <a href="./events.html" class="nlink is-active">Події</a>
       <a href="./gallery.html" class="nlink">Галерея</a>
-      <a href="#contact" class="nlink is-active" style="color:#c0392b;">Контакти</a>
+      <a href="./contacts.html" class="nlink">Контакти</a>
       <div class="mobile-nav-lang">
         <span class="mobile-nav-lang-label">Мова</span>
         <div class="langtoggle {{ langCls }}">
@@ -305,57 +286,64 @@
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section id="contact" style="text-align:center; padding: clamp(50px,6vw,90px) clamp(20px,4vw,64px) 75px;">
-    <div style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(28px,2.6vw,44px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Контакти)</div>
-    <h1 class="wm" style="margin: 0; line-height: 1.02; font-size: clamp(44px,9vw,100px)">Завітайте <br>до майстерні</h1>
-    <p style="margin: clamp(20px,2.2vw,32px) auto 0; max-width: 60ch; font-family: 'Archivo',sans-serif; font-size: clamp(16px,1.3vw,20px); line-height: 1.55; color: #6b6459;">Ганж, історичний центр Окситанії. Заходьте на пробний урок, каву та розмову про мистецтво — або напишіть нам зручним способом.</p>
-  </section>
-
-  <!-- ===== DETAILS + MAP ===== -->
-  <section class="contact-details">
-    <div style="display:flex; flex-direction:column; gap:clamp(24px,2.6vw,38px);">
-      <sc-for list="{{ items }}" as="c" hint-placeholder-count="4">
-        <div style="border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px);">
-          <div style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(20px,1.8vw,28px); line-height:1; margin-bottom:10px;">{{ c.label }}</div>
-          <sc-for list="{{ c.lines }}" as="ln" hint-placeholder-count="2">
-            <a href="{{ ln.href }}" class="clink" style="display:block; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(18px,1.7vw,26px); line-height:1.3;">{{ ln.text }}</a>
-          </sc-for>
+  <main>
+    <section id="events" class="events-section">
+      <h1 class="events-title hand">(Події)</h1>
+      <div class="events-shell">
+        <div class="events-grid">
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-01.png" aria-label="Відкрити афішу вернісажу">
+              <img src="./assets/event-vernissage-01.png" alt="Афіша вернісажу Atelier Sveta">
+            </button>
+          </figure>
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-prices-2025.png" aria-label="Відкрити афішу тарифів 2025-2026">
+              <img src="./assets/event-prices-2025.png" alt="Афіша тарифів курсів 2025-2026">
+            </button>
+          </figure>
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-2025.png" aria-label="Відкрити афішу виставки 2025">
+              <img src="./assets/event-vernissage-2025.png" alt="Афіша виставки Atelier Sveta 2025">
+            </button>
+          </figure>
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-cours-arts.png" aria-label="Відкрити афішу курсів arts plastiques">
+              <img src="./assets/event-cours-arts.png" alt="Афіша курсів arts plastiques">
+            </button>
+          </figure>
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-atelier-arts.png" aria-label="Відкрити афішу atelier arts plastiques">
+              <img src="./assets/event-atelier-arts.png" alt="Афіша atelier arts plastiques">
+            </button>
+          </figure>
         </div>
-      </sc-for>
-      <div style="border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px); display:flex; gap:22px; flex-wrap:wrap;" class="contact-socials micro">
-        <a href="https://www.instagram.com/atelier.sveta.causse/" class="clink">Instagram ↗</a>
-        <a href="#" class="clink">Facebook ↗</a>
-        <a href="https://wa.me/33768614190" class="clink">WhatsApp ↗</a>
       </div>
-    </div>
+    </section>
 
-    <!-- map -->
-    <div class="contact-map">
-      <iframe title="Atelier Sveta на карті" src="https://www.google.com/maps?q=24%20Rue%20Jeu%20de%20Ballon,%2034190%20Ganges,%20France&amp;z=16&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT CTA ===== -->
-  <section id="form" class="contact-section" style="margin-top:auto;">
-    <div class="micro" style="color:#FAAB06; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
-    <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
-    <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
-      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
-      <div class="micro" style="line-height:2; color:#FAAB06;">
-        <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
-        <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
-        <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" style="display:block;">Instagram ↗</a>
+    <section id="contact" class="contact-section">
+      <div class="micro" style="color:#FAAB06; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
+      <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
+      <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
+        <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
+        <div class="micro" style="line-height:2; color:#FAAB06;">
+          <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
+          <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
+          <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" style="display:block;">Instagram ↗</a>
+        </div>
+        <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
       </div>
-      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ===== FOOTER ===== -->
   <footer style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px clamp(20px,4vw,64px);" class="micro">
     <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
     <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="nlink" style="width:100%; max-width:720px; padding-top:10px; border-top:1px solid #d9d5c9; color:#6b6459;">Website by Petrenko Design</a>
   </footer>
+
+  <div class="lightbox" id="event-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button type="button" class="lb-close" aria-label="Закрити">✕</button>
+    <img id="event-lightbox-img" alt="">
+  </div>
 </div>
 </x-dc>
 <div class="trial-modal" id="trial-modal" aria-hidden="true">
@@ -391,47 +379,56 @@ class Component extends DCLogic {
       this._menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       this._menuToggle.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
     };
-    this._onMenuToggle = () => {
-      const open = !this._siteHeader?.classList.contains('is-menu-open');
-      this._setMenu(open);
-    };
-    this._onNavClick = (e) => {
-      if (e.target.closest('.nlink')) this._setMenu(false);
-    };
-    this._onMenuKey = (e) => {
-      if (e.key === 'Escape') this._setMenu(false);
-    };
+    this._onMenuToggle = () => this._setMenu(!this._siteHeader?.classList.contains('is-menu-open'));
+    this._onNavClick = (e) => { if (e.target.closest('.nlink')) this._setMenu(false); };
+    this._onMenuKey = (e) => { if (e.key === 'Escape') this._setMenu(false); };
     this._menuToggle?.addEventListener('click', this._onMenuToggle);
     this._mainNav?.addEventListener('click', this._onNavClick);
     window.addEventListener('keydown', this._onMenuKey);
+
+    const lb = document.getElementById('event-lightbox');
+    const lbImg = document.getElementById('event-lightbox-img');
+    this._closeLb = () => {
+      if (!lb) return;
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+    };
+    if (lb && lbImg) {
+      document.querySelectorAll('.event-frame').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          lbImg.src = btn.getAttribute('data-full') || btn.querySelector('img')?.src || '';
+          lbImg.alt = btn.querySelector('img')?.alt || '';
+          lb.classList.add('is-open');
+          lb.setAttribute('aria-hidden', 'false');
+        });
+      });
+      lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-close')) this._closeLb(); });
+      document.addEventListener('keydown', this._esc = (e) => { if (e.key === 'Escape') this._closeLb(); });
+    }
+
+    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); this._io.unobserve(en.target); } });
+      }, { threshold:0.12 });
+      document.querySelectorAll('.reveal').forEach((n) => this._io.observe(n));
+    } else {
+      document.querySelectorAll('.reveal').forEach((n) => n.classList.add('is-in'));
+    }
   }
   componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._esc) document.removeEventListener('keydown', this._esc);
     this._menuToggle?.removeEventListener('click', this._onMenuToggle);
     this._mainNav?.removeEventListener('click', this._onNavClick);
     if (this._onMenuKey) window.removeEventListener('keydown', this._onMenuKey);
   }
-  state = { lang: 'UK' };
+  state = { lang:'UK' };
   renderVals() {
-    const el = React.createElement;
     const lang = this.state.lang;
-    const on = { background:'#141310', color:'#edebe3' };
-    const off = { background:'transparent', color:'#6b6459' };
-    const toStyle = (o) => Object.entries(o).map(([k,v])=>k.replace(/[A-Z]/g,m=>'-'+m.toLowerCase())+':'+v).join(';');
-    const st = (paths, extra={}) => el('svg', Object.assign({viewBox:'0 0 24 24', fill:'none', stroke:'currentColor', strokeWidth:1.9, strokeLinecap:'round', strokeLinejoin:'round', width:'100%', height:'100%'}, extra), paths);
     return {
       setUk: () => this.setState({ lang:'UK' }),
       setFr: () => this.setState({ lang:'FR' }),
-      langCls: lang==='UK'?'is-uk':'is-fr',
-      items: [
-        { label:'Адреса', icon: st([el('path',{key:1,d:'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z'}), el('circle',{key:2,cx:12,cy:10,r:3})]),
-          lines:[{text:'24 Rue Jeu de Ballon', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}, {text:'34190 Ganges, Франція', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}] },
-        { label:'Телефон', icon: st([el('path',{key:1,d:'M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z'})]),
-          lines:[{text:'+33 7 68 61 41 90', href:'tel:+33768614190'}] },
-        { label:'Пошта', icon: st([el('rect',{key:1,x:2,y:4,width:20,height:16,rx:2}), el('path',{key:2,d:'m2 6 10 7 10-7'})]),
-          lines:[{text:'sveta.s83ss@gmail.com', href:'mailto:sveta.s83ss@gmail.com'}] },
-        { label:'Години', icon: st([el('circle',{key:1,cx:12,cy:12,r:9}), el('path',{key:2,d:'M12 7v5l3 2'})]),
-          lines:[{text:'Пн–Пт · 10:00–19:00', href:'#'}, {text:'Сб–Нд · 12:00–16:00', href:'#'}] },
-      ],
+      langCls: lang === 'UK' ? 'is-uk' : 'is-fr',
     };
   }
 }
