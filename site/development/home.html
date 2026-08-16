@@ -144,7 +144,7 @@
     position:relative;
     width:min(720px,100%);
     max-height:min(760px,calc(100vh - 36px));
-    overflow:auto;
+    overflow:visible;
     border:2px solid #141310;
     border-radius:34px;
     background:#edebe3;
@@ -316,6 +316,7 @@
     padding:18px clamp(24px,6vw,72px) clamp(24px,3vw,34px);
     background:#edebe3;
     border-top:1px solid #d9d5c9;
+    border-radius:0 0 34px 34px;
   }
   .trial-submit,
   .trial-cancel {
@@ -323,7 +324,7 @@
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    height:64px;
+    height:50px;
     box-sizing:border-box;
     padding:0 28px;
     font:600 clamp(14px,1.05vw,17px)/1 'Archivo',sans-serif;
@@ -333,7 +334,7 @@
   .trial-submit {
     gap:8px;
     border:1px solid #FAAB06;
-    border-radius:999px;
+    border-radius:40px;
     background:#FAAB06;
     color:#fff;
     transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .2s ease;
@@ -343,7 +344,7 @@
   .trial-submit:disabled { cursor:wait; opacity:.72; transform:none; }
   .trial-cancel {
     border:1px solid #141310;
-    border-radius:999px;
+    border-radius:40px;
     background:transparent;
     color:#141310;
     transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease;
@@ -354,12 +355,6 @@
     transform:scale(1.04);
   }
   .trial-cancel:active { transform:scale(.98); transition-duration:.08s; }
-  .trial-note {
-    color:#6b6459;
-    font-size:13px;
-    line-height:1.45;
-  }
-  .trial-note:empty { display:none; }
   @media (max-width:640px) {
     .trial-dialog, .success-dialog { border-radius:26px; }
     .trial-close, .success-close { top:14px; right:14px; width:40px; height:40px; }
@@ -371,7 +366,7 @@
     .success-return { width:100%; }
     .trial-form { padding:64px 24px 30px; }
     .trial-actions, .trial-submit, .trial-cancel { width:100%; }
-    .trial-actions { bottom:-30px; margin:6px -24px -30px; padding:16px 24px 24px; }
+    .trial-actions { bottom:-30px; margin:6px -24px -30px; padding:16px 24px 24px; border-radius:0 0 26px 26px; }
     .trial-submit, .trial-cancel { justify-content:center; }
   }
 </style>
@@ -558,7 +553,6 @@
         <textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea>
       </label>
 
-      <div class="trial-note" data-trial-note></div>
       <div class="trial-actions">
         <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
         <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
@@ -719,7 +713,6 @@ class Component extends DCLogic {
   (() => {
     const modal = document.getElementById('trial-modal');
     const form = document.getElementById('trial-form');
-    const note = modal?.querySelector('[data-trial-note]');
     const submit = modal?.querySelector('.trial-submit');
     let lastFocus = null;
     let successModal = document.getElementById('success-modal');
@@ -807,7 +800,6 @@ class Component extends DCLogic {
       const endpoint = form.dataset.endpoint || form.action;
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
-      if (note) note.textContent = 'Відправляємо заявку...';
       if (submit) submit.disabled = true;
 
       fetch(endpoint, {
@@ -824,9 +816,7 @@ class Component extends DCLogic {
           closeModal({ restoreFocus: false });
           openSuccess();
         })
-        .catch(() => {
-          if (note) note.textContent = 'Не вдалося відправити форму. Напишіть нам напряму: Petrenkoag95@gmail.com';
-        })
+        .catch(() => {})
         .finally(() => {
           if (submit) submit.disabled = false;
         });

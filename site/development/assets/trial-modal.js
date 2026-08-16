@@ -1,7 +1,6 @@
 (() => {
   const modal = document.getElementById("trial-modal");
   const form = document.getElementById("trial-form");
-  const note = modal?.querySelector("[data-trial-note]");
   const submit = modal?.querySelector(".trial-submit");
   let lastFocus = null;
   let successModal = document.getElementById("success-modal");
@@ -89,7 +88,6 @@
     const endpoint = form.dataset.endpoint || form.action;
     const formData = new FormData(form);
     const payload = Object.fromEntries(formData.entries());
-    if (note) note.textContent = "Відправляємо заявку...";
     if (submit) submit.disabled = true;
 
     fetch(endpoint, {
@@ -106,11 +104,7 @@
         closeModal({ restoreFocus: false });
         openSuccess();
       })
-      .catch(() => {
-        if (note) {
-          note.textContent = "Не вдалося відправити форму. Напишіть нам напряму: Petrenkoag95@gmail.com";
-        }
-      })
+      .catch(() => {})
       .finally(() => {
         if (submit) submit.disabled = false;
       });
