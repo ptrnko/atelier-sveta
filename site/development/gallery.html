@@ -79,8 +79,8 @@
   .exhibit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
   .exhibit-card { position:relative; min-width:0; padding:clamp(28px,3vw,44px) clamp(28px,3.4vw,50px) clamp(38px,4vw,58px); border-right:1px solid #c8c3b6; border-bottom:1px solid #c8c3b6; }
   .exhibit-card:nth-child(3n) { border-right:none; }
-  .exhibit-card::before { content:""; position:absolute; left:0; bottom:0; width:30px; height:30px; background:url('./assets/gallery-cross.svg') center/contain no-repeat; transform:translate(-50%,50%); z-index:2; pointer-events:none; }
-  .exhibit-card::after { content:""; position:absolute; right:0; bottom:0; width:30px; height:30px; background:url('./assets/gallery-cross.svg') center/contain no-repeat; transform:translate(50%,50%); z-index:2; pointer-events:none; }
+  .exhibit-card::before { content:""; position:absolute; left:0; bottom:0; width:15px; height:15px; background:#141310; -webkit-mask:url('./assets/gallery-cross.svg') center/contain no-repeat; mask:url('./assets/gallery-cross.svg') center/contain no-repeat; transform:translate(-50%,50%); z-index:2; pointer-events:none; }
+  .exhibit-card::after { content:""; position:absolute; right:0; bottom:0; width:15px; height:15px; background:#141310; -webkit-mask:url('./assets/gallery-cross.svg') center/contain no-repeat; mask:url('./assets/gallery-cross.svg') center/contain no-repeat; transform:translate(50%,50%); z-index:2; pointer-events:none; }
   .exhibit-card:nth-child(3n)::after { right:0; }
   .work-image { aspect-ratio:1/1.16; background:#e2ded2; overflow:hidden; }
   .work-caption { margin:18px auto 0; width:max-content; max-width:100%; color:#c0392b; font-family:'Caveat',cursive; font-weight:600; font-size:clamp(18px,1.5vw,24px); line-height:1.05; text-align:center; transform:rotate(-2deg); }
@@ -359,7 +359,7 @@
 
   <!-- ===== CONTACT CTA ===== -->
   <section id="contact" class="contact-section">
-    <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(44px,4.2vw,72px); line-height:1; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
+    <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
     <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
     <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
       <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
