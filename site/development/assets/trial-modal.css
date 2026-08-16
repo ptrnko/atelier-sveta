@@ -34,7 +34,7 @@
   position: relative;
   width: min(720px, 100%);
   max-height: min(760px, calc(100vh - 36px));
-  overflow: visible;
+  overflow: hidden;
   border: 2px solid #141310;
   border-radius: 34px;
   background: #edebe3;
@@ -159,7 +159,7 @@
   display: grid;
   gap: 18px;
   max-height: min(760px, calc(100vh - 36px));
-  overflow: visible;
+  overflow: auto;
   padding: clamp(54px, 6vw, 78px) clamp(24px, 6vw, 72px) clamp(42px, 5vw, 64px);
   font-family: "Archivo", sans-serif;
 }
@@ -222,8 +222,7 @@
 }
 
 .trial-actions {
-  position: sticky;
-  bottom: clamp(-64px, -5vw, -42px);
+  position: static;
   z-index: 2;
   display: flex;
   flex-direction: row-reverse;
@@ -231,7 +230,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 12px;
-  margin: 6px clamp(-72px, -6vw, -24px) clamp(-64px, -5vw, -42px);
+  margin: 6px clamp(-72px, -6vw, -24px) clamp(-42px, -5vw, -24px);
   padding: 18px clamp(24px, 6vw, 72px) clamp(24px, 3vw, 34px);
   background: #edebe3;
   border-top: 1px solid #d9d5c9;
@@ -335,7 +334,7 @@
   }
 
   .trial-form {
-    padding: 64px 24px 30px;
+    padding: 64px 24px 0;
   }
 
   .trial-actions,
@@ -345,8 +344,8 @@
   }
 
   .trial-actions {
-    bottom: -30px;
-    margin: 6px -24px -30px;
+    position: static;
+    margin: 6px -24px 0;
     padding: 16px 24px 24px;
     border-radius: 0 0 26px 26px;
   }

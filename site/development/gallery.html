@@ -26,6 +26,8 @@
   .nlink { transition:color .2s ease; }
   .nlink:hover { color:#c0392b; }
   .nlink.is-active { color:#c0392b; }
+  .flink { color:#edebe3; transition:color .2s ease; }
+  .flink:hover { color:#FAAB06; }
   .langtoggle { position:relative; display:inline-flex; align-items:center; border:1px solid #cfcabd; border-radius:40px; padding:3px; }
   .langpill { position:absolute; top:3px; bottom:3px; left:3px; width:calc(50% - 3px); background:#141310; border-radius:40px; transition:transform .35s cubic-bezier(.4,0,.2,1); }
   .langtoggle.is-uk .langpill { transform:translateX(100%); }
@@ -49,6 +51,8 @@
   .btn--ink:hover { background:#2a2620 !important; }
   .btn--light:hover { background:#fff; }
   .btn:hover .btn-icon { transform:translate(4px,-4px); }
+  body .menu-toggle,
+  .mobile-nav-lang { display:none; }
   .frame { position:relative; cursor:zoom-in; transition:transform .3s cubic-bezier(.34,1.3,.5,1); }
   .frame:hover { transform:translateY(-4px); }
   .exhibit { padding:clamp(32px,4vw,54px) clamp(20px,4vw,54px) clamp(70px,7vw,112px); }
@@ -67,6 +71,7 @@
   .exhibit-toggle svg { width:18px; height:18px; stroke:currentColor; }
   .exhibit-panel { display:grid; transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1); }
   .exhibit-panel-inner { overflow:hidden; }
+  .exhibit-head.is-open + .exhibit-panel .exhibit-panel-inner { overflow:visible; }
   .exhibit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
   .exhibit-card { position:relative; min-width:0; padding:clamp(28px,3vw,44px) clamp(28px,3.4vw,50px) clamp(38px,4vw,58px); border-right:1px solid #c8c3b6; border-bottom:1px solid #c8c3b6; }
   .exhibit-card:nth-child(3n) { border-right:none; }
@@ -84,6 +89,186 @@
   .lightbox figcaption { margin-top:clamp(18px,2vw,28px); font-family:'Caveat',cursive; color:#FAAB06; font-weight:600; font-size:clamp(28px,4.2vw,56px); line-height:1.02; text-align:center; }
   .lb-close { position:absolute; top:24px; right:28px; width:48px; height:48px; border-radius:50%; border:1px solid #6b6459; background:transparent; color:#edebe3; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .lb-close:hover { background:#edebe3; color:#141310; }
+  .contact-section {
+    background:#141310;
+    color:#edebe3;
+    padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);
+  }
+  .contact-title {
+    margin:0;
+    font-size:clamp(40px,8vw,140px);
+    color:#edebe3;
+  }
+  @media (max-width:920px) {
+    .site-header {
+      position:relative;
+      flex-wrap:wrap;
+      align-items:center !important;
+      gap:10px !important;
+      padding:14px !important;
+      overflow:visible;
+      z-index:50;
+    }
+    .site-header .menu-toggle {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:54px;
+      height:44px;
+      flex:0 0 54px;
+      border:1px solid #cfcabd;
+      border-radius:999px;
+      background:transparent;
+      color:#141310;
+      cursor:pointer;
+      transition:background-color .25s ease, color .25s ease, transform .2s ease;
+    }
+    .menu-toggle:active { transform:scale(.96); }
+    .menu-toggle-line,
+    .menu-toggle-line::before,
+    .menu-toggle-line::after {
+      content:"";
+      display:block;
+      width:19px;
+      height:2px;
+      border-radius:2px;
+      background:currentColor;
+      transition:transform .25s ease, opacity .2s ease;
+    }
+    .menu-toggle-line { position:relative; }
+    .menu-toggle-line::before,
+    .menu-toggle-line::after { position:absolute; left:0; }
+    .menu-toggle-line::before { top:-6px; }
+    .menu-toggle-line::after { top:6px; }
+    .site-header.is-menu-open .menu-toggle {
+      background:#141310;
+      color:#edebe3;
+    }
+    .site-header.is-menu-open .menu-toggle-line { background:transparent; }
+    .site-header.is-menu-open .menu-toggle-line::before { transform:translateY(6px) rotate(45deg); }
+    .site-header.is-menu-open .menu-toggle-line::after { transform:translateY(-6px) rotate(-45deg); }
+    .desktop-lang { display:none !important; }
+    .main-nav {
+      position:fixed;
+      inset:0;
+      z-index:1200;
+      display:flex !important;
+      flex-direction:column;
+      justify-content:flex-end;
+      width:100%;
+      min-height:100svh;
+      gap:0 !important;
+      overflow:hidden;
+      padding:clamp(86px,18vw,118px) 24px clamp(34px,9vw,52px);
+      border:none;
+      background:rgba(8,8,7,.96);
+      box-shadow:none;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      pointer-events:none;
+      transition:opacity .24s ease, visibility .24s ease, transform .24s ease;
+      white-space:normal;
+    }
+    .site-header.is-menu-open .main-nav {
+      opacity:1;
+      visibility:visible;
+      transform:translateY(0);
+      pointer-events:auto;
+    }
+    .main-nav .nlink {
+      display:flex;
+      align-items:center;
+      color:#edebe3;
+      font:800 clamp(52px,15vw,86px)/0.98 'Archivo',sans-serif;
+      letter-spacing:0;
+      text-transform:none;
+      opacity:.36;
+      transition:opacity .22s ease, transform .22s ease;
+    }
+    .main-nav .nlink:hover,
+    .main-nav .nlink.is-active {
+      opacity:1;
+      color:#edebe3;
+      transform:translateX(4px);
+    }
+    .main-nav .mobile-nav-lang {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      margin-top:clamp(34px,9vw,52px);
+      padding-top:22px;
+      border-top:1px solid rgba(237,235,227,.16);
+    }
+    .mobile-nav-lang-label {
+      color:rgba(237,235,227,.42);
+      font-size:11px;
+      letter-spacing:0.16em;
+    }
+    .main-nav .langtoggle { border-color:rgba(237,235,227,.28); }
+    .main-nav .langpill { background:#edebe3; }
+    .main-nav .langtoggle.is-fr .langbtn:first-of-type,
+    .main-nav .langtoggle.is-uk .langbtn:last-of-type { color:#141310; }
+    .main-nav .langbtn { color:rgba(237,235,227,.52); }
+    .site-header.is-menu-open .menu-toggle {
+      position:fixed;
+      top:28px;
+      right:28px;
+      z-index:1300;
+      width:54px;
+      height:54px;
+      border-color:transparent;
+      background:transparent;
+      color:#edebe3;
+    }
+    .header-actions {
+      width:100%;
+      justify-content:space-between !important;
+      gap:8px !important;
+    }
+    .langbtn {
+      min-width:38px;
+      padding:8px 10px;
+      font-size:10px;
+    }
+    .header-cta {
+      flex:1;
+      justify-content:center;
+      min-width:0;
+      height:44px;
+      padding:0 14px !important;
+      font-size:10px;
+      letter-spacing:0.14em;
+      white-space:nowrap;
+    }
+    .header-cta .btn-icon { width:1.35em; height:1.35em; }
+    .contact-section { padding:72px 16px !important; }
+    .contact-section > .micro:first-child {
+      font-family:'Caveat',cursive !important;
+      color:#FAAB06 !important;
+      font-size:clamp(28px,8vw,42px) !important;
+      font-weight:600 !important;
+      letter-spacing:0 !important;
+      line-height:1 !important;
+      text-transform:none !important;
+    }
+    .contact-title {
+      max-width:100% !important;
+      font-size:clamp(34px,11vw,54px) !important;
+      line-height:.94 !important;
+      letter-spacing:0 !important;
+    }
+    .contact-layout {
+      flex-direction:column;
+      gap:28px !important;
+    }
+    .contact-layout .btn {
+      align-self:stretch !important;
+      justify-content:center;
+      padding:15px 24px !important;
+    }
+  }
   @media (max-width:900px) {
     .exhibit-head { grid-template-columns:1fr; }
     .exhibit-toggle { justify-self:start; }
@@ -104,21 +289,32 @@
 <div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
 
   <!-- ===== HEADER ===== -->
-  <header style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
-    <nav style="display:flex; gap:clamp(16px,2vw,34px);" class="micro">
+  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+    <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
       <a href="./home.html" class="nlink">Головна</a>
       <a href="./home.html#services" class="nlink">Курси</a>
       <a href="./home.html#studio" class="nlink">Події</a>
       <a href="#gallery" class="nlink is-active">Галерея</a>
       <a href="./contacts.html" class="nlink">Контакти</a>
+      <div class="mobile-nav-lang">
+        <span class="mobile-nav-lang-label">Мова</span>
+        <div class="langtoggle {{ langCls }}">
+          <span class="langpill" aria-hidden="true"></span>
+          <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
+          <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+        </div>
+      </div>
     </nav>
-    <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="micro">
-      <div class="langtoggle {{ langCls }}">
+    <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="header-actions micro">
+      <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle-line" aria-hidden="true"></span>
+      </button>
+      <div class="desktop-lang langtoggle {{ langCls }}">
         <span class="langpill" aria-hidden="true"></span>
         <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
         <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
       </div>
-      <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./home.html#services" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
@@ -152,17 +348,25 @@
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section style="background:#141310; color:#edebe3; padding:clamp(60px,8vw,120px) clamp(20px,4vw,64px); text-align:center;">
-    <div class="hand" style="color:#FAAB06; font-size:clamp(24px,2.2vw,36px); margin-bottom:clamp(16px,1.6vw,24px);">(Ваша перша робота)</div>
-    <h2 class="wm" style="margin:0 auto; max-width:16ch; font-size:clamp(32px,5vw,80px);">Створіть її разом з нами</h2>
-    <a href="#trial-form" class="btn btn--light js-open-trial" style="display:inline-flex; align-items:center; gap:8px; margin-top:clamp(28px,3vw,44px); background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+  <!-- ===== CONTACT CTA ===== -->
+  <section id="contact" class="contact-section">
+    <div class="micro" style="color:#FAAB06; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
+    <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
+    <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
+      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
+      <div class="micro" style="line-height:2; color:#FAAB06;">
+        <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
+        <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
+        <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" style="display:block;">Instagram ↗</a>
+      </div>
+      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:clamp(24px,2.6vw,36px) clamp(20px,4vw,64px);" class="micro">
+  <footer style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px; padding:clamp(36px,4vw,54px) clamp(20px,4vw,64px);" class="micro">
     <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
-    <span style="color:#6b6459;">Ганж · Оксітанія · Франція</span>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="nlink" style="width:100%; max-width:720px; padding-top:22px; border-top:1px solid #d9d5c9; color:#6b6459;">Website by Petrenko Design</a>
   </footer>
 
   <!-- ===== LIGHTBOX ===== -->
@@ -199,6 +403,29 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
+    this._siteHeader = document.querySelector('.site-header');
+    this._menuToggle = document.querySelector('.menu-toggle');
+    this._mainNav = document.querySelector('.main-nav');
+    this._setMenu = (open) => {
+      if (!this._siteHeader || !this._menuToggle) return;
+      this._siteHeader.classList.toggle('is-menu-open', open);
+      this._menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      this._menuToggle.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+    };
+    this._onMenuToggle = () => {
+      const open = !this._siteHeader?.classList.contains('is-menu-open');
+      this._setMenu(open);
+    };
+    this._onNavClick = (e) => {
+      if (e.target.closest('.nlink')) this._setMenu(false);
+    };
+    this._onMenuKey = (e) => {
+      if (e.key === 'Escape') this._setMenu(false);
+    };
+    this._menuToggle?.addEventListener('click', this._onMenuToggle);
+    this._mainNav?.addEventListener('click', this._onNavClick);
+    window.addEventListener('keydown', this._onMenuKey);
+
     const lb = document.getElementById('lb');
     const lbImg = document.getElementById('lb-img');
     const lbCap = document.getElementById('lb-cap');
@@ -231,7 +458,13 @@ class Component extends DCLogic {
       document.querySelectorAll('.reveal').forEach((n) => n.classList.add('is-in'));
     }
   }
-  componentWillUnmount() { if (this._io) this._io.disconnect(); if (this._esc) document.removeEventListener('keydown', this._esc); }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._esc) document.removeEventListener('keydown', this._esc);
+    this._menuToggle?.removeEventListener('click', this._onMenuToggle);
+    this._mainNav?.removeEventListener('click', this._onNavClick);
+    if (this._onMenuKey) window.removeEventListener('keydown', this._onMenuKey);
+  }
   state = { open: 0, lang: 'UK' };
   renderVals() {
     const el = React.createElement;

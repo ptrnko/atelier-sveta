@@ -316,7 +316,7 @@
     .hero-wordmark {
       min-height:calc(82svh - 116px);
       justify-content:flex-start;
-      padding-top:clamp(430px,88vw,510px);
+      padding-top:clamp(410px,84vw,490px);
     }
     .hero-title-line { font-size:clamp(48px,20.5vw,82px); }
     .hero-eye { width:clamp(42px,15vw,62px); }
@@ -460,6 +460,11 @@
       display:none !important;
     }
     .service-grid > div:not(.scourse-img) {
+      display:contents;
+      grid-column:1;
+      grid-row:1;
+    }
+    .service-title {
       grid-column:1;
       grid-row:1;
     }
@@ -497,8 +502,8 @@
       color:#FAAB06;
     }
     .sbtn-icon {
-      width:1.15em;
-      height:1.15em;
+      width:1.8em;
+      height:1.8em;
     }
     .works-section {
       padding-left:0 !important;
@@ -657,6 +662,8 @@
     }
     .services-section .sbtn-icon,
     .services-section .service-row:hover .sbtn-icon {
+      width:1.8em !important;
+      height:1.8em !important;
       transform:translateY(-1px) !important;
     }
     .services-section .sdesc,
@@ -924,8 +931,7 @@
     background-size:24px 24px;
   }
   .trial-actions {
-    position:sticky;
-    bottom:0;
+    position:static;
     z-index:2;
     display:flex;
     flex-direction:row-reverse;
@@ -987,7 +993,7 @@
     .success-return { width:100%; }
     .trial-form { padding:64px 24px 0; }
     .trial-actions, .trial-submit, .trial-cancel { width:100%; }
-    .trial-actions { bottom:0; margin:6px -24px 0; padding:16px 24px 24px; border-radius:0 0 26px 26px; }
+    .trial-actions { position:static; margin:6px -24px 0; padding:16px 24px 24px; border-radius:0 0 26px 26px; }
     .trial-submit, .trial-cancel { justify-content:center; }
   }
 </style>
@@ -1141,10 +1147,9 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding:clamp(24px,2.6vw,36px) clamp(20px,4vw,64px);" class="site-footer micro">
+  <footer style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:22px; padding:clamp(36px,4vw,54px) clamp(20px,4vw,64px);" class="site-footer micro">
     <span style="color:#6b6459;">© 2026 Atelier Sveta</span>
-    <span class="site-footer-location" style="color:#6b6459;">Ганж · Оксітанія · Франція</span>
-    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="site-footer-credit nlink" style="color:#6b6459;">Website by Petrenko Design</a>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="site-footer-credit nlink" style="width:100%; max-width:720px; padding-top:22px; border-top:1px solid #d9d5c9; color:#6b6459;">Website by Petrenko Design</a>
   </footer>
 </div>
 </x-dc>
@@ -1321,7 +1326,7 @@ class Component extends DCLogic {
       services: [
         { no:'01', title:'Діти', tags:['4–7 років','7–11 років','1–1.5 год','групи'], img:'./assets/course-01.png' },
         { no:'02', title:'Підлітки', tags:['11–16 років','будь який рівень','портфоліо','1.5 год'], img:'./assets/course-02.png' },
-        { no:'03', title:'Дорослі', tags:['з 16 років','будь який рівень','2.5 год','стиль'], img:'./assets/course-03.png' },
+        { no:'03', title:'Дорослі', tags:['з 16 років','будь який рівень','2.5 год','вільний стиль'], img:'./assets/course-03.png' },
         { no:'04', title:'Індивідуальні уроки', tags:['для будь якого віку','2 години','персональна програма','будь який рівень'], img:'./assets/course-04.png' },
         { no:'05', title:'Підготовка до іспитів', tags:['для будь якого віку','час індивідуально','портфоліо','будь який рівень'], img:'./assets/course-05.png' },
         { no:'06', title:'Онлайн курси', tags:['будь-де','персональні уроки','зворотний зв\u2019язок','свій темп'], img:'./assets/course-06.png' },
