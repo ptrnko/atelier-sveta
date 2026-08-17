@@ -21,8 +21,7 @@
   .btn { transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease; }
   .btn:hover { transform:scale(1.04); }
   .btn:active { transform:scale(.98); transition-duration:.08s; }
-  .btn-icon,
-  .detail-arrow {
+  .btn-icon {
     display:inline-block;
     flex:none;
     background:currentColor;
@@ -35,10 +34,12 @@
   .btn:hover .btn-icon { transform:translate(4px,-4px); }
   .btn--ink:hover { background:#2a2620 !important; }
   .btn--light:hover { background:#fff !important; }
-  .langtoggle { position:relative; display:inline-flex; align-items:center; border:1px solid #cfcabd; border-radius:40px; padding:3px; }
-  .langpill { position:absolute; top:3px; bottom:3px; left:3px; width:calc(50% - 3px); background:#141310; border-radius:40px; transform:translateX(100%); }
-  .langbtn { position:relative; z-index:1; min-width:48px; border:0; background:transparent; border-radius:40px; padding:9px 16px; color:#8a8479; cursor:pointer; }
-  .langbtn:last-child { color:#edebe3; }
+  .langtoggle { position:relative; display:inline-flex; align-items:center; width:88px; height:44px; border:0; border-radius:999px; padding:4px; background:#141310; overflow:hidden; }
+  .langpill { position:absolute; top:4px; left:4px; width:36px; height:36px; background:#fff; border-radius:50%; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+  .langtoggle.is-uk .langpill { transform:translateX(44px); }
+  .langbtn { position:relative; z-index:1; flex:0 0 40px; width:40px; height:36px; border:0; background:transparent; border-radius:40px; padding:0; color:#fff; cursor:pointer; font-size:14px; font-weight:600; letter-spacing:0; transition:color .25s ease; }
+  .langtoggle.is-fr .langbtn:first-of-type,
+  .langtoggle.is-uk .langbtn:last-of-type { color:transparent; }
   body .menu-toggle,
   .mobile-nav-lang { display:none; }
   .site-header { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9; background:#edebe3; }
@@ -46,18 +47,17 @@
   .header-actions { display:flex; justify-content:flex-end; align-items:center; gap:14px; }
   .course-page { min-height:100svh; display:flex; flex-direction:column; }
   .course-hero { background:#141310; color:#edebe3; border-bottom:1px solid #d9d5c9; padding:clamp(44px,5.5vw,82px) clamp(20px,4vw,64px); }
-  .course-hero-grid { display:grid; grid-template-columns:auto minmax(0,1fr) minmax(260px,30vw,520px) auto; gap:clamp(22px,4vw,72px); align-items:center; }
-  .course-no { color:rgba(237,235,227,.75); font-size:clamp(18px,1.7vw,30px); }
+  .course-hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,30vw,520px); gap:clamp(22px,4vw,72px); align-items:center; }
   .course-title { margin:0 0 16px; font-weight:500; font-size:clamp(56px,7vw,136px); line-height:.88; letter-spacing:-.03em; }
   .course-tags { display:flex; flex-wrap:wrap; gap:12px 32px; color:rgba(237,235,227,.72); font-size:clamp(15px,1.25vw,22px); font-weight:600; }
   .course-image { aspect-ratio:695/258; border-radius:999px; overflow:hidden; background:#cfd6dc; }
-  .course-image img { width:100%; height:100%; object-fit:cover; display:block; }
-  .detail-arrow { width:clamp(54px,5.4vw,96px); height:clamp(54px,5.4vw,96px); color:#FAAB06; }
+  .course-image img,
+  .course-image video { width:100%; height:100%; object-fit:cover; display:block; }
   .course-body { padding:clamp(52px,6vw,96px) clamp(20px,4vw,64px); }
   .course-lead { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(280px,.8fr); gap:clamp(34px,6vw,96px); align-items:start; padding-bottom:clamp(52px,6vw,96px); border-bottom:1px solid #d9d5c9; }
   .section-kicker { margin:0 0 clamp(20px,2vw,34px); color:#FAAB06; font-size:clamp(30px,3.4vw,52px); }
   .course-heading { margin:0; font-size:clamp(42px,6vw,104px); line-height:.92; font-weight:900; letter-spacing:-.03em; text-transform:uppercase; }
-  .course-copy { margin:0; color:#6b6459; font-size:clamp(18px,1.6vw,28px); line-height:1.45; }
+  .course-copy { margin:0; padding-top:calc(clamp(30px,3.4vw,52px) + clamp(20px,2vw,34px)); color:#6b6459; font-size:clamp(18px,1.6vw,28px); line-height:1.45; }
   .detail-list { display:grid; border-top:1px solid #d9d5c9; }
   .detail-row { display:grid; grid-template-columns:minmax(160px,.45fr) 1fr; gap:24px; padding:22px 0; border-bottom:1px solid #d9d5c9; }
   .detail-label { color:#c0392b; font-size:clamp(24px,2.4vw,38px); }
@@ -67,6 +67,16 @@
   .program-card:nth-child(3n) { border-right:none; }
   .program-card h3 { margin:0 0 18px; font-size:clamp(26px,2.9vw,52px); line-height:.98; font-weight:500; }
   .program-card p { margin:0; color:#6b6459; font-size:clamp(16px,1.25vw,20px); line-height:1.5; }
+  .schedule-section { margin-top:clamp(52px,6vw,96px); padding:clamp(44px,5vw,72px) clamp(18px,3vw,42px) clamp(42px,5vw,70px); background:#3144ff; color:#fff; overflow:hidden; }
+  .schedule-title { margin:0 0 clamp(42px,7vw,110px); color:#FAAB06; font-size:clamp(34px,4.2vw,64px); text-align:center; }
+  .schedule-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:clamp(14px,2vw,28px); align-items:start; }
+  .schedule-day { display:grid; gap:18px; }
+  .schedule-day-name { margin:0; color:#fff; text-align:center; font-size:clamp(22px,2.5vw,44px); line-height:1; font-weight:400; }
+  .schedule-card { aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(18px,2vw,30px); background:rgba(255,255,255,.16); color:#fff; }
+  .schedule-card.is-active { background:#fff; color:#141310; }
+  .schedule-card-title { margin:0; font-size:clamp(19px,1.8vw,32px); line-height:1.15; font-weight:400; }
+  .schedule-card-time { margin:18px 0 0; font-size:clamp(15px,1.2vw,22px); line-height:1.25; }
+  .schedule-card-note { margin:10px 0 0; color:inherit; opacity:.74; font-size:clamp(13px,1vw,17px); line-height:1.3; }
   .course-cta { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:end; margin-top:clamp(54px,7vw,110px); padding:clamp(38px,5vw,74px); background:#141310; color:#edebe3; border-radius:34px; }
   .course-cta h2 { margin:0; font-size:clamp(42px,6vw,96px); line-height:.92; }
   .course-cta p { margin:18px 0 0; max-width:54ch; color:rgba(237,235,227,.72); font-size:clamp(16px,1.35vw,22px); line-height:1.45; }
@@ -111,23 +121,28 @@
     .desktop-lang { display:none !important; }
     .mobile-nav-lang { display:flex; width:100%; margin-top:clamp(34px,9vw,52px); padding-top:22px; border-top:1px solid rgba(237,235,227,.16); align-items:center; justify-content:space-between; gap:16px; }
     .mobile-nav-lang-label { color:rgba(237,235,227,.42); font-size:11px; letter-spacing:.16em; }
-    .mobile-nav-lang .langtoggle { border-color:rgba(237,235,227,.26); }
+    .mobile-nav-lang .langtoggle { background:#141310; }
     .header-actions { margin-left:auto; gap:10px; }
     .header-cta { flex:1; justify-content:center; min-width:0; height:44px; padding:0 14px !important; font-size:10px; letter-spacing:.14em; white-space:nowrap; }
     .course-hero { padding:34px 16px 42px; }
-    .course-hero-grid { grid-template-columns:1fr auto; gap:22px 16px; }
-    .course-no { display:none; }
+    .course-hero-grid { grid-template-columns:1fr; gap:22px 16px; }
     .course-title-wrap { display:contents; }
     .course-title { grid-column:1; grid-row:1; margin:0; font-size:clamp(44px,13vw,68px); color:#edebe3; }
     .course-image { grid-column:1 / -1; grid-row:2; width:100%; aspect-ratio:3.2/1; }
     .course-tags { grid-column:1 / -1; grid-row:3; font-size:clamp(12px,3.4vw,14px); gap:8px 16px; }
-    .detail-arrow { grid-column:2; grid-row:1; width:2.2em; height:2.2em; align-self:center; }
     .course-body { padding:52px 16px 72px; }
     .course-lead { grid-template-columns:1fr; gap:28px; }
     .course-heading { font-size:clamp(38px,12vw,58px); }
+    .course-copy { padding-top:0; }
     .detail-row { grid-template-columns:1fr; gap:8px; padding:18px 0; }
     .program { grid-template-columns:1fr; margin-left:-16px; margin-right:-16px; border-left:none; border-right:none; }
     .program-card { border-right:none; padding:30px 16px; }
+    .schedule-section { margin-left:-16px; margin-right:-16px; padding:46px 16px; }
+    .schedule-title { text-align:left; margin-bottom:40px; font-size:clamp(34px,10vw,48px); }
+    .schedule-grid { grid-template-columns:1fr; gap:18px; }
+    .schedule-day { grid-template-columns:64px 1fr; align-items:start; gap:14px; }
+    .schedule-day-name { text-align:left; font-size:28px; padding-top:16px; }
+    .schedule-card { aspect-ratio:auto; min-height:132px; padding:22px; }
     .course-cta { grid-template-columns:1fr; padding:34px 18px; border-radius:28px; }
     .course-cta .btn { justify-content:center; }
     .contact-section { padding:72px 16px; }
@@ -154,7 +169,7 @@
       <a href="./contacts.html" class="nlink">Контакти</a>
       <div class="mobile-nav-lang micro">
         <span class="mobile-nav-lang-label">Мова</span>
-        <div class="langtoggle">
+        <div class="langtoggle is-uk">
           <span class="langpill" aria-hidden="true"></span>
           <button class="langbtn" type="button">FR</button>
           <button class="langbtn" type="button">UK</button>
@@ -165,7 +180,7 @@
       <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
-      <div class="desktop-lang langtoggle">
+      <div class="desktop-lang langtoggle is-uk">
         <span class="langpill" aria-hidden="true"></span>
         <button class="langbtn" type="button">FR</button>
         <button class="langbtn" type="button">UK</button>
@@ -177,13 +192,15 @@
   <main>
     <section class="course-hero">
       <div class="course-hero-grid">
-        <div class="course-no" data-course-no>01</div>
         <div class="course-title-wrap">
           <h1 class="course-title" data-course-title>Діти</h1>
           <div class="course-tags" data-course-tags></div>
         </div>
-        <div class="course-image"><img data-course-img src="./assets/course-01.png" alt=""></div>
-        <span class="detail-arrow" aria-hidden="true"></span>
+        <div class="course-image">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Учні працюють у художній школі" data-course-video>
+            <source src="./assets/course-hero-video.mp4" type="video/mp4" data-course-video-source>
+          </video>
+        </div>
       </div>
     </section>
 
@@ -211,24 +228,29 @@
         </div>
         <div class="detail-row">
           <div class="detail-label hand">Матеріали</div>
-          <div class="detail-value" data-course-materials>гуаш, акварель, графіка, колаж, змішані техніки</div>
+          <div class="detail-value" data-course-materials>гуаш, акварель, графіка, колаж, будь яка техніка на вибір учня</div>
         </div>
       </div>
 
       <div class="program">
         <article class="program-card">
           <h3>01. Спостерігати</h3>
-          <p data-program-one>Вчимося бачити форму, колір, пропорції та настрій предметів навколо.</p>
+          <p data-program-one>Вчимося бачити форму, колір, пропорції та характер предметів навколо.</p>
         </article>
         <article class="program-card">
           <h3>02. Пробувати</h3>
-          <p data-program-two>Працюємо з різними матеріалами, щоб дитина відчула свободу у виборі техніки.</p>
+          <p data-program-two>Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.</p>
         </article>
         <article class="program-card">
-          <h3>03. Завершувати</h3>
-          <p data-program-three>Доводимо роботу до фіналу, вчимося говорити про ідею і бачити власний прогрес.</p>
+          <h3>03. Створювати</h3>
+          <p data-program-three>Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.</p>
         </article>
       </div>
+
+      <section class="schedule-section" aria-labelledby="schedule-title">
+        <h2 class="schedule-title hand" id="schedule-title">Розклад курсів</h2>
+        <div class="schedule-grid" data-schedule-grid></div>
+      </section>
 
       <section class="course-cta">
         <div>
@@ -284,84 +306,154 @@
 </div>
 <script src="./assets/trial-modal.js"></script>
 <script>
+  const weekDays = ['Пн','Вт','Ср','Чт','Пт','Сб','Нд'];
+  const schedules = {
+    kids: [
+      { day:'Пн', title:'Вільний від занять день' },
+      { day:'Вт', title:'Вільний від занять день' },
+      { day:'Ср', title:'Діти', time:'9:40–10:40', note:'5–7 років', active:true },
+      { day:'Чт', title:'Вільний від занять день' },
+      { day:'Пт', title:'Вільний від занять день' },
+      { day:'Сб', title:'Діти', time:'10:40–12:10', note:'8–12 років', active:true },
+      { day:'Нд', title:'Вільний від занять день' }
+    ],
+    teens: [
+      { day:'Пн', title:'Вільний від занять день' },
+      { day:'Вт', title:'Вільний від занять день' },
+      { day:'Ср', title:'Підлітки', time:'10:40–12:10', note:'група', active:true },
+      { day:'Чт', title:'Вільний від занять день' },
+      { day:'Пт', title:'Вільний від занять день' },
+      { day:'Сб', title:'Підлітки', time:'за домовленістю', note:'міні-група', active:true },
+      { day:'Нд', title:'Вільний від занять день' }
+    ],
+    adults: [
+      { day:'Пн', title:'Дорослі', time:'10:45–13:15', note:'група', active:true },
+      { day:'Вт', title:'Вільний від занять день' },
+      { day:'Ср', title:'Вільний від занять день' },
+      { day:'Чт', title:'Вільний від занять день' },
+      { day:'Пт', title:'Дорослі', time:'9:45–12:15', note:'вільний стиль', active:true },
+      { day:'Сб', title:'Вільний від занять день' },
+      { day:'Нд', title:'Вільний від занять день' }
+    ],
+    individual: [
+      { day:'Пн', title:'Індивідуально', time:'за домовленістю', note:'у майстерні', active:true },
+      { day:'Вт', title:'Індивідуально', time:'за домовленістю', note:'у майстерні', active:true },
+      { day:'Ср', title:'Вільний від занять день' },
+      { day:'Чт', title:'Індивідуально', time:'за домовленістю', note:'у майстерні', active:true },
+      { day:'Пт', title:'Вільний від занять день' },
+      { day:'Сб', title:'Індивідуально', time:'за домовленістю', note:'у майстерні', active:true },
+      { day:'Нд', title:'Вільний від занять день' }
+    ],
+    exams: [
+      { day:'Пн', title:'Підготовка', time:'за домовленістю', note:'іспити / портфоліо', active:true },
+      { day:'Вт', title:'Вільний від занять день' },
+      { day:'Ср', title:'Підготовка', time:'за домовленістю', note:'іспити / портфоліо', active:true },
+      { day:'Чт', title:'Вільний від занять день' },
+      { day:'Пт', title:'Підготовка', time:'за домовленістю', note:'іспити / портфоліо', active:true },
+      { day:'Сб', title:'Вільний від занять день' },
+      { day:'Нд', title:'Вільний від занять день' }
+    ],
+    online: [
+      { day:'Пн', title:'Онлайн курс', time:'за домовленістю', note:'відеозв’язок', active:true },
+      { day:'Вт', title:'Вільний від занять день' },
+      { day:'Ср', title:'Онлайн курс', time:'за домовленістю', note:'відеозв’язок', active:true },
+      { day:'Чт', title:'Вільний від занять день' },
+      { day:'Пт', title:'Онлайн курс', time:'за домовленістю', note:'відеозв’язок', active:true },
+      { day:'Сб', title:'Вільний від занять день' },
+      { day:'Нд', title:'Вільний від занять день' }
+    ]
+  };
+
   const courses = {
     kids: {
       no:'01',
       title:'Діти',
       tags:['4–7 років','7–11 років','1–1.5 год','групи'],
       img:'./assets/course-01.png',
+      video:'./assets/course-hero-video.mp4',
       heading:'Перші кроки в мистецтві без страху чистого аркуша.',
       copy:'Курс для дітей, які хочуть пробувати різні матеріали, малювати в групі та поступово знаходити власний спосіб бачити світ.',
       format:'групові заняття у майстерні',
       duration:'1–1.5 год',
       forWhom:'учні 4–11 років',
-      materials:'гуаш, акварель, графіка, колаж, змішані техніки',
-      program:['Вчимося бачити форму, колір, пропорції та настрій предметів навколо.','Працюємо з різними матеріалами, щоб дитина відчула свободу у виборі техніки.','Доводимо роботу до фіналу, вчимося говорити про ідею і бачити власний прогрес.']
+      materials:'гуаш, акварель, графіка, колаж, будь яка техніка на вибір учня',
+      schedule:schedules.kids,
+      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
     },
     teens: {
       no:'02',
       title:'Підлітки',
       tags:['11–16 років','будь який рівень','портфоліо','1.5 год'],
       img:'./assets/course-02.png',
+      video:'./assets/course-hero-video.mp4',
       heading:'Більше самостійності, техніки та власного художнього голосу.',
       copy:'Курс допомагає підліткам поглибити навички, спробувати складніші теми та зібрати сильні роботи для портфоліо.',
       format:'групи або індивідуальний супровід',
       duration:'1.5 год',
       forWhom:'учні 11–16 років',
       materials:'живопис, графіка, композиція, портфоліо',
-      program:['Розбираємо композицію, світло, форму та візуальну ідею.','Пробуємо різні техніки і поступово ускладнюємо задачі.','Формуємо серію робіт, яку можна показувати або розвивати далі.']
+      schedule:schedules.teens,
+      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
     },
     adults: {
       no:'03',
       title:'Дорослі',
       tags:['з 16 років','будь який рівень','2.5 год','вільний стиль'],
       img:'./assets/course-03.png',
+      video:'./assets/course-adults-video.mp4',
       heading:'Вільний стиль для тих, хто хоче повернути собі час на творчість.',
       copy:'Заняття для дорослих без прив’язки до попереднього досвіду: можна почати з нуля або продовжити власну практику.',
       format:'невеликі групи у майстерні',
       duration:'2.5 год',
       forWhom:'дорослі та учні від 16 років',
       materials:'олія, акрил, акварель, пастель, графіка',
-      program:['Знаходимо тему та підбираємо матеріал під ваш запит.','Працюємо у комфортному темпі з індивідуальними підказками.','Завершуємо роботи, які хочеться залишити собі або показати іншим.']
+      schedule:schedules.adults,
+      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
     },
     individual: {
       no:'04',
       title:'Індивідуальні уроки',
       tags:['для будь якого віку','2 години','персональна програма','будь який рівень'],
       img:'./assets/course-04.png',
+      video:'./assets/course-individual-exams-video.mp4',
       heading:'Персональна траєкторія під ваш ритм, задачу і рівень.',
       copy:'Індивідуальний формат підходить, якщо потрібна гнучкість, підготовка до конкретної роботи або спокійний супровід один на один.',
       format:'персональні заняття',
       duration:'2 години',
       forWhom:'діти, підлітки або дорослі',
       materials:'техніки підбираються під ціль учня',
-      program:['Визначаємо запит, рівень і бажаний результат.','Будуємо послідовність вправ та робіт саме під вас.','Регулярно переглядаємо прогрес і коригуємо напрям.']
+      schedule:schedules.individual,
+      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
     },
     exams: {
       no:'05',
       title:'Підготовка до іспитів',
       tags:['для будь якого віку','час індивідуально','портфоліо','будь який рівень'],
       img:'./assets/course-05.png',
+      video:'./assets/course-individual-exams-video.mp4',
       heading:'Системна підготовка до вступу, іспитів або творчого портфоліо.',
       copy:'Працюємо з вимогами, дедлайнами і серією робіт, щоб учень міг впевнено показати свій рівень.',
       format:'індивідуально або міні-група',
       duration:'час узгоджується індивідуально',
       forWhom:'учні, які готуються до відбору або іспиту',
       materials:'академічний рисунок, живопис, композиція, портфоліо',
-      program:['Аналізуємо вимоги школи або програми.','Закриваємо прогалини в базових навичках і техніці.','Збираємо портфоліо з завершених та сильних робіт.']
+      schedule:schedules.exams,
+      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
     },
     online: {
       no:'06',
       title:'Онлайн курси',
       tags:['будь-де','персональні уроки','зворотний зв’язок','свій темп'],
       img:'./assets/course-06.png',
+      video:'./assets/course-hero-video.mp4',
       heading:'Мистецтво вдома з живим зворотним зв’язком викладача.',
       copy:'Онлайн формат для тих, хто не може приходити у майстерню, але хоче регулярну практику і ясні завдання.',
       format:'онлайн заняття та домашні роботи',
       duration:'ритм узгоджується індивідуально',
       forWhom:'учні будь-якого віку та рівня',
       materials:'доступні матеріали вдома плюс персональні рекомендації',
-      program:['Підбираємо матеріали, які вже є або легко докупити.','Працюємо через зрозумілі задачі та регулярний фідбек.','Формуємо власну практику, яку реально підтримувати вдома.']
+      schedule:schedules.online,
+      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
     }
   };
 
@@ -370,7 +462,6 @@
   const course = courses[key] || courses.kids;
   document.title = course.title + ' · Atelier Sveta';
   const setText = (selector, text) => { const node = document.querySelector(selector); if (node) node.textContent = text; };
-  setText('[data-course-no]', course.no);
   setText('[data-course-title]', course.title);
   setText('[data-course-heading]', course.heading);
   setText('[data-course-copy]', course.copy);
@@ -381,13 +472,30 @@
   setText('[data-program-one]', course.program[0]);
   setText('[data-program-two]', course.program[1]);
   setText('[data-program-three]', course.program[2]);
+  const courseVideo = document.querySelector('[data-course-video]');
+  const courseVideoSource = document.querySelector('[data-course-video-source]');
+  if (courseVideo && courseVideoSource && course.video) {
+    courseVideoSource.src = course.video;
+    courseVideo.load();
+  }
+  const scheduleGrid = document.querySelector('[data-schedule-grid]');
+  if (scheduleGrid) {
+    scheduleGrid.innerHTML = weekDays.map((day) => {
+      const item = course.schedule.find((entry) => entry.day === day) || { title:'Вільний від занять день' };
+      return `
+        <article class="schedule-day">
+          <h3 class="schedule-day-name">${day}</h3>
+          <div class="schedule-card${item.active ? ' is-active' : ''}">
+            <p class="schedule-card-title">${item.title}</p>
+            ${item.time ? `<p class="schedule-card-time">${item.time}</p>` : ''}
+            ${item.note ? `<p class="schedule-card-note">${item.note}</p>` : ''}
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
   const tags = document.querySelector('[data-course-tags]');
   if (tags) tags.innerHTML = course.tags.map((tag) => `<span>${tag}</span>`).join('');
-  const img = document.querySelector('[data-course-img]');
-  if (img) {
-    img.src = course.img;
-    img.alt = course.title;
-  }
   const trialCourse = document.getElementById('trial-course');
   if (trialCourse) trialCourse.value = course.title;
 
@@ -406,6 +514,24 @@
   window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') setMenu(false);
   });
+
+  const langToggles = Array.from(document.querySelectorAll('.langtoggle'));
+  const setLang = (lang) => {
+    langToggles.forEach((langToggle) => {
+      langToggle.classList.toggle('is-fr', lang === 'FR');
+      langToggle.classList.toggle('is-uk', lang === 'UK');
+      const buttons = langToggle.querySelectorAll('.langbtn');
+      buttons[0]?.setAttribute('aria-pressed', lang === 'FR' ? 'true' : 'false');
+      buttons[1]?.setAttribute('aria-pressed', lang === 'UK' ? 'true' : 'false');
+    });
+    document.documentElement.lang = lang === 'FR' ? 'fr' : 'uk';
+  };
+  langToggles.forEach((langToggle) => {
+    const buttons = langToggle.querySelectorAll('.langbtn');
+    buttons[0]?.addEventListener('click', () => setLang('FR'));
+    buttons[1]?.addEventListener('click', () => setLang('UK'));
+  });
+  setLang('UK');
 </script>
 </body>
 </html>
