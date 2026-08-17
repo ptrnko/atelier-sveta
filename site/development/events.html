@@ -124,7 +124,7 @@
   .lightbox img { display:block; width:auto; max-width:94vw; max-height:calc(100vh - clamp(32px,6vw,88px)); box-shadow:0 30px 80px rgba(0,0,0,.5); background:#141310; object-fit:contain; }
   .lb-close { position:absolute; top:24px; right:28px; width:48px; height:48px; border-radius:50%; border:1px solid #6b6459; background:transparent; color:#edebe3; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .lb-close:hover { background:#edebe3; color:#141310; }
-  .contact-section { background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px); }
+  .contact-section { background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); }
   .contact-title { margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3; }
 
   @media (max-width:920px) {
