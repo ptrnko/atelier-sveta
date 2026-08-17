@@ -70,6 +70,25 @@
   .course-cta { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:end; margin-top:clamp(54px,7vw,110px); padding:clamp(38px,5vw,74px); background:#141310; color:#edebe3; border-radius:34px; }
   .course-cta h2 { margin:0; font-size:clamp(42px,6vw,96px); line-height:.92; }
   .course-cta p { margin:18px 0 0; max-width:54ch; color:rgba(237,235,227,.72); font-size:clamp(16px,1.35vw,22px); line-height:1.45; }
+  .contact-section { background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px); }
+  .contact-kicker { margin:0 0 clamp(30px,4vw,60px); color:#FAAB06; font-size:clamp(30px,3.4vw,52px); }
+  .contact-title { margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3; }
+  .contact-layout { display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px); }
+  .contact-address { font-size:clamp(18px,1.6vw,24px); line-height:1.5; }
+  .contact-links { line-height:2; color:#FAAB06; }
+  .flink { color:#edebe3; transition:color .2s ease; }
+  .flink:hover { color:#FAAB06; }
+  .flink[data-arrow="true"]::after {
+    content:"";
+    display:inline-block;
+    width:1.1em;
+    height:1.1em;
+    margin-left:.34em;
+    vertical-align:-.14em;
+    background:currentColor;
+    -webkit-mask:url("./assets/arrow-up-right.svg") center/contain no-repeat;
+    mask:url("./assets/arrow-up-right.svg") center/contain no-repeat;
+  }
   .site-footer { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:10px clamp(20px,4vw,64px); background:#141310; color:#6b6459; border-top:1px solid rgba(107,100,89,.5); }
   .site-footer-copy, .site-footer-credit { flex:none; color:#6b6459; white-space:nowrap; }
   .site-footer-line { display:none; }
@@ -111,6 +130,14 @@
     .program-card { border-right:none; padding:30px 16px; }
     .course-cta { grid-template-columns:1fr; padding:34px 18px; border-radius:28px; }
     .course-cta .btn { justify-content:center; }
+    .contact-section { padding:72px 16px; }
+    .contact-kicker { font-size:clamp(28px,8vw,42px); margin-bottom:34px; }
+    .contact-title { font-size:clamp(34px,11vw,54px); line-height:.94; letter-spacing:0; }
+    .contact-layout { display:block; margin-top:40px; }
+    .contact-address { margin-bottom:28px; }
+    .contact-links { margin-bottom:34px; color:#edebe3; }
+    .contact-links a { margin-bottom:8px; }
+    .contact-section .btn { width:100%; justify-content:center; }
     .site-footer { flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px 16px; }
     .site-footer-copy, .site-footer-credit { white-space:normal; }
   }
@@ -212,6 +239,20 @@
       </section>
     </section>
   </main>
+
+  <section id="contact" class="contact-section">
+    <div class="contact-kicker hand">(Контакт)</div>
+    <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
+    <div class="contact-layout">
+      <div class="contact-address">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
+      <div class="contact-links micro">
+        <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
+        <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
+        <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
+      </div>
+      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+  </section>
 
   <footer class="site-footer micro">
     <span class="site-footer-copy">© 2026 Atelier Sveta</span>
