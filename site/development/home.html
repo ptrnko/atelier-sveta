@@ -1001,10 +1001,10 @@
 <div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
 
   <!-- ===== TOP BAR ===== -->
-  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
       <a href="#top" class="nlink is-active">Головна</a>
-      <a href="#services" class="nlink">Курси</a>
+      <a href="./courses.html" class="nlink">Курси</a>
       <a href="./events.html" class="nlink">Події</a>
       <a href="./gallery.html" class="nlink">Галерея</a>
       <a href="./contacts.html" class="nlink">Контакти</a>
@@ -1026,7 +1026,7 @@
         <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
         <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
       </div>
-      <a href="./home.html#services" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
@@ -1072,7 +1072,7 @@
 
   <!-- ===== INTRO STATEMENT ===== -->
   <section id="studio" class="studio-section" style="background:#ffffff; padding:clamp(90px,11vw,150px) clamp(20px,4vw,64px);">
-    <div class="studio-grid reveal" style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(45px,9vw,150px); align-items:stretch;">
+    <div class="studio-grid reveal" style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(45px,9vw,150px); align-items:stretch; max-width:1440px; margin-inline:auto;">
       <div style="display:flex; flex-direction:column;">
         <div class="studio-kicker" style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(40px,6vw,96px);">(Про школу)</div>
         <h2 style="margin:0 0 clamp(28px,3.2vw,48px); font-family:'Archivo',sans-serif; font-weight:700; font-size:clamp(30px,4.2vw,62px); line-height:1.08; letter-spacing:-0.02em; font-style:italic;">Світлана Сьянова — художниця та викладачка, яка заснувала школу у 2022 році.</h2>
@@ -1080,7 +1080,7 @@
         <p style="margin:1.1em 0 0; max-width:100%; font-family:'Archivo',sans-serif; font-weight:400; font-size:clamp(15px,1.3vw,21px); line-height:1.55; color:#6b6459;">Навчання побудоване на авторському підході, де важливо не просто повторювати техніку, а поступово знаходити власну мову у мистецтві. Школа створює простір, у якому можна експериментувати, розвивати впевненість і вчитися у своєму темпі.</p>
         <div class="studio-actions" style="display:flex; flex-wrap:wrap; gap:14px; margin-top:clamp(28px,3vw,44px);">
           <a href="#trial-form" class="btn btn--red js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#c0392b; color:#edebe3; border-radius:40px; padding:15px 30px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);">Пробний урок <span class="btn-icon" aria-hidden="true"></span></a>
-          <a href="#services" class="btn btn--out" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:#141310; border:1px solid #141310; border-radius:40px; padding:14px 30px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);">Усі курси <span class="btn-icon" aria-hidden="true"></span></a>
+          <a href="./courses.html" class="btn btn--out" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:#141310; border:1px solid #141310; border-radius:40px; padding:14px 30px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);">Усі курси <span class="btn-icon" aria-hidden="true"></span></a>
         </div>
       </div>
       <div class="teacher-photo" style="align-self:stretch; overflow:hidden;"><img src="./assets/teacher.jpg?v=5" alt="Фото викладачки · Світлана" style="width:140%; height:100%; margin-left:-20%; object-fit:cover; display:block;"></div>
@@ -1093,7 +1093,7 @@
     <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; padding:0 clamp(20px,4vw,64px); margin-bottom:clamp(24px,3vw,44px); text-align:center;">(Курси)</div>
     <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
       <a href="{{ s.href }}" class="service-row srow reveal" style="display:block; border-top:1px solid #d9d5c9; padding:clamp(22px,2.6vw,38px) clamp(20px,4vw,64px);">
-        <div class="service-grid" style="display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center;">
+        <div class="service-grid" style="display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center; max-width:1440px; margin-inline:auto;">
           <span class="snum" style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); color:#141310;">{{ s.no }}</span>
           <div>
             <h3 class="service-title" style="margin:0 0 12px; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,72px); line-height:0.98; letter-spacing:-0.01em;">{{ s.title }}</h3>
@@ -1111,7 +1111,7 @@
 
   <!-- ===== WORKS DRAG GALLERY ===== -->
   <section id="works" class="works-section" style="background:#fff; padding:clamp(90px,11vw,150px) 0; border-bottom:1px solid #d9d5c9;">
-    <div class="works-head" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:0 clamp(20px,4vw,64px) clamp(28px,3vw,44px);">
+    <div class="works-head" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:0 clamp(20px,4vw,64px) clamp(28px,3vw,44px); max-width:1440px; margin-inline:auto;">
       <div>
         <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Галерея)</div>
         
@@ -1406,7 +1406,7 @@ class Component extends DCLogic {
           <p class="success-text">Заявка відправлена. Ми зв'яжемося з вами найближчим часом.</p>
           <div class="success-actions">
             <button class="success-return" type="button" data-close-success>Повернутися на сайт <span class="btn-icon" aria-hidden="true"></span></button>
-            <a class="success-return success-return--primary" href="#services" data-close-success>Обрати курс <span class="btn-icon" aria-hidden="true"></span></a>
+            <a class="success-return success-return--primary" href="./courses.html" data-close-success>Обрати курс <span class="btn-icon" aria-hidden="true"></span></a>
           </div>
         </div>
       `;

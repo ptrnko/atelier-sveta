@@ -295,10 +295,10 @@
 <div style="background:#fff; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;">
 
   <!-- ===== HEADER ===== -->
-  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
       <a href="./home.html" class="nlink">Головна</a>
-      <a href="./home.html#services" class="nlink">Курси</a>
+      <a href="./courses.html" class="nlink">Курси</a>
       <a href="./events.html" class="nlink">Події</a>
       <a href="#gallery" class="nlink is-active">Галерея</a>
       <a href="./contacts.html" class="nlink">Контакти</a>
@@ -320,7 +320,7 @@
         <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
         <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
       </div>
-      <a href="./home.html#services" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 

@@ -200,6 +200,7 @@
     }
     .header-cta .btn-icon { width:1.35em; height:1.35em; }
   }
+  .contact-shell { width:100%; max-width:1440px; margin:0 auto; }
   .contact-details {
     padding:75px clamp(20px,4vw,64px) clamp(60px,7vw,120px);
     display:grid;
@@ -282,10 +283,10 @@
 <div style="background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-height:100svh; display:flex; flex-direction:column;">
 
   <!-- ===== TOP BAR ===== -->
-  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,4vw,64px); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
       <a href="./home.html" class="nlink">Головна</a>
-      <a href="./home.html#services" class="nlink">Курси</a>
+      <a href="./courses.html" class="nlink">Курси</a>
       <a href="./events.html" class="nlink">Події</a>
       <a href="./gallery.html" class="nlink">Галерея</a>
       <a href="#contact" class="nlink is-active" style="color:#c0392b;">Контакти</a>
@@ -307,10 +308,11 @@
         <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
         <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
       </div>
-      <a href="./home.html#services" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
+  <div class="contact-shell">
   <!-- ===== HERO ===== -->
   <section id="contact" style="text-align:center; padding: clamp(50px,6vw,90px) clamp(20px,4vw,64px) 75px;">
     <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Контакти)</div>
@@ -341,6 +343,7 @@
       <iframe title="Atelier Sveta на карті" src="https://www.google.com/maps?q=24%20Rue%20Jeu%20de%20Ballon,%2034190%20Ganges,%20France&amp;z=16&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
+  </div>
 
   <!-- ===== CONTACT CTA ===== -->
   <section id="form" class="contact-section" style="margin-top:auto;">
