@@ -9,12 +9,13 @@
 <body>
 <x-dc>
 <helmet>
-<title>Курси · Atelier Sveta</title>
+<title data-i18n-fr="Cours · Atelier Sveta" data-i18n-uk="Курси · Atelier Sveta">Cours · Atelier Sveta</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=Caveat:wght@500;600;700&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
+<script src="./assets/i18n.js"></script>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; }
@@ -1004,17 +1005,17 @@
   <!-- ===== TOP BAR ===== -->
   <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(11px,1.5vw,18px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
-      <a href="./home.html" class="nlink">Головна</a>
-      <a href="./courses.html" class="nlink is-active">Курси</a>
-      <a href="./events.html" class="nlink">Події</a>
-      <a href="./gallery.html" class="nlink">Галерея</a>
-      <a href="./contacts.html" class="nlink">Контакти</a>
+      <a href="./home.html" class="nlink" data-i18n-fr="Accueil" data-i18n-uk="Головна">Accueil</a>
+      <a href="./courses.html" class="nlink is-active" data-i18n-fr="Cours" data-i18n-uk="Курси">Cours</a>
+      <a href="./events.html" class="nlink" data-i18n-fr="Événements" data-i18n-uk="Події">Événements</a>
+      <a href="./gallery.html" class="nlink" data-i18n-fr="Galerie" data-i18n-uk="Галерея">Galerie</a>
+      <a href="./contacts.html" class="nlink" data-i18n-fr="Contact" data-i18n-uk="Контакти">Contact</a>
       <div class="mobile-nav-lang">
-        <span class="mobile-nav-lang-label">Мова</span>
-        <div class="langtoggle {{ langCls }}">
+        <span class="mobile-nav-lang-label" data-i18n-fr="Langue" data-i18n-uk="Мова">Langue</span>
+        <div class="langtoggle is-fr">
           <span class="langpill" aria-hidden="true"></span>
-          <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-          <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+          <button type="button" class="langbtn">FR</button>
+          <button type="button" class="langbtn">UA</button>
         </div>
       </div>
     </nav>
@@ -1022,26 +1023,26 @@
       <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
-      <div class="desktop-lang langtoggle {{ langCls }}">
+      <div class="desktop-lang langtoggle is-fr">
         <span class="langpill" aria-hidden="true"></span>
-        <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-        <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+        <button type="button" class="langbtn">FR</button>
+        <button type="button" class="langbtn">UA</button>
       </div>
-      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;"><span data-i18n-fr="Trouver un cours" data-i18n-uk="Знайти курс">Trouver un cours</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
   <!-- ===== SERVICES / NUMBERED LIST ===== -->
   <section id="services" class="services-section" style="padding:clamp(32px,4vw,54px) 0 0; border-bottom:1px solid #d9d5c9;">
-    <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; padding:0 clamp(20px,4vw,64px); margin:0 0 clamp(30px,4vw,54px); text-align:center;">(Курси)</div>
+    <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; padding:0 clamp(20px,4vw,64px); margin:0 0 clamp(30px,4vw,54px); text-align:center;" data-i18n-fr="(Cours)" data-i18n-uk="(Курси)">(Cours)</div>
     <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
       <a href="{{ s.href }}" class="service-row srow reveal" style="display:block; border-top:1px solid #d9d5c9; padding:clamp(22px,2.6vw,38px) clamp(20px,4vw,64px);">
         <div class="service-grid" style="display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center; max-width:1440px; margin-inline:auto;">
           <span class="snum" style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); color:#141310;">{{ s.no }}</span>
           <div>
-            <h3 class="service-title" style="margin:0 0 12px; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,72px); line-height:0.98; letter-spacing:-0.01em;">{{ s.title }}</h3>
+            <h3 class="service-title" style="margin:0 0 12px; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,72px); line-height:0.98; letter-spacing:-0.01em;" data-i18n-fr="{{ s.title_fr }}" data-i18n-uk="{{ s.title_uk }}">{{ s.title_fr }}</h3>
             <div class="sdesc" style="display:flex; flex-wrap:wrap; gap:10px 22px; font-size:clamp(13px,1vw,15px); color:#6b6459; font-weight:500;">
-              <sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="4"><span>{{ t }}</span></sc-for>
+              <sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="4"><span data-i18n-fr="{{ t.fr }}" data-i18n-uk="{{ t.uk }}">{{ t.fr }}</span></sc-for>
             </div>
           </div>
           <div class="scourse-img" style="grid-column:4; width:clamp(200px,20vw,320px); aspect-ratio:695/258; border-radius:999px; overflow:hidden; background:#cfd6dc;"><img src="{{ s.img }}" alt="" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
@@ -1054,16 +1055,16 @@
 
   <!-- ===== CLOSING STATEMENT ===== -->
   <section id="contact" class="contact-section" style="background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) max(clamp(20px,4vw,64px), (100% - 1440px)/2);">
-    <div class="hand" style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
-    <p class="contact-title wm" style="margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3;">Мистецтво<br>починається<br>тут.</p>
+    <div class="hand" style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);" data-i18n-fr="(Contact)" data-i18n-uk="(Контакт)">(Contact)</div>
+    <p class="contact-title wm" style="margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3;" data-i18n-fr="L’art<br>commence<br>ici." data-i18n-uk="Мистецтво<br>починається<br>тут.">L’art<br>commence<br>ici.</p>
     <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
-      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
+      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;" data-i18n-fr="24 Rue Jeu de Ballon<br>34190 Ganges, France" data-i18n-uk="24 Rue Jeu de Ballon<br>34190 Ganges, Франція">24 Rue Jeu de Ballon<br>34190 Ganges, France</div>
       <div class="micro" style="line-height:2; color:#FAAB06;">
         <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
         <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
         <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
       </div>
-      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Réserver un cours d’essai" data-i18n-uk="Записатися на пробний">Réserver un cours d’essai</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </section>
 
@@ -1077,45 +1078,45 @@
 </x-dc>
 <div class="trial-modal" id="trial-modal" aria-hidden="true">
   <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
-    <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
+    <button class="trial-close" type="button" data-close-trial aria-label="Fermer le formulaire" data-i18n-aria-label-fr="Fermer le formulaire" data-i18n-aria-label-uk="Закрити форму">×</button>
     <form class="trial-form" id="trial-form" action="https://formsubmit.co/Petrenkoag95@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/Petrenkoag95@gmail.com">
-      <h2 id="trial-title">Пробний урок</h2>
-      <p>Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.</p>
+      <h2 id="trial-title" data-i18n-fr="Cours d’essai" data-i18n-uk="Пробний урок">Cours d’essai</h2>
+      <p data-i18n-fr="Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire." data-i18n-uk="Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.">Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire.</p>
       <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
       <label class="trial-field">
-        Ім'я
+        <span data-i18n-fr="Prénom" data-i18n-uk="Ім'я">Prénom</span>
         <input type="text" name="name" autocomplete="name" required>
       </label>
 
       <label class="trial-field">
-        Телефон або email
+        <span data-i18n-fr="Téléphone ou e-mail" data-i18n-uk="Телефон або email">Téléphone ou e-mail</span>
         <input type="text" name="contact" autocomplete="email" required>
       </label>
 
       <label class="trial-field">
-        Напрям
+        <span data-i18n-fr="Cours" data-i18n-uk="Напрям">Cours</span>
         <select name="course">
-          <option>Діти</option>
-          <option>Підлітки</option>
-          <option>Дорослі</option>
-          <option>Індивідуальні уроки</option>
-          <option>Підготовка до іспитів</option>
-          <option>Онлайн курси</option>
+          <option data-i18n-fr="Enfants" data-i18n-uk="Діти">Enfants</option>
+          <option data-i18n-fr="Adolescents" data-i18n-uk="Підлітки">Adolescents</option>
+          <option data-i18n-fr="Adultes" data-i18n-uk="Дорослі">Adultes</option>
+          <option data-i18n-fr="Cours individuels" data-i18n-uk="Індивідуальні уроки">Cours individuels</option>
+          <option data-i18n-fr="Préparation aux examens" data-i18n-uk="Підготовка до іспитів">Préparation aux examens</option>
+          <option data-i18n-fr="Cours en ligne" data-i18n-uk="Онлайн курси">Cours en ligne</option>
         </select>
       </label>
 
       <label class="trial-field">
-        Коментар
-        <textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea>
+        <span data-i18n-fr="Commentaire" data-i18n-uk="Коментар">Commentaire</span>
+        <textarea name="message" placeholder="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-fr="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-uk="Вік учня, бажаний день або питання"></textarea>
       </label>
 
       <div class="trial-actions">
-        <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
-        <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
+        <button class="trial-submit" type="submit"><span data-i18n-fr="Envoyer" data-i18n-uk="Надіслати">Envoyer</span> <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial data-i18n-fr="Annuler" data-i18n-uk="Скасувати">Annuler</button>
       </div>
     </form>
   </div>
@@ -1225,6 +1226,7 @@ class Component extends DCLogic {
     } else {
       document.querySelectorAll('.reveal').forEach((n) => n.classList.add('is-in'));
     }
+    if (window.AS_I18N) AS_I18N.apply(AS_I18N.get());
   }
   componentWillUnmount() {
     if (this._onMove) window.removeEventListener('mousemove', this._onMove);
@@ -1246,12 +1248,12 @@ class Component extends DCLogic {
       setFr: () => this.setState({ lang:'FR' }),
       langCls: lang==='UK'?'is-uk':'is-fr',
       services: [
-        { no:'01', title:'Діти', tags:['4–7 років','7–11 років','1–1.5 год','групи'], img:'./assets/course-01.png', href:'./course.html?course=kids' },
-        { no:'02', title:'Підлітки', tags:['11–16 років','будь який рівень','портфоліо','1.5 год'], img:'./assets/course-02.png', href:'./course.html?course=teens' },
-        { no:'03', title:'Дорослі', tags:['з 16 років','будь який рівень','2.5 год','вільний стиль'], img:'./assets/course-03.png', href:'./course.html?course=adults' },
-        { no:'04', title:'Індивідуальні уроки', tags:['для будь якого віку','2 години','персональна програма','будь який рівень'], img:'./assets/course-04.png', href:'./course.html?course=individual' },
-        { no:'05', title:'Підготовка до іспитів', tags:['для будь якого віку','час індивідуально','портфоліо','будь який рівень'], img:'./assets/course-05.png', href:'./course.html?course=exams' },
-        { no:'06', title:'Онлайн курси', tags:['будь-де','персональні уроки','зворотний зв\u2019язок','свій темп'], img:'./assets/course-06.png', href:'./course.html?course=online' },
+        { no:'01', title_fr:'Enfants', title_uk:'Діти', tags:[{fr:'4–7 ans',uk:'4–7 років'},{fr:'7–11 ans',uk:'7–11 років'},{fr:'1–1,5 h',uk:'1–1.5 год'},{fr:'groupes',uk:'групи'}], img:'./assets/course-01.png', href:'./course.html?course=kids' },
+        { no:'02', title_fr:'Adolescents', title_uk:'Підлітки', tags:[{fr:'11–16 ans',uk:'11–16 років'},{fr:'tous niveaux',uk:'будь який рівень'},{fr:'portfolio',uk:'портфоліо'},{fr:'1,5 h',uk:'1.5 год'}], img:'./assets/course-02.png', href:'./course.html?course=teens' },
+        { no:'03', title_fr:'Adultes', title_uk:'Дорослі', tags:[{fr:'dès 16 ans',uk:'з 16 років'},{fr:'tous niveaux',uk:'будь який рівень'},{fr:'2,5 h',uk:'2.5 год'},{fr:'style libre',uk:'вільний стиль'}], img:'./assets/course-03.png', href:'./course.html?course=adults' },
+        { no:'04', title_fr:'Cours individuels', title_uk:'Індивідуальні уроки', tags:[{fr:'tout âge',uk:'для будь якого віку'},{fr:'2 h',uk:'2 години'},{fr:'programme perso',uk:'персональна програма'},{fr:'tous niveaux',uk:'будь який рівень'}], img:'./assets/course-04.png', href:'./course.html?course=individual' },
+        { no:'05', title_fr:'Préparation aux examens', title_uk:'Підготовка до іспитів', tags:[{fr:'tout âge',uk:'для будь якого віку'},{fr:'horaire sur mesure',uk:'час індивідуально'},{fr:'portfolio',uk:'портфоліо'},{fr:'tous niveaux',uk:'будь який рівень'}], img:'./assets/course-05.png', href:'./course.html?course=exams' },
+        { no:'06', title_fr:'Cours en ligne', title_uk:'Онлайн курси', tags:[{fr:'partout',uk:'будь-де'},{fr:'cours perso',uk:'персональні уроки'},{fr:'retour du prof',uk:'зворотний зв’язок'},{fr:'à son rythme',uk:'свій темп'}], img:'./assets/course-06.png', href:'./course.html?course=online' }
       ],
       works: [
         { slot:'cl-w-1', title:'Ботанічний етюд', meta:'Марі · акварель' },
