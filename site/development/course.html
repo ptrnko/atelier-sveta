@@ -62,6 +62,27 @@
   .detail-row { display:grid; grid-template-columns:minmax(160px,.45fr) 1fr; gap:24px; padding:22px 0; border-bottom:1px solid #d9d5c9; }
   .detail-label { color:#c0392b; font-size:clamp(24px,2.4vw,38px); }
   .detail-value { color:#141310; font-size:clamp(18px,1.6vw,28px); font-weight:600; line-height:1.35; }
+  .pricing { margin-top:clamp(52px,6vw,96px); }
+  .pricing .section-kicker { margin:0 0 clamp(20px,2.4vw,36px); }
+  .pricing-table-wrap { overflow-x:auto; }
+  .pricing-table { width:100%; min-width:420px; border-collapse:collapse; }
+  .pricing-table th, .pricing-table td { text-align:left; padding:clamp(14px,1.6vw,22px) clamp(14px,1.6vw,26px) clamp(14px,1.6vw,22px) 0; border-bottom:1px solid #d9d5c9; }
+  .pricing-table thead th { border-top:1px solid #d9d5c9; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(12px,0.95vw,15px); letter-spacing:.06em; text-transform:uppercase; color:#6b6459; }
+  .pricing-table tbody th { font-weight:700; font-size:clamp(18px,1.7vw,26px); color:#141310; }
+  .pricing-table tbody td { font-weight:600; font-size:clamp(18px,1.7vw,26px); color:#141310; }
+  .pricing-table td:not(:first-child), .pricing-table th:not(:first-child) { padding-left:clamp(16px,2vw,40px); }
+  .pricing-note { margin:clamp(18px,2vw,30px) 0 0; max-width:74ch; color:#6b6459; font-size:clamp(13px,1vw,16px); line-height:1.6; }
+  @media (max-width:640px) {
+    .pricing-table-wrap { overflow-x:visible; }
+    .pricing-table, .pricing-table tbody { display:block; min-width:0; }
+    .pricing-table thead { display:none; }
+    .pricing-table tr { display:block; border-top:1px solid #d9d5c9; padding:20px 0; }
+    .pricing-table th, .pricing-table td { display:block; border:none; padding:0; }
+    .pricing-table tbody th { font-size:24px; margin-bottom:14px; }
+    .pricing-table td { display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:7px 0; font-size:19px; }
+    .pricing-table td:not(:first-child), .pricing-table th:not(:first-child) { padding-left:0; }
+    .pricing-table td::before { content:attr(data-label); color:#6b6459; font-weight:600; font-size:13px; letter-spacing:.04em; text-transform:uppercase; }
+  }
   .program { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin-top:clamp(52px,6vw,96px); border:1px solid #d9d5c9; border-bottom:none; }
   .program-card { padding:clamp(28px,3vw,48px); border-right:1px solid #d9d5c9; border-bottom:1px solid #d9d5c9; }
   .program-card:nth-child(3n) { border-right:none; }
@@ -123,7 +144,7 @@
     .mobile-nav-lang { display:flex; width:100%; margin-top:clamp(34px,9vw,52px); padding-top:22px; border-top:1px solid rgba(237,235,227,.16); align-items:center; justify-content:space-between; gap:16px; }
     .mobile-nav-lang-label { color:rgba(237,235,227,.42); font-size:11px; letter-spacing:.16em; }
     .mobile-nav-lang .langtoggle { background:#FAAB06; }
-    .header-actions { margin-left:auto; gap:10px; }
+    .header-actions { width:100%; justify-content:space-between; gap:10px; }
     .header-cta { flex:1; justify-content:center; min-width:0; height:44px; padding:0 14px !important; font-size:10px; letter-spacing:.14em; white-space:nowrap; }
     .course-hero { padding:34px 16px 42px; }
     .course-hero-grid { grid-template-columns:1fr; gap:22px 16px; }
@@ -233,6 +254,19 @@
           <div class="detail-value" data-course-materials>гуаш, акварель, графіка, колаж, будь яка техніка на вибір учня</div>
         </div>
       </div>
+
+      <section class="pricing" aria-labelledby="pricing-title" data-pricing-section>
+        <div class="section-kicker hand" id="pricing-title">(Вартість)</div>
+        <div class="pricing-table-wrap">
+          <table class="pricing-table">
+            <thead>
+              <tr><th scope="col">Група</th><th scope="col" data-price-yearhead>Рік · 33 заняття</th><th scope="col">10 занять</th><th scope="col">1 заняття</th></tr>
+            </thead>
+            <tbody data-pricing-rows></tbody>
+          </table>
+        </div>
+        <p class="pricing-note" data-pricing-note></p>
+      </section>
 
       <section class="schedule-section" aria-labelledby="schedule-title">
         <h2 class="schedule-title hand" id="schedule-title">Розклад курсів</h2>
@@ -380,6 +414,12 @@
       forWhom:'учні 4–11 років',
       materials:'гуаш, акварель, графіка, колаж, будь яка техніка на вибір учня',
       schedule:schedules.kids,
+      yearHead:'Рік · 33 заняття',
+      pricing:[
+        {group:'4–7 років', year:'297 €', ten:'110 €', one:'12 €'},
+        {group:'8–11 років', year:'429 €', ten:'160 €', one:'17 €'}
+      ],
+      pricingNote:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.',
       program:[{title:'Спостерігати',text:'Вчимося помічати кольори, форми й настрій у звичайних речах навколо — як справжні маленькі художники.'},{title:'Пробувати',text:'Малюємо гуашшю, аквареллю та колажем без страху помилитися: кожна пляма може стати відкриттям.'},{title:'Створювати',text:'Доводимо ідею до завершеної роботи, якою дитина пишається і несе показати рідним.'}]
     },
     teens: {
@@ -395,6 +435,11 @@
       forWhom:'учні 11–16 років',
       materials:'живопис, графіка, композиція, портфоліо',
       schedule:schedules.teens,
+      yearHead:'Рік · 33 заняття',
+      pricing:[
+        {group:'12–16 років', year:'429 €', ten:'160 €', one:'17 €'}
+      ],
+      pricingNote:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.',
       program:[{title:'Досліджувати',text:'Розбираємо, як влаштовані малюнок, композиція і колір, щоб малювати усвідомлено, а не навмання.'},{title:'Шукати свій стиль',text:'Пробуємо складніші теми й техніки та знаходимо власний почерк, який вирізняє твої роботи.'},{title:'Збирати портфоліо',text:'Формуємо серію сильних робіт, з якою впевнено вступати чи показувати свій рівень.'}]
     },
     adults: {
@@ -410,6 +455,11 @@
       forWhom:'дорослі та учні від 16 років',
       materials:'олія, акрил, акварель, пастель, графіка',
       schedule:schedules.adults,
+      yearHead:'Рік · 29 занять',
+      pricing:[
+        {group:'Дорослі', year:'435 €', ten:'180 €', one:'20 €'}
+      ],
+      pricingNote:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.',
       program:[{title:'Занурюватися',text:'Відкладаємо рутину й повертаємо собі час на творчість — навіть якщо востаннє малювали в дитинстві.'},{title:'Пробувати',text:'Опановуємо олію, акрил чи акварель у власному темпі, без оцінок і поспіху.'},{title:'Створювати',text:'Завершуємо роботу, яку хочеться повісити вдома, — і відчути гордість за зроблене.'}]
     },
     individual: {
@@ -425,6 +475,11 @@
       forWhom:'діти, підлітки або дорослі',
       materials:'техніки підбираються під ціль учня',
       schedule:schedules.individual,
+      yearHead:'Рік · 29 занять',
+      pricing:[
+        {group:'Індивідуально', year:'435 €', ten:'180 €', one:'20 €'}
+      ],
+      pricingNote:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.',
       program:[{title:'Визначити ціль',text:'Починаємо з твоєї задачі: підготовка, конкретна техніка чи просто малювання для себе.'},{title:'Працювати один на один',text:'Уся увага викладача — на тобі: пояснюємо саме те, що потрібно, у зручному ритмі.'},{title:'Досягати результату',text:'Рухаємось до конкретного результату — роботи, навички чи впевненості, заради яких усе й починалось.'}]
     },
     exams: {
@@ -440,6 +495,11 @@
       forWhom:'учні, які готуються до відбору або іспиту',
       materials:'академічний рисунок, живопис, композиція, портфоліо',
       schedule:schedules.exams,
+      yearHead:'Рік · 29 занять',
+      pricing:[
+        {group:'Підготовка', year:'435 €', ten:'180 €', one:'20 €'}
+      ],
+      pricingNote:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.',
       program:[{title:'Аналізувати вимоги',text:'Розбираємо, що саме очікують на відборі чи іспиті, і будуємо чіткий план підготовки.'},{title:'Відпрацьовувати техніку',text:'Тренуємо академічний рисунок, живопис і композицію до впевненого, стабільного рівня.'},{title:'Готувати портфоліо',text:'Збираємо серію робіт і виходимо на іспит спокійно — з готовим результатом у руках.'}]
     },
     online: {
@@ -455,6 +515,11 @@
       forWhom:'учні будь-якого віку та рівня',
       materials:'доступні матеріали вдома плюс персональні рекомендації',
       schedule:schedules.online,
+      yearHead:'Рік · 29 занять',
+      pricing:[
+        {group:'Онлайн', year:'435 €', ten:'180 €', one:'20 €'}
+      ],
+      pricingNote:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.',
       program:[{title:'Навчатися звідусіль',text:'Займаємось із дому у зручний час — потрібні лише матеріали під рукою й бажання малювати.'},{title:'Пробувати з підтримкою',text:'Виконуємо завдання й одразу отримуємо живий зворотний зв’язок викладача по відео.'},{title:'Зростати у своєму темпі',text:'Регулярна практика та ясні завдання ведуть до помітного прогресу — без поспіху й тиску.'}]
     }
   };
@@ -498,6 +563,26 @@
         </article>
       `;
     }).join('');
+  }
+  const pricingSection = document.querySelector('[data-pricing-section]');
+  if (pricingSection) {
+    if (course.pricing && course.pricing.length) {
+      const pricingRows = pricingSection.querySelector('[data-pricing-rows]');
+      pricingRows.innerHTML = course.pricing.map((p) => `
+        <tr>
+          <th scope="row">${p.group}</th>
+          <td data-label="${course.yearHead || 'Рік'}">${p.year}</td>
+          <td data-label="10 занять">${p.ten}</td>
+          <td data-label="1 заняття">${p.one}</td>
+        </tr>
+      `).join('');
+      const yearHead = pricingSection.querySelector('[data-price-yearhead]');
+      if (yearHead && course.yearHead) yearHead.textContent = course.yearHead;
+      const pricingNote = pricingSection.querySelector('[data-pricing-note]');
+      if (pricingNote && course.pricingNote) pricingNote.innerHTML = course.pricingNote;
+    } else {
+      pricingSection.style.display = 'none';
+    }
   }
   const tags = document.querySelector('[data-course-tags]');
   if (tags) tags.innerHTML = course.tags.map((tag) => `<span>${tag}</span>`).join('');
