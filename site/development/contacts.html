@@ -201,19 +201,33 @@
     .header-cta .btn-icon { width:1.35em; height:1.35em; }
   }
   .contact-shell { width:100%; max-width:1440px; margin:0 auto; }
-  .contact-details {
-    padding:75px clamp(20px,4vw,64px) clamp(60px,7vw,120px);
-    display:grid;
-    grid-template-columns:0.85fr 1.15fr;
-    gap:clamp(30px,4vw,72px);
-    align-items:stretch;
+  .contact-prop { position:absolute; z-index:0; height:auto; pointer-events:none; user-select:none; }
+  .contact-prop-sign { top:clamp(0px,1vw,20px); right:clamp(-4px,2vw,52px); width:clamp(150px,16vw,260px); transform-origin:50% 0; will-change:transform; animation:sign-sway 5.5s ease-in-out infinite; }
+  .contact-prop-hand { bottom:clamp(-30px,-1vw,6px); left:clamp(-30px,0.5vw,28px); width:clamp(160px,18vw,320px); }
+  @keyframes sign-sway { 0%,100%{transform:rotate(-2.5deg);} 50%{transform:rotate(2.5deg);} }
+  @media (prefers-reduced-motion:reduce){ .contact-prop-sign { animation:none; } }
+  @media (max-width:900px) {
+    #contact { padding-top:10px !important; }
+    .contact-prop-hand { display:none; }
+    .contact-prop-sign { position:static; display:block; margin:0 auto 10px; top:auto; right:auto; width:clamp(150px,45vw,200px); }
   }
-  .contact-map {
+  .contact-map-full {
     position:relative;
-    min-height:clamp(360px,42vw,620px);
+    height:300px;
+    margin-top:clamp(30px,4vw,56px);
     overflow:hidden;
     background:#dfe6dd;
   }
+  .contact-map-full iframe { position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05); }
+  .contact-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(28px,3vw,44px) clamp(30px,4vw,72px);
+    padding:clamp(40px,5vw,80px) clamp(20px,4vw,64px) clamp(60px,7vw,120px);
+  }
+  .contact-cell { border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px); }
+  .contact-cell-label { font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(20px,1.8vw,28px); line-height:1; margin-bottom:10px; }
+  .contact-cell-line { display:block; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(18px,1.7vw,26px); line-height:1.3; }
   .contact-section {
     background:#141310;
     color:#edebe3;
@@ -225,28 +239,14 @@
     color:#edebe3;
   }
   @media (max-width:760px) {
-    .contact-details {
+    .contact-grid {
       grid-template-columns:1fr;
-      padding-top:0;
+      gap:0;
+      padding-top:clamp(30px,8vw,44px);
     }
-    .contact-map {
-      order:-1;
-      min-height:clamp(300px,82vw,420px);
-    }
-    .contact-socials {
-      flex-direction:column;
-      align-items:flex-start;
-      gap:0 !important;
-    }
-    .contact-socials .clink {
-      display:block;
-      width:100%;
-      padding:10px 0;
-      font-size:32px;
-      line-height:1.1;
-      letter-spacing:0;
-      text-transform:none;
-    }
+    .contact-map-full { height:240px; }
+    .contact-cell { padding-top:22px; margin-top:22px; }
+    .contact-cell:first-child { margin-top:0; }
     .contact-section { padding:72px 16px !important; }
     .contact-section > .micro:first-child {
       font-family:'Caveat',cursive !important;
@@ -314,34 +314,32 @@
 
   <div class="contact-shell">
   <!-- ===== HERO ===== -->
-  <section id="contact" style="text-align:center; padding: clamp(50px,6vw,90px) clamp(20px,4vw,64px) 75px;">
-    <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Контакти)</div>
-    <h1 class="wm" style="margin: 0; line-height: 1.02; font-size: clamp(44px,9vw,100px)">Завітайте <br>до майстерні</h1>
-    <p style="margin: clamp(20px,2.2vw,32px) auto 0; max-width: 60ch; font-family: 'Archivo',sans-serif; font-size: clamp(16px,1.3vw,20px); line-height: 1.55; color: #6b6459;">Ганж, історичний центр Окситанії. Заходьте на пробний урок, каву та розмову про мистецтво — або напишіть нам зручним способом.</p>
+  <section id="contact" style="position:relative; text-align:center; padding: clamp(50px,6vw,90px) clamp(20px,4vw,64px) 75px;">
+    <img class="contact-prop contact-prop-sign" src="./assets/contact-ouvert.png" alt="Ouvert — nous sommes" aria-hidden="true">
+    <img class="contact-prop contact-prop-hand" src="./assets/contact-hand-cup.png" alt="" aria-hidden="true">
+    <div style="position:relative; z-index:1;">
+      <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Контакти)</div>
+      <h1 class="wm" style="margin: 0; line-height: 1.02; font-size: clamp(44px,9vw,100px)">Завітайте <br>до майстерні</h1>
+      <p style="margin: clamp(20px,2.2vw,32px) auto 0; max-width: 60ch; font-family: 'Archivo',sans-serif; font-size: clamp(16px,1.3vw,20px); line-height: 1.55; color: #6b6459;">Ганж, історичний центр Окситанії. Заходьте на пробний урок, каву та розмову про мистецтво — або напишіть нам зручним способом.</p>
+      <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; margin-top:clamp(26px,3vw,40px); background:#141310; color:#edebe3; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на зустріч <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
   </section>
 
-  <!-- ===== DETAILS + MAP ===== -->
-  <section class="contact-details">
-    <div style="display:flex; flex-direction:column; gap:clamp(24px,2.6vw,38px);">
-      <sc-for list="{{ items }}" as="c" hint-placeholder-count="4">
-        <div style="border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px);">
-          <div style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(20px,1.8vw,28px); line-height:1; margin-bottom:10px;">{{ c.label }}</div>
-          <sc-for list="{{ c.lines }}" as="ln" hint-placeholder-count="2">
-            <a href="{{ ln.href }}" class="clink" style="display:block; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(18px,1.7vw,26px); line-height:1.3;">{{ ln.text }}</a>
-          </sc-for>
-        </div>
-      </sc-for>
-      <div style="border-top:1px solid #d9d5c9; padding-top:clamp(18px,1.8vw,26px); display:flex; gap:22px; flex-wrap:wrap;" class="contact-socials micro">
-        <a href="https://www.instagram.com/atelier.sveta.causse/" class="clink" data-arrow="true">Instagram</a>
-        <a href="#" class="clink" data-arrow="true">Facebook</a>
-        <a href="https://wa.me/33768614190" class="clink" data-arrow="true">WhatsApp</a>
-      </div>
-    </div>
+  <!-- ===== MAP (full width, 300px) ===== -->
+  <div class="contact-map-full">
+    <iframe title="Atelier Sveta на карті" src="https://www.google.com/maps?q=24%20Rue%20Jeu%20de%20Ballon,%2034190%20Ganges,%20France&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
 
-    <!-- map -->
-    <div class="contact-map">
-      <iframe title="Atelier Sveta на карті" src="https://www.google.com/maps?q=24%20Rue%20Jeu%20de%20Ballon,%2034190%20Ganges,%20France&amp;z=16&amp;output=embed" style="position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+  <!-- ===== CONTACTS (2 columns) ===== -->
+  <section class="contact-grid">
+    <sc-for list="{{ items }}" as="c" hint-placeholder-count="4">
+      <div class="contact-cell">
+        <div class="contact-cell-label">{{ c.label }}</div>
+        <sc-for list="{{ c.lines }}" as="ln" hint-placeholder-count="2">
+          <a href="{{ ln.href }}" class="clink contact-cell-line">{{ ln.text }}</a>
+        </sc-for>
+      </div>
+    </sc-for>
   </section>
   </div>
 
@@ -372,16 +370,15 @@
   <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
     <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
     <form class="trial-form" id="trial-form" action="https://formsubmit.co/Petrenkoag95@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/Petrenkoag95@gmail.com">
-      <h2 id="trial-title">Пробний урок</h2>
-      <p>Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.</p>
+      <h2 id="trial-title">Залишити заявку</h2>
+      <p>Залиште контакти — ми зв’яжемося, щоб узгодити зручний час зустрічі.</p>
       <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
       <label class="trial-field">Ім'я<input type="text" name="name" autocomplete="name" required></label>
       <label class="trial-field">Телефон або email<input type="text" name="contact" autocomplete="email" required></label>
-      <label class="trial-field">Напрям<select name="course"><option>Діти</option><option>Підлітки</option><option>Дорослі</option><option>Індивідуальні уроки</option><option>Підготовка до іспитів</option><option>Онлайн курси</option></select></label>
-      <label class="trial-field">Коментар<textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea></label>
+      <label class="trial-field">Коментар<textarea name="message" placeholder="Бажаний день, час або питання"></textarea></label>
       <div class="trial-actions">
         <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
         <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
