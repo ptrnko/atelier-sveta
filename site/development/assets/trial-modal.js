@@ -13,17 +13,18 @@
     successModal.setAttribute("aria-hidden", "true");
     successModal.innerHTML = `
       <div class="success-dialog" role="dialog" aria-modal="true" aria-labelledby="success-title">
-        <button class="success-close" type="button" data-close-success aria-label="Закрити повідомлення">×</button>
+        <button class="success-close" type="button" data-close-success aria-label="Fermer le message" data-i18n-aria-label-fr="Fermer le message" data-i18n-aria-label-uk="Закрити повідомлення">×</button>
         <img class="success-hand" src="./assets/hurts-hand.svg" alt="" aria-hidden="true">
-        <h2 class="success-title" id="success-title">Дякуємо!</h2>
-        <p class="success-text">Заявка відправлена. Ми зв'яжемося з вами найближчим часом.</p>
+        <h2 class="success-title" id="success-title" data-i18n-fr="Merci !" data-i18n-uk="Дякуємо!">Merci !</h2>
+        <p class="success-text" data-i18n-fr="Votre demande a été envoyée. Nous vous contacterons très bientôt." data-i18n-uk="Заявка відправлена. Ми зв'яжемося з вами найближчим часом.">Votre demande a été envoyée. Nous vous contacterons très bientôt.</p>
         <div class="success-actions">
-          <button class="success-return" type="button" data-close-success>Повернутися на сайт <span class="btn-icon" aria-hidden="true"></span></button>
-          <a class="success-return success-return--primary" href="./home.html#services" data-close-success>Обрати курс <span class="btn-icon" aria-hidden="true"></span></a>
+          <button class="success-return" type="button" data-close-success><span data-i18n-fr="Retour au site" data-i18n-uk="Повернутися на сайт">Retour au site</span> <span class="btn-icon" aria-hidden="true"></span></button>
+          <a class="success-return success-return--primary" href="./courses.html" data-close-success><span data-i18n-fr="Choisir un cours" data-i18n-uk="Обрати курс">Choisir un cours</span> <span class="btn-icon" aria-hidden="true"></span></a>
         </div>
       </div>
     `;
     document.body.appendChild(successModal);
+    if (window.AS_I18N) AS_I18N.apply(AS_I18N.get());
     return successModal;
   };
 
