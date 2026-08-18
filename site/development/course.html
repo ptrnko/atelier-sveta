@@ -66,6 +66,7 @@
   .program-card { padding:clamp(28px,3vw,48px); border-right:1px solid #d9d5c9; border-bottom:1px solid #d9d5c9; }
   .program-card:nth-child(3n) { border-right:none; }
   .program-card h3 { margin:0 0 18px; font-size:clamp(26px,2.9vw,52px); line-height:.98; font-weight:500; }
+  .program-num { display:block; font-family:'Caveat',cursive; font-weight:700; color:#c0392b; font-size:1.5em; line-height:1; margin-bottom:12px; }
   .program-card p { margin:0; color:#6b6459; font-size:clamp(16px,1.25vw,20px); line-height:1.5; }
   .schedule-section { margin-top:clamp(52px,6vw,96px); padding:clamp(44px,5vw,72px) clamp(18px,3vw,42px) clamp(42px,5vw,70px); background:#c0392b; color:#fff; overflow:hidden; }
   .schedule-title { margin:0 0 clamp(42px,7vw,110px); color:#FAAB06; font-size:clamp(30px,3.4vw,52px); text-align:center; }
@@ -198,7 +199,7 @@
         </div>
         <div class="course-image">
           <video autoplay muted loop playsinline preload="metadata" aria-label="Учні працюють у художній школі" data-course-video>
-            <source src="./assets/course-hero-video.mp4" type="video/mp4" data-course-video-source>
+            <source src="./assets/course-kids-video.mp4" type="video/mp4" data-course-video-source>
           </video>
         </div>
       </div>
@@ -239,15 +240,15 @@
 
       <div class="program">
         <article class="program-card">
-          <h3>01. Спостерігати</h3>
+          <h3><span class="program-num">01.</span> <span data-program-one-title>Спостерігати</span></h3>
           <p data-program-one>Вчимося бачити форму, колір, пропорції та характер предметів навколо.</p>
         </article>
         <article class="program-card">
-          <h3>02. Пробувати</h3>
+          <h3><span class="program-num">02.</span> <span data-program-two-title>Пробувати</span></h3>
           <p data-program-two>Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.</p>
         </article>
         <article class="program-card">
-          <h3>03. Створювати</h3>
+          <h3><span class="program-num">03.</span> <span data-program-three-title>Створювати</span></h3>
           <p data-program-three>Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.</p>
         </article>
       </div>
@@ -370,7 +371,7 @@
       title:'Діти',
       tags:['4–7 років','7–11 років','1–1.5 год','групи'],
       img:'./assets/course-01.png',
-      video:'./assets/course-hero-video.mp4',
+      video:'./assets/course-kids-video.mp4',
       heading:'Перші кроки в мистецтві без страху чистого аркуша.',
       copy:'Курс для дітей, які хочуть пробувати різні матеріали, малювати в групі та поступово знаходити власний спосіб бачити світ.',
       format:'групові заняття у майстерні',
@@ -378,14 +379,14 @@
       forWhom:'учні 4–11 років',
       materials:'гуаш, акварель, графіка, колаж, будь яка техніка на вибір учня',
       schedule:schedules.kids,
-      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
+      program:[{title:'Спостерігати',text:'Вчимося помічати кольори, форми й настрій у звичайних речах навколо — як справжні маленькі художники.'},{title:'Пробувати',text:'Малюємо гуашшю, аквареллю та колажем без страху помилитися: кожна пляма може стати відкриттям.'},{title:'Створювати',text:'Доводимо ідею до завершеної роботи, якою дитина пишається і несе показати рідним.'}]
     },
     teens: {
       no:'02',
       title:'Підлітки',
       tags:['11–16 років','будь який рівень','портфоліо','1.5 год'],
       img:'./assets/course-02.png',
-      video:'./assets/course-hero-video.mp4',
+      video:'./assets/course-teens-video.mp4',
       heading:'Більше самостійності, техніки та власного художнього голосу.',
       copy:'Курс допомагає підліткам поглибити навички, спробувати складніші теми та зібрати сильні роботи для портфоліо.',
       format:'групи або індивідуальний супровід',
@@ -393,7 +394,7 @@
       forWhom:'учні 11–16 років',
       materials:'живопис, графіка, композиція, портфоліо',
       schedule:schedules.teens,
-      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
+      program:[{title:'Досліджувати',text:'Розбираємо, як влаштовані малюнок, композиція і колір, щоб малювати усвідомлено, а не навмання.'},{title:'Шукати свій стиль',text:'Пробуємо складніші теми й техніки та знаходимо власний почерк, який вирізняє твої роботи.'},{title:'Збирати портфоліо',text:'Формуємо серію сильних робіт, з якою впевнено вступати чи показувати свій рівень.'}]
     },
     adults: {
       no:'03',
@@ -408,7 +409,7 @@
       forWhom:'дорослі та учні від 16 років',
       materials:'олія, акрил, акварель, пастель, графіка',
       schedule:schedules.adults,
-      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
+      program:[{title:'Занурюватися',text:'Відкладаємо рутину й повертаємо собі час на творчість — навіть якщо востаннє малювали в дитинстві.'},{title:'Пробувати',text:'Опановуємо олію, акрил чи акварель у власному темпі, без оцінок і поспіху.'},{title:'Створювати',text:'Завершуємо роботу, яку хочеться повісити вдома, — і відчути гордість за зроблене.'}]
     },
     individual: {
       no:'04',
@@ -423,7 +424,7 @@
       forWhom:'діти, підлітки або дорослі',
       materials:'техніки підбираються під ціль учня',
       schedule:schedules.individual,
-      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
+      program:[{title:'Визначити ціль',text:'Починаємо з твоєї задачі: підготовка, конкретна техніка чи просто малювання для себе.'},{title:'Працювати один на один',text:'Уся увага викладача — на тобі: пояснюємо саме те, що потрібно, у зручному ритмі.'},{title:'Досягати результату',text:'Рухаємось до конкретного результату — роботи, навички чи впевненості, заради яких усе й починалось.'}]
     },
     exams: {
       no:'05',
@@ -438,14 +439,14 @@
       forWhom:'учні, які готуються до відбору або іспиту',
       materials:'академічний рисунок, живопис, композиція, портфоліо',
       schedule:schedules.exams,
-      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
+      program:[{title:'Аналізувати вимоги',text:'Розбираємо, що саме очікують на відборі чи іспиті, і будуємо чіткий план підготовки.'},{title:'Відпрацьовувати техніку',text:'Тренуємо академічний рисунок, живопис і композицію до впевненого, стабільного рівня.'},{title:'Готувати портфоліо',text:'Збираємо серію робіт і виходимо на іспит спокійно — з готовим результатом у руках.'}]
     },
     online: {
       no:'06',
       title:'Онлайн курси',
       tags:['будь-де','персональні уроки','зворотний зв’язок','свій темп'],
       img:'./assets/course-06.png',
-      video:'./assets/course-hero-video.mp4',
+      video:'./assets/course-individual-exams-video.mp4',
       heading:'Мистецтво вдома з живим зворотним зв’язком викладача.',
       copy:'Онлайн формат для тих, хто не може приходити у майстерню, але хоче регулярну практику і ясні завдання.',
       format:'онлайн заняття та домашні роботи',
@@ -453,7 +454,7 @@
       forWhom:'учні будь-якого віку та рівня',
       materials:'доступні матеріали вдома плюс персональні рекомендації',
       schedule:schedules.online,
-      program:['Вчимося бачити форму, колір, пропорції та характер предметів навколо.','Експериментуємо з матеріалами й техніками, не боячись помилок і несподіваних результатів.','Перетворюємо ідеї на завершені роботи та поступово формуємо власний художній почерк.']
+      program:[{title:'Навчатися звідусіль',text:'Займаємось із дому у зручний час — потрібні лише матеріали під рукою й бажання малювати.'},{title:'Пробувати з підтримкою',text:'Виконуємо завдання й одразу отримуємо живий зворотний зв’язок викладача по відео.'},{title:'Зростати у своєму темпі',text:'Регулярна практика та ясні завдання ведуть до помітного прогресу — без поспіху й тиску.'}]
     }
   };
 
@@ -469,9 +470,12 @@
   setText('[data-course-duration]', course.duration);
   setText('[data-course-for]', course.forWhom);
   setText('[data-course-materials]', course.materials);
-  setText('[data-program-one]', course.program[0]);
-  setText('[data-program-two]', course.program[1]);
-  setText('[data-program-three]', course.program[2]);
+  setText('[data-program-one-title]', course.program[0].title);
+  setText('[data-program-one]', course.program[0].text);
+  setText('[data-program-two-title]', course.program[1].title);
+  setText('[data-program-two]', course.program[1].text);
+  setText('[data-program-three-title]', course.program[2].title);
+  setText('[data-program-three]', course.program[2].text);
   const courseVideo = document.querySelector('[data-course-video]');
   const courseVideoSource = document.querySelector('[data-course-video-source]');
   if (courseVideo && courseVideoSource && course.video) {
