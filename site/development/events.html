@@ -9,6 +9,8 @@
 <body>
 <x-dc>
 <helmet>
+<title data-i18n-fr="Événements · Atelier Sveta" data-i18n-uk="Події · Atelier Sveta">Événements · Atelier Sveta</title>
+<script src="./assets/i18n.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -291,17 +293,17 @@
 <div class="events-page">
   <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(11px,1.5vw,18px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
-      <a href="./home.html" class="nlink">Головна</a>
-      <a href="./courses.html" class="nlink">Курси</a>
-      <a href="./events.html" class="nlink is-active">Події</a>
-      <a href="./gallery.html" class="nlink">Галерея</a>
-      <a href="./contacts.html" class="nlink">Контакти</a>
+      <a href="./home.html" class="nlink" data-i18n-fr="Accueil" data-i18n-uk="Головна">Accueil</a>
+      <a href="./courses.html" class="nlink" data-i18n-fr="Cours" data-i18n-uk="Курси">Cours</a>
+      <a href="./events.html" class="nlink is-active" data-i18n-fr="Événements" data-i18n-uk="Події">Événements</a>
+      <a href="./gallery.html" class="nlink" data-i18n-fr="Galerie" data-i18n-uk="Галерея">Galerie</a>
+      <a href="./contacts.html" class="nlink" data-i18n-fr="Contact" data-i18n-uk="Контакти">Contact</a>
       <div class="mobile-nav-lang">
-        <span class="mobile-nav-lang-label">Мова</span>
-        <div class="langtoggle {{ langCls }}">
+        <span class="mobile-nav-lang-label" data-i18n-fr="Langue" data-i18n-uk="Мова">Langue</span>
+        <div class="langtoggle is-fr">
           <span class="langpill" aria-hidden="true"></span>
-          <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-          <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+          <button type="button" class="langbtn">FR</button>
+          <button type="button" class="langbtn">UA</button>
         </div>
       </div>
     </nav>
@@ -309,18 +311,18 @@
       <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
-      <div class="desktop-lang langtoggle {{ langCls }}">
+      <div class="desktop-lang langtoggle is-fr">
         <span class="langpill" aria-hidden="true"></span>
-        <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-        <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+        <button type="button" class="langbtn">FR</button>
+        <button type="button" class="langbtn">UA</button>
       </div>
-      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;"><span data-i18n-fr="Trouver un cours" data-i18n-uk="Знайти курс">Trouver un cours</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
   <main>
     <section id="events" class="events-section">
-      <h1 class="events-title hand">(Події)</h1>
+      <h1 class="events-title hand" data-i18n-fr="(Événements)" data-i18n-uk="(Події)">(Événements)</h1>
       <div class="events-shell">
         <span class="events-top-flower" aria-hidden="true"></span>
         <span class="events-top-flower" aria-hidden="true"></span>
@@ -328,28 +330,28 @@
         <span class="events-top-flower" aria-hidden="true"></span>
         <div class="events-grid">
           <figure class="event-card reveal">
-            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-01.png" aria-label="Відкрити афішу вернісажу">
-              <img src="./assets/event-vernissage-01.png" alt="Афіша вернісажу Atelier Sveta">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-01.png" aria-label="Ouvrir l’affiche du vernissage" data-i18n-aria-label-fr="Ouvrir l’affiche du vernissage" data-i18n-aria-label-uk="Відкрити афішу вернісажу">
+              <img src="./assets/event-vernissage-01.png" alt="Affiche du vernissage Atelier Sveta" data-i18n-alt-fr="Affiche du vernissage Atelier Sveta" data-i18n-alt-uk="Афіша вернісажу Atelier Sveta">
             </button>
           </figure>
           <figure class="event-card reveal">
-            <button type="button" class="event-frame is-poster" data-full="./assets/event-prices-2025.png" aria-label="Відкрити афішу тарифів 2025-2026">
-              <img src="./assets/event-prices-2025.png" alt="Афіша тарифів курсів 2025-2026">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-prices-2025.png" aria-label="Ouvrir l’affiche des tarifs 2025-2026" data-i18n-aria-label-fr="Ouvrir l’affiche des tarifs 2025-2026" data-i18n-aria-label-uk="Відкрити афішу тарифів 2025-2026">
+              <img src="./assets/event-prices-2025.png" alt="Affiche des tarifs des cours 2025-2026" data-i18n-alt-fr="Affiche des tarifs des cours 2025-2026" data-i18n-alt-uk="Афіша тарифів курсів 2025-2026">
             </button>
           </figure>
           <figure class="event-card reveal">
-            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-2025.png" aria-label="Відкрити афішу виставки 2025">
-              <img src="./assets/event-vernissage-2025.png" alt="Афіша виставки Atelier Sveta 2025">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-2025.png" aria-label="Ouvrir l’affiche de l’exposition 2025" data-i18n-aria-label-fr="Ouvrir l’affiche de l’exposition 2025" data-i18n-aria-label-uk="Відкрити афішу виставки 2025">
+              <img src="./assets/event-vernissage-2025.png" alt="Affiche de l’exposition Atelier Sveta 2025" data-i18n-alt-fr="Affiche de l’exposition Atelier Sveta 2025" data-i18n-alt-uk="Афіша виставки Atelier Sveta 2025">
             </button>
           </figure>
           <figure class="event-card reveal">
-            <button type="button" class="event-frame is-poster" data-full="./assets/event-cours-arts.png" aria-label="Відкрити афішу курсів arts plastiques">
-              <img src="./assets/event-cours-arts.png" alt="Афіша курсів arts plastiques">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-cours-arts.png" aria-label="Ouvrir l’affiche des cours d’arts plastiques" data-i18n-aria-label-fr="Ouvrir l’affiche des cours d’arts plastiques" data-i18n-aria-label-uk="Відкрити афішу курсів arts plastiques">
+              <img src="./assets/event-cours-arts.png" alt="Affiche des cours d’arts plastiques" data-i18n-alt-fr="Affiche des cours d’arts plastiques" data-i18n-alt-uk="Афіша курсів arts plastiques">
             </button>
           </figure>
           <figure class="event-card reveal">
-            <button type="button" class="event-frame is-poster" data-full="./assets/event-atelier-arts.png" aria-label="Відкрити афішу atelier arts plastiques">
-              <img src="./assets/event-atelier-arts.png" alt="Афіша atelier arts plastiques">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-atelier-arts.png" aria-label="Ouvrir l’affiche atelier arts plastiques" data-i18n-aria-label-fr="Ouvrir l’affiche atelier arts plastiques" data-i18n-aria-label-uk="Відкрити афішу atelier arts plastiques">
+              <img src="./assets/event-atelier-arts.png" alt="Affiche atelier arts plastiques" data-i18n-alt-fr="Affiche atelier arts plastiques" data-i18n-alt-uk="Афіша atelier arts plastiques">
             </button>
           </figure>
         </div>
@@ -357,16 +359,16 @@
     </section>
 
     <section id="contact" class="contact-section">
-      <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
-      <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
+      <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);" data-i18n-fr="(Contact)" data-i18n-uk="(Контакт)">(Contact)</div>
+      <p class="contact-title wm" data-i18n-fr="L’art<br>commence<br>ici." data-i18n-uk="Мистецтво<br>починається<br>тут.">L’art<br>commence<br>ici.</p>
       <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
-        <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
+        <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;" data-i18n-fr="24 Rue Jeu de Ballon<br>34190 Ganges, France" data-i18n-uk="24 Rue Jeu de Ballon<br>34190 Ganges, Франція">24 Rue Jeu de Ballon<br>34190 Ganges, France</div>
         <div class="micro" style="line-height:2; color:#FAAB06;">
           <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
           <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
           <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
         </div>
-        <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+        <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Réserver un cours d’essai" data-i18n-uk="Записатися на пробний">Réserver un cours d’essai</span> <span class="btn-icon" aria-hidden="true"></span></a>
       </div>
     </section>
   </main>
@@ -385,21 +387,21 @@
 </x-dc>
 <div class="trial-modal" id="trial-modal" aria-hidden="true">
   <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
-    <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
+    <button class="trial-close" type="button" data-close-trial aria-label="Fermer le formulaire" data-i18n-aria-label-fr="Fermer le formulaire" data-i18n-aria-label-uk="Закрити форму">×</button>
     <form class="trial-form" id="trial-form" action="https://formsubmit.co/Petrenkoag95@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/Petrenkoag95@gmail.com">
-      <h2 id="trial-title">Пробний урок</h2>
-      <p>Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.</p>
+      <h2 id="trial-title" data-i18n-fr="Cours d’essai" data-i18n-uk="Пробний урок">Cours d’essai</h2>
+      <p data-i18n-fr="Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire." data-i18n-uk="Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.">Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire.</p>
       <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-      <label class="trial-field">Ім'я<input type="text" name="name" autocomplete="name" required></label>
-      <label class="trial-field">Телефон або email<input type="text" name="contact" autocomplete="email" required></label>
-      <label class="trial-field">Напрям<select name="course"><option>Діти</option><option>Підлітки</option><option>Дорослі</option><option>Індивідуальні уроки</option><option>Підготовка до іспитів</option><option>Онлайн курси</option></select></label>
-      <label class="trial-field">Коментар<textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea></label>
+      <label class="trial-field"><span data-i18n-fr="Prénom" data-i18n-uk="Ім'я">Prénom</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="trial-field"><span data-i18n-fr="Téléphone ou e-mail" data-i18n-uk="Телефон або email">Téléphone ou e-mail</span><input type="text" name="contact" autocomplete="email" required></label>
+      <label class="trial-field"><span data-i18n-fr="Cours" data-i18n-uk="Напрям">Cours</span><select name="course"><option data-i18n-fr="Enfants" data-i18n-uk="Діти">Enfants</option><option data-i18n-fr="Adolescents" data-i18n-uk="Підлітки">Adolescents</option><option data-i18n-fr="Adultes" data-i18n-uk="Дорослі">Adultes</option><option data-i18n-fr="Cours individuels" data-i18n-uk="Індивідуальні уроки">Cours individuels</option><option data-i18n-fr="Préparation aux examens" data-i18n-uk="Підготовка до іспитів">Préparation aux examens</option><option data-i18n-fr="Cours en ligne" data-i18n-uk="Онлайн курси">Cours en ligne</option></select></label>
+      <label class="trial-field"><span data-i18n-fr="Commentaire" data-i18n-uk="Коментар">Commentaire</span><textarea name="message" placeholder="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-fr="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-uk="Вік учня, бажаний день або питання"></textarea></label>
       <div class="trial-actions">
-        <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
-        <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
+        <button class="trial-submit" type="submit"><span data-i18n-fr="Envoyer" data-i18n-uk="Надіслати">Envoyer</span> <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial data-i18n-fr="Annuler" data-i18n-uk="Скасувати">Annuler</button>
       </div>
     </form>
   </div>
@@ -451,6 +453,7 @@ class Component extends DCLogic {
     } else {
       document.querySelectorAll('.reveal').forEach((n) => n.classList.add('is-in'));
     }
+    if (window.AS_I18N) AS_I18N.apply(AS_I18N.get());
   }
   componentWillUnmount() {
     if (this._io) this._io.disconnect();
