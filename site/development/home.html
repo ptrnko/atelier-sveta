@@ -571,20 +571,17 @@
   .works-scroll { cursor:grab; }
   .works-scroll.is-dragging { cursor:grabbing; user-select:none; scroll-behavior:auto; }
   .works-scroll.is-dragging a, .works-scroll.is-dragging .btn { pointer-events:none; }
-  .works-controls { display:flex; align-items:center; gap:clamp(12px,1.4vw,20px); }
-  .works-nav {
-    display:inline-flex; align-items:center; justify-content:center;
-    width:clamp(46px,3.4vw,54px); height:clamp(46px,3.4vw,54px);
-    border:1px solid #141310; border-radius:50%;
-    background:transparent; color:#141310; cursor:pointer;
-    font-family:'Archivo',sans-serif; font-size:22px; line-height:1;
-    transition:background-color .2s ease, color .2s ease, transform .2s ease, opacity .2s ease;
+  .works-controls { display:flex; align-items:center; gap:clamp(6px,0.8vw,12px); }
+  .works-arrow {
+    border:0; background:transparent; padding:0 .12em; cursor:pointer;
+    font-family:'Caveat',cursive; color:#c0392b; line-height:1;
+    font-size:clamp(24px,2.2vw,34px);
+    transition:opacity .2s ease, transform .2s ease;
   }
-  .works-nav:hover { background:#141310; color:#edebe3; }
-  .works-nav:active { transform:scale(.94); }
-  .works-nav:disabled { opacity:.3; cursor:default; }
+  .works-arrow:hover { transform:scale(1.18); }
+  .works-arrow:active { transform:scale(.92); }
+  .works-arrow:disabled { opacity:.3; cursor:default; transform:none; }
   @media (max-width:760px) {
-    .works-nav { display:none; }
     .works-scroll { cursor:default; }
   }
   @keyframes wm-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
@@ -1139,9 +1136,9 @@
         
       </div>
       <div class="works-controls">
-        <span class="works-drag-label" style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(24px,2.2vw,34px); line-height:1;" data-i18n-fr="← Faites glisser →" data-i18n-uk="← Тягніть →">← Faites glisser →</span>
-        <button type="button" class="works-nav" data-works-prev aria-label="Précédent" data-i18n-aria-label-fr="Précédent" data-i18n-aria-label-uk="Назад">‹</button>
-        <button type="button" class="works-nav" data-works-next aria-label="Suivant" data-i18n-aria-label-fr="Suivant" data-i18n-aria-label-uk="Далі">›</button>
+        <button type="button" class="works-arrow" data-works-prev aria-label="Précédent" data-i18n-aria-label-fr="Précédent" data-i18n-aria-label-uk="Назад">←</button>
+        <span class="works-drag-label" style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(24px,2.2vw,34px); line-height:1;" data-i18n-fr="Faites glisser" data-i18n-uk="Тягніть">Faites glisser</span>
+        <button type="button" class="works-arrow" data-works-next aria-label="Suivant" data-i18n-aria-label-fr="Suivant" data-i18n-aria-label-uk="Далі">→</button>
       </div>
     </div>
     <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 clamp(20px,4vw,64px); scroll-snap-type:x mandatory;">
