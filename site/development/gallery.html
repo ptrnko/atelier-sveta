@@ -510,7 +510,8 @@ class Component extends DCLogic {
     const open = this.state.open;
     const l18 = (window.AS_I18N ? AS_I18N.get() : 'fr');
     const L = (v) => (v && typeof v === 'object' && 'fr' in v) ? v[l18] : v;
-    const exhibitions = data.map((ex, i) => Object.assign({}, ex, {
+    // TEMP: show only the first exhibition; others hidden. To restore all, remove `.slice(0, 1)`.
+    const exhibitions = data.slice(0, 1).map((ex, i) => Object.assign({}, ex, {
       name: L(ex.name),
       ages: L(ex.ages),
       works: (ex.works || []).map((w) => Object.assign({}, w, { title: L(w.title), meta: L(w.meta) })),
