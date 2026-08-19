@@ -568,6 +568,25 @@
     scrollbar-width:none;
   }
   .drag-scroll::-webkit-scrollbar { display:none; }
+  .works-scroll { cursor:grab; }
+  .works-scroll.is-dragging { cursor:grabbing; user-select:none; scroll-behavior:auto; }
+  .works-scroll.is-dragging a, .works-scroll.is-dragging .btn { pointer-events:none; }
+  .works-controls { display:flex; align-items:center; gap:clamp(12px,1.4vw,20px); }
+  .works-nav {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:clamp(46px,3.4vw,54px); height:clamp(46px,3.4vw,54px);
+    border:1px solid #141310; border-radius:50%;
+    background:transparent; color:#141310; cursor:pointer;
+    font-family:'Archivo',sans-serif; font-size:22px; line-height:1;
+    transition:background-color .2s ease, color .2s ease, transform .2s ease, opacity .2s ease;
+  }
+  .works-nav:hover { background:#141310; color:#edebe3; }
+  .works-nav:active { transform:scale(.94); }
+  .works-nav:disabled { opacity:.3; cursor:default; }
+  @media (max-width:760px) {
+    .works-nav { display:none; }
+    .works-scroll { cursor:default; }
+  }
   @keyframes wm-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
   .srow { transition:background .3s, color .3s; }
   .srow:hover { background:#141310; color:#edebe3; }
@@ -1119,7 +1138,11 @@
         <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);" data-i18n-fr="(Galerie)" data-i18n-uk="(Галерея)">(Galerie)</div>
         
       </div>
-      <span class="works-drag-label" style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(24px,2.2vw,34px); line-height:1;" data-i18n-fr="← Faites glisser →" data-i18n-uk="← Тягніть →">← Faites glisser →</span>
+      <div class="works-controls">
+        <span class="works-drag-label" style="font-family:'Caveat',cursive; color:#c0392b; font-size:clamp(24px,2.2vw,34px); line-height:1;" data-i18n-fr="← Faites glisser →" data-i18n-uk="← Тягніть →">← Faites glisser →</span>
+        <button type="button" class="works-nav" data-works-prev aria-label="Précédent" data-i18n-aria-label-fr="Précédent" data-i18n-aria-label-uk="Назад">‹</button>
+        <button type="button" class="works-nav" data-works-next aria-label="Suivant" data-i18n-aria-label-fr="Suivant" data-i18n-aria-label-uk="Далі">›</button>
+      </div>
     </div>
     <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 clamp(20px,4vw,64px); scroll-snap-type:x mandatory;">
       <sc-for list="{{ works }}" as="w" hint-placeholder-count="5">
@@ -1389,5 +1412,57 @@ class Component extends DCLogic {
 }
 </script>
 <script src="./assets/trial-modal.js"></script>
+<script>
+  /* Works gallery: drag-to-scroll (desktop) + prev/next arrows */
+  (() => {
+    const isDesktop = () => window.matchMedia('(min-width:761px)').matches;
+    function init() {
+      const scroller = document.querySelector('.works-scroll');
+      if (!scroller || scroller.dataset.dragInit) return false;
+      if (!scroller.querySelector('.work-card')) return false; // wait for x-dc render
+      scroller.dataset.dragInit = '1';
+
+      let down = false, startX = 0, startScroll = 0, moved = false;
+      scroller.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || !isDesktop()) return;
+        down = true; moved = false; startX = e.clientX; startScroll = scroller.scrollLeft;
+        scroller.classList.add('is-dragging');
+        try { scroller.setPointerCapture(e.pointerId); } catch (_) {}
+      });
+      scroller.addEventListener('pointermove', (e) => {
+        if (!down) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) moved = true;
+        scroller.scrollLeft = startScroll - dx;
+      });
+      const end = () => { if (!down) return; down = false; scroller.classList.remove('is-dragging'); };
+      scroller.addEventListener('pointerup', end);
+      scroller.addEventListener('pointercancel', end);
+      scroller.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+      const step = () => {
+        const card = scroller.querySelector('.work-card');
+        return (card ? card.getBoundingClientRect().width : 300) + 24;
+      };
+      const prev = document.querySelector('[data-works-prev]');
+      const next = document.querySelector('[data-works-next]');
+      if (prev) prev.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+      if (next) next.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+
+      const update = () => {
+        const max = scroller.scrollWidth - scroller.clientWidth - 2;
+        if (prev) prev.disabled = scroller.scrollLeft <= 2;
+        if (next) next.disabled = scroller.scrollLeft >= max;
+      };
+      scroller.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+      return true;
+    }
+    let tries = 0;
+    const timer = setInterval(() => { if (init() || ++tries > 50) clearInterval(timer); }, 100);
+    if (document.readyState !== 'loading') init();
+  })();
+</script>
 </body>
 </html>
