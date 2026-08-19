@@ -9,6 +9,8 @@
 <body>
 <x-dc>
 <helmet>
+<title data-i18n-fr="Contact · Atelier Sveta" data-i18n-uk="Контакти · Atelier Sveta">Contact · Atelier Sveta</title>
+<script src="./assets/i18n.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -285,17 +287,17 @@
   <!-- ===== TOP BAR ===== -->
   <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(11px,1.5vw,18px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
-      <a href="./home.html" class="nlink">Головна</a>
-      <a href="./courses.html" class="nlink">Курси</a>
-      <a href="./events.html" class="nlink">Події</a>
-      <a href="./gallery.html" class="nlink">Галерея</a>
+      <a href="./home.html" class="nlink" data-i18n-fr="Accueil" data-i18n-uk="Головна">Accueil</a>
+      <a href="./courses.html" class="nlink" data-i18n-fr="Cours" data-i18n-uk="Курси">Cours</a>
+      <a href="./events.html" class="nlink" data-i18n-fr="Événements" data-i18n-uk="Події">Événements</a>
+      <a href="./gallery.html" class="nlink" data-i18n-fr="Galerie" data-i18n-uk="Галерея">Galerie</a>
       <a href="#contact" class="nlink is-active" style="color:#c0392b;">Контакти</a>
       <div class="mobile-nav-lang">
-        <span class="mobile-nav-lang-label">Мова</span>
-        <div class="langtoggle {{ langCls }}">
+        <span class="mobile-nav-lang-label" data-i18n-fr="Langue" data-i18n-uk="Мова">Langue</span>
+        <div class="langtoggle is-fr">
           <span class="langpill" aria-hidden="true"></span>
-          <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-          <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+          <button type="button" class="langbtn">FR</button>
+          <button type="button" class="langbtn">UA</button>
         </div>
       </div>
     </nav>
@@ -303,40 +305,40 @@
       <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
-      <div class="desktop-lang langtoggle {{ langCls }}">
+      <div class="desktop-lang langtoggle is-fr">
         <span class="langpill" aria-hidden="true"></span>
-        <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-        <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+        <button type="button" class="langbtn">FR</button>
+        <button type="button" class="langbtn">UA</button>
       </div>
-      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;"><span data-i18n-fr="Trouver un cours" data-i18n-uk="Знайти курс">Trouver un cours</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
   <div class="contact-shell">
   <!-- ===== HERO ===== -->
   <section id="contact" style="position:relative; text-align:center; padding: clamp(50px,6vw,90px) clamp(20px,4vw,64px) 75px;">
-    <img class="contact-prop contact-prop-sign" src="./assets/contact-ouvert.png" alt="Ouvert — nous sommes" aria-hidden="true">
+    <img class="contact-prop contact-prop-sign" src="./assets/contact-ouvert.png" alt="Ouvert — nous sommes" data-i18n-alt-fr="Ouvert — nous sommes" data-i18n-alt-uk="Відчинено" aria-hidden="true">
     <img class="contact-prop contact-prop-hand" src="./assets/contact-hand-cup.png" alt="" aria-hidden="true">
     <div style="position:relative; z-index:1;">
-      <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);">(Контакти)</div>
-      <h1 class="wm" style="margin: 0; line-height: 1.02; font-size: clamp(44px,9vw,100px)">Завітайте <br>до майстерні</h1>
-      <p style="margin: clamp(20px,2.2vw,32px) auto 0; max-width: 60ch; font-family: 'Archivo',sans-serif; font-size: clamp(16px,1.3vw,20px); line-height: 1.55; color: #6b6459;">Ганж, історичний центр Окситанії. Заходьте на пробний урок, каву та розмову про мистецтво — або напишіть нам зручним способом.</p>
-      <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; margin-top:clamp(26px,3vw,40px); background:#141310; color:#edebe3; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на зустріч <span class="btn-icon" aria-hidden="true"></span></a>
+      <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);" data-i18n-fr="(Contact)" data-i18n-uk="(Контакти)">(Contact)</div>
+      <h1 class="wm" style="margin: 0; line-height: 1.02; font-size: clamp(44px,9vw,100px)" data-i18n-fr="Bienvenue <br>à l’atelier" data-i18n-uk="Завітайте <br>до майстерні">Bienvenue <br>à l’atelier</h1>
+      <p style="margin: clamp(20px,2.2vw,32px) auto 0; max-width: 60ch; font-family: 'Archivo',sans-serif; font-size: clamp(16px,1.3vw,20px); line-height: 1.55; color: #6b6459;" data-i18n-fr="Ganges, cœur historique de l’Occitanie. Passez pour un cours d’essai, un café et une conversation sur l’art — ou écrivez-nous comme il vous convient." data-i18n-uk="Ганж, історичний центр Окситанії. Заходьте на пробний урок, каву та розмову про мистецтво — або напишіть нам зручним способом.">Ganges, cœur historique de l’Occitanie. Passez pour un cours d’essai, un café et une conversation sur l’art — ou écrivez-nous comme il vous convient.</p>
+      <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; margin-top:clamp(26px,3vw,40px); background:#141310; color:#edebe3; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Prendre rendez-vous" data-i18n-uk="Записатися на зустріч">Prendre rendez-vous</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </section>
 
   <!-- ===== MAP (full width, 300px) ===== -->
   <div class="contact-map-full">
-    <iframe title="Atelier Sveta на карті" src="https://www.google.com/maps?q=24%20Rue%20Jeu%20de%20Ballon,%2034190%20Ganges,%20France&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe title="Atelier Sveta sur la carte" data-i18n-title-fr="Atelier Sveta sur la carte" data-i18n-title-uk="Atelier Sveta на карті" src="https://www.google.com/maps?q=24%20Rue%20Jeu%20de%20Ballon,%2034190%20Ganges,%20France&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 
   <!-- ===== CONTACTS (2 columns) ===== -->
   <section class="contact-grid">
     <sc-for list="{{ items }}" as="c" hint-placeholder-count="4">
       <div class="contact-cell">
-        <div class="contact-cell-label">{{ c.label }}</div>
+        <div class="contact-cell-label" data-i18n-fr="{{ c.label_fr }}" data-i18n-uk="{{ c.label_uk }}">{{ c.label_fr }}</div>
         <sc-for list="{{ c.lines }}" as="ln" hint-placeholder-count="2">
-          <a href="{{ ln.href }}" class="clink contact-cell-line">{{ ln.text }}</a>
+          <a href="{{ ln.href }}" class="clink contact-cell-line" data-i18n-fr="{{ ln.fr }}" data-i18n-uk="{{ ln.uk }}">{{ ln.fr }}</a>
         </sc-for>
       </div>
     </sc-for>
@@ -345,16 +347,16 @@
 
   <!-- ===== CONTACT CTA ===== -->
   <section id="form" class="contact-section" style="margin-top:auto;">
-    <div class="hand" style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
-    <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
+    <div class="hand" style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);" data-i18n-fr="(Contact)" data-i18n-uk="(Контакт)">(Contact)</div>
+    <p class="contact-title wm" data-i18n-fr="L’art<br>commence<br>ici." data-i18n-uk="Мистецтво<br>починається<br>тут.">L’art<br>commence<br>ici.</p>
     <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
-      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
+      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;" data-i18n-fr="24 Rue Jeu de Ballon<br>34190 Ganges, France" data-i18n-uk="24 Rue Jeu de Ballon<br>34190 Ganges, Франція">24 Rue Jeu de Ballon<br>34190 Ganges, France</div>
       <div class="micro" style="line-height:2; color:#FAAB06;">
         <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
         <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
         <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
       </div>
-      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Réserver un cours d’essai" data-i18n-uk="Записатися на пробний">Réserver un cours d’essai</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </section>
 
@@ -368,20 +370,20 @@
 </x-dc>
 <div class="trial-modal" id="trial-modal" aria-hidden="true">
   <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
-    <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
+    <button class="trial-close" type="button" data-close-trial aria-label="Fermer le formulaire" data-i18n-aria-label-fr="Fermer le formulaire" data-i18n-aria-label-uk="Закрити форму">×</button>
     <form class="trial-form" id="trial-form" action="https://formsubmit.co/Petrenkoag95@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/Petrenkoag95@gmail.com">
-      <h2 id="trial-title">Залишити заявку</h2>
-      <p>Залиште контакти — ми зв’яжемося, щоб узгодити зручний час зустрічі.</p>
+      <h2 id="trial-title" data-i18n-fr="Laisser une demande" data-i18n-uk="Залишити заявку">Laisser une demande</h2>
+      <p data-i18n-fr="Laissez vos coordonnées — nous vous contacterons pour convenir d’un rendez-vous." data-i18n-uk="Залиште контакти — ми зв’яжемося, щоб узгодити зручний час зустрічі.">Laissez vos coordonnées — nous vous contacterons pour convenir d’un rendez-vous.</p>
       <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-      <label class="trial-field">Ім'я<input type="text" name="name" autocomplete="name" required></label>
-      <label class="trial-field">Телефон або email<input type="text" name="contact" autocomplete="email" required></label>
-      <label class="trial-field">Коментар<textarea name="message" placeholder="Бажаний день, час або питання"></textarea></label>
+      <label class="trial-field"><span data-i18n-fr="Prénom" data-i18n-uk="Ім'я">Prénom</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="trial-field"><span data-i18n-fr="Téléphone ou e-mail" data-i18n-uk="Телефон або email">Téléphone ou e-mail</span><input type="text" name="contact" autocomplete="email" required></label>
+      <label class="trial-field"><span data-i18n-fr="Commentaire" data-i18n-uk="Коментар">Commentaire</span><textarea name="message" placeholder="Jour, heure souhaités ou question" data-i18n-placeholder-fr="Jour, heure souhaités ou question" data-i18n-placeholder-uk="Бажаний день, час або питання"></textarea></label>
       <div class="trial-actions">
-        <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
-        <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
+        <button class="trial-submit" type="submit"><span data-i18n-fr="Envoyer" data-i18n-uk="Надіслати">Envoyer</span> <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial data-i18n-fr="Annuler" data-i18n-uk="Скасувати">Annuler</button>
       </div>
     </form>
   </div>
@@ -411,6 +413,7 @@ class Component extends DCLogic {
     this._menuToggle?.addEventListener('click', this._onMenuToggle);
     this._mainNav?.addEventListener('click', this._onNavClick);
     window.addEventListener('keydown', this._onMenuKey);
+    if (window.AS_I18N) AS_I18N.apply(AS_I18N.get());
   }
   componentWillUnmount() {
     this._menuToggle?.removeEventListener('click', this._onMenuToggle);
@@ -430,14 +433,14 @@ class Component extends DCLogic {
       setFr: () => this.setState({ lang:'FR' }),
       langCls: lang==='UK'?'is-uk':'is-fr',
       items: [
-        { label:'Адреса', icon: st([el('path',{key:1,d:'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z'}), el('circle',{key:2,cx:12,cy:10,r:3})]),
-          lines:[{text:'24 Rue Jeu de Ballon', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}, {text:'34190 Ganges, Франція', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}] },
-        { label:'Телефон', icon: st([el('path',{key:1,d:'M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z'})]),
-          lines:[{text:'+33 7 68 61 41 90', href:'tel:+33768614190'}] },
-        { label:'Пошта', icon: st([el('rect',{key:1,x:2,y:4,width:20,height:16,rx:2}), el('path',{key:2,d:'m2 6 10 7 10-7'})]),
-          lines:[{text:'sveta.s83ss@gmail.com', href:'mailto:sveta.s83ss@gmail.com'}] },
-        { label:'Години', icon: st([el('circle',{key:1,cx:12,cy:12,r:9}), el('path',{key:2,d:'M12 7v5l3 2'})]),
-          lines:[{text:'Пн–Пт · 10:00–19:00', href:'#'}, {text:'Сб–Нд · 12:00–16:00', href:'#'}] },
+        { label_fr:'Adresse', label_uk:'Адреса', icon: st([el('path',{key:1,d:'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z'}), el('circle',{key:2,cx:12,cy:10,r:3})]),
+          lines:[{fr:'24 Rue Jeu de Ballon', uk:'24 Rue Jeu de Ballon', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}, {fr:'34190 Ganges, France', uk:'34190 Ganges, Франція', href:'https://maps.app.goo.gl/9F2dC7LE9cyTtuSD8'}] },
+        { label_fr:'Téléphone', label_uk:'Телефон', icon: st([el('path',{key:1,d:'M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z'})]),
+          lines:[{fr:'+33 7 68 61 41 90', uk:'+33 7 68 61 41 90', href:'tel:+33768614190'}] },
+        { label_fr:'E-mail', label_uk:'Пошта', icon: st([el('rect',{key:1,x:2,y:4,width:20,height:16,rx:2}), el('path',{key:2,d:'m2 6 10 7 10-7'})]),
+          lines:[{fr:'sveta.s83ss@gmail.com', uk:'sveta.s83ss@gmail.com', href:'mailto:sveta.s83ss@gmail.com'}] },
+        { label_fr:'Horaires', label_uk:'Години', icon: st([el('circle',{key:1,cx:12,cy:12,r:9}), el('path',{key:2,d:'M12 7v5l3 2'})]),
+          lines:[{fr:'Lun–Ven · 10:00–19:00', uk:'Пн–Пт · 10:00–19:00', href:'#'}, {fr:'Sam–Dim · 12:00–16:00', uk:'Сб–Нд · 12:00–16:00', href:'#'}] },
       ],
     };
   }
