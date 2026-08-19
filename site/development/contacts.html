@@ -302,7 +302,7 @@
       </div>
     </nav>
     <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="header-actions micro">
-      <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label-fr="Ouvrir le menu" data-i18n-aria-label-uk="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
       <div class="desktop-lang langtoggle is-fr">
@@ -398,7 +398,7 @@ class Component extends DCLogic {
       if (!this._siteHeader || !this._menuToggle) return;
       this._siteHeader.classList.toggle('is-menu-open', open);
       this._menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      this._menuToggle.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+      this._menuToggle.setAttribute('aria-label', (window.AS_I18N && AS_I18N.get()==='uk') ? (open ? 'Закрити меню' : 'Відкрити меню') : (open ? 'Fermer le menu' : 'Ouvrir le menu'));
     };
     this._onMenuToggle = () => {
       const open = !this._siteHeader?.classList.contains('is-menu-open');

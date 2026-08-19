@@ -1021,7 +1021,7 @@
       </div>
     </nav>
     <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="header-actions micro">
-      <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label-fr="Ouvrir le menu" data-i18n-aria-label-uk="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
       <div class="desktop-lang langtoggle is-fr">
@@ -1037,17 +1037,17 @@
   <section class="hero-collage">
 
     <!-- top-left pen doodle + address text -->
-    <div data-parallax="0.05" class="hero-prop hero-pen load-prop" style="animation-delay:.5s;"><img src="./assets/doodle-hand.png" alt="Рука з пером" style="width:100%; height:auto; display:block;"></div>
+    <div data-parallax="0.05" class="hero-prop hero-pen load-prop" style="animation-delay:.5s;"><img src="./assets/doodle-hand.png" alt="Main tenant une plume" data-i18n-alt-fr="Main tenant une plume" data-i18n-alt-uk="Рука з пером" style="width:100%; height:auto; display:block;"></div>
     <div data-parallax="0.045" class="hero-prop hero-address load-prop" style="animation-delay:.6s;">24 Rue Jeu de Ballon<br>EST. 2022 · GANGES</div>
 
     <!-- kid castle drawing, taped, top-right -->
     <div data-parallax="0.08" class="hero-prop hero-castle load-prop" style="animation-delay:.7s;">
       <span style="position:absolute; right:6px; bottom:-6px; font-family:'Caveat',cursive; font-size:clamp(20px,1.9vw,30px); color:#c0392b; transform:rotate(-4deg);">Anna, 4р.</span>
-    <img src="./assets/kid-castle.png" alt="Малюнок учениці — замок" style="width:100%; height:auto; display:block;"></div>
+    <img src="./assets/kid-castle.png" alt="Dessin d’élève — château" data-i18n-alt-fr="Dessin d’élève — château" data-i18n-alt-uk="Малюнок учениці — замок" style="width:100%; height:auto; display:block;"></div>
 
     <!-- framed painting, bottom-left -->
     <div data-parallax="0.11" class="hero-prop hero-painting swing-wrap load-prop" style="animation-delay:.85s;">
-      <img class="swing" src="./assets/painting-girl.png" alt="Картина — дівчинка з тортом" style="width:100%; height:auto; display:block;">
+      <img class="swing" src="./assets/painting-girl.png" alt="Peinture — fillette au gâteau" data-i18n-alt-fr="Peinture — fillette au gâteau" data-i18n-alt-uk="Картина — дівчинка з тортом" style="width:100%; height:auto; display:block;">
       <img class="hero-mobile-combo" src="./assets/mobile-hero-painting-fr.png?v=1" data-i18n-src-fr="./assets/mobile-hero-painting-fr.png?v=1" data-i18n-src-uk="./assets/mobile-hero-painting.png?v=1" alt="De 4 à 90+ ans aux élèves" data-i18n-alt-fr="De 4 à 90+ ans aux élèves" data-i18n-alt-uk="Від 4 до 90+ років учням">
     </div>
 
@@ -1124,7 +1124,7 @@
     <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 clamp(20px,4vw,64px); scroll-snap-type:x mandatory;">
       <sc-for list="{{ works }}" as="w" hint-placeholder-count="5">
         <figure class="work-card reveal" style="margin:0; flex:none; width:clamp(240px,28vw,400px); scroll-snap-align:start;">
-          <div style="border:1px solid #c8c3b6; padding:8px; background:#141310;"><div style="overflow:hidden; aspect-ratio:4/5; background:#e2ded2;"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Робота учня"></image-slot></div></div>
+          <div style="border:1px solid #c8c3b6; padding:8px; background:#141310;"><div style="overflow:hidden; aspect-ratio:4/5; background:#e2ded2;"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Œuvre d’élève" data-i18n-placeholder-fr="Œuvre d’élève" data-i18n-placeholder-uk="Робота учня"></image-slot></div></div>
           <figcaption style="margin-top: 14px; font-family: 'Archivo',sans-serif; font-weight: 600; font-size: clamp(13px,1vw,16px); color: #6b6459" data-i18n-fr="{{ w.cap_fr }}" data-i18n-uk="{{ w.cap_uk }}">{{ w.cap_fr }}</figcaption>
         </figure>
       </sc-for>
@@ -1235,7 +1235,7 @@ class Component extends DCLogic {
       if (!this._siteHeader || !this._menuToggle) return;
       this._siteHeader.classList.toggle('is-menu-open', open);
       this._menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      this._menuToggle.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+      this._menuToggle.setAttribute('aria-label', (window.AS_I18N && AS_I18N.get()==='uk') ? (open ? 'Закрити меню' : 'Відкрити меню') : (open ? 'Fermer le menu' : 'Ouvrir le menu'));
     };
     this._onMenuToggle = () => {
       const open = !this._siteHeader?.classList.contains('is-menu-open');

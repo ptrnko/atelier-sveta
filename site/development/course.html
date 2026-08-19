@@ -202,7 +202,7 @@
       </div>
     </nav>
     <div class="header-actions micro">
-      <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label-fr="Ouvrir le menu" data-i18n-aria-label-uk="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
       <div class="desktop-lang langtoggle is-fr">
@@ -222,7 +222,7 @@
           <div class="course-tags" data-course-tags></div>
         </div>
         <div class="course-image">
-          <video autoplay muted loop playsinline preload="metadata" aria-label="Учні працюють у художній школі" data-course-video>
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Élèves au travail à l’atelier" data-i18n-aria-label-fr="Élèves au travail à l’atelier" data-i18n-aria-label-uk="Учні працюють у художній школі" data-course-video>
             <source src="./assets/course-kids-video.mp4" type="video/mp4" data-course-video-source>
           </video>
         </div>
@@ -238,7 +238,7 @@
         <p class="course-copy" data-course-copy>Курс для дітей, які хочуть пробувати різні матеріали, малювати в групі та поступово знаходити власний спосіб бачити світ.</p>
       </div>
 
-      <div class="detail-list" aria-label="Параметри курсу">
+      <div class="detail-list" aria-label="Détails du cours" data-i18n-aria-label-fr="Détails du cours" data-i18n-aria-label-uk="Параметри курсу">
         <div class="detail-row">
           <div class="detail-label hand" data-i18n-fr="Format" data-i18n-uk="Формат">Format</div>
           <div class="detail-value" data-course-format>групові заняття у майстерні</div>
@@ -596,7 +596,7 @@
   const setMenu = (open) => {
     header?.classList.toggle('is-menu-open', open);
     toggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle?.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+    toggle?.setAttribute('aria-label', (window.AS_I18N && AS_I18N.get()==='uk') ? (open ? 'Закрити меню' : 'Відкрити меню') : (open ? 'Fermer le menu' : 'Ouvrir le menu'));
   };
   toggle?.addEventListener('click', () => setMenu(!header?.classList.contains('is-menu-open')));
   nav?.addEventListener('click', (event) => {

@@ -309,7 +309,7 @@
       </div>
     </nav>
     <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="header-actions micro">
-      <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label-fr="Ouvrir le menu" data-i18n-aria-label-uk="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
       <div class="desktop-lang langtoggle is-fr">
@@ -381,7 +381,7 @@
   </footer>
 
   <div class="lightbox" id="event-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
-    <button type="button" class="lb-close" aria-label="Закрити">✕</button>
+    <button type="button" class="lb-close" aria-label="Fermer" data-i18n-aria-label-fr="Fermer" data-i18n-aria-label-uk="Закрити">✕</button>
     <img id="event-lightbox-img" alt="">
   </div>
 </div>
@@ -417,7 +417,7 @@ class Component extends DCLogic {
       if (!this._siteHeader || !this._menuToggle) return;
       this._siteHeader.classList.toggle('is-menu-open', open);
       this._menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      this._menuToggle.setAttribute('aria-label', open ? 'Закрити меню' : 'Відкрити меню');
+      this._menuToggle.setAttribute('aria-label', (window.AS_I18N && AS_I18N.get()==='uk') ? (open ? 'Закрити меню' : 'Відкрити меню') : (open ? 'Fermer le menu' : 'Ouvrir le menu'));
     };
     this._onMenuToggle = () => this._setMenu(!this._siteHeader?.classList.contains('is-menu-open'));
     this._onNavClick = (e) => { if (e.target.closest('.nlink')) this._setMenu(false); };
