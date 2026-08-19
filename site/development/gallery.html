@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=Caveat:wght@500;600;700&amp;display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
+<title data-i18n-fr="Galerie · Atelier Sveta" data-i18n-uk="Галерея · Atelier Sveta">Galerie · Atelier Sveta</title>
+<script src="./assets/i18n.js"></script>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; }
@@ -297,17 +299,17 @@
   <!-- ===== HEADER ===== -->
   <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(11px,1.5vw,18px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
     <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
-      <a href="./home.html" class="nlink">Головна</a>
-      <a href="./courses.html" class="nlink">Курси</a>
-      <a href="./events.html" class="nlink">Події</a>
+      <a href="./home.html" class="nlink" data-i18n-fr="Accueil" data-i18n-uk="Головна">Accueil</a>
+      <a href="./courses.html" class="nlink" data-i18n-fr="Cours" data-i18n-uk="Курси">Cours</a>
+      <a href="./events.html" class="nlink" data-i18n-fr="Événements" data-i18n-uk="Події">Événements</a>
       <a href="#gallery" class="nlink is-active">Галерея</a>
-      <a href="./contacts.html" class="nlink">Контакти</a>
+      <a href="./contacts.html" class="nlink" data-i18n-fr="Contact" data-i18n-uk="Контакти">Contact</a>
       <div class="mobile-nav-lang">
-        <span class="mobile-nav-lang-label">Мова</span>
-        <div class="langtoggle {{ langCls }}">
+        <span class="mobile-nav-lang-label" data-i18n-fr="Langue" data-i18n-uk="Мова">Langue</span>
+        <div class="langtoggle is-fr">
           <span class="langpill" aria-hidden="true"></span>
-          <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-          <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+          <button type="button" class="langbtn">FR</button>
+          <button type="button" class="langbtn">UA</button>
         </div>
       </div>
     </nav>
@@ -315,18 +317,18 @@
       <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
         <span class="menu-toggle-line" aria-hidden="true"></span>
       </button>
-      <div class="desktop-lang langtoggle {{ langCls }}">
+      <div class="desktop-lang langtoggle is-fr">
         <span class="langpill" aria-hidden="true"></span>
-        <button type="button" onClick="{{ setFr }}" class="langbtn">FR</button>
-        <button type="button" onClick="{{ setUk }}" class="langbtn">UK</button>
+        <button type="button" class="langbtn">FR</button>
+        <button type="button" class="langbtn">UA</button>
       </div>
-      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Знайти курс <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;"><span data-i18n-fr="Trouver un cours" data-i18n-uk="Знайти курс">Trouver un cours</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </header>
 
   <!-- ===== EXHIBITION ACCORDION ===== -->
   <section id="gallery" class="exhibit">
-    <div class="hand" style="color:#FAAB06; font-size:clamp(30px,3.4vw,52px); text-align:center; margin:0 0 clamp(30px,4vw,54px);">(Галерея)</div>
+    <div class="hand" style="color:#FAAB06; font-size:clamp(30px,3.4vw,52px); text-align:center; margin:0 0 clamp(30px,4vw,54px);" data-i18n-fr="(Galerie)" data-i18n-uk="(Галерея)">(Galerie)</div>
     <div class="exhibit-shell">
       <sc-for list="{{ exhibitions }}" as="ex" hint-placeholder-count="3">
         <div class="accordion-item">
@@ -356,16 +358,16 @@
 
   <!-- ===== CONTACT CTA ===== -->
   <section id="contact" class="contact-section">
-    <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);">(Контакт)</div>
-    <p class="contact-title wm">Мистецтво<br>починається<br>тут.</p>
+    <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);" data-i18n-fr="(Contact)" data-i18n-uk="(Контакт)">(Contact)</div>
+    <p class="contact-title wm" data-i18n-fr="L’art<br>commence<br>ici." data-i18n-uk="Мистецтво<br>починається<br>тут.">L’art<br>commence<br>ici.</p>
     <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
-      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;">24 Rue Jeu de Ballon<br>34190 Ganges, Франція</div>
+      <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;" data-i18n-fr="24 Rue Jeu de Ballon<br>34190 Ganges, France" data-i18n-uk="24 Rue Jeu de Ballon<br>34190 Ganges, Франція">24 Rue Jeu de Ballon<br>34190 Ganges, France</div>
       <div class="micro" style="line-height:2; color:#FAAB06;">
         <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
         <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
         <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
       </div>
-      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;">Записатися на пробний <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Réserver un cours d’essai" data-i18n-uk="Записатися на пробний">Réserver un cours d’essai</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
   </section>
 
@@ -378,7 +380,7 @@
 
   <!-- ===== LIGHTBOX ===== -->
   <div class="lightbox" id="lb" role="dialog" aria-modal="true">
-    <button type="button" class="lb-close" aria-label="Закрити">✕</button>
+    <button type="button" class="lb-close" aria-label="Fermer" data-i18n-aria-label-fr="Fermer" data-i18n-aria-label-uk="Закрити">✕</button>
     <figure>
       <img id="lb-img" alt="">
       <figcaption id="lb-cap"></figcaption>
@@ -388,21 +390,21 @@
 </x-dc>
 <div class="trial-modal" id="trial-modal" aria-hidden="true">
   <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
-    <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
+    <button class="trial-close" type="button" data-close-trial aria-label="Fermer le formulaire" data-i18n-aria-label-fr="Fermer le formulaire" data-i18n-aria-label-uk="Закрити форму">×</button>
     <form class="trial-form" id="trial-form" action="https://formsubmit.co/Petrenkoag95@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/Petrenkoag95@gmail.com">
-      <h2 id="trial-title">Пробний урок</h2>
-      <p>Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.</p>
+      <h2 id="trial-title" data-i18n-fr="Cours d’essai" data-i18n-uk="Пробний урок">Cours d’essai</h2>
+      <p data-i18n-fr="Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire." data-i18n-uk="Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.">Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire.</p>
       <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-      <label class="trial-field">Ім'я<input type="text" name="name" autocomplete="name" required></label>
-      <label class="trial-field">Телефон або email<input type="text" name="contact" autocomplete="email" required></label>
-      <label class="trial-field">Напрям<select name="course"><option>Діти</option><option>Підлітки</option><option>Дорослі</option><option>Індивідуальні уроки</option><option>Підготовка до іспитів</option><option>Онлайн курси</option></select></label>
-      <label class="trial-field">Коментар<textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea></label>
+      <label class="trial-field"><span data-i18n-fr="Prénom" data-i18n-uk="Ім'я">Prénom</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="trial-field"><span data-i18n-fr="Téléphone ou e-mail" data-i18n-uk="Телефон або email">Téléphone ou e-mail</span><input type="text" name="contact" autocomplete="email" required></label>
+      <label class="trial-field"><span data-i18n-fr="Cours" data-i18n-uk="Напрям">Cours</span><select name="course"><option data-i18n-fr="Enfants" data-i18n-uk="Діти">Enfants</option><option data-i18n-fr="Adolescents" data-i18n-uk="Підлітки">Adolescents</option><option data-i18n-fr="Adultes" data-i18n-uk="Дорослі">Adultes</option><option data-i18n-fr="Cours individuels" data-i18n-uk="Індивідуальні уроки">Cours individuels</option><option data-i18n-fr="Préparation aux examens" data-i18n-uk="Підготовка до іспитів">Préparation aux examens</option><option data-i18n-fr="Cours en ligne" data-i18n-uk="Онлайн курси">Cours en ligne</option></select></label>
+      <label class="trial-field"><span data-i18n-fr="Commentaire" data-i18n-uk="Коментар">Commentaire</span><textarea name="message" placeholder="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-fr="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-uk="Вік учня, бажаний день або питання"></textarea></label>
       <div class="trial-actions">
-        <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
-        <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
+        <button class="trial-submit" type="submit"><span data-i18n-fr="Envoyer" data-i18n-uk="Надіслати">Envoyer</span> <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial data-i18n-fr="Annuler" data-i18n-uk="Скасувати">Annuler</button>
       </div>
     </form>
   </div>
@@ -464,6 +466,8 @@ class Component extends DCLogic {
     } else {
       document.querySelectorAll('.reveal').forEach((n) => n.classList.add('is-in'));
     }
+    this._onLang = () => this.setState({ _l: Date.now() });
+    document.addEventListener('as:langchange', this._onLang);
   }
   componentWillUnmount() {
     if (this._io) this._io.disconnect();
@@ -480,34 +484,39 @@ class Component extends DCLogic {
     const off = 'background:transparent; color:#8a8479;';
     const chevronIcon = el('svg',{viewBox:'0 0 24 24', width:'100%', height:'100%', fill:'none', stroke:'currentColor', strokeWidth:1.9, strokeLinecap:'round', strokeLinejoin:'round'},[el('path',{key:'p', d:'m6 9 6 6 6-6'})]);
     const data = [
-      { no:'01', name:'Назва виставки', year:'2026', ages:'Учні 7 – 45 років', coverSlot:'gx-cover-1', works: [
-        { slot:'gw-1', title:'Ботанічний етюд', meta:'Марі · акварель' },
-        { slot:'gw-2', title:'Натюрморт', meta:'Лео · олія' },
-        { slot:'gw-3', title:'Портрет', meta:'Аня · вугілля' },
-        { slot:'gw-4', title:'Пейзаж', meta:'Клер · акрил' },
-        { slot:'gw-5', title:'Ікона', meta:'студія · темпера' },
-        { slot:'gw-6', title:'Композиція', meta:'учень · гуаш' },
+      { no:'01', name:{fr:'Nom de l’exposition',uk:'Назва виставки'}, year:'2026', ages:{fr:'Élèves de 7 à 45 ans',uk:'Учні 7 – 45 років'}, coverSlot:'gx-cover-1', works: [
+        { slot:'gw-1', title:{fr:'Étude botanique',uk:'Ботанічний етюд'}, meta:{fr:'Marie · aquarelle',uk:'Марі · акварель'} },
+        { slot:'gw-2', title:{fr:'Nature morte',uk:'Натюрморт'}, meta:{fr:'Léo · huile',uk:'Лео · олія'} },
+        { slot:'gw-3', title:{fr:'Portrait',uk:'Портрет'}, meta:{fr:'Ania · fusain',uk:'Аня · вугілля'} },
+        { slot:'gw-4', title:{fr:'Paysage',uk:'Пейзаж'}, meta:{fr:'Claire · acrylique',uk:'Клер · акрил'} },
+        { slot:'gw-5', title:{fr:'Icône',uk:'Ікона'}, meta:{fr:'atelier · tempera',uk:'студія · темпера'} },
+        { slot:'gw-6', title:{fr:'Composition',uk:'Композиція'}, meta:{fr:'élève · gouache',uk:'учень · гуаш'} }
       ]},
-      { no:'02', name:'Назва виставки', year:'2025', ages:'Учні 4 – 16 років', coverSlot:'gx-cover-2', works: [
-        { slot:'gw-7', title:'Абстракція', meta:'учениця · акрил' },
-        { slot:'gw-8', title:'Графіка', meta:'учень · туш' },
-        { slot:'gw-9', title:'Пастель', meta:'учениця · пастель' },
-        { slot:'gw-10', title:'Пейзаж', meta:'учень · олія' },
+      { no:'02', name:{fr:'Nom de l’exposition',uk:'Назва виставки'}, year:'2025', ages:{fr:'Élèves de 4 à 16 ans',uk:'Учні 4 – 16 років'}, coverSlot:'gx-cover-2', works: [
+        { slot:'gw-7', title:{fr:'Abstraction',uk:'Абстракція'}, meta:{fr:'élève · acrylique',uk:'учениця · акрил'} },
+        { slot:'gw-8', title:{fr:'Dessin',uk:'Графіка'}, meta:{fr:'élève · encre',uk:'учень · туш'} },
+        { slot:'gw-9', title:{fr:'Pastel',uk:'Пастель'}, meta:{fr:'élève · pastel',uk:'учениця · пастель'} },
+        { slot:'gw-10', title:{fr:'Paysage',uk:'Пейзаж'}, meta:{fr:'élève · huile',uk:'учень · олія'} }
       ]},
-      { no:'03', name:'Назва виставки', year:'2024', ages:'Дорослі', coverSlot:'gx-cover-3', works: [
-        { slot:'gw-11', title:'Начерк', meta:'учениця · олівець' },
-        { slot:'gw-12', title:'Етюд', meta:'учень · акварель' },
-        { slot:'gw-1', title:'Ботанічний етюд', meta:'Марі · акварель' },
-        { slot:'gw-2', title:'Натюрморт', meta:'Лео · олія' },
+      { no:'03', name:{fr:'Nom de l’exposition',uk:'Назва виставки'}, year:'2024', ages:{fr:'Adultes',uk:'Дорослі'}, coverSlot:'gx-cover-3', works: [
+        { slot:'gw-11', title:{fr:'Croquis',uk:'Начерк'}, meta:{fr:'élève · crayon',uk:'учениця · олівець'} },
+        { slot:'gw-12', title:{fr:'Étude',uk:'Етюд'}, meta:{fr:'élève · aquarelle',uk:'учень · акварель'} },
+        { slot:'gw-1', title:{fr:'Étude botanique',uk:'Ботанічний етюд'}, meta:{fr:'Marie · aquarelle',uk:'Марі · акварель'} },
+        { slot:'gw-2', title:{fr:'Nature morte',uk:'Натюрморт'}, meta:{fr:'Léo · huile',uk:'Лео · олія'} }
       ]},
     ];
     const open = this.state.open;
+    const l18 = (window.AS_I18N ? AS_I18N.get() : 'fr');
+    const L = (v) => (v && typeof v === 'object' && 'fr' in v) ? v[l18] : v;
     const exhibitions = data.map((ex, i) => Object.assign({}, ex, {
+      name: L(ex.name),
+      ages: L(ex.ages),
+      works: (ex.works || []).map((w) => Object.assign({}, w, { title: L(w.title), meta: L(w.meta) })),
       rows: open === i ? '1fr' : '0fr',
       chevron: open === i ? 'rotate(180deg)' : 'rotate(0deg)',
-      label: open === i ? 'Сховати' : 'Дивитись роботи',
+      label: open === i ? (l18 === 'uk' ? 'Сховати' : 'Masquer') : (l18 === 'uk' ? 'Дивитись роботи' : 'Voir les œuvres'),
       rowCls: open === i ? 'is-open' : '',
-      count: (ex.works ? ex.works.length : 0) + ' робіт',
+      count: (ex.works ? ex.works.length : 0) + (l18 === 'uk' ? ' робіт' : ' œuvres'),
       onToggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
     }));
     return { chevronIcon, exhibitions,

@@ -50,7 +50,20 @@
     set(btn === btns[0] ? 'fr' : 'uk');
   });
 
-  window.AS_I18N = { set: set, apply: apply, get: current };
+  window.AS_I18N = { set: set, apply: function (l) { return apply(l); }, get: current };
+
+  // Re-apply after dynamic re-renders (e.g. x-dc setState). Guarded against
+  // the observer reacting to apply()'s own mutations.
+  var applying = false, scheduled = false;
+  var _apply = apply;
+  apply = function (lang) { applying = true; _apply(lang); setTimeout(function () { applying = false; }, 0); };
+  if (window.MutationObserver) {
+    new MutationObserver(function () {
+      if (applying || scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(function () { scheduled = false; apply(current()); });
+    }).observe(document.documentElement, { childList: true, subtree: true });
+  }
 
   function init() { apply(current()); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
