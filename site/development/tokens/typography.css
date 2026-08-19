@@ -1,0 +1,25 @@
+:root {
+  --font-display: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-body: "Montserrat", system-ui, -apple-system, sans-serif;
+
+  /* Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* Type scale (fluid) */
+  --type-display: clamp(40px, 5vw, 68px);   /* 800 / -0.03em */
+  --type-h1: clamp(32px, 4vw, 56px);        /* 800 / -0.02em */
+  --type-h2: clamp(26px, 3vw, 40px);        /* 800 / -0.02em */
+  --type-h3: clamp(19px, 1.8vw, 24px);      /* 700 */
+  --type-body: 17px;                         /* 400 / 1.6 */
+  --type-small: 14px;                        /* 500 */
+  --type-label: 13px;                        /* 700 / uppercase / 0.14em */
+
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.02em;
+  --tracking-label: 0.14em;
+  --leading-body: 1.6;
+}

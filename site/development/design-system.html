@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./assets/trial-modal.css?v=2">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  ::selection { background:#141310; color:#edebe3; }
+  a { color:inherit; text-decoration:none; }
+  .ds { background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .card { background:#fff; border:1px solid #d9d5c9; border-radius:20px; padding:clamp(22px,2.6vw,40px); }
+  .eyebrow { font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(24px,2.2vw,34px); line-height:1; }
+  .micro { font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; }
+  .wm { font-family:'Archivo',sans-serif; font-weight:900; letter-spacing:-0.03em; line-height:0.86; text-transform:uppercase; }
+  .lbl { font-size:12px; font-weight:600; color:#6b6459; }
+  .mono { font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:12px; color:#9a968c; }
+  .flink { color:#c8c3b6; transition:color .2s ease; }
+  .flink:hover { color:#FAAB06; }
+  .nlink { transition:color .2s ease; }
+  .nlink:hover { color:#c0392b; }
+  .nlink.is-active { color:#c0392b; }
+  .btn { position:relative; display:inline-flex; align-items:center; gap:8px; border:1px solid transparent; border-radius:40px; font-weight:600; cursor:pointer; transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease; }
+  .btn:hover { transform:scale(1.04); }
+  .btn:active { transform:scale(.98); transition-duration:.08s; }
+  .btn-icon,
+  .sbtn-icon {
+    display:inline-block;
+    width:1.55em;
+    height:1.55em;
+    flex:none;
+    background:currentColor;
+    -webkit-mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    transform:translateY(-1px);
+    transition:transform .25s ease;
+  }
+  .btn:hover .btn-icon { transform:translate(4px,-4px); }
+  .btn--red { background:#c0392b; color:#edebe3; padding:15px 30px; font-size:16px; }
+  .btn--red:hover { background:#a52f22; }
+  .btn--ink { background:#141310; color:#edebe3; padding:15px 30px; font-size:16px; }
+  .btn--ink:hover { background:#2a2620; }
+  .btn--out { border-color:#141310; color:#141310; padding:14px 30px; font-size:16px; }
+  .btn--out:hover { background:#141310; color:#edebe3; }
+  .btn--gold { border-color:#FAAB06; color:#FAAB06; padding:14px 26px; font-size:15px; }
+  .btn--gold:hover { background:#FAAB06; color:#fff; }
+  @media (prefers-reduced-motion:reduce){ .btn, .btn-icon, .sbtn-icon { transition:none; } .btn:hover { transform:none; } }
+</style>
+</helmet>
+<div class="ds" style="padding:clamp(28px,4vw,64px); display:flex; flex-direction:column; gap:clamp(20px,2.4vw,36px);">
+
+  <!-- MASTHEAD -->
+  <header style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; padding:clamp(8px,1.4vw,20px) 4px;">
+    <div>
+      <div class="eyebrow" style="margin-bottom:8px;">(Дизайн-система)</div>
+      <h1 class="wm" style="margin:0; font-size:clamp(40px,7vw,104px);">Atelier Sveta</h1>
+      <p style="margin:14px 0 0; max-width:56ch; font-size:clamp(15px,1.2vw,18px); line-height:1.6; color:#6b6459;">Колаж-естетика авторської художньої школи: паперове тло, чорнильний гротеск Archivo, рукописні акценти Caveat, червоний і жовтий як голос бренду.</p>
+    </div>
+    <div class="micro" style="color:#6b6459;">Ганж · Оксітанія · Франція</div>
+  </header>
+
+  <!-- COLORS -->
+  <section class="card">
+    <div class="eyebrow" style="margin-bottom:6px;">(Кольори)</div>
+    <h2 class="wm" style="margin:0 0 24px; font-size:clamp(22px,2.4vw,32px);">Палітра</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px;">
+      <sc-for list="{{ colors }}" as="c" hint-placeholder-count="7">
+        <div style="border:1px solid #d9d5c9; border-radius:14px; overflow:hidden;">
+          <div style="height:84px; background:{{ c.hex }}; border-bottom:1px solid #d9d5c9;"></div>
+          <div style="padding:10px 12px;">
+            <div style="font-size:14px; font-weight:700;">{{ c.name }}</div>
+            <div class="mono" style="margin-top:2px;">{{ c.hex }}</div>
+            <div class="lbl" style="margin-top:6px; font-weight:500;">{{ c.use }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="card">
+    <div class="eyebrow" style="margin-bottom:6px;">(Типографіка)</div>
+    <h2 class="wm" style="margin:0 0 24px; font-size:clamp(22px,2.4vw,32px);">Шрифти</h2>
+    <div style="display:flex; flex-direction:column; gap:22px;">
+      <div style="border-bottom:1px solid #e2ddcf; padding-bottom:18px;">
+        <div class="lbl" style="margin-bottom:8px;">Wordmark · Archivo 900 · uppercase · -0.03em</div>
+        <div class="wm" style="font-size:clamp(40px,6vw,84px);">Мистецтво</div>
+      </div>
+      <div style="border-bottom:1px solid #e2ddcf; padding-bottom:18px;">
+        <div class="lbl" style="margin-bottom:8px;">Heading · Archivo 500–700 · -0.02em</div>
+        <div style="font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(26px,3vw,44px); letter-spacing:-0.02em; line-height:1.05;">Найпопулярніші курси школи</div>
+      </div>
+      <div style="border-bottom:1px solid #e2ddcf; padding-bottom:18px;">
+        <div class="lbl" style="margin-bottom:8px;">Accent · Caveat · рукописний</div>
+        <div class="eyebrow" style="font-size:clamp(28px,3vw,44px);">(Про школу)</div>
+      </div>
+      <div style="border-bottom:1px solid #e2ddcf; padding-bottom:18px;">
+        <div class="lbl" style="margin-bottom:8px;">Body · Archivo 400 / 1.55</div>
+        <div style="max-width:60ch; font-size:17px; line-height:1.55; color:#6b6459;">Навчання побудоване на авторському підході, де важливо не просто повторювати техніку, а поступово знаходити власну мову у мистецтві.</div>
+      </div>
+      <div>
+        <div class="lbl" style="margin-bottom:8px;">Micro / tag · Archivo 600 · uppercase · 0.14em</div>
+        <div class="micro">Курси · Про школу · Галерея · Контакти</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUTTONS -->
+  <section class="card">
+    <div class="eyebrow" style="margin-bottom:6px;">(Кнопки)</div>
+    <h2 class="wm" style="margin:0 0 24px; font-size:clamp(22px,2.4vw,32px);">Дії</h2>
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px;">
+      <a href="#trial-form" class="btn btn--red js-open-trial">Записатися на пробний урок <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="#trial-form" class="btn btn--ink js-open-trial">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="#" class="btn btn--out">Ознайомитися з курсами <span class="btn-icon" aria-hidden="true"></span></a>
+      <a href="#" class="btn btn--gold">Деталі <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+    <div class="lbl" style="margin-top:18px;">Hover: легке збільшення (scale 1.04) + зміна тла/інверсія, стрілка зсувається. Active: втискання (scale .98).</div>
+  </section>
+
+  <!-- TAGS -->
+  <section class="card">
+    <div class="eyebrow" style="margin-bottom:6px;">(Теги)</div>
+    <h2 class="wm" style="margin:0 0 24px; font-size:clamp(22px,2.4vw,32px);">Мета та підписи</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:10px 22px; font-size:clamp(13px,1vw,15px); color:#6b6459; font-weight:600;">
+      <span>4–7 років</span><span>1.5 год</span><span>групи</span><span>будь який рівень</span><span>портфоліо</span><span>власний стиль</span>
+    </div>
+    <div style="margin-top:18px; font-family:'Archivo',sans-serif; font-weight:600; font-size:15px; color:#6b6459;">Натюрморт · Лео · олія</div>
+  </section>
+
+  <!-- COURSE ROW -->
+  <section class="card" style="padding-left:0; padding-right:0;">
+    <div class="eyebrow" style="margin:0 0 6px clamp(22px,2.6vw,40px);">(Курси)</div>
+    <h2 class="wm" style="margin:0 0 20px clamp(22px,2.6vw,40px); font-size:clamp(22px,2.4vw,32px);">Рядок курсу</h2>
+    <div class="srow" style="border-top:1px solid #d9d5c9; padding:clamp(22px,2.6vw,38px) clamp(22px,2.6vw,40px);">
+      <div style="display:grid; grid-template-columns:auto minmax(0,auto) 1fr auto 1fr auto; gap:clamp(14px,2vw,32px); align-items:center;">
+        <span style="font-size:clamp(18px,1.6vw,24px);">03</span>
+        <div>
+          <h3 style="margin:0 0 12px; font-family:'Archivo',sans-serif; font-weight:500; font-size:clamp(30px,4.4vw,64px); line-height:0.98;">Дорослі</h3>
+          <div style="display:flex; gap:10px 22px; flex-wrap:wrap; font-size:clamp(13px,1vw,15px); color:#6b6459; font-weight:600;"><span>з 16 років</span><span>2.5 год</span><span>стиль</span></div>
+        </div>
+        <div style="grid-column:4; width:clamp(200px,20vw,320px); aspect-ratio:695/258; border-radius:999px; overflow:hidden; background:#cfd6dc;"></div>
+        <span style="grid-column:6; justify-self:end; display:inline-flex; align-items:center; gap:8px; border:1px solid #FAAB06; color:#FAAB06; border-radius:40px; padding:12px 24px; font-weight:600; font-size:clamp(13px,1vw,16px); white-space:nowrap;">Деталі <span class="sbtn-icon" aria-hidden="true"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS + MOTIFS -->
+  <section class="card">
+    <div class="eyebrow" style="margin-bottom:6px;">(Елементи)</div>
+    <h2 class="wm" style="margin:0 0 24px; font-size:clamp(22px,2.4vw,32px);">Картки та колаж</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; align-items:start;">
+      <div>
+        <div style="border:1px solid #c8c3b6; padding:8px; background:#141310;"><div style="aspect-ratio:4/5; background:#e2ded2;"></div></div>
+        <div style="margin-top:14px; font-family:'Archivo',sans-serif; font-weight:600; font-size:15px; color:#6b6459;">Робота · автор · техніка</div>
+        <div class="lbl" style="margin-top:8px;">Taped frame · галерея</div>
+      </div>
+      <div>
+        <div style="border:1px solid #141310; aspect-ratio:4/5; background:#dfe6dd;"></div>
+        <div class="lbl" style="margin-top:12px;">Ink outline · карта / медіа</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:center; gap:14px;"><span style="width:56px; height:56px; background:#FAAB06; border-radius:50% 50% 50% 6px;"></span><span class="lbl">Помаранчева пляма</span></div>
+        <div style="display:flex; align-items:center; gap:14px;"><span class="eyebrow" style="color:#c0392b;">← Тягніть →</span><span class="lbl">Рукописна підказка</span></div>
+        <div style="display:flex; align-items:center; gap:14px;"><span style="background:#c0392b; color:#edebe3; border-radius:40px; padding:6px 16px; font-weight:700; font-size:13px;">FR</span><span class="lbl">Лого-локап</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURFACES -->
+  <section class="card">
+    <div class="eyebrow" style="margin-bottom:6px;">(Поверхні)</div>
+    <h2 class="wm" style="margin:0 0 24px; font-size:clamp(22px,2.4vw,32px);">Секції та радіуси</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:18px;">
+      <div style="text-align:center;"><div style="width:120px; height:74px; background:#edebe3; border:1px solid #d9d5c9;"></div><div class="lbl" style="margin-top:8px;">Paper #edebe3</div></div>
+      <div style="text-align:center;"><div style="width:120px; height:74px; background:#fff; border:1px solid #d9d5c9;"></div><div class="lbl" style="margin-top:8px;">White · «Про школу»</div></div>
+      <div style="text-align:center;"><div style="width:120px; height:74px; background:#141310;"></div><div class="lbl" style="margin-top:8px;">Ink · CTA / футер</div></div>
+      <div style="text-align:center;"><div style="width:120px; height:74px; background:#fff; border:1px solid #d9d5c9; border-radius:20px;"></div><div class="lbl" style="margin-top:8px;">radius 20px</div></div>
+      <div style="text-align:center;"><div style="width:120px; height:74px; background:#fff; border:1px solid #d9d5c9; border-radius:999px;"></div><div class="lbl" style="margin-top:8px;">pill · кнопки</div></div>
+    </div>
+    <div class="lbl" style="margin-top:20px;">Вертикальний ритм секцій — 150px (75px зверху + 75px знизу). Бокові поля контейнера — clamp(20px, 4vw, 64px).</div>
+  </section>
+
+  <!-- HEADER -->
+  <section class="card" style="padding:0; overflow:hidden;">
+    <div style="padding:clamp(22px,2.6vw,40px) clamp(22px,2.6vw,40px) 12px;">
+      <div class="eyebrow" style="margin-bottom:6px;">(Стікери)</div>
+      <h2 class="wm" style="margin:0; font-size:clamp(22px,2.4vw,32px);">Наліпки-акценти</h2>
+    </div>
+    <div style="padding:0 clamp(22px,2.6vw,40px) clamp(22px,2.6vw,40px); display:flex; flex-wrap:wrap; gap:36px; align-items:center;">
+      <img src="./assets/badge-age.png?v=4" alt="Від 4 до 90+ років учням" style="width:clamp(200px,22vw,300px); height:auto; display:block;">
+      <div class="lbl" style="max-width:36ch;">Помаранчева наліпка «Від 4 до 90+ років» з восковою смайл-печаткою та дудл-рукою. Використовується точково, з невеликим нахилом, поверх колажу на головному екрані.</div>
+    </div>
+  </section>
+
+  <section class="card" style="padding:0; overflow:hidden;">
+    <div style="background:#edebe3; border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+      <header style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(16px,2vw,24px) clamp(20px,3vw,40px);">
+        <nav style="display:flex; gap:clamp(16px,2vw,34px);" class="micro">
+          <a href="#" class="nlink is-active">Головна</a>
+          <a href="#" class="nlink">Курси</a>
+          <a href="#" class="nlink">Події</a>
+          <a href="#" class="nlink">Галерея</a>
+          <a href="#" class="nlink" style="color:#c0392b;">Контакти</a>
+        </nav>
+        <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="micro">
+          <div style="display:inline-flex; align-items:center; border:1px solid #cfcabd; border-radius:40px; padding:3px;">
+            <span style="color:#8a8479; padding:9px 16px;">FR</span>
+            <span style="background:#141310; color:#edebe3; border-radius:40px; padding:9px 16px;">UK</span>
+          </div>
+          <a href="#trial-form" class="btn btn--ink js-open-trial" style="background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;">Записатися <span class="btn-icon" aria-hidden="true"></span></a>
+        </div>
+      </header>
+    </div>
+    <div style="padding:16px clamp(22px,2.6vw,40px) clamp(22px,2.6vw,40px);">
+      <div class="lbl">Стани пунктів — default чорнило; hover/active червоний (#c0392b). Сетка 1fr / auto / 1fr — лого зліва, меню по центру, дії справа; межі зверху/знизу 1px #d9d5c9.</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="card" style="padding:0; overflow:hidden;">
+    <div style="padding:clamp(22px,2.6vw,40px) clamp(22px,2.6vw,40px) 12px;">
+      <div class="eyebrow" style="margin-bottom:6px;">(Футер)</div>
+      <h2 class="wm" style="margin:0; font-size:clamp(22px,2.4vw,32px);">Підвал сайту</h2>
+    </div>
+    <footer style="background:#141310; color:#edebe3; padding:clamp(40px,4vw,64px) clamp(24px,3vw,48px);">
+      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:clamp(28px,4vw,64px); padding-bottom:clamp(30px,3vw,44px); border-bottom:1px solid #3a352d;">
+        <div>
+          <div class="wm" style="font-size:clamp(24px,2.4vw,34px); margin-bottom:16px;">Atelier Sveta</div>
+          <p style="margin:0; max-width:34ch; font-size:15px; line-height:1.55; color:#c8c3b6;">Авторська художня школа для дорослих і дітей у Ганжі.</p>
+        </div>
+        <div>
+          <div class="micro" style="color:#8a8479; margin-bottom:16px;">Навігація</div>
+          <div style="display:flex; flex-direction:column; gap:12px; font-size:16px; font-weight:500; align-items:flex-start;">
+            <a href="#" class="flink">Курси</a>
+            <a href="#" class="flink">Про школу</a>
+            <a href="#" class="flink">Галерея</a>
+            <a href="#" class="flink">Контакти</a>
+          </div>
+        </div>
+        <div>
+          <div class="micro" style="color:#8a8479; margin-bottom:16px;">Зв’язок</div>
+          <div style="display:flex; flex-direction:column; gap:12px; font-size:16px; font-weight:500; align-items:flex-start;">
+            <a href="#" class="flink">Instagram ↗</a>
+            <a href="#" class="flink">WhatsApp ↗</a>
+            <a href="#" class="flink">sveta.s83ss@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:22px;" class="micro">
+        <span style="color:#8a8479;">© 2026 Atelier Sveta</span>
+        <span style="color:#8a8479;">Ганж · Оксітанія · Франція</span>
+      </div>
+    </footer>
+    <div style="padding:16px clamp(22px,2.6vw,40px) clamp(22px,2.6vw,40px);">
+      <div class="lbl">Стани посилань — default приглушений (#c8c3b6), hover — жовтий (#FAAB06).</div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<div class="trial-modal" id="trial-modal" aria-hidden="true">
+  <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
+    <button class="trial-close" type="button" data-close-trial aria-label="Закрити форму">×</button>
+    <form class="trial-form" id="trial-form" action="https://formsubmit.co/sveta.s83ss@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/sveta.s83ss@gmail.com">
+      <h2 id="trial-title">Пробний урок</h2>
+      <p>Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.</p>
+      <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label class="trial-field">
+        Ім'я
+        <input type="text" name="name" autocomplete="name" required>
+      </label>
+      <label class="trial-field">
+        Телефон або email
+        <input type="text" name="contact" autocomplete="email" required>
+      </label>
+      <label class="trial-field">
+        Напрям
+        <select name="course">
+          <option>Діти</option>
+          <option>Підлітки</option>
+          <option>Дорослі</option>
+          <option>Індивідуальні уроки</option>
+          <option>Підготовка до іспитів</option>
+          <option>Онлайн курси</option>
+        </select>
+      </label>
+      <label class="trial-field">
+        Коментар
+        <textarea name="message" placeholder="Вік учня, бажаний день або питання"></textarea>
+      </label>
+      <div class="trial-actions">
+        <button class="trial-submit" type="submit">Надіслати <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial>Скасувати</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      colors: [
+        { name:'Paper', hex:'#EDEBE3', use:'Тло сторінки' },
+        { name:'White', hex:'#FFFFFF', use:'Блок «Про школу», картки' },
+        { name:'Ink', hex:'#141310', use:'Текст, CTA, футер' },
+        { name:'Body', hex:'#6B6459', use:'Основний текст, мета' },
+        { name:'Red', hex:'#C0392B', use:'Акцент, головна кнопка' },
+        { name:'Yellow', hex:'#FAAB06', use:'Рукописні заголовки' },
+        { name:'Line', hex:'#D9D5C9', use:'Роздільники, межі' },
+      ],
+    };
+  }
+}
+</script>
+<script src="./assets/trial-modal.js"></script>
+</body>
+</html>

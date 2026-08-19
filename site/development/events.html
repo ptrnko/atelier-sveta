@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Événements de l’Atelier Sveta à Ganges : vernissages, expositions et affiches des cours d’arts plastiques.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./assets/trial-modal.css?v=2">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title data-i18n-fr="Événements · Atelier Sveta" data-i18n-uk="Події · Atelier Sveta">Événements · Atelier Sveta</title>
+<script src="./assets/i18n.js?v=2"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=Caveat:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; }
+  ::selection { background:#141310; color:#edebe3; }
+  a { color:inherit; text-decoration:none; }
+  :focus-visible { outline:3px solid rgba(20,19,16,.35); outline-offset:2px; border-radius:4px; }
+  .micro { font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; }
+  .wm { font-family:'Archivo',sans-serif; font-weight:900; letter-spacing:-0.03em; line-height:0.86; text-transform:uppercase; }
+  .hand { font-family:'Caveat',cursive; font-weight:600; line-height:1; }
+  .nlink { transition:color .2s ease; }
+  .nlink:hover, .nlink.is-active { color:#c0392b; }
+  .flink { color:#edebe3; transition:color .2s ease; }
+  .flink:hover { color:#FAAB06; }
+  .flink[data-arrow="true"]::after, .clink[data-arrow="true"]::after { content:""; display:inline-block; width:1.1em; height:1.1em; margin-left:.34em; vertical-align:-.14em; background:currentColor; -webkit-mask:url("./assets/arrow-up-right.svg") center/contain no-repeat; mask:url("./assets/arrow-up-right.svg") center/contain no-repeat; }
+  .langtoggle { position:relative; display:inline-flex; align-items:center; width:78px; height:38px; border:0; border-radius:999px; padding:3px; background:#FAAB06; overflow:hidden; }
+  .langpill { position:absolute; top:3px; left:3px; width:32px; height:32px; background:#fff; border-radius:50%; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+  .langtoggle.is-uk .langpill { transform:translateX(40px); }
+  .langbtn { position:relative; z-index:1; flex:0 0 36px; width:36px; height:32px; text-align:center; font-family:'Archivo',sans-serif; font-size:13px; font-weight:600; letter-spacing:0; text-transform:uppercase; border:none; background:transparent; cursor:pointer; border-radius:40px; padding:0; color:#141310; transition:color .25s ease; }
+  .langtoggle.is-fr .langbtn:first-of-type, .langtoggle.is-uk .langbtn:last-of-type { color:transparent; }
+  .btn { transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease; }
+  .btn:hover { transform:scale(1.04); }
+  .btn:active { transform:scale(.98); transition-duration:.08s; }
+  .btn-icon {
+    display:inline-block;
+    width:1.55em;
+    height:1.55em;
+    flex:none;
+    background:currentColor;
+    -webkit-mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    mask:url('./assets/arrow-up-right.svg') center / contain no-repeat;
+    transform:translateY(-1px);
+    transition:transform .25s ease;
+  }
+  .btn--ink:hover { background:#2a2620 !important; }
+  .btn--light:hover { background:#fff; }
+  .btn:hover .btn-icon { transform:translate(4px,-4px); }
+  body .menu-toggle,
+  .mobile-nav-lang { display:none; }
+  .site-footer { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:10px clamp(20px,4vw,64px); background:#141310; color:#edebe3; border-top:1px solid #6b6459; }
+  .site-footer-copy, .site-footer-credit { flex:none; color:#6b6459; white-space:nowrap; }
+  .site-footer-line { display:none; }
+
+  .events-page { background:#fff; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .events-section { padding:clamp(32px,4vw,54px) clamp(20px,4vw,54px) clamp(70px,7vw,112px); }
+  .events-title { color:#FAAB06; font-size:clamp(30px,3.4vw,52px); text-align:center; margin:0 0 clamp(30px,4vw,54px); }
+  .events-shell { position:relative; max-width:1440px; margin:0 auto; border:1px solid #c8c3b6; border-bottom:none; background:#fff; }
+  .events-grid { position:relative; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .events-top-flower {
+    position:absolute;
+    top:0;
+    width:15px;
+    height:15px;
+    z-index:4;
+    background:#141310;
+    -webkit-mask:url('./assets/gallery-cross.svg') center/contain no-repeat;
+    mask:url('./assets/gallery-cross.svg') center/contain no-repeat;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+  .events-top-flower:nth-child(1) { left:0; }
+  .events-top-flower:nth-child(2) { left:33.333333%; }
+  .events-top-flower:nth-child(3) { left:66.666667%; }
+  .events-top-flower:nth-child(4) { left:100%; }
+  .event-card {
+    position:relative;
+    margin:0;
+    min-width:0;
+    padding:clamp(22px,2.2vw,36px);
+    border-right:1px solid #c8c3b6;
+    border-bottom:1px solid #c8c3b6;
+  }
+  .event-card:nth-child(3n) { border-right:none; }
+  .event-card::before,
+  .event-card::after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    width:15px;
+    height:15px;
+    background:#141310;
+    -webkit-mask:url('./assets/gallery-cross.svg') center/contain no-repeat;
+    mask:url('./assets/gallery-cross.svg') center/contain no-repeat;
+    z-index:2;
+    pointer-events:none;
+  }
+  .event-card::before { left:0; transform:translate(-50%,50%); }
+  .event-card::after { right:0; transform:translate(50%,50%); }
+  .event-frame {
+    display:block;
+    width:100%;
+    padding:0;
+    border:0;
+    appearance:none;
+    -webkit-appearance:none;
+    background:#ded9cc;
+    overflow:hidden;
+    cursor:zoom-in;
+    transition:transform .28s cubic-bezier(.34,1.3,.5,1), filter .28s ease;
+  }
+  .event-frame:hover { transform:translateY(-4px); filter:saturate(1.04); }
+  .event-frame img { display:block; width:100%; height:100%; object-fit:contain; }
+  .event-frame.is-poster { aspect-ratio:852/1206; }
+  .event-frame.is-square { aspect-ratio:1/1; }
+  .event-frame.is-wide { aspect-ratio:4/5.3; }
+  .reveal { opacity:0; transform:translateY(34px); transition:opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); }
+  .reveal.is-in { opacity:1; transform:none; }
+  .lightbox { position:fixed; inset:0; z-index:99; display:none; align-items:center; justify-content:center; padding:clamp(16px,3vw,44px); background:rgba(20,19,16,.92); opacity:0; transition:opacity .3s ease; }
+  .lightbox.is-open { display:flex; opacity:1; }
+  .lightbox img { display:block; width:auto; max-width:94vw; max-height:calc(100vh - clamp(32px,6vw,88px)); box-shadow:0 30px 80px rgba(0,0,0,.5); background:#141310; object-fit:contain; }
+  .lb-close { position:absolute; top:24px; right:28px; width:48px; height:48px; border-radius:50%; border:1px solid #6b6459; background:transparent; color:#edebe3; font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .lb-close:hover { background:#edebe3; color:#141310; }
+  .contact-section { background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); }
+  .contact-title { margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3; }
+
+  @media (max-width:920px) {
+    .site-header {
+      position:relative;
+      flex-wrap:wrap;
+      align-items:center !important;
+      gap:10px !important;
+      padding:14px !important;
+      overflow:visible;
+      z-index:50;
+    }
+    .site-header .menu-toggle {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:54px;
+      height:44px;
+      flex:0 0 54px;
+      border:1px solid #cfcabd;
+      border-radius:999px;
+      background:transparent;
+      color:#141310;
+      cursor:pointer;
+      transition:background-color .25s ease, color .25s ease, transform .2s ease;
+    }
+    .menu-toggle:active { transform:scale(.96); }
+    .menu-toggle-line,
+    .menu-toggle-line::before,
+    .menu-toggle-line::after {
+      content:"";
+      display:block;
+      width:19px;
+      height:2px;
+      border-radius:2px;
+      background:currentColor;
+      transition:transform .25s ease, opacity .2s ease;
+    }
+    .menu-toggle-line { position:relative; }
+    .menu-toggle-line::before,
+    .menu-toggle-line::after { position:absolute; left:0; }
+    .menu-toggle-line::before { top:-6px; }
+    .menu-toggle-line::after { top:6px; }
+    .site-header.is-menu-open .menu-toggle { background:#141310; color:#edebe3; }
+    .site-header.is-menu-open .menu-toggle-line { background:transparent; }
+    .site-header.is-menu-open .menu-toggle-line::before { transform:translateY(6px) rotate(45deg); }
+    .site-header.is-menu-open .menu-toggle-line::after { transform:translateY(-6px) rotate(-45deg); }
+    .desktop-lang { display:none !important; }
+    .main-nav {
+      position:fixed;
+      inset:0;
+      z-index:1200;
+      display:flex !important;
+      flex-direction:column;
+      justify-content:flex-end;
+      width:100%;
+      min-height:100svh;
+      gap:0 !important;
+      overflow:hidden;
+      padding:clamp(86px,18vw,118px) 24px clamp(34px,9vw,52px);
+      border:none;
+      background:rgba(8,8,7,.96);
+      box-shadow:none;
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(10px);
+      pointer-events:none;
+      transition:opacity .24s ease, visibility .24s ease, transform .24s ease;
+      white-space:normal;
+    }
+    .site-header.is-menu-open .main-nav { opacity:1; visibility:visible; transform:translateY(0); pointer-events:auto; }
+    .main-nav .nlink {
+      display:flex;
+      align-items:center;
+      color:#edebe3;
+      font:800 clamp(30px,11.5vw,52px)/1.02 'Archivo',sans-serif;
+      letter-spacing:0;
+      text-transform:none;
+      opacity:.36;
+      transition:opacity .22s ease, transform .22s ease;
+    }
+    .main-nav .nlink:hover,
+    .main-nav .nlink.is-active { opacity:1; color:#c0392b; transform:translateX(4px); }
+    .main-nav .mobile-nav-lang {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      margin-top:clamp(34px,9vw,52px);
+      padding-top:22px;
+      border-top:1px solid rgba(237,235,227,.16);
+    }
+    .mobile-nav-lang-label { color:rgba(237,235,227,.42); font-size:11px; letter-spacing:0.16em; }
+    .main-nav .langtoggle { background:#FAAB06; }
+    .main-nav .langpill { background:#fff; }
+    .main-nav .langbtn { color:#141310; }
+    .site-header.is-menu-open .menu-toggle {
+      position:fixed;
+      top:28px;
+      right:28px;
+      z-index:1300;
+      width:54px;
+      height:54px;
+      border-color:transparent;
+      background:transparent;
+      color:#edebe3;
+    }
+    .header-actions { width:100%; justify-content:space-between !important; gap:8px !important; }
+    .langbtn { min-width:36px; padding:0; font-size:13px; }
+    .header-cta {
+      flex:1;
+      justify-content:center;
+      min-width:0;
+      height:44px;
+      padding:0 14px !important;
+      font-size:10px;
+      letter-spacing:0.14em;
+      white-space:nowrap;
+    }
+    .header-cta .btn-icon { width:1.35em; height:1.35em; }
+    .events-section { padding:58px 14px 84px; }
+    .events-title { margin-bottom:34px; }
+    .events-shell { border-left:none; border-right:none; }
+    .events-grid { grid-template-columns:1fr; }
+    .events-top-flower:nth-child(2),
+    .events-top-flower:nth-child(3) { display:none; }
+    .event-card, .event-card:nth-child(3n) { border-right:none; padding:24px 18px 34px; }
+    .event-frame:hover { transform:none; filter:none; }
+    .contact-section { padding:72px 16px !important; }
+    .contact-section > .micro:first-child {
+      font-family:'Caveat',cursive !important;
+      color:#FAAB06 !important;
+      font-size:clamp(28px,8vw,42px) !important;
+      font-weight:600 !important;
+      letter-spacing:0 !important;
+      line-height:1 !important;
+      text-transform:none !important;
+    }
+    .contact-title {
+      max-width:100% !important;
+      font-size:clamp(34px,11vw,54px) !important;
+      line-height:.94 !important;
+      letter-spacing:0 !important;
+    }
+    .contact-layout { flex-direction:column; gap:28px !important; }
+    .contact-layout .btn { align-self:stretch !important; justify-content:center; padding:15px 24px !important; }
+  }
+  @media (max-width:900px) and (min-width:621px) {
+    .events-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .event-card:nth-child(3n) { border-right:1px solid #c8c3b6; }
+    .event-card:nth-child(2n) { border-right:none; }
+    .events-top-flower:nth-child(2) { left:50%; }
+    .events-top-flower:nth-child(3) { display:none; }
+    .events-top-flower:nth-child(4) { left:100%; }
+  }
+  @media (prefers-reduced-motion:reduce){ .btn,.btn-icon,.reveal { transition:none; } .btn:hover,.event-frame:hover { transform:none; } .reveal { opacity:1; transform:none; } }
+  @media (max-width:920px) {
+    .site-footer { flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px 16px; }
+    .site-footer-copy, .site-footer-credit { white-space:normal; }
+    .site-footer-line { width:100%; flex:none; }
+  }
+</style>
+</helmet>
+<div class="events-page">
+  <header class="site-header" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(11px,1.5vw,18px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9;">
+    <nav id="mobile-menu" style="display:flex; gap:clamp(16px,2vw,34px);" class="main-nav micro">
+      <a href="./home.html" class="nlink" data-i18n-fr="Accueil" data-i18n-uk="Головна">Accueil</a>
+      <a href="./courses.html" class="nlink" data-i18n-fr="Cours" data-i18n-uk="Курси">Cours</a>
+      <a href="./events.html" class="nlink is-active" data-i18n-fr="Événements" data-i18n-uk="Події">Événements</a>
+      <a href="./gallery.html" class="nlink" data-i18n-fr="Galerie" data-i18n-uk="Галерея">Galerie</a>
+      <a href="./contacts.html" class="nlink" data-i18n-fr="Contact" data-i18n-uk="Контакти">Contact</a>
+      <div class="mobile-nav-lang">
+        <span class="mobile-nav-lang-label" data-i18n-fr="Langue" data-i18n-uk="Мова">Langue</span>
+        <div class="langtoggle is-fr">
+          <span class="langpill" aria-hidden="true"></span>
+          <button type="button" class="langbtn">FR</button>
+          <button type="button" class="langbtn">UA</button>
+        </div>
+      </div>
+    </nav>
+    <div style="display:flex; justify-content:flex-end; align-items:center; gap:14px;" class="header-actions micro">
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label-fr="Ouvrir le menu" data-i18n-aria-label-uk="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle-line" aria-hidden="true"></span>
+      </button>
+      <div class="desktop-lang langtoggle is-fr">
+        <span class="langpill" aria-hidden="true"></span>
+        <button type="button" class="langbtn">FR</button>
+        <button type="button" class="langbtn">UA</button>
+      </div>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;"><span data-i18n-fr="Trouver un cours" data-i18n-uk="Знайти курс">Trouver un cours</span> <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main>
+    <section id="events" class="events-section">
+      <h1 class="events-title hand" data-i18n-fr="(Événements)" data-i18n-uk="(Події)">(Événements)</h1>
+      <div class="events-shell">
+        <span class="events-top-flower" aria-hidden="true"></span>
+        <span class="events-top-flower" aria-hidden="true"></span>
+        <span class="events-top-flower" aria-hidden="true"></span>
+        <span class="events-top-flower" aria-hidden="true"></span>
+        <div class="events-grid">
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-01.png" aria-label="Ouvrir l’affiche du vernissage" data-i18n-aria-label-fr="Ouvrir l’affiche du vernissage" data-i18n-aria-label-uk="Відкрити афішу вернісажу">
+              <img src="./assets/event-vernissage-01.png" alt="Affiche du vernissage Atelier Sveta" data-i18n-alt-fr="Affiche du vernissage Atelier Sveta" data-i18n-alt-uk="Афіша вернісажу Atelier Sveta">
+            </button>
+          </figure>
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-vernissage-2025.png" aria-label="Ouvrir l’affiche de l’exposition 2025" data-i18n-aria-label-fr="Ouvrir l’affiche de l’exposition 2025" data-i18n-aria-label-uk="Відкрити афішу виставки 2025">
+              <img src="./assets/event-vernissage-2025.png" alt="Affiche de l’exposition Atelier Sveta 2025" data-i18n-alt-fr="Affiche de l’exposition Atelier Sveta 2025" data-i18n-alt-uk="Афіша виставки Atelier Sveta 2025">
+            </button>
+          </figure>
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-cours-arts.png" aria-label="Ouvrir l’affiche des cours d’arts plastiques" data-i18n-aria-label-fr="Ouvrir l’affiche des cours d’arts plastiques" data-i18n-aria-label-uk="Відкрити афішу курсів arts plastiques">
+              <img src="./assets/event-cours-arts.png" alt="Affiche des cours d’arts plastiques" data-i18n-alt-fr="Affiche des cours d’arts plastiques" data-i18n-alt-uk="Афіша курсів arts plastiques">
+            </button>
+          </figure>
+          <figure class="event-card reveal">
+            <button type="button" class="event-frame is-poster" data-full="./assets/event-atelier-arts.png" aria-label="Ouvrir l’affiche atelier arts plastiques" data-i18n-aria-label-fr="Ouvrir l’affiche atelier arts plastiques" data-i18n-aria-label-uk="Відкрити афішу atelier arts plastiques">
+              <img src="./assets/event-atelier-arts.png" alt="Affiche atelier arts plastiques" data-i18n-alt-fr="Affiche atelier arts plastiques" data-i18n-alt-uk="Афіша atelier arts plastiques">
+            </button>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="hand" style="font-family:'Caveat',cursive; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(30px,4vw,60px);" data-i18n-fr="(Contact)" data-i18n-uk="(Контакт)">(Contact)</div>
+      <p class="contact-title wm" data-i18n-fr="L’art<br>commence<br>ici." data-i18n-uk="Мистецтво<br>починається<br>тут.">L’art<br>commence<br>ici.</p>
+      <div class="contact-layout" style="display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px);">
+        <div style="font-family:'Archivo',sans-serif; font-size:clamp(18px,1.6vw,24px); line-height:1.5;" data-i18n-fr="24 Rue Jeu de Ballon<br>34190 Ganges, France" data-i18n-uk="24 Rue Jeu de Ballon<br>34190 Ganges, Франція">24 Rue Jeu de Ballon<br>34190 Ganges, France</div>
+        <div class="micro" style="line-height:2; color:#FAAB06;">
+          <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
+          <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
+          <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
+        </div>
+        <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Réserver un cours d’essai" data-i18n-uk="Записатися на пробний">Réserver un cours d’essai</span> <span class="btn-icon" aria-hidden="true"></span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer micro">
+    <span class="site-footer-copy">© 2026 Atelier Sveta</span>
+    <span class="site-footer-line" aria-hidden="true"></span>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="site-footer-credit nlink">Website by Petrenko Design</a>
+  </footer>
+
+  <div class="lightbox" id="event-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button type="button" class="lb-close" aria-label="Fermer" data-i18n-aria-label-fr="Fermer" data-i18n-aria-label-uk="Закрити">✕</button>
+    <img id="event-lightbox-img" alt="">
+  </div>
+</div>
+</x-dc>
+<div class="trial-modal" id="trial-modal" aria-hidden="true">
+  <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
+    <button class="trial-close" type="button" data-close-trial aria-label="Fermer le formulaire" data-i18n-aria-label-fr="Fermer le formulaire" data-i18n-aria-label-uk="Закрити форму">×</button>
+    <form class="trial-form" id="trial-form" action="https://formsubmit.co/sveta.s83ss@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/sveta.s83ss@gmail.com">
+      <h2 id="trial-title" data-i18n-fr="Cours d’essai" data-i18n-uk="Пробний урок">Cours d’essai</h2>
+      <p data-i18n-fr="Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire." data-i18n-uk="Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.">Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire.</p>
+      <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label class="trial-field"><span data-i18n-fr="Prénom" data-i18n-uk="Ім'я">Prénom</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="trial-field"><span data-i18n-fr="Téléphone ou e-mail" data-i18n-uk="Телефон або email">Téléphone ou e-mail</span><input type="text" name="contact" autocomplete="email" required></label>
+      <label class="trial-field"><span data-i18n-fr="Cours" data-i18n-uk="Напрям">Cours</span><select name="course"><option data-i18n-fr="Enfants" data-i18n-uk="Діти">Enfants</option><option data-i18n-fr="Adolescents" data-i18n-uk="Підлітки">Adolescents</option><option data-i18n-fr="Adultes" data-i18n-uk="Дорослі">Adultes</option><option data-i18n-fr="Cours individuels" data-i18n-uk="Індивідуальні уроки">Cours individuels</option><option data-i18n-fr="Préparation aux examens" data-i18n-uk="Підготовка до іспитів">Préparation aux examens</option><option data-i18n-fr="Cours en ligne" data-i18n-uk="Онлайн курси">Cours en ligne</option></select></label>
+      <label class="trial-field"><span data-i18n-fr="Commentaire" data-i18n-uk="Коментар">Commentaire</span><textarea name="message" placeholder="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-fr="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-uk="Вік учня, бажаний день або питання"></textarea></label>
+      <div class="trial-actions">
+        <button class="trial-submit" type="submit"><span data-i18n-fr="Envoyer" data-i18n-uk="Надіслати">Envoyer</span> <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial data-i18n-fr="Annuler" data-i18n-uk="Скасувати">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._siteHeader = document.querySelector('.site-header');
+    this._menuToggle = document.querySelector('.menu-toggle');
+    this._mainNav = document.querySelector('.main-nav');
+    this._setMenu = (open) => {
+      if (!this._siteHeader || !this._menuToggle) return;
+      this._siteHeader.classList.toggle('is-menu-open', open);
+      this._menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      this._menuToggle.setAttribute('aria-label', (window.AS_I18N && AS_I18N.get()==='uk') ? (open ? 'Закрити меню' : 'Відкрити меню') : (open ? 'Fermer le menu' : 'Ouvrir le menu'));
+    };
+    this._onMenuToggle = () => this._setMenu(!this._siteHeader?.classList.contains('is-menu-open'));
+    this._onNavClick = (e) => { if (e.target.closest('.nlink')) this._setMenu(false); };
+    this._onMenuKey = (e) => { if (e.key === 'Escape') this._setMenu(false); };
+    this._menuToggle?.addEventListener('click', this._onMenuToggle);
+    this._mainNav?.addEventListener('click', this._onNavClick);
+    window.addEventListener('keydown', this._onMenuKey);
+
+    const lb = document.getElementById('event-lightbox');
+    const lbImg = document.getElementById('event-lightbox-img');
+    this._closeLb = () => {
+      if (!lb) return;
+      lb.classList.remove('is-open');
+      lb.setAttribute('aria-hidden', 'true');
+    };
+    if (lb && lbImg) {
+      document.querySelectorAll('.event-frame').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          lbImg.src = btn.getAttribute('data-full') || btn.querySelector('img')?.src || '';
+          lbImg.alt = btn.querySelector('img')?.alt || '';
+          lb.classList.add('is-open');
+          lb.setAttribute('aria-hidden', 'false');
+        });
+      });
+      lb.addEventListener('click', (e) => { if (e.target === lb || e.target.classList.contains('lb-close')) this._closeLb(); });
+      document.addEventListener('keydown', this._esc = (e) => { if (e.key === 'Escape') this._closeLb(); });
+    }
+
+    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); this._io.unobserve(en.target); } });
+      }, { threshold:0.12 });
+      document.querySelectorAll('.reveal').forEach((n) => this._io.observe(n));
+    } else {
+      document.querySelectorAll('.reveal').forEach((n) => n.classList.add('is-in'));
+    }
+    if (window.AS_I18N) AS_I18N.apply(AS_I18N.get());
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._esc) document.removeEventListener('keydown', this._esc);
+    this._menuToggle?.removeEventListener('click', this._onMenuToggle);
+    this._mainNav?.removeEventListener('click', this._onNavClick);
+    if (this._onMenuKey) window.removeEventListener('keydown', this._onMenuKey);
+  }
+  state = { lang:'UK' };
+  renderVals() {
+    const lang = this.state.lang;
+    return {
+      setUk: () => this.setState({ lang:'UK' }),
+      setFr: () => this.setState({ lang:'FR' }),
+      langCls: lang === 'UK' ? 'is-uk' : 'is-fr',
+    };
+  }
+}
+</script>
+<script src="./assets/trial-modal.js"></script>
+</body>
+</html>

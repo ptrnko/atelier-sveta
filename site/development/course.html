@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Cours d’art à l’Atelier Sveta (Ganges) : détails, programme, horaires et tarifs. Réservez un cours d’essai.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./assets/trial-modal.css?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#edebe3; color:#141310; font-family:'Archivo',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  ::selection { background:#141310; color:#edebe3; }
+  :focus-visible { outline:3px solid rgba(250,171,6,.5); outline-offset:3px; border-radius:6px; }
+  .micro { font-family:'Archivo',sans-serif; font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; }
+  .wm { font-family:'Archivo',sans-serif; font-weight:900; letter-spacing:-.03em; line-height:.86; text-transform:uppercase; }
+  .hand { font-family:'Caveat',cursive; font-weight:600; line-height:1; }
+  .nlink { transition:color .2s ease; }
+  .nlink:hover, .nlink.is-active { color:#c0392b; }
+  .btn { transition:transform .25s cubic-bezier(.34,1.3,.5,1), background-color .25s ease, color .25s ease; }
+  .btn:hover { transform:scale(1.04); }
+  .btn:active { transform:scale(.98); transition-duration:.08s; }
+  .btn-icon {
+    display:inline-block;
+    flex:none;
+    background:currentColor;
+    -webkit-mask:url('./assets/arrow-up-right.svg') center/contain no-repeat;
+    mask:url('./assets/arrow-up-right.svg') center/contain no-repeat;
+    transform:translateY(-1px);
+    transition:transform .25s ease;
+  }
+  .btn-icon { width:1.55em; height:1.55em; }
+  .btn:hover .btn-icon { transform:translate(4px,-4px); }
+  .btn--ink:hover { background:#2a2620 !important; }
+  .btn--light:hover { background:#fff !important; }
+  .langtoggle { position:relative; display:inline-flex; align-items:center; width:78px; height:38px; border:0; border-radius:999px; padding:3px; background:#FAAB06; overflow:hidden; }
+  .langpill { position:absolute; top:3px; left:3px; width:32px; height:32px; background:#fff; border-radius:50%; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+  .langtoggle.is-uk .langpill { transform:translateX(40px); }
+  .langbtn { position:relative; z-index:1; flex:0 0 36px; width:36px; height:32px; border:0; background:transparent; border-radius:40px; padding:0; color:#141310; cursor:pointer; font-size:13px; font-weight:600; letter-spacing:0; transition:color .25s ease; }
+  .langtoggle.is-fr .langbtn:first-of-type,
+  .langtoggle.is-uk .langbtn:last-of-type { color:transparent; }
+  body .menu-toggle,
+  .mobile-nav-lang { display:none; }
+  .site-header { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:clamp(11px,1.5vw,18px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-top:3px solid #141310; border-bottom:1px solid #d9d5c9; background:#edebe3; }
+  .main-nav { display:flex; gap:clamp(18px,2vw,38px); align-items:center; }
+  .header-actions { display:flex; justify-content:flex-end; align-items:center; gap:14px; }
+  .course-page { min-height:100svh; display:flex; flex-direction:column; }
+  .course-hero { background:#141310; color:#edebe3; border-bottom:1px solid #d9d5c9; padding:clamp(44px,5.5vw,82px) clamp(20px,4vw,64px); }
+  .course-hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(260px,30vw,520px); gap:clamp(22px,4vw,72px); align-items:center; max-width:1440px; margin-inline:auto; }
+  .course-title { margin:0 0 16px; font-weight:500; font-size:clamp(56px,7vw,136px); line-height:.88; letter-spacing:-.03em; }
+  .course-tags { display:flex; flex-wrap:wrap; gap:12px 32px; color:rgba(237,235,227,.72); font-size:clamp(15px,1.25vw,22px); font-weight:600; }
+  .course-image { aspect-ratio:695/258; border-radius:999px; overflow:hidden; background:#cfd6dc; }
+  .course-image img,
+  .course-image video { width:100%; height:100%; object-fit:cover; display:block; }
+  .course-body { padding:clamp(52px,6vw,96px) clamp(20px,4vw,64px); max-width:1440px; margin-inline:auto; }
+  .course-lead { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(280px,.8fr); gap:clamp(34px,6vw,96px); align-items:start; padding-bottom:clamp(52px,6vw,96px); border-bottom:1px solid #d9d5c9; }
+  .section-kicker { margin:0 0 clamp(20px,2vw,34px); color:#FAAB06; font-size:clamp(30px,3.4vw,52px); }
+  .course-heading { margin:0; font-size:clamp(34px,4.2vw,68px); line-height:.98; font-weight:900; letter-spacing:-.03em; text-transform:uppercase; }
+  .course-copy { margin:0; padding-top:calc(clamp(30px,3.4vw,52px) + clamp(20px,2vw,34px)); color:#6b6459; font-size:clamp(16px,1.3vw,22px); line-height:1.5; }
+  .detail-list { display:grid; border-top:1px solid #d9d5c9; }
+  .detail-row { display:grid; grid-template-columns:minmax(160px,.45fr) 1fr; gap:24px; padding:22px 0; border-bottom:1px solid #d9d5c9; }
+  .detail-label { color:#c0392b; font-size:clamp(24px,2.4vw,38px); }
+  .detail-value { color:#141310; font-size:clamp(18px,1.6vw,28px); font-weight:600; line-height:1.35; }
+  .pricing { margin-top:clamp(52px,6vw,96px); }
+  .pricing .section-kicker { margin:0 0 clamp(20px,2.4vw,36px); }
+  .pricing-table-wrap { overflow-x:auto; }
+  .pricing-table { width:100%; min-width:420px; border-collapse:collapse; }
+  .pricing-table th, .pricing-table td { text-align:left; padding:clamp(14px,1.6vw,22px) clamp(14px,1.6vw,26px) clamp(14px,1.6vw,22px) 0; border-bottom:1px solid #d9d5c9; }
+  .pricing-table thead th { border-top:1px solid #d9d5c9; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(12px,0.95vw,15px); letter-spacing:.06em; text-transform:uppercase; color:#6b6459; }
+  .pricing-table tbody th { font-weight:700; font-size:clamp(18px,1.7vw,26px); color:#141310; }
+  .pricing-table tbody td { font-weight:600; font-size:clamp(18px,1.7vw,26px); color:#141310; }
+  .pricing-table td:not(:first-child), .pricing-table th:not(:first-child) { padding-left:clamp(16px,2vw,40px); }
+  .pricing-note { margin:clamp(18px,2vw,30px) 0 0; max-width:74ch; color:#6b6459; font-size:clamp(13px,1vw,16px); line-height:1.6; }
+  @media (max-width:640px) {
+    .pricing-table-wrap { overflow-x:visible; }
+    .pricing-table, .pricing-table tbody { display:block; min-width:0; }
+    .pricing-table thead { display:none; }
+    .pricing-table tr { display:block; border-top:1px solid #d9d5c9; padding:20px 0; }
+    .pricing-table th, .pricing-table td { display:block; border:none; padding:0; }
+    .pricing-table tbody th { font-size:24px; margin-bottom:14px; }
+    .pricing-table td { display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:7px 0; font-size:19px; }
+    .pricing-table td:not(:first-child), .pricing-table th:not(:first-child) { padding-left:0; }
+    .pricing-table td::before { content:attr(data-label); color:#6b6459; font-weight:600; font-size:13px; letter-spacing:.04em; text-transform:uppercase; }
+  }
+  .program { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; margin-top:clamp(52px,6vw,96px); border:1px solid #d9d5c9; border-bottom:none; }
+  .program-card { padding:clamp(28px,3vw,48px); border-right:1px solid #d9d5c9; border-bottom:1px solid #d9d5c9; }
+  .program-card:nth-child(3n) { border-right:none; }
+  .program-card h3 { margin:0 0 18px; font-size:clamp(26px,2.9vw,52px); line-height:.98; font-weight:500; }
+  .program-num { display:block; font-family:'Caveat',cursive; font-weight:700; color:#c0392b; font-size:1.5em; line-height:1; margin-bottom:12px; }
+  .program-card p { margin:0; color:#6b6459; font-size:clamp(16px,1.25vw,20px); line-height:1.5; }
+  .schedule-section { margin-top:clamp(52px,6vw,96px); padding:clamp(44px,5vw,72px) clamp(18px,3vw,42px) clamp(42px,5vw,70px); background:#c0392b; color:#fff; overflow:hidden; }
+  .schedule-title { margin:0 0 clamp(42px,7vw,110px); color:#FAAB06; font-size:clamp(30px,3.4vw,52px); text-align:center; }
+  .schedule-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:clamp(14px,2vw,28px); align-items:stretch; }
+  .schedule-day { display:grid; grid-template-rows:auto 1fr; gap:18px; min-width:0; }
+  .schedule-day-name { margin:0; color:#fff; text-align:center; font-size:clamp(22px,2.5vw,44px); line-height:1; font-weight:400; }
+  .schedule-card { width:100%; min-width:0; aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:space-between; padding:15px; background:rgba(255,255,255,.16); color:#fff; overflow:hidden; }
+  .schedule-card.is-active { background:#fff; color:#141310; }
+  .schedule-card-title { margin:0; font-size:16px; line-height:1.15; font-weight:400; }
+  .schedule-card-time { margin:18px 0 0; font-size:13px; line-height:1.25; }
+  .schedule-card-note { margin:10px 0 0; color:inherit; opacity:.74; font-size:12px; line-height:1.3; }
+  .course-cta { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:24px; align-items:end; margin-top:clamp(54px,7vw,110px); padding:clamp(38px,5vw,74px); background:#FAAB06; color:#141310; border-radius:34px; }
+  .course-cta h2 { margin:0; font-size:clamp(42px,6vw,96px); line-height:.92; }
+  .course-cta p { margin:18px 0 0; max-width:54ch; color:rgba(20,19,16,.78); font-size:clamp(16px,1.35vw,22px); line-height:1.45; }
+  .contact-section { background:#141310; color:#edebe3; padding:clamp(90px,11vw,150px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); }
+  .contact-kicker { margin:0 0 clamp(30px,4vw,60px); color:#FAAB06; font-size:clamp(30px,3.4vw,52px); }
+  .contact-title { margin:0; font-size:clamp(40px,8vw,140px); color:#edebe3; }
+  .contact-layout { display:flex; justify-content:space-between; gap:30px; flex-wrap:wrap; margin-top:clamp(40px,5vw,80px); }
+  .contact-address { font-size:clamp(18px,1.6vw,24px); line-height:1.5; }
+  .contact-links { line-height:2; color:#FAAB06; }
+  .flink { color:#edebe3; transition:color .2s ease; }
+  .flink:hover { color:#FAAB06; }
+  .flink[data-arrow="true"]::after {
+    content:"";
+    display:inline-block;
+    width:1.1em;
+    height:1.1em;
+    margin-left:.34em;
+    vertical-align:-.14em;
+    background:currentColor;
+    -webkit-mask:url("./assets/arrow-up-right.svg") center/contain no-repeat;
+    mask:url("./assets/arrow-up-right.svg") center/contain no-repeat;
+  }
+  .site-footer { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:10px clamp(20px,4vw,64px); background:#141310; color:#6b6459; border-top:1px solid rgba(107,100,89,.5); }
+  .site-footer-copy, .site-footer-credit { flex:none; color:#6b6459; white-space:nowrap; }
+  .site-footer-line { display:none; }
+
+  @media (max-width:920px) {
+    .site-header { position:relative; flex-wrap:wrap; gap:10px; padding:14px; z-index:50; }
+    .site-header .menu-toggle { display:inline-flex; align-items:center; justify-content:center; width:54px; height:44px; flex:0 0 54px; border:1px solid #cfcabd; border-radius:999px; background:transparent; color:#141310; cursor:pointer; }
+    .menu-toggle-line, .menu-toggle-line::before, .menu-toggle-line::after { content:""; display:block; width:19px; height:2px; border-radius:2px; background:currentColor; transition:transform .25s ease, opacity .2s ease; }
+    .menu-toggle-line { position:relative; }
+    .menu-toggle-line::before, .menu-toggle-line::after { position:absolute; left:0; }
+    .menu-toggle-line::before { top:-6px; }
+    .menu-toggle-line::after { top:6px; }
+    .site-header.is-menu-open .menu-toggle { background:#141310; color:#edebe3; }
+    .site-header.is-menu-open .menu-toggle-line { background:transparent; }
+    .site-header.is-menu-open .menu-toggle-line::before { transform:translateY(6px) rotate(45deg); }
+    .site-header.is-menu-open .menu-toggle-line::after { transform:translateY(-6px) rotate(-45deg); }
+    .main-nav { position:fixed; inset:0; z-index:1200; display:flex; flex-direction:column; justify-content:flex-end; width:100%; min-height:100svh; gap:0; overflow:hidden; padding:clamp(86px,18vw,118px) 24px clamp(34px,9vw,52px); border:none; background:rgba(8,8,7,.96); transform:translateY(-105%); opacity:0; pointer-events:none; transition:transform .34s cubic-bezier(.4,0,.2,1), opacity .25s ease; }
+    .site-header.is-menu-open .main-nav { transform:translateY(0); opacity:1; pointer-events:auto; }
+    .main-nav .nlink { width:100%; color:#edebe3; font-size:clamp(30px,11.5vw,52px); font-weight:800; letter-spacing:-.04em; line-height:1; text-transform:none; }
+    .main-nav .nlink:hover, .main-nav .nlink.is-active { color:#c0392b; }
+    .desktop-lang { display:none !important; }
+    .mobile-nav-lang { display:flex; width:100%; margin-top:clamp(34px,9vw,52px); padding-top:22px; border-top:1px solid rgba(237,235,227,.16); align-items:center; justify-content:space-between; gap:16px; }
+    .mobile-nav-lang-label { color:rgba(237,235,227,.42); font-size:11px; letter-spacing:.16em; }
+    .mobile-nav-lang .langtoggle { background:#FAAB06; }
+    .header-actions { width:100%; justify-content:space-between; gap:10px; }
+    .header-cta { flex:1; justify-content:center; min-width:0; height:44px; padding:0 14px !important; font-size:10px; letter-spacing:.14em; white-space:nowrap; }
+    .course-hero { padding:34px 16px 42px; }
+    .course-hero-grid { grid-template-columns:1fr; gap:22px 16px; }
+    .course-title-wrap { display:contents; }
+    .course-title { grid-column:1; grid-row:1; margin:0; font-size:clamp(44px,13vw,68px); color:#edebe3; }
+    .course-image { grid-column:1 / -1; grid-row:2; width:100%; aspect-ratio:3.2/1; }
+    .course-tags { grid-column:1 / -1; grid-row:3; font-size:clamp(12px,3.4vw,14px); gap:8px 16px; }
+    .course-body { padding:52px 16px 72px; }
+    .course-lead { grid-template-columns:1fr; gap:28px; }
+    .course-heading { font-size:clamp(38px,12vw,58px); }
+    .course-copy { padding-top:0; }
+    .detail-row { grid-template-columns:1fr; gap:8px; padding:18px 0; }
+    .program { grid-template-columns:1fr; margin-left:-16px; margin-right:-16px; border-left:none; border-right:none; }
+    .program-card { border-right:none; padding:30px 16px; }
+    .schedule-section { margin-left:-16px; margin-right:-16px; padding:46px 16px; }
+    .schedule-title { text-align:left; margin-bottom:40px; }
+    .schedule-grid { grid-template-columns:1fr; gap:18px; }
+    .schedule-day { grid-template-columns:64px 1fr; grid-template-rows:auto; align-items:stretch; gap:14px; }
+    .schedule-day-name { text-align:left; font-size:28px; padding-top:16px; }
+    .schedule-card { aspect-ratio:auto; min-height:132px; padding:22px; }
+    .course-cta { grid-template-columns:1fr; padding:34px 18px; border-radius:28px; text-align:center; }
+    .course-cta p { margin-inline:auto; }
+    .course-cta .btn { justify-content:center; }
+    .contact-section { padding:72px 16px; }
+    .contact-kicker { margin-bottom:34px; }
+    .contact-title { font-size:clamp(34px,11vw,54px); line-height:.94; letter-spacing:0; }
+    .contact-layout { display:block; margin-top:40px; }
+    .contact-address { margin-bottom:28px; }
+    .contact-links { margin-bottom:34px; color:#edebe3; }
+    .contact-links a { margin-bottom:8px; }
+    .contact-section .btn { width:100%; justify-content:center; }
+    .site-footer { flex-direction:column; align-items:center; text-align:center; gap:10px; padding:10px 16px; }
+    .site-footer-copy, .site-footer-credit { white-space:normal; }
+  }
+</style>
+</head>
+<body>
+<div class="course-page">
+  <header class="site-header">
+    <nav class="main-nav micro" id="mobile-menu">
+      <a href="./home.html#top" class="nlink" data-i18n-fr="Accueil" data-i18n-uk="Головна">Accueil</a>
+      <a href="./courses.html" class="nlink is-active" data-i18n-fr="Cours" data-i18n-uk="Курси">Cours</a>
+      <a href="./events.html" class="nlink" data-i18n-fr="Événements" data-i18n-uk="Події">Événements</a>
+      <a href="./gallery.html" class="nlink" data-i18n-fr="Galerie" data-i18n-uk="Галерея">Galerie</a>
+      <a href="./contacts.html" class="nlink" data-i18n-fr="Contact" data-i18n-uk="Контакти">Contact</a>
+      <div class="mobile-nav-lang micro">
+        <span class="mobile-nav-lang-label" data-i18n-fr="Langue" data-i18n-uk="Мова">Langue</span>
+        <div class="langtoggle is-fr">
+          <span class="langpill" aria-hidden="true"></span>
+          <button class="langbtn" type="button">FR</button>
+          <button class="langbtn" type="button">UA</button>
+        </div>
+      </div>
+    </nav>
+    <div class="header-actions micro">
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" data-i18n-aria-label-fr="Ouvrir le menu" data-i18n-aria-label-uk="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle-line" aria-hidden="true"></span>
+      </button>
+      <div class="desktop-lang langtoggle is-fr">
+        <span class="langpill" aria-hidden="true"></span>
+        <button class="langbtn" type="button">FR</button>
+        <button class="langbtn" type="button">UA</button>
+      </div>
+      <a href="./courses.html" class="header-cta btn btn--ink" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; padding:12px 22px; border-radius:40px;"><span data-i18n-fr="Trouver un cours" data-i18n-uk="Знайти курс">Trouver un cours</span> <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="course-hero">
+      <div class="course-hero-grid">
+        <div class="course-title-wrap">
+          <h1 class="course-title" data-course-title>Enfants</h1>
+          <div class="course-tags" data-course-tags></div>
+        </div>
+        <div class="course-image">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Élèves au travail à l’atelier" data-i18n-aria-label-fr="Élèves au travail à l’atelier" data-i18n-aria-label-uk="Учні працюють у художній школі" data-course-video>
+            <source src="./assets/course-kids-video.mp4" type="video/mp4" data-course-video-source>
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="course-body">
+      <div class="course-lead">
+        <div>
+          <div class="section-kicker hand" data-course-kicker data-i18n-fr="(Détails)" data-i18n-uk="(Деталі)">(Détails)</div>
+          <h2 class="course-heading" data-course-heading>Les premiers pas dans l’art, sans la peur de la page blanche.</h2>
+        </div>
+        <p class="course-copy" data-course-copy>Un cours pour les enfants qui veulent essayer différents matériaux, dessiner en groupe et trouver peu à peu leur propre regard.</p>
+      </div>
+
+      <div class="detail-list" aria-label="Détails du cours" data-i18n-aria-label-fr="Détails du cours" data-i18n-aria-label-uk="Параметри курсу">
+        <div class="detail-row">
+          <div class="detail-label hand" data-i18n-fr="Format" data-i18n-uk="Формат">Format</div>
+          <div class="detail-value" data-course-format>cours en groupe à l’atelier</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label hand" data-i18n-fr="Durée" data-i18n-uk="Тривалість">Durée</div>
+          <div class="detail-value" data-course-duration>1–1,5 h</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label hand" data-i18n-fr="Pour qui" data-i18n-uk="Для кого">Pour qui</div>
+          <div class="detail-value" data-course-for>élèves de 5 à 12 ans</div>
+        </div>
+        <div class="detail-row">
+          <div class="detail-label hand" data-i18n-fr="Matériaux" data-i18n-uk="Матеріали">Matériaux</div>
+          <div class="detail-value" data-course-materials>gouache, aquarelle, dessin, collage, toute technique au choix</div>
+        </div>
+      </div>
+
+      <section class="pricing" aria-labelledby="pricing-title" data-pricing-section>
+        <div class="section-kicker hand" id="pricing-title" data-i18n-fr="(Tarifs)" data-i18n-uk="(Вартість)">(Tarifs)</div>
+        <div class="pricing-table-wrap">
+          <table class="pricing-table">
+            <thead>
+              <tr><th scope="col" data-i18n-fr="Groupe" data-i18n-uk="Група">Groupe</th><th scope="col" data-price-yearhead>Année · 33 cours</th><th scope="col" data-i18n-fr="1 cours" data-i18n-uk="1 заняття">1 cours</th></tr>
+            </thead>
+            <tbody data-pricing-rows></tbody>
+          </table>
+        </div>
+        <p class="pricing-note" data-pricing-note></p>
+      </section>
+
+      <section class="schedule-section" aria-labelledby="schedule-title">
+        <h2 class="schedule-title hand" id="schedule-title" data-i18n-fr="Horaires des cours" data-i18n-uk="Розклад курсів">Horaires des cours</h2>
+        <div class="schedule-grid" data-schedule-grid></div>
+      </section>
+
+      <div class="program">
+        <article class="program-card">
+          <h3><span class="program-num">01.</span> <span data-program-one-title>Observer</span></h3>
+          <p data-program-one>Nous apprenons à remarquer les couleurs, les formes et l’ambiance des choses autour de nous — comme de vrais petits artistes.</p>
+        </article>
+        <article class="program-card">
+          <h3><span class="program-num">02.</span> <span data-program-two-title>Essayer</span></h3>
+          <p data-program-two>Nous peignons à la gouache, à l’aquarelle et en collage sans peur de se tromper : chaque tache peut devenir une découverte.</p>
+        </article>
+        <article class="program-card">
+          <h3><span class="program-num">03.</span> <span data-program-three-title>Créer</span></h3>
+          <p data-program-three>Nous menons l’idée jusqu’à une œuvre finie, dont l’enfant est fier et qu’il montre à ses proches.</p>
+        </article>
+      </div>
+
+      <section class="course-cta">
+        <div>
+          <h2 class="wm" data-i18n-fr="Envie d’essayer ?" data-i18n-uk="Хочете спробувати?">Envie d’essayer ?</h2>
+          <p data-i18n-fr="Laissez vos coordonnées — nous vous aiderons à choisir le groupe selon l’âge et à trouver un horaire pour le cours d’essai." data-i18n-uk="Залиште контакти — ми допоможемо підібрати групу за віком та знайти зручний час для пробного заняття.">Laissez vos coordonnées — nous vous aiderons à choisir le groupe selon l’âge et à trouver un horaire pour le cours d’essai.</p>
+        </div>
+        <a href="#trial-form" class="btn btn--ink js-open-trial" style="display:inline-flex; align-items:center; gap:8px; background:#141310; color:#edebe3; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Réserver un cours d’essai" data-i18n-uk="Записатися на пробний">Réserver un cours d’essai</span> <span class="btn-icon" aria-hidden="true"></span></a>
+      </section>
+    </section>
+  </main>
+
+  <section id="contact" class="contact-section">
+    <div class="contact-kicker hand" data-i18n-fr="(Contact)" data-i18n-uk="(Контакт)">(Contact)</div>
+    <p class="contact-title wm" data-i18n-fr="L’art<br>commence<br>ici." data-i18n-uk="Мистецтво<br>починається<br>тут.">L’art<br>commence<br>ici.</p>
+    <div class="contact-layout">
+      <div class="contact-address" data-i18n-fr="24 Rue Jeu de Ballon<br>34190 Ganges, France" data-i18n-uk="24 Rue Jeu de Ballon<br>34190 Ganges, Франція">24 Rue Jeu de Ballon<br>34190 Ganges, France</div>
+      <div class="contact-links micro">
+        <a href="tel:+33768614190" class="flink" style="display:block;">+33 7 68 61 41 90</a>
+        <a href="mailto:sveta.s83ss@gmail.com" class="flink" style="display:block;">sveta.s83ss@gmail.com</a>
+        <a href="https://www.instagram.com/atelier.sveta.causse/" class="flink" data-arrow="true" style="display:block;">Instagram</a>
+      </div>
+      <a href="#trial-form" class="btn btn--light js-open-trial" style="align-self:flex-end; display:inline-flex; align-items:center; gap:8px; background:#edebe3; color:#141310; font-weight:800; font-size:clamp(15px,1.3vw,19px); padding:18px 36px; border-radius:40px;"><span data-i18n-fr="Réserver un cours d’essai" data-i18n-uk="Записатися на пробний">Réserver un cours d’essai</span> <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+  </section>
+
+  <footer class="site-footer micro">
+    <span class="site-footer-copy">© 2026 Atelier Sveta</span>
+    <span class="site-footer-line" aria-hidden="true"></span>
+    <a href="https://petrenko-anastasiia.com/" target="_blank" rel="noopener noreferrer" class="site-footer-credit nlink">Website by Petrenko Design</a>
+  </footer>
+</div>
+
+<div class="trial-modal" id="trial-modal" aria-hidden="true">
+  <div class="trial-dialog" role="dialog" aria-modal="true" aria-labelledby="trial-title">
+    <button class="trial-close" type="button" data-close-trial aria-label="Fermer le formulaire" data-i18n-aria-label-fr="Fermer le formulaire" data-i18n-aria-label-uk="Закрити форму">×</button>
+    <form class="trial-form" id="trial-form" action="https://formsubmit.co/sveta.s83ss@gmail.com" method="POST" data-endpoint="https://formsubmit.co/ajax/sveta.s83ss@gmail.com">
+      <h2 id="trial-title" data-i18n-fr="Cours d’essai" data-i18n-uk="Пробний урок">Cours d’essai</h2>
+      <p data-i18n-fr="Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire." data-i18n-uk="Залиште контакти, і ми відповімо, щоб узгодити формат, вік учня та зручний час.">Laissez vos coordonnées, nous vous répondrons pour convenir du format, de l’âge de l’élève et d’un horaire.</p>
+      <input type="hidden" name="_subject" value="Нова заявка Atelier Sveta">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label class="trial-field"><span data-i18n-fr="Prénom" data-i18n-uk="Ім'я">Prénom</span><input type="text" name="name" autocomplete="name" required></label>
+      <label class="trial-field"><span data-i18n-fr="Téléphone ou e-mail" data-i18n-uk="Телефон або email">Téléphone ou e-mail</span><input type="text" name="contact" autocomplete="email" required></label>
+      <label class="trial-field"><span data-i18n-fr="Cours" data-i18n-uk="Напрям">Cours</span><select name="course" id="trial-course"><option data-i18n-fr="Enfants" data-i18n-uk="Діти">Enfants</option><option data-i18n-fr="Adolescents" data-i18n-uk="Підлітки">Adolescents</option><option data-i18n-fr="Adultes" data-i18n-uk="Дорослі">Adultes</option><option data-i18n-fr="Cours individuels" data-i18n-uk="Індивідуальні уроки">Cours individuels</option><option data-i18n-fr="Préparation aux examens" data-i18n-uk="Підготовка до іспитів">Préparation aux examens</option><option data-i18n-fr="Cours en ligne" data-i18n-uk="Онлайн курси">Cours en ligne</option></select></label>
+      <label class="trial-field"><span data-i18n-fr="Commentaire" data-i18n-uk="Коментар">Commentaire</span><textarea name="message" placeholder="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-fr="Âge de l’élève, jour souhaité ou question" data-i18n-placeholder-uk="Вік учня, бажаний день або питання"></textarea></label>
+      <div class="trial-actions">
+        <button class="trial-submit" type="submit"><span data-i18n-fr="Envoyer" data-i18n-uk="Надіслати">Envoyer</span> <span class="btn-icon" aria-hidden="true"></span></button>
+        <button class="trial-cancel" type="button" data-close-trial data-i18n-fr="Annuler" data-i18n-uk="Скасувати">Annuler</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="./assets/trial-modal.js"></script>
+<script src="./assets/i18n.js?v=2"></script>
+<script>
+  const FREE = { fr:'Jour sans cours', uk:'Вільний від занять день' };
+  const weekDays = ['Пн','Вт','Ср','Чт','Пт','Сб','Нд'];
+  const schedules = {
+    kids: [
+      { day:'Пн', title:FREE },
+      { day:'Вт', title:FREE },
+      { day:'Ср', title:{fr:'Enfants',uk:'Діти'}, time:{fr:'5–7 ans · 9:45–10:45<br>8–12 ans · 10:50–12:20',uk:'5–7 років · 9:45–10:45<br>8–12 років · 10:50–12:20'}, note:{fr:'sauf vacances',uk:'крім канікул'}, active:true },
+      { day:'Чт', title:FREE },
+      { day:'Пт', title:FREE },
+      { day:'Сб', title:FREE },
+      { day:'Нд', title:FREE }
+    ],
+    teens: [
+      { day:'Пн', title:FREE },
+      { day:'Вт', title:FREE },
+      { day:'Ср', title:{fr:'Adolescents',uk:'Підлітки'}, time:{fr:'après-midi · 1,5 h',uk:'після обіду · 1,5 год'}, note:{fr:'horaire à confirmer',uk:'час уточнюється'}, active:true },
+      { day:'Чт', title:FREE },
+      { day:'Пт', title:FREE },
+      { day:'Сб', title:FREE },
+      { day:'Нд', title:FREE }
+    ],
+    adults: [
+      { day:'Пн', title:{fr:'Adultes',uk:'Дорослі'}, time:{fr:'Groupe 1 · 10:45–13:15<br>Groupe 2 · 13:50–16:20',uk:'Група 1 · 10:45–13:15<br>Група 2 · 13:50–16:20'}, active:true },
+      { day:'Вт', title:FREE },
+      { day:'Ср', title:FREE },
+      { day:'Чт', title:FREE },
+      { day:'Пт', title:FREE },
+      { day:'Сб', title:FREE },
+      { day:'Нд', title:FREE }
+    ],
+    individual: [
+      { day:'Пн', title:FREE },
+      { day:'Вт', title:FREE },
+      { day:'Ср', title:FREE },
+      { day:'Чт', title:FREE },
+      { day:'Пт', title:{fr:'Individuel',uk:'Індивідуально'}, time:{fr:'sur rendez-vous',uk:'за домовленістю'}, note:{fr:'à l’atelier',uk:'у майстерні'}, active:true },
+      { day:'Сб', title:{fr:'Individuel',uk:'Індивідуально'}, time:{fr:'sur rendez-vous',uk:'за домовленістю'}, note:{fr:'à l’atelier',uk:'у майстерні'}, active:true },
+      { day:'Нд', title:FREE }
+    ],
+    exams: [
+      { day:'Пн', title:FREE },
+      { day:'Вт', title:FREE },
+      { day:'Ср', title:FREE },
+      { day:'Чт', title:{fr:'Préparation',uk:'Підготовка'}, time:{fr:'sur rendez-vous',uk:'за домовленістю'}, note:{fr:'examens / portfolio',uk:'іспити / портфоліо'}, active:true },
+      { day:'Пт', title:FREE },
+      { day:'Сб', title:{fr:'Préparation',uk:'Підготовка'}, time:{fr:'sur rendez-vous',uk:'за домовленістю'}, note:{fr:'examens / portfolio',uk:'іспити / портфоліо'}, active:true },
+      { day:'Нд', title:FREE }
+    ],
+    online: [
+      { day:'Пн', title:FREE },
+      { day:'Вт', title:FREE },
+      { day:'Ср', title:FREE },
+      { day:'Чт', title:{fr:'Cours en ligne',uk:'Онлайн курс'}, time:{fr:'sur rendez-vous',uk:'за домовленістю'}, note:{fr:'visio',uk:'відеозв’язок'}, active:true },
+      { day:'Пт', title:FREE },
+      { day:'Сб', title:{fr:'Cours en ligne',uk:'Онлайн курс'}, time:{fr:'sur rendez-vous',uk:'за домовленістю'}, note:{fr:'visio',uk:'відеозв’язок'}, active:true },
+      { day:'Нд', title:FREE }
+    ]
+  };
+
+  const courses = {
+    kids: {
+      no:'01',
+      title:{fr:'Enfants',uk:'Діти'},
+      tags:[{fr:'5–7 ans',uk:'5–7 років'},{fr:'8–12 ans',uk:'8–12 років'},{fr:'1–1,5 h',uk:'1–1.5 год'},{fr:'groupes',uk:'групи'}],
+      img:'./assets/course-01.png',
+      video:'./assets/course-kids-video.mp4',
+      heading:{fr:'Les premiers pas dans l’art, sans la peur de la page blanche.',uk:'Перші кроки в мистецтві без страху чистого аркуша.'},
+      copy:{fr:'Un cours pour les enfants qui veulent essayer différents matériaux, dessiner en groupe et trouver peu à peu leur propre regard.',uk:'Курс для дітей, які хочуть пробувати різні матеріали, малювати в групі та поступово знаходити власний спосіб бачити світ.'},
+      format:{fr:'cours en groupe à l’atelier',uk:'групові заняття у майстерні'},
+      duration:{fr:'1–1,5 h',uk:'1–1.5 год'},
+      forWhom:{fr:'élèves de 5 à 12 ans',uk:'учні 5–12 років'},
+      materials:{fr:'gouache, aquarelle, dessin, collage, toute technique au choix',uk:'гуаш, акварель, графіка, колаж, будь яка техніка на вибір учня'},
+      schedule:schedules.kids,
+      yearHead:{fr:'Année · 33 cours',uk:'Рік · 33 заняття'},
+      pricing:[{group:{fr:'5–7 ans',uk:'5–7 років'}, year:'297 €', one:'10 €'},{group:{fr:'8–12 ans',uk:'8–12 років'}, year:'429 €', one:'14 €'}],
+      pricingNote:{fr:'Réductions famille : 2 enfants −10 %, 3 enfants −20 %.',uk:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.'},
+      program:[{title:{fr:'Observer',uk:'Спостерігати'},text:{fr:'Nous apprenons à remarquer les couleurs, les formes et l’ambiance des choses autour de nous — comme de vrais petits artistes.',uk:'Вчимося помічати кольори, форми й настрій у звичайних речах навколо — як справжні маленькі художники.'}},{title:{fr:'Essayer',uk:'Пробувати'},text:{fr:'Nous peignons à la gouache, à l’aquarelle et en collage sans peur de se tromper : chaque tache peut devenir une découverte.',uk:'Малюємо гуашшю, аквареллю та колажем без страху помилитися: кожна пляма може стати відкриттям.'}},{title:{fr:'Créer',uk:'Створювати'},text:{fr:'Nous menons l’idée jusqu’à une œuvre finie, dont l’enfant est fier et qu’il montre à ses proches.',uk:'Доводимо ідею до завершеної роботи, якою дитина пишається і несе показати рідним.'}}]
+    },
+    teens: {
+      no:'02',
+      title:{fr:'Adolescents',uk:'Підлітки'},
+      tags:[{fr:'11–16 ans',uk:'11–16 років'},{fr:'tous niveaux',uk:'будь який рівень'},{fr:'portfolio',uk:'портфоліо'},{fr:'1,5 h',uk:'1.5 год'}],
+      img:'./assets/course-02.png',
+      video:'./assets/course-teens-video.mp4',
+      heading:{fr:'Plus d’autonomie, de technique et de voix artistique.',uk:'Більше самостійності, техніки та власного художнього голосу.'},
+      copy:{fr:'Le cours aide les adolescents à approfondir leurs compétences, aborder des sujets plus complexes et constituer un portfolio solide.',uk:'Курс допомагає підліткам поглибити навички, спробувати складніші теми та зібрати сильні роботи для портфоліо.'},
+      format:{fr:'cours en groupe à l’atelier',uk:'групові заняття у майстерні'},
+      duration:{fr:'1,5 h',uk:'1.5 год'},
+      forWhom:{fr:'élèves de 11 à 16 ans',uk:'учні 11–16 років'},
+      materials:{fr:'peinture, dessin, composition, portfolio',uk:'живопис, графіка, композиція, портфоліо'},
+      schedule:schedules.teens,
+      yearHead:{fr:'Année · 33 cours',uk:'Рік · 33 заняття'},
+      pricing:[{group:{fr:'12–16 ans',uk:'12–16 років'}, year:'429 €', one:'14 €'}],
+      pricingNote:{fr:'Réductions famille : 2 enfants −10 %, 3 enfants −20 %.',uk:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.'},
+      program:[{title:{fr:'Explorer',uk:'Досліджувати'},text:{fr:'Nous comprenons comment fonctionnent le dessin, la composition et la couleur, pour dessiner consciemment et non au hasard.',uk:'Розбираємо, як влаштовані малюнок, композиція і колір, щоб малювати усвідомлено, а не навмання.'}},{title:{fr:'Trouver son style',uk:'Шукати свій стиль'},text:{fr:'Nous essayons des sujets et techniques plus complexes et trouvons une écriture propre qui distingue tes œuvres.',uk:'Пробуємо складніші теми й техніки та знаходимо власний почерк, який вирізняє твої роботи.'}},{title:{fr:'Constituer un portfolio',uk:'Збирати портфоліо'},text:{fr:'Nous formons une série d’œuvres solides pour entrer ou montrer son niveau avec assurance.',uk:'Формуємо серію сильних робіт, з якою впевнено вступати чи показувати свій рівень.'}}]
+    },
+    adults: {
+      no:'03',
+      title:{fr:'Adultes',uk:'Дорослі'},
+      tags:[{fr:'dès 16 ans',uk:'з 16 років'},{fr:'tous niveaux',uk:'будь який рівень'},{fr:'2,5 h',uk:'2.5 год'},{fr:'style libre',uk:'вільний стиль'}],
+      img:'./assets/course-03.png',
+      video:'./assets/course-adults-video.mp4',
+      heading:{fr:'Un style libre pour retrouver du temps pour la création.',uk:'Вільний стиль для тих, хто хоче повернути собі час на творчість.'},
+      copy:{fr:'Des cours pour adultes sans prérequis : commencer de zéro ou poursuivre sa propre pratique.',uk:'Заняття для дорослих без прив’язки до попереднього досвіду: можна почати з нуля або продовжити власну практику.'},
+      format:{fr:'petits groupes à l’atelier',uk:'невеликі групи у майстерні'},
+      duration:{fr:'2,5 h',uk:'2.5 год'},
+      forWhom:{fr:'adultes et élèves dès 16 ans',uk:'дорослі та учні від 16 років'},
+      materials:{fr:'huile, acrylique, aquarelle, pastel, dessin',uk:'олія, акрил, акварель, пастель, графіка'},
+      schedule:schedules.adults,
+      yearHead:{fr:'Année · 29 cours',uk:'Рік · 29 занять'},
+      pricing:[{group:{fr:'Adultes',uk:'Дорослі'}, year:'435 €', one:'20 €'}],
+      pricingNote:{fr:'Réductions famille : 2 enfants −10 %, 3 enfants −20 %.',uk:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.'},
+      program:[{title:{fr:'S’immerger',uk:'Занурюватися'},text:{fr:'Nous mettons de côté la routine et retrouvons du temps pour créer — même si la dernière fois remonte à l’enfance.',uk:'Відкладаємо рутину й повертаємо собі час на творчість — навіть якщо востаннє малювали в дитинстві.'}},{title:{fr:'Essayer',uk:'Пробувати'},text:{fr:'Nous apprenons l’huile, l’acrylique ou l’aquarelle à notre rythme, sans notes ni précipitation.',uk:'Опановуємо олію, акрил чи акварель у власному темпі, без оцінок і поспіху.'}},{title:{fr:'Créer',uk:'Створювати'},text:{fr:'Nous terminons une œuvre à accrocher chez soi — et ressentons la fierté du travail accompli.',uk:'Завершуємо роботу, яку хочеться повісити вдома, — і відчути гордість за зроблене.'}}]
+    },
+    individual: {
+      no:'04',
+      title:{fr:'Cours individuels',uk:'Індивідуальні уроки'},
+      tags:[{fr:'tout âge',uk:'для будь якого віку'},{fr:'2 h',uk:'2 години'},{fr:'programme perso',uk:'персональна програма'},{fr:'tous niveaux',uk:'будь який рівень'}],
+      img:'./assets/course-04.png',
+      video:'./assets/course-individual-exams-video.mp4',
+      heading:{fr:'Un parcours personnalisé selon votre rythme, votre objectif et votre niveau.',uk:'Персональна траєкторія під ваш ритм, задачу і рівень.'},
+      copy:{fr:'Le format individuel convient si vous cherchez de la souplesse, une préparation ciblée ou un accompagnement calme en tête-à-tête.',uk:'Індивідуальний формат підходить, якщо потрібна гнучкість, підготовка до конкретної роботи або спокійний супровід один на один.'},
+      format:{fr:'cours personnels',uk:'персональні заняття'},
+      duration:{fr:'2 h',uk:'2 години'},
+      forWhom:{fr:'enfants, adolescents ou adultes',uk:'діти, підлітки або дорослі'},
+      materials:{fr:'techniques adaptées à l’objectif de l’élève',uk:'техніки підбираються під ціль учня'},
+      schedule:schedules.individual,
+      yearHead:{fr:'Année · 29 cours',uk:'Рік · 29 занять'},
+      pricing:[{group:{fr:'Individuel',uk:'Індивідуально'}, year:'220 €', one:'25 €'}],
+      pricingNote:{fr:'Réductions famille : 2 enfants −10 %, 3 enfants −20 %.',uk:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.'},
+      program:[{title:{fr:'Définir l’objectif',uk:'Визначити ціль'},text:{fr:'Nous partons de ta tâche : préparation, technique précise ou simplement dessiner pour soi.',uk:'Починаємо з твоєї задачі: підготовка, конкретна техніка чи просто малювання для себе.'}},{title:{fr:'Travailler en tête-à-tête',uk:'Працювати один на один'},text:{fr:'Toute l’attention du professeur est pour toi : nous expliquons exactement ce qu’il faut, à un rythme confortable.',uk:'Уся увага викладача — на тобі: пояснюємо саме те, що потрібно, у зручному ритмі.'}},{title:{fr:'Atteindre le résultat',uk:'Досягати результату'},text:{fr:'Nous avançons vers un résultat concret — œuvre, compétence ou assurance recherchée.',uk:'Рухаємось до конкретного результату — роботи, навички чи впевненості, заради яких усе й починалось.'}}]
+    },
+    exams: {
+      no:'05',
+      title:{fr:'Préparation aux examens',uk:'Підготовка до іспитів'},
+      tags:[{fr:'tout âge',uk:'для будь якого віку'},{fr:'horaire sur mesure',uk:'час індивідуально'},{fr:'portfolio',uk:'портфоліо'},{fr:'tous niveaux',uk:'будь який рівень'}],
+      img:'./assets/course-05.png',
+      video:'./assets/course-individual-exams-video.mp4',
+      heading:{fr:'Une préparation méthodique à l’entrée, aux examens ou au portfolio créatif.',uk:'Системна підготовка до вступу, іспитів або творчого портфоліо.'},
+      copy:{fr:'Nous travaillons les exigences, les délais et une série d’œuvres pour présenter son niveau avec assurance.',uk:'Працюємо з вимогами, дедлайнами і серією робіт, щоб учень міг впевнено показати свій рівень.'},
+      format:{fr:'individuel ou mini-groupe',uk:'індивідуально або міні-група'},
+      duration:{fr:'horaire sur mesure',uk:'час узгоджується індивідуально'},
+      forWhom:{fr:'élèves préparant une sélection ou un examen',uk:'учні, які готуються до відбору або іспиту'},
+      materials:{fr:'dessin académique, peinture, composition, portfolio',uk:'академічний рисунок, живопис, композиція, портфоліо'},
+      schedule:schedules.exams,
+      yearHead:{fr:'Année · 29 cours',uk:'Рік · 29 занять'},
+      pricing:[{group:{fr:'Préparation',uk:'Підготовка'}, year:'220 €', one:'25 €'}],
+      pricingNote:{fr:'Réductions famille : 2 enfants −10 %, 3 enfants −20 %.',uk:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.'},
+      program:[{title:{fr:'Analyser les exigences',uk:'Аналізувати вимоги'},text:{fr:'Nous étudions ce qui est attendu à la sélection ou à l’examen et bâtissons un plan clair.',uk:'Розбираємо, що саме очікують на відборі чи іспиті, і будуємо чіткий план підготовки.'}},{title:{fr:'Travailler la technique',uk:'Відпрацьовувати техніку'},text:{fr:'Nous entraînons le dessin académique, la peinture et la composition jusqu’à un niveau sûr et stable.',uk:'Тренуємо академічний рисунок, живопис і композицію до впевненого, стабільного рівня.'}},{title:{fr:'Préparer le portfolio',uk:'Готувати портфоліо'},text:{fr:'Nous constituons une série d’œuvres et abordons l’examen sereinement, résultat en main.',uk:'Збираємо серію робіт і виходимо на іспит спокійно — з готовим результатом у руках.'}}]
+    },
+    online: {
+      no:'06',
+      title:{fr:'Cours en ligne',uk:'Онлайн курси'},
+      tags:[{fr:'partout',uk:'будь-де'},{fr:'cours perso',uk:'персональні уроки'},{fr:'retour du prof',uk:'зворотний зв’язок'},{fr:'à son rythme',uk:'свій темп'}],
+      img:'./assets/course-06.png',
+      video:'./assets/course-individual-exams-video.mp4',
+      heading:{fr:'L’art à la maison, avec le retour en direct du professeur.',uk:'Мистецтво вдома з живим зворотним зв’язком викладача.'},
+      copy:{fr:'Un format en ligne pour ceux qui ne peuvent pas venir à l’atelier mais veulent une pratique régulière et des consignes claires.',uk:'Онлайн формат для тих, хто не може приходити у майстерню, але хоче регулярну практику і ясні завдання.'},
+      format:{fr:'cours en ligne et devoirs',uk:'онлайн заняття та домашні роботи'},
+      duration:{fr:'rythme sur mesure',uk:'ритм узгоджується індивідуально'},
+      forWhom:{fr:'élèves de tout âge et niveau',uk:'учні будь-якого віку та рівня'},
+      materials:{fr:'matériaux disponibles à la maison + recommandations personnelles',uk:'доступні матеріали вдома плюс персональні рекомендації'},
+      schedule:schedules.online,
+      yearHead:{fr:'Année · 29 cours',uk:'Рік · 29 занять'},
+      pricing:[{group:{fr:'En ligne',uk:'Онлайн'}, year:'220 €', one:'25 €'}],
+      pricingNote:{fr:'Réductions famille : 2 enfants −10 %, 3 enfants −20 %.',uk:'Знижки для родини: 2 дитини −10 %, 3 дитини −20 %.'},
+      program:[{title:{fr:'Apprendre de partout',uk:'Навчатися звідусіль'},text:{fr:'Nous travaillons depuis chez soi à l’heure qui convient — il suffit d’avoir le matériel et l’envie de dessiner.',uk:'Займаємось із дому у зручний час — потрібні лише матеріали під рукою й бажання малювати.'}},{title:{fr:'Essayer avec soutien',uk:'Пробувати з підтримкою'},text:{fr:'Nous réalisons les exercices et recevons aussitôt le retour en direct du professeur par vidéo.',uk:'Виконуємо завдання й одразу отримуємо живий зворотний зв’язок викладача по відео.'}},{title:{fr:'Progresser à son rythme',uk:'Зростати у своєму темпі'},text:{fr:'Une pratique régulière et des consignes claires mènent à un progrès visible — sans hâte ni pression.',uk:'Регулярна практика та ясні завдання ведуть до помітного прогресу — без поспіху й тиску.'}}]
+    }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const key = params.get('course') || 'kids';
+  const course = courses[key] || courses.kids;
+  const setText = (selector, text) => { const node = document.querySelector(selector); if (node) node.textContent = text; };
+  const courseVideo = document.querySelector('[data-course-video]');
+  const courseVideoSource = document.querySelector('[data-course-video-source]');
+  if (courseVideo && courseVideoSource && course.video) {
+    courseVideoSource.src = course.video;
+    courseVideo.load();
+  }
+  const DAY_FR = { 'Пн':'Lun','Вт':'Mar','Ср':'Mer','Чт':'Jeu','Пт':'Ven','Сб':'Sam','Нд':'Dim' };
+  function renderCourse() {
+    const lang = window.AS_I18N ? AS_I18N.get() : (document.documentElement.lang === 'uk' ? 'uk' : 'fr');
+    const L = (v) => (v && typeof v === 'object' && 'fr' in v) ? v[lang] : v;
+    document.title = L(course.title) + ' · Atelier Sveta';
+    setText('[data-course-title]', L(course.title));
+    setText('[data-course-heading]', L(course.heading));
+    setText('[data-course-copy]', L(course.copy));
+    setText('[data-course-format]', L(course.format));
+    setText('[data-course-duration]', L(course.duration));
+    setText('[data-course-for]', L(course.forWhom));
+    setText('[data-course-materials]', L(course.materials));
+    setText('[data-program-one-title]', L(course.program[0].title));
+    setText('[data-program-one]', L(course.program[0].text));
+    setText('[data-program-two-title]', L(course.program[1].title));
+    setText('[data-program-two]', L(course.program[1].text));
+    setText('[data-program-three-title]', L(course.program[2].title));
+    setText('[data-program-three]', L(course.program[2].text));
+    const scheduleGrid = document.querySelector('[data-schedule-grid]');
+    if (scheduleGrid) {
+      scheduleGrid.innerHTML = weekDays.map((day) => {
+        const item = course.schedule.find((entry) => entry.day === day) || { title: FREE };
+        const dname = lang === 'uk' ? day : (DAY_FR[day] || day);
+        return `
+        <article class="schedule-day">
+          <h3 class="schedule-day-name">${dname}</h3>
+          <div class="schedule-card${item.active ? ' is-active' : ''}">
+            <p class="schedule-card-title">${L(item.title)}</p>
+            ${item.time ? `<p class="schedule-card-time">${L(item.time)}</p>` : ''}
+            ${item.note ? `<p class="schedule-card-note">${L(item.note)}</p>` : ''}
+          </div>
+        </article>
+      `;
+      }).join('');
+    }
+    const pricingSection = document.querySelector('[data-pricing-section]');
+    if (pricingSection) {
+      if (course.pricing && course.pricing.length) {
+        const oneLbl = lang === 'uk' ? '1 заняття' : '1 cours';
+        const pricingRows = pricingSection.querySelector('[data-pricing-rows]');
+        pricingRows.innerHTML = course.pricing.map((pp) => `
+        <tr>
+          <th scope="row">${L(pp.group)}</th>
+          <td data-label="${L(course.yearHead) || 'Рік'}">${pp.year}</td>
+          <td data-label="${oneLbl}">${pp.one}</td>
+        </tr>
+      `).join('');
+        const yearHead = pricingSection.querySelector('[data-price-yearhead]');
+        if (yearHead && course.yearHead) yearHead.textContent = L(course.yearHead);
+        const pricingNote = pricingSection.querySelector('[data-pricing-note]');
+        if (pricingNote && course.pricingNote) pricingNote.innerHTML = L(course.pricingNote);
+      } else {
+        pricingSection.style.display = 'none';
+      }
+    }
+    const tags = document.querySelector('[data-course-tags]');
+    if (tags) tags.innerHTML = course.tags.map((tag) => `<span>${L(tag)}</span>`).join('');
+    const trialCourse = document.getElementById('trial-course');
+    if (trialCourse) trialCourse.value = L(course.title);
+  }
+  renderCourse();
+  document.addEventListener('as:langchange', renderCourse);
+
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+  const setMenu = (open) => {
+    header?.classList.toggle('is-menu-open', open);
+    toggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle?.setAttribute('aria-label', (window.AS_I18N && AS_I18N.get()==='uk') ? (open ? 'Закрити меню' : 'Відкрити меню') : (open ? 'Fermer le menu' : 'Ouvrir le menu'));
+  };
+  toggle?.addEventListener('click', () => setMenu(!header?.classList.contains('is-menu-open')));
+  nav?.addEventListener('click', (event) => {
+    if (event.target.closest('.nlink')) setMenu(false);
+  });
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMenu(false);
+  });
+
+</script>
+</body>
+</html>
