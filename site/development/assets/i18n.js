@@ -6,7 +6,7 @@
   var LANGS = ['fr', 'uk'];
   var DEFAULT_LANG = 'fr';
   var STORE_KEY = 'as-lang';
-  var ATTRS = ['alt', 'placeholder', 'title', 'aria-label'];
+  var ATTRS = ['alt', 'placeholder', 'title', 'aria-label', 'src'];
 
   function stored() {
     try { var l = localStorage.getItem(STORE_KEY); return LANGS.indexOf(l) > -1 ? l : null; }
