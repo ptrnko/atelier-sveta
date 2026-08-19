@@ -1130,7 +1130,7 @@
 
   <!-- ===== WORKS DRAG GALLERY ===== -->
   <section id="works" class="works-section" style="background:#fff; padding:clamp(90px,11vw,150px) 0; border-bottom:1px solid #d9d5c9;">
-    <div class="works-head" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:0 clamp(20px,4vw,64px) clamp(28px,3vw,44px); max-width:1440px; margin-inline:auto;">
+    <div class="works-head" style="display:flex; justify-content:space-between; align-items:center; gap:20px; padding:0 max(clamp(20px,4vw,64px), (100% - 1440px)/2) clamp(28px,3vw,44px);">
       <div>
         <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(16px,1.6vw,24px);" data-i18n-fr="(Galerie)" data-i18n-uk="(Галерея)">(Galerie)</div>
         
@@ -1141,7 +1141,7 @@
         <button type="button" class="works-arrow" data-works-next aria-label="Suivant" data-i18n-aria-label-fr="Suivant" data-i18n-aria-label-uk="Далі">→</button>
       </div>
     </div>
-    <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 clamp(20px,4vw,64px); scroll-snap-type:x mandatory;">
+    <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 max(clamp(20px,4vw,64px), (100% - 1440px)/2); scroll-snap-type:x mandatory;">
       <sc-for list="{{ works }}" as="w" hint-placeholder-count="5">
         <figure class="work-card reveal" style="margin:0; flex:none; width:clamp(240px,28vw,400px); scroll-snap-align:start;">
           <div style="border:1px solid #c8c3b6; padding:8px; background:#141310;"><div style="overflow:hidden; aspect-ratio:4/5; background:#e2ded2;"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Œuvre d’élève" data-i18n-placeholder-fr="Œuvre d’élève" data-i18n-placeholder-uk="Робота учня"></image-slot></div></div>
