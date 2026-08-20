@@ -295,7 +295,7 @@
   transition-duration: 0.08s;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .trial-dialog,
   .success-dialog {
     border-radius: 26px;
