@@ -345,9 +345,9 @@
 
   .trial-actions {
     position: static;
-    margin: 6px -24px 0;
-    padding: 16px 24px 24px;
-    border-radius: 0 0 26px 26px;
+    margin: 6px 0 0;
+    padding: 16px 0 24px;
+    border-radius: 0;
   }
 
   .trial-submit,
