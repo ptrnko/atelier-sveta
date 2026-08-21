@@ -349,7 +349,7 @@
               <div class="exhibit-grid">
                 <sc-for list="{{ ex.works }}" as="w" hint-placeholder-count="9">
                   <figure class="exhibit-card frame reveal" style="margin:0;">
-                    <div class="work-image"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Œuvre d’élève" data-i18n-placeholder-fr="Œuvre d’élève" data-i18n-placeholder-uk="Робота учня"></image-slot></div>
+                    <div class="work-image">{{ w.imgEl }}</div>
                     <figcaption class="work-caption"><span>{{ w.title }}</span><br><span>{{ w.author }}</span><br><span>{{ w.technique }}</span></figcaption>
                   </figure>
                 </sc-for>
@@ -449,11 +449,16 @@ class Component extends DCLogic {
       document.addEventListener('keydown', this._esc = (e) => { if (e.key === 'Escape') closeLb(); });
       document.querySelectorAll('.frame').forEach((fig) => {
         fig.addEventListener('click', () => {
-          const slot = fig.querySelector('image-slot');
           let url = '';
-          if (slot) {
-            const im = slot.shadowRoot && slot.shadowRoot.querySelector('.frame img');
-            url = (im && (im.currentSrc || im.src)) || slot.getAttribute('src') || '';
+          const plainImg = fig.querySelector('.work-image img');
+          if (plainImg) {
+            url = plainImg.currentSrc || plainImg.src || '';
+          } else {
+            const slot = fig.querySelector('image-slot');
+            if (slot) {
+              const im = slot.shadowRoot && slot.shadowRoot.querySelector('.frame img');
+              url = (im && (im.currentSrc || im.src)) || slot.getAttribute('src') || '';
+            }
           }
           if (!url) return;
           lbImg.src = url;
@@ -494,7 +499,7 @@ class Component extends DCLogic {
         { slot:'gw-2', title:{fr:'Les champignons',uk:'Гриби'}, author:{fr:'Serafym Sierikov, 11 ans',uk:'Serafym Sierikov, 11 років'}, technique:{fr:'Acrylique, bois',uk:'Акрил, дерево'} },
         { slot:'gw-3', title:{fr:'Goéland',uk:'Чайка'}, author:{fr:'Varvara STARUCHOK, 11 ans',uk:'Varvara STARUCHOK, 11 років'}, technique:{fr:'Papier, acrylique',uk:'Папір, акрил'} },
         { slot:'gw-4', title:{fr:'Nature morte décorative',uk:'Декоративний натюрморт'}, author:{fr:'Emilie-Rose REBOUL, 8 ans',uk:'Emilie-Rose REBOUL, 8 років'}, technique:{fr:'Acrylique, feutre noir',uk:'Акрил, чорний фломастер'} },
-        { slot:'gw-5', title:{fr:'Icône',uk:'Ікона'}, author:{fr:'atelier',uk:'студія'}, technique:{fr:'tempera',uk:'темпера'} },
+        { slot:'gw-5', title:{fr:'Autoportrait',uk:'Автопортрет'}, author:{fr:'Lysia FOREST, 8 ans',uk:'Lysia FOREST, 8 років'}, technique:{fr:'Acrylique, collage',uk:'Акрил, колаж'}, img:'./assets/gallery-autoportrait-lysia.jpg' },
         { slot:'gw-6', title:{fr:'Composition',uk:'Композиція'}, author:{fr:'élève',uk:'учень'}, technique:{fr:'gouache',uk:'гуаш'} }
       ]},
       { no:'02', name:{fr:'Nom de l’exposition',uk:'Назва виставки'}, year:'2025', ages:{fr:'Élèves de 4 à 16 ans',uk:'Учні 4 – 16 років'}, coverSlot:'gx-cover-2', works: [
@@ -517,7 +522,12 @@ class Component extends DCLogic {
     const exhibitions = data.slice(0, 1).map((ex, i) => Object.assign({}, ex, {
       name: L(ex.name),
       ages: L(ex.ages),
-      works: (ex.works || []).map((w) => Object.assign({}, w, { title: L(w.title), author: L(w.author), technique: L(w.technique) })),
+      works: (ex.works || []).map((w) => Object.assign({}, w, {
+        title: L(w.title), author: L(w.author), technique: L(w.technique),
+        imgEl: w.img
+          ? el('img', { src: w.img, alt: L(w.title), loading: 'lazy' })
+          : el('image-slot', { id: w.slot, shape: 'rect', placeholder: (lang === 'uk' ? 'Робота учня' : 'Œuvre d’élève') })
+      })),
       rows: open === i ? '1fr' : '0fr',
       chevron: open === i ? 'rotate(180deg)' : 'rotate(0deg)',
       label: open === i ? (l18 === 'uk' ? 'Сховати' : 'Masquer') : (l18 === 'uk' ? 'Дивитись роботи' : 'Voir les œuvres'),
