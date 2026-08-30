@@ -265,7 +265,7 @@
         <div class="pricing-table-wrap">
           <table class="pricing-table">
             <thead>
-              <tr><th scope="col" data-i18n-fr="Groupe" data-i18n-uk="Група">Groupe</th><th scope="col" data-price-yearhead>Année · 33 cours</th><th scope="col" data-i18n-fr="1 cours" data-i18n-uk="1 заняття">1 cours</th></tr>
+              <tr><th scope="col" data-i18n-fr="Groupe" data-i18n-uk="Група">Groupe</th><th scope="col" data-price-yearhead>Année · 33 cours</th><th scope="col" data-ten-head data-i18n-fr="10 cours" data-i18n-uk="10 занять" style="display:none">10 cours</th><th scope="col" data-i18n-fr="1 cours" data-i18n-uk="1 заняття">1 cours</th></tr>
             </thead>
             <tbody data-pricing-rows></tbody>
           </table>
@@ -459,7 +459,7 @@
       materials:{fr:'huile, acrylique, aquarelle, pastel, dessin',uk:'олія, акрил, акварель, пастель, графіка'},
       schedule:schedules.adults,
       yearHead:{fr:'Année · 29 cours',uk:'Рік · 29 занять'},
-      pricing:[{group:{fr:'Adultes',uk:'Дорослі'}, year:'435 €', one:'20 €'}],
+      pricing:[{group:{fr:'Adultes',uk:'Дорослі'}, year:'435 €', ten:'180 €', one:'20 €'}],
       program:[{title:{fr:'S’immerger',uk:'Занурюватися'},text:{fr:'Nous mettons de côté la routine et retrouvons du temps pour créer — même si la dernière fois remonte à l’enfance.',uk:'Відкладаємо рутину й повертаємо собі час на творчість — навіть якщо востаннє малювали в дитинстві.'}},{title:{fr:'Essayer',uk:'Пробувати'},text:{fr:'Nous apprenons l’huile, l’acrylique ou l’aquarelle à notre rythme, sans notes ni précipitation.',uk:'Опановуємо олію, акрил чи акварель у власному темпі, без оцінок і поспіху.'}},{title:{fr:'Créer',uk:'Створювати'},text:{fr:'Nous terminons une œuvre à accrocher chez soi — et ressentons la fierté du travail accompli.',uk:'Завершуємо роботу, яку хочеться повісити вдома, — і відчути гордість за зроблене.'}}]
     },
     individual: {
@@ -564,11 +564,16 @@
     if (pricingSection) {
       if (course.pricing && course.pricing.length) {
         const oneLbl = lang === 'uk' ? '1 заняття' : '1 cours';
+        const tenLbl = lang === 'uk' ? '10 занять' : '10 cours';
+        const hasTen = course.pricing.some((p) => p.ten);
+        const tenHead = pricingSection.querySelector('[data-ten-head]');
+        if (tenHead) tenHead.style.display = hasTen ? '' : 'none';
         const pricingRows = pricingSection.querySelector('[data-pricing-rows]');
         pricingRows.innerHTML = course.pricing.map((pp) => `
         <tr>
           <th scope="row">${L(pp.group)}</th>
           <td data-label="${L(course.yearHead) || 'Рік'}">${pp.year}</td>
+          ${hasTen ? `<td data-label="${tenLbl}">${pp.ten || '—'}</td>` : ''}
           <td data-label="${oneLbl}">${pp.one}</td>
         </tr>
       `).join('');
