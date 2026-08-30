@@ -1426,6 +1426,7 @@ class Component extends DCLogic {
       let down = false, startX = 0, startScroll = 0, moved = false;
       scroller.addEventListener('pointerdown', (e) => {
         if (e.button !== 0 || !isDesktop()) return;
+        if (e.target.closest('a, button')) return; // let links/buttons click normally
         down = true; moved = false; startX = e.clientX; startScroll = scroller.scrollLeft;
         scroller.classList.add('is-dragging');
         try { scroller.setPointerCapture(e.pointerId); } catch (_) {}
