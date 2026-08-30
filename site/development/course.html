@@ -95,7 +95,7 @@
   .schedule-section { margin-top:clamp(52px,6vw,96px); padding:clamp(44px,5vw,72px) clamp(18px,3vw,42px) clamp(42px,5vw,70px); background:#c0392b; color:#fff; overflow:hidden; }
   .schedule-title { margin:0 0 clamp(42px,7vw,110px); color:#FAAB06; font-size:clamp(30px,3.4vw,52px); text-align:center; }
   .schedule-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:clamp(14px,2vw,28px); align-items:stretch; }
-  .schedule-note { margin:clamp(16px,1.8vw,26px) 0 0; text-align:center; color:#6b6459; font-family:'Archivo',sans-serif; font-size:clamp(13px,1vw,16px); letter-spacing:.02em; }
+  .schedule-note { margin:clamp(28px,4vw,56px) 0 0; text-align:center; color:rgba(255,255,255,.72); font-family:'Archivo',sans-serif; font-size:clamp(13px,1vw,16px); letter-spacing:.02em; }
   .schedule-day { display:grid; grid-template-rows:auto 1fr; gap:18px; min-width:0; }
   .schedule-day-name { margin:0; color:#fff; text-align:center; font-size:clamp(22px,2.5vw,44px); line-height:1; font-weight:400; }
   .schedule-card { width:100%; min-width:0; aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:space-between; padding:15px; background:rgba(255,255,255,.16); color:#fff; overflow:hidden; }
@@ -276,8 +276,8 @@
       <section class="schedule-section" aria-labelledby="schedule-title">
         <h2 class="schedule-title hand" id="schedule-title" data-i18n-fr="Horaires des cours" data-i18n-uk="Розклад курсів">Horaires des cours</h2>
         <div class="schedule-grid" data-schedule-grid></div>
+        <p class="schedule-note" data-i18n-fr="hors vacances scolaires" data-i18n-uk="поза шкільними канікулами">hors vacances scolaires</p>
       </section>
-      <p class="schedule-note" data-i18n-fr="hors vacances scolaires" data-i18n-uk="поза шкільними канікулами">hors vacances scolaires</p>
 
       <div class="program">
         <article class="program-card">
