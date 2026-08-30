@@ -1146,7 +1146,7 @@
     <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 max(clamp(20px,4vw,64px), (100% - 1440px)/2); scroll-snap-type:x mandatory;">
       <sc-for list="{{ works }}" as="w" hint-placeholder-count="5">
         <figure class="work-card reveal" style="margin:0; flex:none; width:clamp(240px,28vw,400px); scroll-snap-align:start;">
-          <div style="border:1px solid #c8c3b6; padding:8px; background:#141310;"><div style="overflow:hidden; aspect-ratio:4/5; background:#e2ded2;"><image-slot id="{{ w.slot }}" shape="rect" placeholder="Œuvre d’élève" data-i18n-placeholder-fr="Œuvre d’élève" data-i18n-placeholder-uk="Робота учня"></image-slot></div></div>
+          <div style="border:1px solid #c8c3b6; padding:8px; background:#141310;"><div style="overflow:hidden; aspect-ratio:4/5; background:#fff;"><image-slot id="{{ w.slot }}" src="{{ w.img }}" fit="contain" shape="rect" placeholder="Œuvre d’élève" data-i18n-placeholder-fr="Œuvre d’élève" data-i18n-placeholder-uk="Робота учня"></image-slot></div></div>
           <figcaption style="margin-top: 14px; font-family: 'Archivo',sans-serif; font-weight: 600; font-size: clamp(13px,1vw,16px); color: #6b6459" data-i18n-fr="{{ w.cap_fr }}" data-i18n-uk="{{ w.cap_uk }}">{{ w.cap_fr }}</figcaption>
         </figure>
       </sc-for>
@@ -1359,16 +1359,18 @@ class Component extends DCLogic {
         { no:'06', title_fr:'Cours en ligne', title_uk:'Онлайн курси', tags:[{fr:'partout',uk:'будь-де'},{fr:'cours perso',uk:'персональні уроки'},{fr:'retour de la prof',uk:'зворотний зв’язок'},{fr:'à son rythme',uk:'свій темп'}], img:'./assets/course-06.png', href:'./course.html?course=online' }
       ],
       works: [
-        { slot:'cl-w-1', cap_fr:'Étude botanique · Marie · aquarelle', cap_uk:'Ботанічний етюд · Марі · акварель' },
-        { slot:'cl-w-2', cap_fr:'Nature morte · Léo · huile', cap_uk:'Натюрморт · Лео · олія' },
-        { slot:'cl-w-3', cap_fr:'Portrait · Ania · fusain', cap_uk:'Портрет · Аня · вугілля' },
-        { slot:'cl-w-4', cap_fr:'Paysage · Claire · acrylique', cap_uk:'Пейзаж · Клер · акрил' },
-        { slot:'cl-w-5', cap_fr:'Icône · atelier · tempera', cap_uk:'Ікона · студія · темпера' },
-        { slot:'cl-w-6', cap_fr:'Composition · élève · gouache', cap_uk:'Композиція · учень · гуаш' },
-        { slot:'cl-w-7', cap_fr:'Abstraction · élève · acrylique', cap_uk:'Абстракція · учениця · акрил' },
-        { slot:'cl-w-8', cap_fr:'Dessin · élève · encre', cap_uk:'Графіка · учень · туш' },
-        { slot:'cl-w-9', cap_fr:'Croquis · élève · crayon', cap_uk:'Начерк · учениця · олівець' },
-        { slot:'cl-w-10', cap_fr:'Pastel · élève · pastel', cap_uk:'Пастель · учень · пастель' }
+        { slot:'hw-1', img:'./assets/gallery-autoportrait-lysia.jpg', cap_fr:'Autoportrait · Lysia FOREST · acrylique, collage', cap_uk:'Автопортрет · Lysia FOREST · акрил, колаж' },
+        { slot:'hw-2', img:'./assets/gallery-fous-elias.jpg', cap_fr:'Les fous aux pattes bleues · Elias MOLIERES THOMAS · gouache', cap_uk:'Синьоногі олуші · Elias MOLIERES THOMAS · гуаш' },
+        { slot:'hw-3', img:'./assets/gallery-lievre-emilie.jpg', cap_fr:'Lièvre · Emilie-Rose REBOUL · papier, acrylique', cap_uk:'Заєць · Emilie-Rose REBOUL · папір, акрил' },
+        { slot:'hw-4', img:'./assets/gallery-phenix-solomya.jpg', cap_fr:'Phénix · Solomya BORSUK · collage', cap_uk:'Фенікс · Solomya BORSUK · колаж' },
+        { slot:'hw-5', img:'./assets/gallery-portrait-mila.jpg', cap_fr:'Portrait · Mila SALVI · acrylique, pastel gras', cap_uk:'Портрет · Mila SALVI · акрил, олійна пастель' },
+        { slot:'hw-6', img:'./assets/gallery-fleur-marc.jpg', cap_fr:'Fleur · Marc DOBROVOLSKYI · mosaïque', cap_uk:'Квітка · Marc DOBROVOLSKYI · мозаїка' },
+        { slot:'hw-7', img:'./assets/gallery-tournesols-sylvie.jpg', cap_fr:'Copie libre de « Tournesols » (Van Gogh) · Sylvie BALJOU · pastel sec', cap_uk:'Вільна копія «Соняшників» (Ван Гог) · Sylvie BALJOU · суха пастель' },
+        { slot:'hw-8', img:'./assets/gallery-ma-chambre-anna.jpg', cap_fr:'Ma chambre · Anna SIERIKOVA · papier, acrylique', cap_uk:'Моя кімната · Anna SIERIKOVA · папір, акрил' },
+        { slot:'hw-9', img:'./assets/gallery-portrait-julie.jpg', cap_fr:'Portrait de Julie · Marie-Odile BONTE · toile, acrylique', cap_uk:'Портрет Жулі · Marie-Odile BONTE · полотно, акрил' },
+        { slot:'hw-10', img:'./assets/gallery-panda-marharita.jpg', cap_fr:'Panda · Marharita DOBROVOLSKA · collage, pastel', cap_uk:'Панда · Marharita DOBROVOLSKA · колаж, пастель' },
+        { slot:'hw-11', img:'./assets/gallery-goeland-serafym.jpg', cap_fr:'Goéland · Serafym SIERIKOV · papier, acrylique', cap_uk:'Чайка · Serafym SIERIKOV · папір, акрил' },
+        { slot:'hw-12', img:'./assets/gallery-chateau-elias.jpg', cap_fr:'Château médiéval · Elias MOLIERES THOMAS · aquarelle', cap_uk:'Середньовічний замок · Elias MOLIERES THOMAS · акварель' }
       ],
       stickerEye: (function(){
         const ink='#141310', iris='#a9d6ea';
