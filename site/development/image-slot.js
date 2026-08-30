@@ -292,7 +292,7 @@
     '  font:13px/1.3 system-ui,-apple-system,sans-serif;' +
     '  width:100%;height:100%;aspect-ratio:3/2}' +
     '.empty .cap,.empty .sub{opacity:.75}' +
-    '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(127,127,127,.08)}' +
+    '.frame{position:absolute;inset:0;overflow:hidden;background:#fff}' +
     // .frame img (clipped) and .spill (unclipped ghost + handles) share the
     // same left/top/width/height in frame-%, computed by _applyView(), so the
     // inside-mask crop and the outside-mask spill stay pixel-aligned.
