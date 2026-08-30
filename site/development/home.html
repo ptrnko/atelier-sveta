@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=Caveat:wght@500;600;700&amp;display=swap" rel="stylesheet">
-<script src="./image-slot.js"></script>
+<script src="./image-slot.js?v=2"></script>
 <script src="./assets/i18n.js?v=2"></script>
 <style>
   * { box-sizing: border-box; }
@@ -1146,7 +1146,7 @@
     <div class="works-scroll drag-scroll" style="display:flex; align-items:flex-start; gap:clamp(14px,1.6vw,24px); overflow-x:auto; overflow-y:hidden; padding:0 max(clamp(20px,4vw,64px), (100% - 1440px)/2); scroll-snap-type:x mandatory;">
       <sc-for list="{{ works }}" as="w" hint-placeholder-count="5">
         <figure class="work-card reveal" style="margin:0; flex:none; width:clamp(240px,28vw,400px); scroll-snap-align:start;">
-          <div style="border:1px solid #d9d5c9; overflow:hidden; aspect-ratio:4/5; background:#fff;"><image-slot id="{{ w.slot }}" src="{{ w.img }}" fit="contain" shape="rect" placeholder="Œuvre d’élève" data-i18n-placeholder-fr="Œuvre d’élève" data-i18n-placeholder-uk="Робота учня"></image-slot></div>
+          <div style="overflow:hidden; aspect-ratio:4/5; background:#fff;"><image-slot id="{{ w.slot }}" src="{{ w.img }}" fit="contain" shape="rect" placeholder="Œuvre d’élève" data-i18n-placeholder-fr="Œuvre d’élève" data-i18n-placeholder-uk="Робота учня"></image-slot></div>
           <figcaption style="margin:16px 0 0; font-family:'Caveat',cursive; font-weight:600; font-size:clamp(18px,1.5vw,24px); line-height:1.1; color:#c0392b; text-align:center; transform:rotate(-2deg);" data-i18n-fr="{{ w.cap_fr }}" data-i18n-uk="{{ w.cap_uk }}">{{ w.cap_fr }}</figcaption>
         </figure>
       </sc-for>
