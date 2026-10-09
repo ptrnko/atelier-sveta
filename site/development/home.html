@@ -588,16 +588,36 @@
   }
   @keyframes wm-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
   /* ===== INSTAGRAM BLOCK ===== */
-  .insta-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(10px,1.4vw,22px); max-width:1440px; margin-inline:auto; }
-  .insta-card { position:relative; display:block; aspect-ratio:4/5; overflow:hidden; background:#f2f1ef; border-radius:4px; }
-  .insta-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease, filter .3s ease; }
-  .insta-card:hover img { transform:scale(1.045); filter:saturate(1.05); }
-  .insta-card::after { content:""; position:absolute; inset:0; background:rgba(20,19,16,0); transition:background .3s ease; }
-  .insta-card:hover::after { background:rgba(20,19,16,.08); }
-  .insta-card .ig-badge { position:absolute; top:10px; right:10px; width:30px; height:30px; display:flex; align-items:center; justify-content:center; color:#fff; filter:drop-shadow(0 1px 3px rgba(0,0,0,.5)); z-index:2; }
-  .insta-card .ig-badge svg { width:100%; height:100%; }
+  .insta-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(14px,1.8vw,26px); max-width:1440px; margin-inline:auto; }
+  .ig-post { display:flex; flex-direction:column; background:#fff; border:1px solid #dbdbdb; border-radius:10px; overflow:hidden; transition:box-shadow .3s ease, transform .3s ease; }
+  .ig-post:hover { box-shadow:0 10px 30px rgba(20,19,16,.08); transform:translateY(-3px); }
+  .ig-post-head { display:flex; align-items:center; gap:10px; padding:10px 12px; }
+  .ig-ava { width:34px; height:34px; border-radius:50%; object-fit:cover; background:#edebe3; flex:none; }
+  .ig-user { font-family:'Archivo',sans-serif; font-weight:700; font-size:14px; color:#141310; line-height:1.15; text-decoration:none; }
+  .ig-user:hover { text-decoration:underline; }
+  .ig-user-sub { display:block; font-family:'Archivo',sans-serif; font-weight:500; font-size:11px; color:#8e8e8e; line-height:1.1; }
+  .ig-dots { margin-left:auto; color:#262626; font-weight:700; letter-spacing:1.5px; font-size:15px; line-height:1; }
+  .ig-media { display:block; position:relative; aspect-ratio:4/5; overflow:hidden; background:#f2f1ef; }
+  .ig-media img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
+  .ig-post:hover .ig-media img { transform:scale(1.03); }
+  .ig-media .ig-badge { position:absolute; top:10px; right:10px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; color:#fff; filter:drop-shadow(0 1px 3px rgba(0,0,0,.55)); }
+  .ig-media .ig-badge svg { width:100%; height:100%; }
+  .ig-actions { display:flex; align-items:center; gap:15px; padding:11px 12px 2px; color:#262626; }
+  .ig-actions svg { width:23px; height:23px; display:block; }
+  .ig-actions .ig-bookmark { margin-left:auto; }
+  .ig-caption { padding:4px 12px 14px; font-family:'Archivo',sans-serif; font-size:13px; line-height:1.45; color:#262626; }
+  .ig-caption b { font-weight:700; }
+  .ig-caption .ig-cta { color:#8e8e8e; text-decoration:none; }
+  .ig-caption .ig-cta:hover { text-decoration:underline; }
   @media (max-width:760px) {
-    .insta-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .insta-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .ig-ava { width:30px; height:30px; }
+    .ig-user { font-size:13px; }
+    .ig-actions { gap:13px; }
+    .ig-actions svg { width:21px; height:21px; }
+  }
+  @media (max-width:460px) {
+    .insta-grid { grid-template-columns:1fr; }
   }
   .srow { transition:background .3s, color .3s; }
   .srow:hover { background:#141310; color:#edebe3; }
@@ -1152,25 +1172,116 @@
       <a href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer" class="btn btn--out" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:#141310; border:1px solid #141310; border-radius:40px; padding:14px 28px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);"><span data-i18n-fr="Nous suivre sur Instagram" data-i18n-uk="Стежити в Instagram">Nous suivre sur Instagram</span> <span class="btn-icon" aria-hidden="true"></span></a>
     </div>
     <div class="insta-grid">
-      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/p/Dc83bX6CFoP/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
-        <img src="./assets/ig-1.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
-      </a>
-      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/p/DdWl_uRiC4y/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
-        <img src="./assets/ig-2.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
-      </a>
-      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/p/Dc_ez40iEKz/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
-        <img src="./assets/ig-3.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
-      </a>
-      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/reel/DdoaihFoaYC/" target="_blank" rel="noopener noreferrer" aria-label="Voir le reel Instagram" data-i18n-aria-label-fr="Voir le reel Instagram" data-i18n-aria-label-uk="Переглянути Reel в Instagram">
-        <span class="ig-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-        <img src="./assets/ig-4.jpg" alt="Reel Instagram Atelier Sveta" data-i18n-alt-fr="Reel Instagram Atelier Sveta" data-i18n-alt-uk="Reel Atelier Sveta в Instagram" loading="lazy">
-      </a>
-      <a class="insta-card reveal" href="https://www.instagram.com/p/DcqCgG2CGm4/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
-        <img src="./assets/ig-5.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
-      </a>
-      <a class="insta-card reveal" href="https://www.instagram.com/p/DeQ_XyNCNXu/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
-        <img src="./assets/ig-6.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
-      </a>
+
+      <article class="ig-post reveal">
+        <header class="ig-post-head">
+          <img class="ig-ava" src="./assets/favicon.png" alt="ateliersveta" width="34" height="34">
+          <a class="ig-user" href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer">ateliersveta<span class="ig-user-sub">Atelier Sveta · Ganges</span></a>
+          <span class="ig-dots" aria-hidden="true">•••</span>
+        </header>
+        <a class="ig-media" href="https://www.instagram.com/ateliersveta/p/Dc83bX6CFoP/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+          <img src="./assets/ig-1.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+        </a>
+        <div class="ig-actions" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l1.7 1.7L12 21.5l7.1-7.1 1.7-1.7a5 5 0 0 0 0-7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          <svg class="ig-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </div>
+        <div class="ig-caption"><b>ateliersveta</b> <a class="ig-cta" href="https://www.instagram.com/ateliersveta/p/Dc83bX6CFoP/" target="_blank" rel="noopener noreferrer" data-i18n-fr="Voir la publication" data-i18n-uk="Дивитися допис">Voir la publication</a></div>
+      </article>
+
+      <article class="ig-post reveal">
+        <header class="ig-post-head">
+          <img class="ig-ava" src="./assets/favicon.png" alt="ateliersveta" width="34" height="34">
+          <a class="ig-user" href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer">ateliersveta<span class="ig-user-sub">Atelier Sveta · Ganges</span></a>
+          <span class="ig-dots" aria-hidden="true">•••</span>
+        </header>
+        <a class="ig-media" href="https://www.instagram.com/ateliersveta/p/DdWl_uRiC4y/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+          <img src="./assets/ig-2.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+        </a>
+        <div class="ig-actions" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l1.7 1.7L12 21.5l7.1-7.1 1.7-1.7a5 5 0 0 0 0-7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          <svg class="ig-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </div>
+        <div class="ig-caption"><b>ateliersveta</b> <a class="ig-cta" href="https://www.instagram.com/ateliersveta/p/DdWl_uRiC4y/" target="_blank" rel="noopener noreferrer" data-i18n-fr="Voir la publication" data-i18n-uk="Дивитися допис">Voir la publication</a></div>
+      </article>
+
+      <article class="ig-post reveal">
+        <header class="ig-post-head">
+          <img class="ig-ava" src="./assets/favicon.png" alt="ateliersveta" width="34" height="34">
+          <a class="ig-user" href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer">ateliersveta<span class="ig-user-sub">Atelier Sveta · Ganges</span></a>
+          <span class="ig-dots" aria-hidden="true">•••</span>
+        </header>
+        <a class="ig-media" href="https://www.instagram.com/ateliersveta/p/Dc_ez40iEKz/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+          <img src="./assets/ig-3.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+        </a>
+        <div class="ig-actions" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l1.7 1.7L12 21.5l7.1-7.1 1.7-1.7a5 5 0 0 0 0-7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          <svg class="ig-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </div>
+        <div class="ig-caption"><b>ateliersveta</b> <a class="ig-cta" href="https://www.instagram.com/ateliersveta/p/Dc_ez40iEKz/" target="_blank" rel="noopener noreferrer" data-i18n-fr="Voir la publication" data-i18n-uk="Дивитися допис">Voir la publication</a></div>
+      </article>
+
+      <article class="ig-post reveal">
+        <header class="ig-post-head">
+          <img class="ig-ava" src="./assets/favicon.png" alt="ateliersveta" width="34" height="34">
+          <a class="ig-user" href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer">ateliersveta<span class="ig-user-sub">Atelier Sveta · Ganges</span></a>
+          <span class="ig-dots" aria-hidden="true">•••</span>
+        </header>
+        <a class="ig-media" href="https://www.instagram.com/ateliersveta/reel/DdoaihFoaYC/" target="_blank" rel="noopener noreferrer" aria-label="Voir le reel Instagram" data-i18n-aria-label-fr="Voir le reel Instagram" data-i18n-aria-label-uk="Переглянути Reel в Instagram">
+          <span class="ig-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <img src="./assets/ig-4.jpg" alt="Reel Instagram Atelier Sveta" data-i18n-alt-fr="Reel Instagram Atelier Sveta" data-i18n-alt-uk="Reel Atelier Sveta в Instagram" loading="lazy">
+        </a>
+        <div class="ig-actions" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l1.7 1.7L12 21.5l7.1-7.1 1.7-1.7a5 5 0 0 0 0-7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          <svg class="ig-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </div>
+        <div class="ig-caption"><b>ateliersveta</b> <a class="ig-cta" href="https://www.instagram.com/ateliersveta/reel/DdoaihFoaYC/" target="_blank" rel="noopener noreferrer" data-i18n-fr="Voir le reel" data-i18n-uk="Дивитися Reel">Voir le reel</a></div>
+      </article>
+
+      <article class="ig-post reveal">
+        <header class="ig-post-head">
+          <img class="ig-ava" src="./assets/favicon.png" alt="ateliersveta" width="34" height="34">
+          <a class="ig-user" href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer">ateliersveta<span class="ig-user-sub">Atelier Sveta · Ganges</span></a>
+          <span class="ig-dots" aria-hidden="true">•••</span>
+        </header>
+        <a class="ig-media" href="https://www.instagram.com/p/DcqCgG2CGm4/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+          <img src="./assets/ig-5.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+        </a>
+        <div class="ig-actions" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l1.7 1.7L12 21.5l7.1-7.1 1.7-1.7a5 5 0 0 0 0-7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          <svg class="ig-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </div>
+        <div class="ig-caption"><b>ateliersveta</b> <a class="ig-cta" href="https://www.instagram.com/p/DcqCgG2CGm4/" target="_blank" rel="noopener noreferrer" data-i18n-fr="Voir la publication" data-i18n-uk="Дивитися допис">Voir la publication</a></div>
+      </article>
+
+      <article class="ig-post reveal">
+        <header class="ig-post-head">
+          <img class="ig-ava" src="./assets/favicon.png" alt="ateliersveta" width="34" height="34">
+          <a class="ig-user" href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer">ateliersveta<span class="ig-user-sub">Atelier Sveta · Ganges</span></a>
+          <span class="ig-dots" aria-hidden="true">•••</span>
+        </header>
+        <a class="ig-media" href="https://www.instagram.com/p/DeQ_XyNCNXu/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+          <img src="./assets/ig-6.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+        </a>
+        <div class="ig-actions" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l1.7 1.7L12 21.5l7.1-7.1 1.7-1.7a5 5 0 0 0 0-7.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 20.5l1.7-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+          <svg class="ig-bookmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+        </div>
+        <div class="ig-caption"><b>ateliersveta</b> <a class="ig-cta" href="https://www.instagram.com/p/DeQ_XyNCNXu/" target="_blank" rel="noopener noreferrer" data-i18n-fr="Voir la publication" data-i18n-uk="Дивитися допис">Voir la publication</a></div>
+      </article>
+
     </div>
   </section>
 
