@@ -587,6 +587,18 @@
     .works-scroll { cursor:default; }
   }
   @keyframes wm-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  /* ===== INSTAGRAM BLOCK ===== */
+  .insta-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(10px,1.4vw,22px); max-width:1440px; margin-inline:auto; }
+  .insta-card { position:relative; display:block; aspect-ratio:4/5; overflow:hidden; background:#f2f1ef; border-radius:4px; }
+  .insta-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease, filter .3s ease; }
+  .insta-card:hover img { transform:scale(1.045); filter:saturate(1.05); }
+  .insta-card::after { content:""; position:absolute; inset:0; background:rgba(20,19,16,0); transition:background .3s ease; }
+  .insta-card:hover::after { background:rgba(20,19,16,.08); }
+  .insta-card .ig-badge { position:absolute; top:10px; right:10px; width:30px; height:30px; display:flex; align-items:center; justify-content:center; color:#fff; filter:drop-shadow(0 1px 3px rgba(0,0,0,.5)); z-index:2; }
+  .insta-card .ig-badge svg { width:100%; height:100%; }
+  @media (max-width:760px) {
+    .insta-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  }
   .srow { transition:background .3s, color .3s; }
   .srow:hover { background:#141310; color:#edebe3; }
   .srow:hover .snum, .srow:hover .sdesc { color:#edebe3 !important; opacity:0.85; }
@@ -1128,6 +1140,38 @@
       </a>
     </sc-for>
     <div style="border-top:1px solid #d9d5c9;"></div>
+  </section>
+
+  <!-- ===== INSTAGRAM ===== -->
+  <section id="instagram" class="insta-section" style="background:#fff; padding:clamp(90px,11vw,150px) max(clamp(20px,4vw,64px), (100% - 1440px)/2); border-bottom:1px solid #d9d5c9;">
+    <div class="insta-head" style="display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:clamp(28px,3vw,44px);">
+      <div>
+        <div style="font-family:'Caveat',cursive; font-weight:600; color:#FAAB06; font-size:clamp(30px,3.4vw,52px); line-height:1; margin-bottom:clamp(12px,1.4vw,20px);" data-i18n-fr="(Instagram)" data-i18n-uk="(Instagram)">(Instagram)</div>
+        <a href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer" class="flink" style="font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(16px,1.3vw,20px); color:#141310;">@ateliersveta</a>
+      </div>
+      <a href="https://www.instagram.com/ateliersveta/" target="_blank" rel="noopener noreferrer" class="btn btn--out" style="display:inline-flex; align-items:center; gap:8px; background:transparent; color:#141310; border:1px solid #141310; border-radius:40px; padding:14px 28px; font-family:'Archivo',sans-serif; font-weight:600; font-size:clamp(14px,1.05vw,17px);"><span data-i18n-fr="Nous suivre sur Instagram" data-i18n-uk="Стежити в Instagram">Nous suivre sur Instagram</span> <span class="btn-icon" aria-hidden="true"></span></a>
+    </div>
+    <div class="insta-grid">
+      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/p/Dc83bX6CFoP/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+        <img src="./assets/ig-1.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+      </a>
+      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/p/DdWl_uRiC4y/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+        <img src="./assets/ig-2.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+      </a>
+      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/p/Dc_ez40iEKz/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+        <img src="./assets/ig-3.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+      </a>
+      <a class="insta-card reveal" href="https://www.instagram.com/ateliersveta/reel/DdoaihFoaYC/" target="_blank" rel="noopener noreferrer" aria-label="Voir le reel Instagram" data-i18n-aria-label-fr="Voir le reel Instagram" data-i18n-aria-label-uk="Переглянути Reel в Instagram">
+        <span class="ig-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        <img src="./assets/ig-4.jpg" alt="Reel Instagram Atelier Sveta" data-i18n-alt-fr="Reel Instagram Atelier Sveta" data-i18n-alt-uk="Reel Atelier Sveta в Instagram" loading="lazy">
+      </a>
+      <a class="insta-card reveal" href="https://www.instagram.com/p/DcqCgG2CGm4/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+        <img src="./assets/ig-5.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+      </a>
+      <a class="insta-card reveal" href="https://www.instagram.com/p/DciilJSIxs_/" target="_blank" rel="noopener noreferrer" aria-label="Voir la publication Instagram" data-i18n-aria-label-fr="Voir la publication Instagram" data-i18n-aria-label-uk="Переглянути допис в Instagram">
+        <img src="./assets/ig-6.jpg" alt="Publication Instagram Atelier Sveta" data-i18n-alt-fr="Publication Instagram Atelier Sveta" data-i18n-alt-uk="Допис Atelier Sveta в Instagram" loading="lazy">
+      </a>
+    </div>
   </section>
 
   <!-- ===== WORKS DRAG GALLERY ===== -->
