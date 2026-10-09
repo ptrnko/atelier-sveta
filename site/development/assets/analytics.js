@@ -3,6 +3,8 @@
    Le choix est mémorisé (localStorage) ; un lien « Cookies » dans le pied de page
    permet de revenir sur sa décision. Textes bilingues via data-i18n-fr/uk (i18n.js). */
 (function () {
+  if (window.__asAnalyticsInit) return; // garde-fou : exécuter une seule fois
+  window.__asAnalyticsInit = true;
   var MEASUREMENT_ID = 'G-BMKP6T6MBJ';
   var STORE_KEY = 'as-cookie-consent'; // 'granted' | 'denied'
 
@@ -114,6 +116,29 @@
   });
 
   window.asOpenCookieSettings = showBanner;
+
+  /* --- Suivi des conversions (envoyé seulement si le consentement a été donné,
+         donc uniquement quand window.gtag existe). --- */
+  function track(name, params) {
+    if (typeof window.gtag !== 'function') return; // pas de consentement → pas de suivi
+    window.gtag('event', name, params || {});
+  }
+  // Soumission réussie du formulaire d'inscription (évènement émis par trial-modal.js).
+  document.addEventListener('as:lead', function (e) {
+    track('generate_lead', { method: (e.detail && e.detail.source) || 'trial-form' });
+  });
+  // Clics sur les appels à l'action et les liens de contact.
+  document.addEventListener('click', function (e) {
+    if (typeof window.gtag !== 'function') return;
+    var el = e.target.closest ? e.target.closest('a, button') : null;
+    if (!el) return;
+    if (el.closest('.js-open-trial')) { track('trial_cta_click'); return; }
+    var href = (el.getAttribute('href') || '').toLowerCase();
+    if (!href) return;
+    if (href.indexOf('tel:') === 0) track('phone_click');
+    else if (href.indexOf('mailto:') === 0) track('email_click');
+    else if (href.indexOf('wa.me') > -1 || href.indexOf('whatsapp.com') > -1) track('whatsapp_click');
+  });
 
   function init() {
     var consent = readConsent();

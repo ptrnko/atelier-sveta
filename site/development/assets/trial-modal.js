@@ -104,6 +104,8 @@
         form.reset();
         closeModal({ restoreFocus: false });
         openSuccess();
+        // Signal de conversion pour l'analytics (envoyé uniquement sur succès).
+        try { document.dispatchEvent(new CustomEvent("as:lead", { detail: { source: "trial-form" } })); } catch (e) {}
       })
       .catch(() => {})
       .finally(() => {
